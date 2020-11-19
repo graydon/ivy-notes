@@ -1,0 +1,1 @@
+Abbreviation of a module declaration and a single instantiation of it.
