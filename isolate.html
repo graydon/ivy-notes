@@ -131,52 +131,44 @@ with evens,num
 
 <p>When we verifiy isolate <code>evens</code>, the result is as if we had actually entered the following program:</p>
 
-<p>```<span class="tag">lang</span> ivy1.7</p>
-
-<p>object nat {<br />
-    ...<br />
-}</p>
-
-<p>object evens = {<br />
-    var number : nat<br />
-    after init {<br />
-        number := 0<br />
-    }</p>
-
-<pre><code>action step = {
-    call odds.put(number + 1)
+<pre><code>object nat {
+    ...
 }
 
-action put(n:nat) = {
-    require even(nat)
-    number := n;
+object evens = {
+    var number : nat
+    after init {
+        number := 0
+    }
+
+    action step = {
+        call odds.put(number + 1)
+    }
+
+    action put(n:nat) = {
+        require even(nat)
+        number := n;
+    }
+
+    invariant number.even
 }
 
-invariant number.even
+object odds = {
+
+    action put(n:nat) = {
+        require odd(nat)
+    }
+}
+
+export evens.step
+export evens.put
 </code></pre>
 
-<p>}</p>
+<p>Notice the implementation of <code>odds.put</code> has been eliminated, and what remains is just the assertion that the input value is odd (IVy verifies that the eliminated side effect of <code>odds.put</code> is in fact invisible to <code>evens</code>). The assertion that inputs to <code>evens</code> are even has in effect become an assumption. We can prove this isolate is safe by showing that <code>even.number</code> is invariantly even, which means that <code>odds.put</code> is always called with an odd number.</p>
 
-<p>object odds = {</p>
+<p>The other isolate, <code>odds</code>, looks like this:</p>
 
-<pre><code>action put(n:nat) = {
-    require odd(nat)
-}
-</code></pre>
-
-<p>}</p>
-
-<p>export evens.step<br />
-export evens.put</p>
-
-<pre><code>
-Notice the implementation of `odds.put` has been eliminated, and what remains is just the assertion that the input value is odd (IVy verifies that the eliminated side effect of `odds.put` is in fact invisible to `evens`). The assertion that inputs to `evens` are even has in effect become an assumption. We can prove this isolate is safe by showing that `even.number` is invariantly even, which means that `odds.put` is always called with an odd number.
-
-The other isolate, `odds`, looks like this:
-
-```&lt;span class="tag"&gt;lang&lt;/span&gt; ivy1.7
-
-object nat {
+<pre><code>object nat {
     ...
 }
 
