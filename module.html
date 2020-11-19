@@ -45,15 +45,19 @@
       <header>module</header>
       <div id="content"><p>keyword: <code>module</code></p>
 
-<p>A <em><a href="module.html">module</a></em> in IVy is a group of declarations that can be <a href="module-instantiation.html">instantiated</a>.</p>
+<p>A module in IVy is a group of declarations that can be <a href="module-instantiation.html">instantiated</a>.</p>
 
 <p>In this way it is similar to a template class in an object-oriented programming language.</p>
 
-<p>Any Ivy declaration can be contained in a module. This includes axioms, invariants, instances and modules.</p>
+<p>Any IVy declaration can be contained in a module. This includes axioms, invariants, instances and modules.</p>
 
-<p>An instance of a module is called an <a href="object.html">object</a>, and there is special syntax for declaring a <a href="singleton-object.html">singleton object</a> that is the sole instance of a module.</p>
+<p>An instance of a module is called an <a href="object.html">object</a>, and there is special syntax for declaring a <a href="singleton-object.html">singleton object</a> that is the sole instance of a module. A further special type of object is an <a href="isolate.html">isolate</a>, which is verified in isolation from other modules.</p>
 
 <p>Besides defining classes of objects, modules can be used to capture a re-usable theory, or structure a modular proof.</p>
+
+<p>Modules can contain <code>private</code> blocks, which contain declarations not visible outside the module. These are typically used to contain invariants that rule out unreachable states, supporting a publicly visible inductive invariant.</p>
+
+<p>A module can also use <code>specification</code> and <code>implementation</code> blocks to split its declarations between abstract logical specifications and concrete implementations. Examples of this are shown in the page on <a href="isolate.html">isolates</a>.</p>
 
 <h2 id="examples">Examples:</h2>
 

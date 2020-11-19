@@ -12,7 +12,7 @@
   <!-- CSS (uses absolute weblinks to work around relative path issues) -->
   <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
 
-  <title>function</title>
+  <title>proof</title>
 </head>
 
 <body>
@@ -42,37 +42,29 @@
       </div>
     </nav>
     <article>
-      <header>function</header>
-      <div id="content"><p><a href="keywords.html">Keyword</a>: <code>function</code></p>
+      <header>proof</header>
+      <div id="content"><p><a href="keywords.html">Keyword</a>: <code>proof</code></p>
 
-<p>One of the <a href="primitive-judgment.html">primitive judgments</a>.</p>
+<p>A proof is an optional sequence of <a href="tactic.html">tactic</a> invocations that trails a <a href="logical-judgment.html">logical judgment</a> establshing its validity. Multiple tactic invocations must be separated by a semicolon (<code>;</code>) and the entire proof may be enclosed in curly braces (<code>{...}</code>)</p>
 
-<p>Declares the existence of a function. Optionally, if followed by an equality, provides a definition.</p>
-
-<p>A function that is declared but not defined is a <a href="state-variable.html">state variable</a> that may have its values partially or fully <a href="assignment.html">assigned</a> -- point-wise -- during <a href="action.html">actions</a>.</p>
-
-<p>If defined, a function is immutable.</p>
-
-<h2 id="example">Example:</h2>
-
-<pre><code>function f(X:t) : u
-</code></pre>
-
-<p>Where <code>t</code>and <code>u</code> are some <a href="type.html">types</a>.</p>
-
-<p>This judgment can be read as "for any term <code>X</code> of type <code>t</code>, let <code>f(X)</code> be a term of type <code>u</code>".</p>
+<p>If a proof is not supplied for a judgment, IVy's default <a href="tactic.html">tactic</a> will attempt to prove validity automatically.</p>
 
 <div class="backlinks">
 
 <h2 id="backlinks">Backlinks</h2>
 
 <ul>
+<li><a href="axiom.html">axiom</a></li>
+<li><a href="axiom-schema.html">axiom schema</a></li>
 <li><a href="definition.html">definition</a></li>
-<li><a href="isolate.html">isolate</a></li>
+<li><a href="instantiation.html">instantiation</a></li>
+<li><a href="judgment-application.html">judgment application</a></li>
 <li><a href="keywords.html">keywords</a></li>
-<li><a href="module-instantiation.html">module instantiation</a></li>
 <li><a href="primitive-judgment.html">primitive judgment</a></li>
-<li><a href="state-variable.html">state variable</a></li>
+<li><a href="property.html">property</a></li>
+<li><a href="schema.html">schema</a></li>
+<li><a href="tactic.html">tactic</a></li>
+<li><a href="theorem.html">theorem</a></li>
 </ul>
 
 </div>

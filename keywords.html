@@ -51,8 +51,8 @@
 <li><code>alias</code></li>
 <li><code>apply</code>: <a href="judgment-application.html">judgment application</a> in a <a href="proof.html">proof</a></li>
 <li><code>around</code></li>
-<li><code>assert</code></li>
-<li><code>assume</code></li>
+<li><code>assert</code>: <a href="statement.html">statement</a> asserting a <a href="proposition.html">proposition</a></li>
+<li><code>assume</code>: <a href="statement.html">statement</a> of an <a href="assumption.html">assumption</a></li>
 <li><code>attribute</code></li>
 <li><code>autoinstance</code></li>
 <li><code>axiom</code>: <a href="declaration.html">declaration</a> of an <a href="axiom.html">axiom</a></li>
@@ -61,38 +61,39 @@
 <li><code>class</code></li>
 <li><code>concept</code></li>
 <li><code>conjecture</code></li>
-<li><code>decreases</code></li>
+<li><code>decreases</code>: qualifier of a <a href="loop.html">loop</a></li>
 <li><code>definition</code>: <a href="declaration.html">declaration</a> of a <a href="definition.html">definition</a></li>
 <li><code>delegate</code></li>
 <li><code>derived</code></li>
 <li><code>destructor</code></li>
-<li><code>else</code></li>
+<li><code>else</code>: negative branch of a <a href="conditional.html">conditional</a> <a href="statement.html">statement</a></li>
 <li><code>ensure</code></li>
 <li><code>ensures</code></li>
 <li><code>entry</code></li>
 <li><code>execute</code></li>
-<li><code>exists</code></li>
+<li><code>exists</code>: existential logical quantifier for an <a href="expression.html">expression</a></li>
+<li><code>explicit</code>: qualifier for <a href="primitive-judgment.html">primitive judgments</a></li>
 <li><code>export</code></li>
 <li><code>extract</code></li>
-<li><code>false</code>: primitive expression of type <code>bool</code></li>
-<li><code>forall</code></li>
+<li><code>false</code>: primitive <a href="proposition.html">proposition</a></li>
+<li><code>forall</code>: universal logical quantifier for an <a href="expression.html">expression</a></li>
 <li><code>fresh</code></li>
 <li><code>from</code></li>
 <li><code>function</code>: <a href="declaration.html">declaration</a> of a <a href="function.html">function</a></li>
 <li><code>ghost</code></li>
-<li><code>if</code></li>
-<li><code>implement</code></li>
-<li><code>implementation</code></li>
-<li><code>import</code></li>
+<li><code>if</code>: positive branch of a <a href="conditional.html">conditional</a> <a href="statement.html">statement</a></li>
+<li><code>implement</code>: provides an implementation of an abstract <a href="action.html">action</a></li>
+<li><code>implementation</code>: marks the private portion of an <a href="isolate.html">isolate</a></li>
+<li><code>import</code>: </li>
 <li><code>in</code></li>
-<li><code>include</code></li>
+<li><code>include</code>: incorporates another IVy source file's declarations into the current file</li>
 <li><code>individual</code>: <a href="declaration.html">declaration</a> of an <a href="individual.html">individual</a></li>
 <li><code>init</code></li>
 <li><code>instance</code>: <a href="declaration.html">declaration</a> of an <a href="object.html">object</a> that <a href="module-instantiation.html">instantiates a module</a></li>
-<li><code>instantiate</code></li>
+<li><code>instantiate</code>: performs <a href="explicit-quantifier-instantiation.html">explicit quantifier instantiation</a> in a <a href="proof.html">proof</a></li>
 <li><code>interpret</code>: <a href="primitive-judgment.html">primitive judgment</a> of <a href="theory-instantiation.html">theory instantiation</a></li>
 <li><code>invariant</code></li>
-<li><code>isolate</code></li>
+<li><code>isolate</code>: <a href="declaration.html">declares</a> a special kind of <a href="object.html">object</a> verified in isolation from others</li>
 <li><code>let</code></li>
 <li><code>local</code></li>
 <li><code>macro</code></li>
@@ -113,31 +114,31 @@
 <li><code>params</code></li>
 <li><code>private</code></li>
 <li><code>progress</code></li>
-<li><code>proof</code></li>
+<li><code>proof</code>: optionally provides a <a href="proof.html">proof</a> following a <a href="property.html">property</a> or <a href="theorem.html">theorem</a></li>
 <li><code>property</code></li>
 <li><code>relation</code></li>
 <li><code>rely</code></li>
 <li><code>require</code></li>
 <li><code>requires</code></li>
-<li><code>returns</code></li>
+<li><code>returns</code>: qualifier of an <a href="action.html">action</a> indicating its return type</li>
 <li><code>schema</code></li>
 <li><code>set</code></li>
 <li><code>some</code></li>
-<li><code>specification</code>:    </li>
+<li><code>specification</code>: marks the public portion of an <a href="isolate.html">isolate</a></li>
 <li><code>state</code></li>
 <li><code>struct</code></li>
 <li><code>tactic</code></li>
 <li><code>temporal</code></li>
 <li><code>theorem</code></li>
-<li><code>this</code></li>
-<li><code>true</code></li>
+<li><code>this</code>: alias for the innermost enclosing <a href="module.html">module</a></li>
+<li><code>true</code>: primitive <a href="proposition.html">proposition</a></li>
 <li><code>trusted</code></li>
-<li><code>type</code></li>
+<li><code>type</code>: <a href="primitive-judgment.html">primitive judgment</a> introducing a <a href="type.html">type</a></li>
 <li><code>update</code></li>
 <li><code>using</code></li>
-<li><code>var</code></li>
+<li><code>var</code>: <a href="primitive-judgment.html">primitive judgment</a> introducing a <a href="variable.html">variable</a></li>
 <li><code>variant</code></li>
-<li><code>while</code></li>
+<li><code>while</code>: <a href="loop.html">loop</a> <a href="statement.html">statement</a></li>
 <li><code>with</code></li>
 </ul>
 
@@ -180,6 +181,9 @@
 <li><code>require</code> is a <a href="precondition.html">precondition</a>: asserts a <a href="proposition.html">proposition</a> and blames the caller if it fails (or else assumes the environment guarantees it)</li>
 <li><code>assume</code></li>
 <li><code>assert</code></li>
+<li><code>call</code> <a href="call.html">calls</a> another action</li>
+<li><code>if</code> / <code>else</code>: form a <a href="conditional.html">conditional</a></li>
+<li><code>while</code> forms a <a href="loop.html">loop</a></li>
 </ul></li>
 </ul>
 
@@ -188,14 +192,18 @@
 <h2 id="backlinks">Backlinks</h2>
 
 <ul>
+<li><a href="action.html">action</a></li>
 <li><a href="axiom.html">axiom</a></li>
 <li><a href="definition.html">definition</a></li>
 <li><a href="function.html">function</a></li>
 <li><a href="individual.html">individual</a></li>
+<li><a href="isolate.html">isolate</a></li>
+<li><a href="proof.html">proof</a></li>
 <li><a href="property.html">property</a></li>
 <li><a href="relation.html">relation</a></li>
 <li><a href="theory-instantiation.html">theory instantiation</a></li>
 <li><a href="type.html">type</a></li>
+<li><a href="variable.html">variable</a></li>
 </ul>
 
 </div>

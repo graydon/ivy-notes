@@ -49,15 +49,46 @@
 
 <p>(Not to be confused with the <a href="instantiation.html">many other meanings of the term "instantiation"</a>)</p>
 
-<p>IVy has built-in theories that can be instantiated with a specific <a href="type.html">type</a> as their carrier. For example, the theory of integer arithmetic is called <code>int</code>. It has the signature <code>{+,-,*,/,&lt;}</code>, plus the integer numerals, and provides the <a href="axiom.html">axioms</a> of Peano arithmetic.</p>
+<p>The normal way of using Ivy is to declare uninterpreted <a href="types.html">types</a> and to give the necessary <a href="axioms.html">axioms</a> over those types to prove desired <a href="properties.html">properties</a> of a system. However, it is also possible in IVy to associate <a href="types.html">types</a> with sorts that are interpreted in the underlying theorem prover by declaring <code>interpret &lt;ty&gt; -&gt; sort</code></p>
 
-<p>Example:</p>
+<p>Concrete sorts that are currently available for interpreting IVy types are:</p>
 
-<pre><code>type u
-interpret u -&gt; int
+<ul>
+<li><code>int</code>: the integers</li>
+<li><code>nat</code>: the non-negative integers</li>
+<li><code>{X..Y}</code>: the subrange of integers from <code>X</code> to <code>Y</code> inclusive</li>
+<li><code>{a,b,c}</code>: an enumerated type</li>
+<li><code>bv[N]</code>: bit vectors of length <code>N</code>, where <code>N &gt; 0</code></li>
+</ul>
+
+<p>Arithmetic on <code>nat</code> is <strong>saturating</strong>. That is, any operation that would yield a neagtive number instead gives zero. </p>
+
+<p>An arbitrary function or relation symbol can be interpreted. This is useful for symbols of the theory that have no pre-defined overloaded symbol in IVy.</p>
+
+<h2 id="examples">Examples:</h2>
+
+<h3 id="example-integers">Example: integers</h3>
+
+<pre><code>type idx
+interpret idx -&gt; int
 </code></pre>
 
-<p>This declaration instantiates the theory <code>int</code> using type <code>u</code> for the integers, and requires that type <code>u</code> is not previously interpreted and that the symbols <code>{+,-,*,/,&lt;}</code> in the signature of <code>int</code> are fresh. Notice, though, that the symbols <code>{+,-,*,/,&lt;}</code> are overloaded. This means that <code>+</code> over distinct types is considered to be a distinct symbol.  Thus, we can we can instantiate the <code>int</code> theory over different types (and also instantiate other theories that have these symbols in their signature).</p>
+<p>This says that IVy type <code>idx</code> should be interpreted using sort <code>int</code> of the theorem prover. This does not mean that <code>idx</code> is equated with the integers. If we also interpret type <code>num</code> with <code>int</code>, we still cannot compare values of type <code>idx</code> and type <code>num</code>. In effect, these two types are treated as distinct copies of the integers.</p>
+
+<p>When we declare <code>idx</code> as <code>int</code>, certain overloaded <a href="functions.html">functions</a> and <a href="relations.html">relations</a> on <code>idx</code> are also automatically interpreted by the corresponding operators on integers, as are numerals of that type. So, for example, <code>+</code> is interpreted as addition and <code>&lt;</code> as "less than" in the theory of integers. Numerals are given their normal interpretations in the theory, so <code>0:idx = 1:idx</code> would be false.</p>
+
+<h3 id="example-bit-vectors">Example: bit vectors</h3>
+
+<pre><code>type t
+type s
+function extract_lo(X:t) : s
+
+interpret t -&gt; bv[8]
+interpret s -&gt; bv[4]
+interpret extract_lo -&gt; bfe[3][0]
+</code></pre>
+
+<p>Here <code>bfe[3][0]</code> is the bit field extraction operator the takes the low order 4 bits of a bit vector.</p>
 
 <div class="backlinks">
 

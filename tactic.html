@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>tactic</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2><a href="index.html">IVy notes</a></h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+          <li><a href="definition.html">Definitions</a></li>
+          <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="further-info.html">Further info</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>tactic</header>
+      <div id="content"><p>A tactic is a step that can be invoked by name during a <a href="proof.html">proof</a>.</p>
+
+<p>There is a default tactic called <code>tactic vcgen</code> that works by generating a <a href="verification-condition.html">verification condition</a> (VC) to be checked by Z3. This is a formula whose validity implies that the property is true in the current context. IVy checks that this formula is within the <a href="logical-fragment.html">logical fragment</a> FAU that Z3 can decide, then passes the formula to Z3. If Z3 finds that the formula is valid, the property is admitted.</p>
+
+<p>If the default tactic generates a VC that is not within FAU, IVy will describe the problem and user intervention will be required, invoking other tactics to arrive at a goal state that <em>is</em> within FAU.</p>
+
+<p>Possible tactics include:</p>
+
+<ul>
+<li><code>apply</code>, <code>instance</code>, or <code>instantiate</code> applies <a href="schema.html">compound judgments</a> or <code>explicit</code> <a href="primitive-judgment.html">primitive judgments</a> optionally also <a href="explicit-quantifier-instantiation.html">instantiating quantified variables</a> in the applied judgment in a trailing <code>with</code> clause</li>
+<li><code>let</code> performs <a href="explicit-quantifier-instantiation.html">explicit quantifier instantiation</a> on existing goals</li>
+<li><code>showgoals</code> prints the current list of proof goals</li>
+<li><code>assume</code> adds an assumption</li>
+<li><code>property</code>, <code>axiom</code>, etc. allow declaring (and proving) a local sub-<a href="logical-judgment.html">judgment</a></li>
+<li><code>tactic</code> invokes extended, non-keyword tactics:<br />
+<ul><br />
+<li><code>tactic skolemize</code> performs Skolemization</li><br />
+<li><code>tactic vcgen</code> is the default VC-generating tactic</li><br />
+<li><code>tactic l2s</code> translates <a href="temporal-properties.html">temporal properties</a> about liveness to safety properties</li><br />
+<li><code>tactic invariance</code> also related to <a href="temporal-properties.html">temporal properties</a></li><br />
+</ul></li>
+</ul>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="judgment-application.html">judgment application</a></li>
+<li><a href="keywords.html">keywords</a></li>
+<li><a href="proof.html">proof</a></li>
+<li><a href="property.html">property</a></li>
+<li><a href="schema.html">schema</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>

@@ -12,7 +12,7 @@
   <!-- CSS (uses absolute weblinks to work around relative path issues) -->
   <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
 
-  <title>function</title>
+  <title>statement</title>
 </head>
 
 <body>
@@ -42,37 +42,32 @@
       </div>
     </nav>
     <article>
-      <header>function</header>
-      <div id="content"><p><a href="keywords.html">Keyword</a>: <code>function</code></p>
+      <header>statement</header>
+      <div id="content"><p>A <a href="statement.html">statement</a> is a single step within an <a href="action.html">action</a>.</p>
 
-<p>One of the <a href="primitive-judgment.html">primitive judgments</a>.</p>
+<p>Multiple statements can be composed into a sequence by separating them with a semicolon (<code>;</code>). The semicolon is a sequential composition operator in IVy, not a statement terminator. However, an extra semicolon is allowed before an ending brace (<code>}</code>) to make editing sequences of statements easier.</p>
 
-<p>Declares the existence of a function. Optionally, if followed by an equality, provides a definition.</p>
+<p>A statement may be one of the following:</p>
 
-<p>A function that is declared but not defined is a <a href="state-variable.html">state variable</a> that may have its values partially or fully <a href="assignment.html">assigned</a> -- point-wise -- during <a href="action.html">actions</a>.</p>
-
-<p>If defined, a function is immutable.</p>
-
-<h2 id="example">Example:</h2>
-
-<pre><code>function f(X:t) : u
-</code></pre>
-
-<p>Where <code>t</code>and <code>u</code> are some <a href="type.html">types</a>.</p>
-
-<p>This judgment can be read as "for any term <code>X</code> of type <code>t</code>, let <code>f(X)</code> be a term of type <code>u</code>".</p>
+<ul>
+<li><a href="call.html">calls</a></li>
+<li><a href="conditional.html">conditionals</a></li>
+<li><a href="loop.html">loops</a></li>
+<li><a href="assignment.html">assignments</a> to <a href="state-variable.html">state variables</a></li>
+<li><a href="precondition.html">preconditions</a>, <a href="postcondition.html">postconditions</a>, <a href="assumption.html">assumptions</a> and general <a href="assertion.html">assertions</a></li>
+<li>local <a href="variable.html">variable</a> declarations</li>
+</ul>
 
 <div class="backlinks">
 
 <h2 id="backlinks">Backlinks</h2>
 
 <ul>
-<li><a href="definition.html">definition</a></li>
-<li><a href="isolate.html">isolate</a></li>
+<li><a href="assignment.html">assignment</a></li>
+<li><a href="call.html">call</a></li>
 <li><a href="keywords.html">keywords</a></li>
-<li><a href="module-instantiation.html">module instantiation</a></li>
-<li><a href="primitive-judgment.html">primitive judgment</a></li>
-<li><a href="state-variable.html">state variable</a></li>
+<li><a href="transition-relation.html">transition relation</a></li>
+<li><a href="variable.html">variable</a></li>
 </ul>
 
 </div>

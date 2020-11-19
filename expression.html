@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>expression</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2><a href="index.html">IVy notes</a></h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+          <li><a href="definition.html">Definitions</a></li>
+          <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="further-info.html">Further info</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>expression</header>
+      <div id="content"><p>Expressions in IVy are terms or formulas in <a href="https://en.wikipedia.org/wiki/First-order_logic">first-order logic</a> with equality.</p>
+
+<p>Ivy provides the following built-in operators:</p>
+
+<ul>
+<li><code>~</code> (not)</li>
+<li><code>&amp;</code> (and)</li>
+<li><code>|</code> (or),</li>
+<li><code>-&gt;</code> (implies)</li>
+<li><code>&lt;-&gt;</code> (iff)</li>
+<li><code>=</code> (equality)</li>
+</ul>
+
+<p>There is also a built-in conditional operator <code>X if C else Y</code> that returns <code>X</code> if the Boolean condition <code>C</code> is true and <code>Y</code> otherwise.</p>
+
+<p>The if/else operator binds most strongly, followed by equality, not, and, or. The weakest binding operators are <code>&lt;-&gt;</code> and <code>-&gt;</code>, which have equal precedence.</p>
+
+<p>The binary and ternary operators are left-associating (i.e., they bind more strongly on the left). For example, <code>x if p else y if q else z</code> is equivalent to <code>(x if p else y) if q else z</code> and <code>p -&gt; q -&gt; r</code> is equivalent to <code>(p -&gt; q) -&gt; r</code>. <strong>Warning</strong>: in the case of if/else and <code>-&gt;</code>, this is non-standard and is due to an error in the parser. This will change in a future version of the language. In the interim it is best to always parenthesize expressions with multiple uses if if/else<br />
+and <code>-&gt;</code>.</p>
+
+<p>Expressions may also use logical quantifiers. For example, this formula says that<br />
+there exists a node <code>X</code> such that for every node <code>Y</code>, <code>X</code> is linked to <code>Y</code>:</p>
+
+<pre><code>exists X. forall Y. link(X,Y)
+</code></pre>
+
+<p>In this case, the variables do not need type annotations, since we can infer that<br />
+both <code>X</code> and <code>Y</code> are nodes. However, in some cases, annotations are needed. </p>
+
+<p>For example, this is a statement of the transitivity of equality:</p>
+
+<pre><code>forall X,Y,Z. X=Y &amp; Y=Z -&gt; X=Y
+</code></pre>
+
+<p>We can determine from this expression that <code>X</code>, <code>Y</code> and <code>Z</code> must all be of the same type, but not what that type is. This means we have to annotate at least one variable, like this:</p>
+
+<pre><code>forall X:node,Y,Z. X=Y &amp; Y=Z -&gt; X=Y
+</code></pre>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="call.html">call</a></li>
+<li><a href="keywords.html">keywords</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>

@@ -43,11 +43,20 @@
     </nav>
     <article>
       <header>module instantiation</header>
-      <div id="content"><p>Modules can be instantiated into <a href="object.html">objects</a>, using the <code>instance</code> keyword (not to be confused with the <a href="instantiation.html">many other concepts named "instantiation"</a>).</p>
+      <div id="content"><p>Keyword: <code>instance</code> and/or <code>instantiate</code></p>
+
+<p><a href="module.html">Modules</a> can be instantiated into <a href="object.html">objects</a>, similar to the way template classes in programming languages can be instantiated.</p>
+
+<p>(Module instantiation should not be confused with the <a href="instantiation.html">many other concepts named "instantiation"</a> in IVy).</p>
 
 <p>Instantiating a <a href="module.html">module</a> creates a separate copy of the <a href="declaration.html">declarations</a> of the module with any supplied arguments substituted for the module's parameters.</p>
 
-<p>Instantiation may be into a fresh, named object or, if anonymous, into the enclosing object. See the second example below.</p>
+<p>Instantiation may take one of two forms:</p>
+
+<ul>
+<li>Using the <code>instance</code> keyword to create freshly-named object (see the first example below).</li>
+<li>Using the <code>instantiate</code> keyword to include the instance into the enclosing object (see the second example below).</li>
+</ul>
 
 <h2 id="examples">Examples:</h2>
 
