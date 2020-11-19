@@ -9,4 +9,4 @@ individual i : t
 
 Where `t` is some [[type]].
 
-This judgment can be read as "let `n` be a term of type `t`" and is admissible if symbol `n` has not been used up to this point in the development.
+This judgment can be read as "let `i` be a term of type `t`" and is admissible if symbol `i` has not been used up to this point in the development.
