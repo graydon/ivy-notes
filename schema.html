@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>schema</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2>IVy notes</h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>schema</header>
+      <div id="content"><p>A compound judgment or "schema" takes a collection of judgments as input (the premises) and produces a judgment as output (the conclusion).</p>
+
+<p>If the schema is valid, then we can provide any type-correct values for the premises and the conclusion will follow.</p>
+
+<p>The default <a href="proof.html">proof</a> <a href="tactic.html">tactic</a> never uses a schema automatically; to use a schema, it must be explicitly <a href="judgment-application.html">applied</a>. This allows us to express and use facts that, if they occurred in verification conditions, would take us outside the <a href="logical-fragment.html">decidable fragment</a>.</p>
+
+<h2 id="example">Example:</h2>
+
+<pre><code>    axiom [congruence] {
+        type d
+        type r
+        function f(X:d) : r
+        #--------------------------
+        property X = Y -&gt; f(X) = f(Y)
+    }
+</code></pre>
+
+<p>The schema is contained in curly brackets. This differentiates it from a <a href="primitive-judgment.html">primitive judgment</a>.</p>
+
+<p>Within the curly brackets there is a list of premises, followed by a conclusion.</p>
+
+<p>The dashes separating the premises from the conclusion are just a comment.</p>
+
+<p>The conclusion is always the last judgment in the schema.</p>
+
+<p>In this case, it says that, given types <code>d</code> and <code>r</code> and a function <code>f</code> from <code>d</code> to <code>r</code> and any values <code>X</code>,<code>Y</code> of type <code>d</code>, we can infer that <code>X</code>=<code>Y</code> implies <code>f(X) = f(Y)</code>.</p>
+
+<p>Also, notice the declaration of function <code>f</code> contains a variable <code>X</code>. The scope of this<br />
+variable is only the function declaration. It has no relation to the variable <code>X</code> in the conclusion.</p>
+
+<p>The keyword <code>axiom</code> tells IVy that this schema should be taken as valid without proof: it is an <a href="axiom-schema.html">axiom schema</a> rather than a <a href="theorem.html">theorem</a>.</p>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="axiom-schema.html">axiom schema</a></li>
+<li><a href="judgment-application.html">judgment application</a></li>
+<li><a href="keywords.html">keywords</a></li>
+<li><a href="logical-judgment.html">logical judgment</a></li>
+<li><a href="theorem.html">theorem</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>

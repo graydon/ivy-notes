@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>isolate</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2>IVy notes</h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>isolate</header>
+      <div id="content"><p>An isolate is a special kind of <a href="object.html">object</a> that acts as a unit of verification. It generally has three parts.</p>
+
+<p>It starts with a declaration of the interface of the object. This usually consists of <a href="type.html">types</a>, <a href="function.html">functions</a> and <a href="action.html">actions</a> that are provided by the object.</p>
+
+<p>The next section is the specification. This usually consists of <a href="variable.html">variables</a>, <a href="property.html">properties</a> and <a href="monitor.html">monitors</a> that are visible outside the isolate.</p>
+
+<p>Finally, we have the implementation. It usually consists of <a href="variable.html">variables</a>, <a href="function.html">function</a> <a href="definition.html">definitions</a> and <a href="action.html">action</a> <a href="implementation.html">implementations</a> that are hidden.</p>
+
+<p>An isolate may depend on the visible parts of other objects. This is declared using the keyword <code>with</code></p>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>

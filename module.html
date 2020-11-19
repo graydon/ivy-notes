@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>module</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2>IVy notes</h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>module</header>
+      <div id="content"><p>keyword: <code>module</code></p>
+
+<p>A <em><a href="module.html">module</a></em> in IVy is a group of declarations that can be <a href="module-instantiation.html">instantiated</a>.</p>
+
+<p>In this way it is similar to a template class in an object-oriented programming language.</p>
+
+<p>Any Ivy declaration can be contained in a module. This includes axioms, invariants, instances and modules.</p>
+
+<p>An instance of a module is called an <a href="object.html">object</a>, and there is special syntax for declaring a <a href="singleton-object.html">singleton object</a> that is the sole instance of a module.</p>
+
+<p>Besides defining classes of objects, modules can be used to capture a re-usable theory, or structure a modular proof.</p>
+
+<h2 id="examples">Examples:</h2>
+
+<h2 id="example-counter">Example: counter</h2>
+
+<p>Here is a simple example of a module representing an up/down counter<br />
+with a test for zero:</p>
+
+<pre><code>    module counter(t) = {
+
+        individual val : t
+        after init {
+            val := 0
+        }
+
+        action up = {
+            val := val + 1
+        }
+
+        action down = {
+            val := val - 1
+        }
+
+        action is_zero returns(z : bool) = {
+            z := (val = 0)
+        }
+    }
+</code></pre>
+
+<p>This module takes a single parameter <code>t</code> which is the type of the counter value <code>val</code>.</p>
+
+<h3 id="example-a-theory-of-partial-order">Example: a theory of partial order</h3>
+
+<p>As an example, here is a module representing a theory of partial orders:</p>
+
+<pre><code>module po(t,lt) = {
+    axiom lt(X:t,Y) &amp; lt(Y,Z) -&gt; lt(X,Z)
+    axiom ~(lt(X:t,Y) &amp; lt(Y,X))
+}
+</code></pre>
+
+<p>This module takes a type <code>t</code> and a relation <code>lt</code> over <code>t</code>. It provides<br />
+axioms stating that <code>lt</code> is transitive and antisymmetric.</p>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="declaration.html">declaration</a></li>
+<li><a href="instantiation.html">instantiation</a></li>
+<li><a href="keywords.html">keywords</a></li>
+<li><a href="module-instantiation.html">module instantiation</a></li>
+<li><a href="object.html">object</a></li>
+<li><a href="variable.html">variable</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>

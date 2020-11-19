@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>relation</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2>IVy notes</h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>relation</header>
+      <div id="content"><p><a href="keywords.html">keyword</a>: <code>relation</code></p>
+
+<p>One of the <a href="primitive-judgment.html">primitive judgments</a>.</p>
+
+<p>Declares the existence of a relation. Optionally, if followed by an equality, provides a definition.</p>
+
+<p>A relation that is declared but not defined is a <a href="state-variable.html">state variable</a> that may have its values partially or fully <a href="assignment.html">assigned</a> -- point-wise -- during <a href="action.html">actions</a>.</p>
+
+<p>If defined, a relation is immutable.</p>
+
+<h2 id="example">Example:</h2>
+
+<pre><code>relation r(X:t,Y:u)
+</code></pre>
+
+<p>Where <code>t</code>and <code>u</code> are some  <a href="type.html">types</a>.</p>
+
+<p>This judgment can be read as "for any terms <code>X</code> of type <code>t</code> and <code>Y</code> of type <code>u</code>, let <code>r(X,Y)</code> be a <a href="proposition.html">proposition</a>.</p>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="definition.html">definition</a></li>
+<li><a href="keywords.html">keywords</a></li>
+<li><a href="module-instantiation.html">module instantiation</a></li>
+<li><a href="primitive-judgment.html">primitive judgment</a></li>
+<li><a href="state-variable.html">state variable</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>

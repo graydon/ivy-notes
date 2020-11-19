@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>logical fragment</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2>IVy notes</h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>logical fragment</header>
+      <div id="content"><p>IVy works with several different fragments of <a href="https://en.wikipedia.org/wiki/First-order_logic">first-order logic</a></p>
+
+<p>The most important fragment in IVy is <a href="http://leodemoura.github.io/files/citr09.pdf">FAU ("Finite Almost Uninterpreted")</a> which subsumes other decidable fragments including <a href="http://www.cs.tau.ac.il/~msagiv/lpar07.pdf">stratified many-sorted logic</a> and <a href="https://en.wikipedia.org/wiki/Bernays%E2%80%93Sch%C3%B6nfinkel_class">EPR ("Effectively-PRopositional") logic</a>.</p>
+
+<p>The underlying solver Z3 supports a complete decision procedure, based on quantifier instantiation, for FAU.</p>
+
+<h2 id="concepts">Concepts</h2>
+
+<p>Quoting directly from the paper <a href="https://theory.stanford.edu/~padon/paxos-made-epr-oopsla17.pdf">Paxos Made EPR</a>", and others:</p>
+
+<ul>
+<li><p><strong>EPR</strong>:  a fragment of first-order logic restricted to relational first-order formulas (i.e., formulas over a vocabulary that contains constant symbols and relation symbols but <strong>no function symbols</strong>) with a quantifier prefix <code>∃∗∀∗</code> in prenex normal form. Satisfiability of EPR formulas is decidable. Moreover, formulas in this fragment enjoy the finite model property, meaning that a satisfiable formula is guaranteed to have a finite model. The size of this model is bounded by the total number of existential quantifiers and constants in the formula. The reason for this is that given an <code>∃∗∀∗</code>-formula, we can obtain an equi-satisfiable quantifier-free formula by Skolemization, i.e., replacing the existentially quantified variables by constants, and then instantiating the universal quantifiers for all constants.</p></li>
+<li><p><strong><a href="https://en.wikipedia.org/wiki/First-order_logic#Many-sorted_logic">Many-sorted logic</a></strong>: an extension of the domain of discourse of first-order logic into "sorts", analogous to "types" in programming. The sorts of many-sorted logic are the <a href="type.html">types</a> of IVy.</p></li>
+<li><strong><a href="https://en.wikipedia.org/wiki/Skolem_normal_form">Skolemization</a></strong>: The process of replacing existentially-quantified _variables_ with _functions_ of existing univerally-quantified variables, producing an equi-satisfiable formula with prenex consisting strictly of universal quantifiers. As function symbols in first-order formulae are _implicitly_ existentially quantified, this essentially "hoists existential quantifiers" out of the inside of a formula, moving them to the outermost level where they quantify over functions.</li>
+<li><p><strong>Quantifier-alternation graph</strong>: Let <code>φ</code> be a formula in negation normal form over a many-sorted signature <code>Σ</code> with a set of sorts <code>S</code>. We define the quantifier-alternation graph of <code>φ</code> as a directed graph where the set of vertices is the set of sorts, <code>S</code>, and the set of directed edges, called <code>∀∃</code> edges, is defined as follows.</p>
+
+<ul>
+<li>Function edges: let <code>f</code> be a function in <code>φ</code> from sorts <code>s1,...,sk</code> to sort <code>s</code>. Then there is a <code>∀∃</code> edge from <code>si</code> to <code>s</code> for every <code>1 ≤ i ≤ k</code>.</li>
+<li>Quantifier edges: let <code>∃x : s</code> be an existential quantifier that resides in the scope of the universal quantifiers <code>∀x1 : s1,. . . ,∀xk : sk</code> in <code>φ</code>. Then there is a <code>∀∃</code> edge from <code>si</code> to <code>s</code> for every <code>1 ≤ i ≤ k</code>.</li>
+</ul>
+
+<p><p>Intuitively, the quantifier edges correspond to the edges that would arise as function edges if Skolemization is applied.</p></li><br />
+<li><p><strong>Stratification</strong>: A vocabulary for many-sorted logic is _stratified_ if there is a function <code>level</code> from sorts (types) into <code>Nat</code> such that for every function symbol <code>f : A1 × ... × Am → B</code> we have <code>level(B) &lt; level(Ai) for all i = 1,...,m</code>. Alternatively: A formula <code>φ</code> is stratified if its quantifier alternation graph is acyclic.</p></li><br />
+<li><p><strong>Extended EPR</strong>. A formula <code>φ</code> is stratified if its quantifier alternation graph is acyclic, <strong>including functions, so long as they are stratified</strong>. The extended EPR fragment consists of all stratified formulas. This fragment maintains the finite model property and the decidability of EPR. The reason for this is that, after Skolemization, the vocabulary of a stratified formula can only generate a finite set of ground terms. This allows complete instantiation of the universal quantifiers in the Skolemized formula, as in EPR.</p></li><br />
+</ul></p>
+
+<p>FAU extends this Extended EPR in a few more ways related to arithmetic and array theories that we will not cover here presently.</p>
+
+<h2 id="example">Example:</h2>
+
+<p>Since Skolemization replaces quantifiers with functions, the concept of "stratification" applies equally to functions and/or quantifier-alternations. For example:</p>
+
+<ul>
+<li>Initial formula <code>∀x:t . ∃y:u . F(x,y)</code></li>
+<li>Skolemizes as <code>∃S:t-&gt;u . ∀x:t . F(x,S(x))</code></li>
+</ul>
+
+<p>Looking at the Skolemized case, we can see that the definition of stratification has an "edge in the graph" of sorts (types) between <code>t</code> and <code>u</code> provided by the skolem function <code>S</code>.</p>
+
+<p>Similarly, in the initial (non-Skolemized) case, the <code>∀x:t . ∃y:u</code> quantifier-alternation can also be viewed as a different representation of the same "edge" in the graph of sorts.</p>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="property.html">property</a></li>
+<li><a href="schema.html">schema</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>

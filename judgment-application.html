@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>judgment application</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2>IVy notes</h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>judgment application</header>
+      <div id="content"><p>A part of an explicit <a href="proof.html">proof</a>.</p>
+
+<p>To use (or "apply") a named <a href="property.html">property</a>, <a href="axiom.html">axiom</a>, or <a href="schema.html">schema</a> in a <a href="proof.html">proof</a>, use the <a href="tactic.html">tactic</a> <code>apply</code>.</p>
+
+<p>(In some documentation this is also called <a href="instantiation.html">instantiation</a> but that term is heavily overloaded so we try to avoid it here.)</p>
+
+<p><a href="schemas.html">Schemas (or "compound judgments")</a> are never applied automatically. <a href="primitive-judgments.html">Primitive judgments</a> may be.</p>
+
+<p>Sometimes a schema application can match its premises with terms in the proof environment automatically. But this problem (so-called "second order matching") in general is hard and so some applications require an explicit list of input premises.</p>
+
+<h2 id="example">Example:</h2>
+
+<pre><code>    axiom [congruence] {
+        type d
+        type r
+        function f(X:d) : r
+        #--------------------------
+        property X = Y -&gt; f(X) = f(Y)
+    }
+
+    property [prop_n] Z = n -&gt; Z + 1 = n + 1
+    proof {
+        apply congruence
+    }
+</code></pre>
+
+<p>The <code>proof</code> declaration tells IVy to apply the <a href="axiom-schema.html">axiom schema</a> <code>congruence</code> to prove the <a href="property.html">property</a> <code>prop_n</code>. </p>
+
+<p>IVy tries to match the <a href="proof.html">proof</a> goal <code>prop_n</code> to the schema's conclusion by picking particular values for premises, that is, the types <code>d</code>,<code>r</code> and function <code>f</code>. It also chooses terms for the free variables <code>X</code>,<code>Y</code> occurring in the schema. In this case, it discovers the following assignment:</p>
+
+<pre><code>    #- d = t
+    #- r = t
+    #- X = Z
+    #- Y = n
+    #- f(N) = N + 1
+</code></pre>
+
+<p>After plugging in this assignment, the conclusion of the rule exactly matches the property to be proved, so the property is admitted.</p>
+
+<p>In case IVy did not succeed in finding the above match, we could also have written the proof more explicitly, like this:</p>
+
+<pre><code>    property [prop_n_2] Z = n -&gt; Z + 1 = n + 1
+    proof {
+        apply congruence with X=Z, Y=n, f(X) = X:t + 1
+    }
+</code></pre>
+
+<p>Each of the above equations acts as a constraint on the assignment. That is, it must convert <code>X</code> to <code>Z</code>, <code>Y</code> to <code>n</code> and <code>f(X)</code> to <code>X + 1</code>. Notice that we had to explicitly type <code>X</code> on the right-hand side of the last equation, since its type couldn't be inferred (and in fact it's not the same as the type of <code>X</code> on the left-hand side, which is <code>d</code>). </p>
+
+<p>It's also possible to write constraints that do not allow for any assignment. In this case, IVy complains that the provided match is inconsistent.</p>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="instantiation.html">instantiation</a></li>
+<li><a href="keywords.html">keywords</a></li>
+<li><a href="schema.html">schema</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>
