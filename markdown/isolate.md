@@ -88,8 +88,6 @@ In the first isolate, we prove the assertion that `evens` guarantees. We do this
 When we verifiy isolate `evens`, the result is as if we had actually entered the following program:
 
 ```
-#lang ivy1.7
-
 object nat {
     ...
 }
@@ -128,8 +126,6 @@ Notice the implementation of `odds.put` has been eliminated, and what remains is
 The other isolate, `odds`, looks like this:
 
 ```
-#lang ivy1.7
-
 object nat {
     ...
 }
