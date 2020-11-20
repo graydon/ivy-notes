@@ -29,10 +29,18 @@
       <div>
         <h3>Navigation</h3>
         <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
           <li><a href="keywords.html">Keywords</a></li>
           <li><a href="declaration.html">Declarations</a></li>
           <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
           <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
           <li><a href="further-info.html">Further info</a></li>
         </ul>
       </div>
@@ -43,24 +51,31 @@
     </nav>
     <article>
       <header>precondition</header>
-      <div id="content"><p>Preconditions are asserted by the <code>require</code> keyword.</p>
+      <div id="content"><p><a href="keywords.html">Keyword</a>: <code>require</code></p>
 
-<p>Preconditions are _not_ checked at runtime, they are checked statically (logically) by <code>ivy_check</code> as it verifies a module's actions, and this makes for counter-intuitive behaviour concerning calls to <a href="export.html">exported</a> actions made from the environment.</p>
+<p>A precondition is a statement with strictly logical content. It does not modify state variables.</p>
 
-<p>Specifically: placing a precondition on an action <code>A</code> does not guarantee that the environment will invoke <code>A</code> in a state that meets the precondition, nor that <code>A</code> will signal any sort of runtime error should the precondition not hold.</p>
+<p>Preconditions are <em>not</em> checked at runtime, they are checked statically (logically) by <code>ivy_check</code> as it verifies a module's actions, and this makes for counter-intuitive behaviour concerning calls to <a href="export.html">exported</a> actions made from the environment.</p>
 
-<p>Rather, it adds a _logical assumption_ about the state on entry to <code>A</code> when called from the environment. The precondition is simpy assumed to be true. This has to be so, because IVy is not responsible for verifying the environment.</p>
+<p>Specifically: placing a precondition on an <a href="action.html">action</a> <code>A</code> does not guarantee that the environment will invoke <code>A</code> in a state that meets the precondition, nor that <code>A</code> will signal any sort of runtime error should the precondition not hold.</p>
 
-<p>When an action called form another action, preconditions behave more normally (and usefully): the caller is obliged to meet the preconditions of the calee, and the caller's verification fails if it does not.</p>
+<p>Rather, it adds a <em>logical assumption</em> about the state on entry to <code>A</code> when called from the environment. The precondition is simpy assumed to be true. This has to be so, because IVy is not responsible for verifying the environment.</p>
+
+<p>When an action is <strong>called from another action</strong>, preconditions behave more normally (and usefully): the caller is obliged to meet the preconditions of the calee, and the caller's verification fails if it does not.</p>
+
+<p>The exact relationship between callee <a href="precondition.html">preconditions</a> and caller <a href="verification-condition.html">verification conditions</a> is discussed in the <a href="weakest-liberal-precondition.html">weakest liberal precondition</a> page.</p>
 
 <div class="backlinks">
 
 <h2 id="backlinks">Backlinks</h2>
 
 <ul>
+<li><a href="assertion.html">assertion</a></li>
+<li><a href="initializer.html">initializer</a></li>
 <li><a href="keywords.html">keywords</a></li>
-<li><a href="primitive-judgment.html">primitive judgment</a></li>
 <li><a href="statement.html">statement</a></li>
+<li><a href="verification-condition.html">verification condition</a></li>
+<li><a href="weakest-liberal-precondition.html">weakest liberal precondition</a></li>
 </ul>
 
 </div>

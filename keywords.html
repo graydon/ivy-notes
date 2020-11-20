@@ -29,10 +29,18 @@
       <div>
         <h3>Navigation</h3>
         <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
           <li><a href="keywords.html">Keywords</a></li>
           <li><a href="declaration.html">Declarations</a></li>
           <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
           <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
           <li><a href="further-info.html">Further info</a></li>
         </ul>
       </div>
@@ -51,8 +59,8 @@
 <li><code>alias</code></li>
 <li><code>apply</code>: <a href="judgment-application.html">judgment application</a> in a <a href="proof.html">proof</a></li>
 <li><code>around</code></li>
-<li><code>assert</code>: <a href="statement.html">statement</a> asserting a <a href="proposition.html">proposition</a></li>
-<li><code>assume</code>: <a href="statement.html">statement</a> of an <a href="assumption.html">assumption</a></li>
+<li><code>assert</code>: <a href="statement.html">statement</a> <a href="assertion.html">asserting</a> a <a href="proposition.html">proposition</a></li>
+<li><code>assume</code>: <a href="statement.html">statement</a> of an <a href="assumption.html">assumption</a>; also a <a href="tactic.html">tactic</a></li>
 <li><code>attribute</code></li>
 <li><code>autoinstance</code></li>
 <li><code>axiom</code>: <a href="declaration.html">declaration</a> of an <a href="axiom.html">axiom</a></li>
@@ -73,7 +81,7 @@
 <li><code>execute</code></li>
 <li><code>exists</code>: existential logical quantifier for an <a href="expression.html">expression</a></li>
 <li><code>explicit</code>: qualifier for <a href="primitive-judgment.html">primitive judgments</a></li>
-<li><code>export</code></li>
+<li><code>export</code>: marks an <a href="action.html">action</a> as <a href="export.html">exported</a></li>
 <li><code>extract</code></li>
 <li><code>false</code>: primitive <a href="proposition.html">proposition</a></li>
 <li><code>forall</code>: universal logical quantifier for an <a href="expression.html">expression</a></li>
@@ -83,16 +91,16 @@
 <li><code>ghost</code></li>
 <li><code>if</code>: positive branch of a <a href="conditional.html">conditional</a> <a href="statement.html">statement</a></li>
 <li><code>implement</code>: provides an implementation of an abstract <a href="action.html">action</a></li>
-<li><code>implementation</code>: marks the private portion of an <a href="isolate.html">isolate</a></li>
+<li><code>implementation</code>: marks declarations as "implementation" in <a href="isolate.html">isolate</a> verification</li>
 <li><code>import</code>: </li>
 <li><code>in</code></li>
 <li><code>include</code>: incorporates another IVy source file's declarations into the current file</li>
 <li><code>individual</code>: <a href="declaration.html">declaration</a> of an <a href="individual.html">individual</a></li>
 <li><code>init</code></li>
-<li><code>instance</code>: <a href="declaration.html">declaration</a> of an <a href="object.html">object</a> that <a href="module-instantiation.html">instantiates a module</a></li>
-<li><code>instantiate</code>: performs <a href="explicit-quantifier-instantiation.html">explicit quantifier instantiation</a> in a <a href="proof.html">proof</a></li>
+<li><code>instance</code>: <a href="declaration.html">declaration</a> of an <a href="object.html">object</a> that <a href="module-instantiation.html">instantiates a module</a>, also a <a href="tactic.html">tactic</a> that does <a href="explicit-quantifier-instantiation.html">explicit quantifier instantiation</a> in a <a href="proof.html">proof</a></li>
+<li><code>instantiate</code>: lexically synonymous with <code>instance</code></li>
 <li><code>interpret</code>: <a href="primitive-judgment.html">primitive judgment</a> of <a href="theory-instantiation.html">theory instantiation</a></li>
-<li><code>invariant</code></li>
+<li><code>invariant</code>: <a href="primitive-judgment.html">primitive judgment</a> of an <a href="invariant.html">invariant</a></li>
 <li><code>isolate</code>: <a href="declaration.html">declares</a> a special kind of <a href="object.html">object</a> verified in isolation from others</li>
 <li><code>let</code></li>
 <li><code>local</code></li>
@@ -112,7 +120,7 @@
 <li><code>old</code></li>
 <li><code>parameter</code></li>
 <li><code>params</code></li>
-<li><code>private</code></li>
+<li><code>private</code>: marks declarations as "private" in <a href="isolate.html">isolate</a> verification</li>
 <li><code>progress</code></li>
 <li><code>proof</code>: optionally provides a <a href="proof.html">proof</a> following a <a href="property.html">property</a> or <a href="theorem.html">theorem</a></li>
 <li><code>property</code></li>
@@ -124,7 +132,7 @@
 <li><code>schema</code></li>
 <li><code>set</code></li>
 <li><code>some</code></li>
-<li><code>specification</code>: marks the public portion of an <a href="isolate.html">isolate</a></li>
+<li><code>specification</code>: marks declarations as "specification" in <a href="isolate.html">isolate</a> verification</li>
 <li><code>state</code></li>
 <li><code>struct</code></li>
 <li><code>tactic</code></li>
@@ -193,11 +201,17 @@
 
 <ul>
 <li><a href="action.html">action</a></li>
+<li><a href="assertion.html">assertion</a></li>
+<li><a href="assumption.html">assumption</a></li>
 <li><a href="axiom.html">axiom</a></li>
 <li><a href="definition.html">definition</a></li>
+<li><a href="export.html">export</a></li>
 <li><a href="function.html">function</a></li>
 <li><a href="individual.html">individual</a></li>
+<li><a href="invariant.html">invariant</a></li>
 <li><a href="isolate.html">isolate</a></li>
+<li><a href="lexical-structure.html">lexical structure</a></li>
+<li><a href="precondition.html">precondition</a></li>
 <li><a href="proof.html">proof</a></li>
 <li><a href="property.html">property</a></li>
 <li><a href="relation.html">relation</a></li>

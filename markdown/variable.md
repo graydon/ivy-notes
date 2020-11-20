@@ -1,6 +1,6 @@
 [[keywords|Keyword]]: `var`
 
-Variables are a type of declaration (so can be declared at [[module]] level) but they can also occur as a [[statement]] locally within an [[action]].
+Variables are a type of [[declaration]] (so can be declared at [[module]] level) but they can also occur as a [[statement]] locally within an [[action]].
 
 A variable can be [[definition|defined]] using a separate `definition` declaration, which will make it immutable.
 

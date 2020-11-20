@@ -1,6 +1,6 @@
 One of the [[schema|compound judgments]].
 
-Like [[property|properties]], admitted only with [[proof]].
+Like [[property|properties]], admitted only with [[proof]]. Essentially the "compound judgment" form of a property, or in other words a "proerty schema". In yet more other words: a property parameterized by *premises* that must be supplied when it is [[judgment application|applied]].
 
 The proof may be generated and checked automatically in simple cases; in more complex cases an explicit proof is required.
 

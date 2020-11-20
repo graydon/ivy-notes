@@ -1,12 +1,14 @@
-Expressions in IVy are terms or formulas in [first-order logic](https://en.wikipedia.org/wiki/First-order_logic) with equality.
+Expressions -- also called [[term|terms]] or [[formula|formulas]] -- in IVy are drawn from the many-[[sort|sorted]] theory of [first-order logic](https://en.wikipedia.org/wiki/First-order_logic) with equality.
 
-Ivy provides the following built-in operators:
+Ivy provides the following built-in logical operators:
   - `~` (not)
   - `&` (and)
   - `|` (or),
   - `->` (implies)
   - `<->` (iff)
   - `=` (equality)
+
+In addition to several other arithmetic and relational operators that are overloaded and available on certain [[type|types]] if they are [[theory instantiation|interpreted]] as a numerical [[sort]].
 
 There is also a built-in conditional operator `X if C else Y` that returns `X` if the Boolean condition `C` is true and `Y` otherwise.
 
@@ -36,3 +38,37 @@ We can determine from this expression that `X`, `Y` and `Z` must all be of the s
 ```
 forall X:node,Y,Z. X=Y & Y=Z -> X=Y
 ```
+
+## Grammar
+
+A condensed grammar follows, in which any pluralized production name (eg, `<terms>` or `<vars>`) is a comma-separated list of the singular production name.
+
+`<term>` is any of:
+  - `<term> <binop> <term>` where `<binop>` is any of `*`, `+`, `/`, `-`
+  - `<term> <relop> <term>` where `<relop>` is any of `=`, `~=`, `<`, `<=`, `>=`, `>`, `*>`
+  - `<term> <logop> <term>` where `<logop>` is any of `&`, `|`, `->`, `<->`
+  - `~ <term>`
+  - `true` or `false`
+  - `forall <simplevars> . <term>`
+  - `forall (<vars>) <term>`
+  - `exists <simplevars> . <term>`
+  - `exists (<vars>) <term>`
+  - `globally <term>`
+  - `eventually <term>`
+  - `<term> isa <atype>`
+  - `<symbol>(<terms>)`
+
+`<simplevar>` is any of:
+  - `<variable>`
+  - `<variable> : <symbol>`
+
+`<var>` is any of:
+  - `<variable>`
+  - `<variable> : <atype>`
+
+`<atype>` is any of:
+  - `<symbol>`
+  - `<atype> . <symbol>`
+  - `this`
+
+`<variable>` and `<symbol>` are the corresponding [[lexical structure|lexical tokens]]

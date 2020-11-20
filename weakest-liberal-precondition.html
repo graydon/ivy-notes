@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>weakest liberal precondition</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2><a href="index.html">IVy notes</a></h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+          <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
+          <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
+          <li><a href="further-info.html">Further info</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>weakest liberal precondition</header>
+      <div id="content"><p>The <strong>weakest liberal precondition</strong> (WLP) calculus is a standard form of Dijkstra's <a href="https://en.wikipedia.org/wiki/Predicate_transformer_semantics">predicate-transformer semantics</a> for calculating <a href="verification-condition.html">verification conditions</a> of imperative programs.</p>
+
+<p>If <code>S</code> is a program <a href="statement.html">statement</a> and <code>R</code> is a some condition on the program state, <code>wlp(S,R)</code> is the weakest condition <code>P</code> such that, if <code>P</code> holds before the execution of <code>S</code> and if <code>S</code> terminates, then <code>R</code> holds after the execution of <code>S</code>.</p>
+
+<p>The <code>wlp</code> function is in other words a "predicate transformer" that works backwards from the end of the program towards its beginning, transforming the predicate <code>R</code> (the <a href="verification-condition.html">verification condition</a> that serves as precondition for the "rest of the program" after <code>S</code>) into a predicate <code>wlp(S,R)</code> that's a verification condition covering <code>S</code> as well.</p>
+
+<p>As an example, consider the following IVy code:</p>
+
+<pre><code>type t
+interpret t -&gt; nat
+
+action decr(x:t) returns (y:t) = {
+    require x &gt; 0;
+    y := x - 1;
+    ensure y &lt; x;
+}
+
+export decr
+</code></pre>
+
+<p>The verification condition for this program can be written as:</p>
+
+<pre><code>x &gt; 0 -&gt; wlp(y := x - 1, y &lt; x)
+</code></pre>
+
+<p>That is, the <a href="precondition.html">precondition</a> <code>x &gt; 0</code> has to imply that after executing <code>y := x - 1</code>, the <a href="postcondition.html">postcondition</a> <code>y &lt; x</code> holds (assuming the theory of the natural numbers holds for type <code>t</code>).</p>
+
+<p>One of the rules of the wlp calculus is this:</p>
+
+<pre><code>wlp(y := e,R) = R[e/y]
+</code></pre>
+
+<p>That is to get the weakest liberal precondition of <code>R</code> with respect the the assignment <code>y := e</code>, we just substitute <code>e</code> for <code>y</code> in <code>R</code>. In our example above, the verification condition can therefore be written as:</p>
+
+<pre><code>x &gt; 0 -&gt; x - 1 &lt; x
+</code></pre>
+
+<p>Since this <a href="formula.html">formula</a> is valid over the natural numbers, meaning it holds true for any natural number <code>x</code>, we conclude that the program is correct. </p>
+
+<p>In fact, we can check the validity of this formula automatically. </p>
+
+<h2 id="wlp-calculus-and-assumeassert">WLP calculus and assume/assert</h2>
+
+<p>The wlp calculus provides us with rules to cover all of the basic programming constructs in the IVy language. For example, another way to look at the above example is to consider <code>requires</code> and <code>ensures</code> as program statements that have a semantics in terms of wlp. When verifying action <code>decr</code>, IVy treats the <code>requires</code> statement as an <em>assumption</em> and the <code>ensures</code> statement as a <em>guarantee</em>. This means the program statement we must verify is really:</p>
+
+<pre><code>assume x &gt; 0;
+y := x - 1;
+assert y &lt; x
+</code></pre>
+
+<p>The semantics of the <code>assume</code> and <code>assert</code> statements are given by:</p>
+
+<pre><code>wlp(assume Q, R) = (Q -&gt; R)
+wlp(assert Q, R) = (Q &amp; R)
+</code></pre>
+
+<p>That is, we treat <code>assume Q</code> as a statement that only terminates if <code>Q</code> is true, and <code>assert Q</code> as a statement that only succeeds if <code>Q</code> is true (that is, if <code>Q</code> is false, it does not even satisfy the postcondition <code>true</code>). </p>
+
+<h2 id="wlp-calculus-of-initializers-and-invariants">WLP calculus of initializers and invariants</h2>
+
+<p>A program (or an <a href="isolate.html">isolate</a>) maintains its <a href="invariant.html">invariant</a> <code>I</code> if its <a href="initializer.html">initializer</a> establishes <code>I</code> and if each <a href="export.html">exported</a> <a href="action.html">action</a> preserves <code>I</code>. Thus, the <a href="verification-condition.html">verification condition</a> for a program is:</p>
+
+<pre><code>wlp(init,I)
+</code></pre>
+
+<p>where <code>init</code> is the initializer, and, for each exported action <code>a</code>:</p>
+
+<pre><code>I -&gt; wlp(a,I)
+</code></pre>
+
+<h2 id="wlp-calculus-for-other-statements">WLP calculus for other statements</h2>
+
+<p>We can compute the wlp of a sequential composition of <a href="statement.html">statements</a> like this:</p>
+
+<pre><code>wlp(S;T, R) = wlp(S,wlp(T,R))
+</code></pre>
+
+<p>To show that our action <code>decr</code> satisfies its guarantees, assuming its assumptions,<br />
+we compute the wlp of <code>true</code>. Computing this for our example using the above rule,<br />
+we have:</p>
+
+<pre><code>wlp(assert y &lt; x, true) = (y &lt; x)
+wlp(y := x -1, y &lt; x) = (x - 1 &lt; x)
+wlp(assume x &gt; 0, x - 1 &lt; x) = (x &gt; 0 -&gt; x - 1 &lt; x)
+</code></pre>
+
+<p>which is just what we got before.</p>
+
+<p>Carrying on, we have this rule for conditionals:</p>
+
+<pre><code>wlp(if C {T} {E}, R) = ((C -&gt; wlp(T,R)) &amp; (~C -&gt; wlp(E,R)))
+</code></pre>
+
+<p>For a while loop with invariant <code>I</code>, the wlp is defined as:</p>
+
+<pre><code>wlp(while C invariant I {B}, R) = I
+                                &amp; forall mod(B). I &amp; C -&gt; wlp(B,I)
+                                &amp; forall mod(B). I &amp; ~C -&gt; R
+</code></pre>
+
+<p>Where <code>mod(B)</code> is the list of variables modified in the loop body <code>B</code>. This says, essentially, that the invariant must initially hold, that the loop body must preserve the invariant if the entry condition holds, and that otherwise the invariant implies the postcondition.</p>
+
+<p>Notice we haven't dealt with procedure calls here, but for present purposes we can consider that all calls are "in-lined" when verifying the program.</p>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="assertion.html">assertion</a></li>
+<li><a href="precondition.html">precondition</a></li>
+<li><a href="verification-condition.html">verification condition</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>

@@ -29,10 +29,18 @@
       <div>
         <h3>Navigation</h3>
         <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
           <li><a href="keywords.html">Keywords</a></li>
           <li><a href="declaration.html">Declarations</a></li>
           <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
           <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
           <li><a href="further-info.html">Further info</a></li>
         </ul>
       </div>
@@ -43,9 +51,9 @@
     </nav>
     <article>
       <header>expression</header>
-      <div id="content"><p>Expressions in IVy are terms or formulas in <a href="https://en.wikipedia.org/wiki/First-order_logic">first-order logic</a> with equality.</p>
+      <div id="content"><p>Expressions -- also called <a href="term.html">terms</a> or <a href="formula.html">formulas</a> -- in IVy are drawn from the many-<a href="sort.html">sorted</a> theory of <a href="https://en.wikipedia.org/wiki/First-order_logic">first-order logic</a> with equality.</p>
 
-<p>Ivy provides the following built-in operators:</p>
+<p>Ivy provides the following built-in logical operators:</p>
 
 <ul>
 <li><code>~</code> (not)</li>
@@ -55,6 +63,8 @@
 <li><code>&lt;-&gt;</code> (iff)</li>
 <li><code>=</code> (equality)</li>
 </ul>
+
+<p>In addition to several other arithmetic and relational operators that are overloaded and available on certain <a href="type.html">types</a> if they are <a href="theory-instantiation.html">interpreted</a> as a numerical <a href="sort.html">sort</a>.</p>
 
 <p>There is also a built-in conditional operator <code>X if C else Y</code> that returns <code>X</code> if the Boolean condition <code>C</code> is true and <code>Y</code> otherwise.</p>
 
@@ -82,13 +92,62 @@ both <code>X</code> and <code>Y</code> are nodes. However, in some cases, annota
 <pre><code>forall X:node,Y,Z. X=Y &amp; Y=Z -&gt; X=Y
 </code></pre>
 
+<h2 id="grammar">Grammar</h2>
+
+<p>A condensed grammar follows, in which any pluralized production name (eg, <code>&lt;terms&gt;</code> or <code>&lt;vars&gt;</code>) is a comma-separated list of the singular production name.</p>
+
+<p><code>&lt;term&gt;</code> is any of:</p>
+
+<ul>
+<li><code>&lt;term&gt; &lt;binop&gt; &lt;term&gt;</code> where <code>&lt;binop&gt;</code> is any of <code>*</code>, <code>+</code>, <code>/</code>, <code>-</code></li>
+<li><code>&lt;term&gt; &lt;relop&gt; &lt;term&gt;</code> where <code>&lt;relop&gt;</code> is any of <code>=</code>, <code>~=</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>&gt;</code>, <code>*&gt;</code></li>
+<li><code>&lt;term&gt; &lt;logop&gt; &lt;term&gt;</code> where <code>&lt;logop&gt;</code> is any of <code>&amp;</code>, <code>|</code>, <code>-&gt;</code>, <code>&lt;-&gt;</code></li>
+<li><code>~ &lt;term&gt;</code></li>
+<li><code>true</code> or <code>false</code></li>
+<li><code>forall &lt;simplevars&gt; . &lt;term&gt;</code></li>
+<li><code>forall (&lt;vars&gt;) &lt;term&gt;</code></li>
+<li><code>exists &lt;simplevars&gt; . &lt;term&gt;</code></li>
+<li><code>exists (&lt;vars&gt;) &lt;term&gt;</code></li>
+<li><code>globally &lt;term&gt;</code></li>
+<li><code>eventually &lt;term&gt;</code></li>
+<li><code>&lt;term&gt; isa &lt;atype&gt;</code></li>
+<li><code>&lt;symbol&gt;(&lt;terms&gt;)</code></li>
+</ul>
+
+<p><code>&lt;simplevar&gt;</code> is any of:</p>
+
+<ul>
+<li><code>&lt;variable&gt;</code></li>
+<li><code>&lt;variable&gt; : &lt;symbol&gt;</code></li>
+</ul>
+
+<p><code>&lt;var&gt;</code> is any of:</p>
+
+<ul>
+<li><code>&lt;variable&gt;</code></li>
+<li><code>&lt;variable&gt; : &lt;atype&gt;</code></li>
+</ul>
+
+<p><code>&lt;atype&gt;</code> is any of:</p>
+
+<ul>
+<li><code>&lt;symbol&gt;</code></li>
+<li><code>&lt;atype&gt; . &lt;symbol&gt;</code></li>
+<li><code>this</code></li>
+</ul>
+
+<p><code>&lt;variable&gt;</code> and <code>&lt;symbol&gt;</code> are the corresponding <a href="lexical-structure.html">lexical tokens</a></p>
+
 <div class="backlinks">
 
 <h2 id="backlinks">Backlinks</h2>
 
 <ul>
+<li><a href="action.html">action</a></li>
 <li><a href="call.html">call</a></li>
+<li><a href="formula.html">formula</a></li>
 <li><a href="keywords.html">keywords</a></li>
+<li><a href="term.html">term</a></li>
 </ul>
 
 </div>

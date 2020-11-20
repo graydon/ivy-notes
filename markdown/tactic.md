@@ -5,10 +5,14 @@ There is a default tactic called `tactic vcgen` that works by generating a [[ver
 If the default tactic generates a VC that is not within FAU, IVy will describe the problem and user intervention will be required, invoking other tactics to arrive at a goal state that *is* within FAU.
 
 Possible tactics include:
-  - `apply`, `instance`, or `instantiate` applies [[schema|compound judgments]] or `explicit` [[primitive judgment|primitive judgments]] optionally also [[explicit quantifier instantiation|instantiating quantified variables]] in the applied judgment in a trailing `with` clause
+  - `apply`, `instance`, or `instantiate` applies [[schema|compound judgments]] or `explicit` [[primitive judgment|primitive judgments]] and optionally also [[explicit quantifier instantiation|instantiates quantified variables]]
   - `let` performs [[explicit quantifier instantiation]] on existing goals
   - `showgoals` prints the current list of proof goals
+  - `defergoal`
   - `assume` adds an assumption
+  - `unfold`
+  - `forget`
+  - `spoil`
   - `property`, `axiom`, etc. allow declaring (and proving) a local sub-[[logical judgment|judgment]]
   - `tactic` invokes extended, non-keyword tactics:
     - `tactic skolemize` performs Skolemization

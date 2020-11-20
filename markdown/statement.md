@@ -8,5 +8,9 @@ A statement may be one of the following:
   - [[conditional|conditionals]]
   - [[loop|loops]]
   - [[assignment|assignments]] to [[state variable|state variables]]
-  - [[precondition|preconditions]], [[postcondition|postconditions]], [[assumption|assumptions]] and general [[assertion|assertions]]
   - local [[variable]] declarations
+  - logical statements:
+    - [[precondition|preconditions]]
+    - [[postcondition|postconditions]]
+    - [[assumption|assumptions]] 
+    - [[assertion|assertions]]

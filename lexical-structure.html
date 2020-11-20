@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>lexical structure</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2><a href="index.html">IVy notes</a></h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+          <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
+          <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
+          <li><a href="further-info.html">Further info</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>lexical structure</header>
+      <div id="content"><p>IVy's lexical structure has the following categories of token:</p>
+
+<ul>
+<li><strong>Keywords</strong> listed on their <a href="keywords.html">own page</a>.</li>
+<li><strong>Comments</strong> which begin with <code>#</code> and extend to the end of the line.</li>
+<li><strong>Punctuation</strong> elements drawn from the following list: <code>~</code>, <code>,</code>, <code>+</code>, <code>*</code>, <code>/</code>, <code>-</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>*&gt;</code>, <code>(</code>, <code>)</code>, <code>|</code>, <code>&amp;</code>, <code>=</code>, <code>~=</code>, <code>;</code>, <code>:=</code>, <code>.</code>, <code>{</code>, <code>}</code>, <code>-&gt;</code>,  <code>&lt;-&gt;</code>, <code>:</code>, <code>..</code>, <code>...</code>, <code>$</code>, <code>^</code></li>
+<li><strong>Symbols</strong> which begin with a lower-case letter, underscore or digit and continue with any mix of letters, digits and underscores. These typically name types, modules, objects, parameters, local variables, and similar declarations. These also include numeral-literals and boolean-literals in expressions. For example: <code>a</code>, <code>_v_</code>, <code>10</code>, <code>foo123</code>, <code>lowerUPPER</code>, <code>false</code>, <code>this</code></li>
+<li><strong>Variables</strong> which begin with upper-case letter and continue with any mix of letters, digits and underscores. These typically denote universally-quantified variables in expressions. For example: <code>A</code>, <code>VAR_12</code>, <code>Thing</code></li>
+<li><strong>Labels</strong> which are any letters, digits or underscores contained in square brackets. These typically denote logical formulas and are declared in-line with many <a href="logical-judgment.html">logical judgments</a>. For example: <code>[premise]</code>, <code>[f0]</code>, <code>[NO_WAY]</code></li>
+<li><strong>Native Quotations</strong> which are any text between a matching pair of triple angle brackets (<code>&lt;&lt;&lt;</code> and <code>&gt;&gt;&gt;</code>)</li>
+</ul>
+
+<p>IVy is whitespace-insensitive, beyond the need to separate tokens.</p>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="expression.html">expression</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>

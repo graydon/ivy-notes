@@ -29,10 +29,18 @@
       <div>
         <h3>Navigation</h3>
         <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
           <li><a href="keywords.html">Keywords</a></li>
           <li><a href="declaration.html">Declarations</a></li>
           <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
           <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
           <li><a href="further-info.html">Further info</a></li>
         </ul>
       </div>
@@ -47,28 +55,29 @@
 
 <p>One of the <a href="primitive-judgment.html">primitive judgments</a>.</p>
 
-<p>A property is a <a href="proposition.html">proposition</a> that can be admitted as true only if it follows logically from judgments in the current context.</p>
+<p>A property is a <a href="proposition.html">proposition</a> that can be admitted as true only if it follows logically from judgments in the current context. A property requires a <a href="proof.html">proof</a> -- this differentiates it from a <a href="primitive-axiom.html">primitive axiom</a>.</p>
+
+<p>If a proof is not supplied, IVy applies its default proof <a href="tactic.html">tactic</a>.  This calls the automated prover Z3 to attempt to prove the property from the previously admitted judgments in the current context.</p>
+
+<p>The default tactic works by generating a <a href="verification-condition.html">verification condition</a> to be checked by Z3. This is a formula whose validity implies that the property is true in the current context.</p>
 
 <h2 id="example">Example:</h2>
 
 <pre><code>property [myprop] r(n,X) -&gt; r(X,n)
 </code></pre>
 
-<p>A property requires a <a href="proof.html">proof</a> (see below). If a proof is not supplied, IVy applies its default proof <a href="tactic.html">tactic</a>.  This calls the automated prover Z3 to attempt to prove the property from the previously admitted judgments in the current context.</p>
-
-<p>The default tactic works by generating a <em>verification condition</em> to be checked by Z3. This is a formula whose validity implies that the property is true in the current context. In this case, the verification condition is:</p>
+<p>In this case, the verification condition is:</p>
 
 <pre><code>#-   (forall X,Y. r(X,Y) -&gt; r(Y,X)) -&gt; (r(n,X) -&gt; r(X,n))
 </code></pre>
 
-<p>That is, it states that <a href="axiom.html">axiom</a> <code>symmetry_r</code> implies property <code>myprop</code>.  IVy checks that this formula is within a <a href="logical-fragment.html">logical fragment</a> that Z3 can decide, then passes the formula to Z3. If Z3 finds that the formula is valid, the property is admitted.</p>
+<p>That is, it states that <a href="axiom.html">axiom</a> <code>symmetry_r</code> implies property <code>myprop</code>.  IVy checks that this formula is within the FAU <a href="logical-fragment.html">logical fragment</a> that Z3 can decide, then passes the formula to Z3. If Z3 finds that the formula is valid, the property is admitted.</p>
 
 <div class="backlinks">
 
 <h2 id="backlinks">Backlinks</h2>
 
 <ul>
-<li><a href="isolate.html">isolate</a></li>
 <li><a href="judgment-application.html">judgment application</a></li>
 <li><a href="keywords.html">keywords</a></li>
 <li><a href="primitive-judgment.html">primitive judgment</a></li>

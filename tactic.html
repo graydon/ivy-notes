@@ -29,10 +29,18 @@
       <div>
         <h3>Navigation</h3>
         <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
           <li><a href="keywords.html">Keywords</a></li>
           <li><a href="declaration.html">Declarations</a></li>
           <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
           <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
           <li><a href="further-info.html">Further info</a></li>
         </ul>
       </div>
@@ -52,10 +60,14 @@
 <p>Possible tactics include:</p>
 
 <ul>
-<li><code>apply</code>, <code>instance</code>, or <code>instantiate</code> applies <a href="schema.html">compound judgments</a> or <code>explicit</code> <a href="primitive-judgment.html">primitive judgments</a> optionally also <a href="explicit-quantifier-instantiation.html">instantiating quantified variables</a> in the applied judgment in a trailing <code>with</code> clause</li>
+<li><code>apply</code>, <code>instance</code>, or <code>instantiate</code> applies <a href="schema.html">compound judgments</a> or <code>explicit</code> <a href="primitive-judgment.html">primitive judgments</a> and optionally also <a href="explicit-quantifier-instantiation.html">instantiates quantified variables</a></li>
 <li><code>let</code> performs <a href="explicit-quantifier-instantiation.html">explicit quantifier instantiation</a> on existing goals</li>
 <li><code>showgoals</code> prints the current list of proof goals</li>
+<li><code>defergoal</code></li>
 <li><code>assume</code> adds an assumption</li>
+<li><code>unfold</code></li>
+<li><code>forget</code></li>
+<li><code>spoil</code></li>
 <li><code>property</code>, <code>axiom</code>, etc. allow declaring (and proving) a local sub-<a href="logical-judgment.html">judgment</a></li>
 <li><code>tactic</code> invokes extended, non-keyword tactics:<br />
 <ul><br />
@@ -71,11 +83,13 @@
 <h2 id="backlinks">Backlinks</h2>
 
 <ul>
+<li><a href="assumption.html">assumption</a></li>
 <li><a href="judgment-application.html">judgment application</a></li>
 <li><a href="keywords.html">keywords</a></li>
 <li><a href="proof.html">proof</a></li>
 <li><a href="property.html">property</a></li>
 <li><a href="schema.html">schema</a></li>
+<li><a href="verification-condition.html">verification condition</a></li>
 </ul>
 
 </div>

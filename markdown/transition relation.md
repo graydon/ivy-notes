@@ -4,4 +4,4 @@ Each state variable `V1, ..., Vn` representing the state *before* the action is 
 
 The transition relation is then a conjunction of equations defining each post-state `Vi'` in terms of the pre-state variables `V1,...,Vn`.
 
-An action's verification condition is are formulated in terms of its transition relation.
+An action's [[verification condition]] is formulated in terms of its transition relation.

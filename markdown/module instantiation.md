@@ -1,4 +1,4 @@
-Keyword: `instance` and/or `instantiate`
+Keyword: `instance` and/or `instantiate` (the keywords are synonyms)
 
 [[module|Modules]] can be instantiated into [[object|objects]], similar to the way template classes in programming languages can be instantiated.
 
@@ -7,8 +7,8 @@ Keyword: `instance` and/or `instantiate`
 Instantiating a [[module]] creates a separate copy of the [[declaration|declarations]] of the module with any supplied arguments substituted for the module's parameters.
 
 Instantiation may take one of two forms:
-  - Using the `instance` keyword to create freshly-named object (see the first example below).
-  - Using the `instantiate` keyword to include the instance into the enclosing object (see the second example below).
+  - Creating a freshly-named object, typically with the `instance` keyword (see the first example below).
+  - Instantiating a module's declarations into the enclosing object, typically with the `instantiate` keyword (see the second example below).
 
 
 ## Examples:

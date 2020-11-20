@@ -29,10 +29,18 @@
       <div>
         <h3>Navigation</h3>
         <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
           <li><a href="keywords.html">Keywords</a></li>
           <li><a href="declaration.html">Declarations</a></li>
           <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
           <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
           <li><a href="further-info.html">Further info</a></li>
         </ul>
       </div>
@@ -45,15 +53,40 @@
       <header>isolate</header>
       <div id="content"><p><a href="keywords.html">Keyword</a>: <code>isolate</code></p>
 
-<p>An isolate is a special kind of <a href="object.html">object</a> that acts as a unit of verification. It generally has three parts.</p>
+<p>An isolate is an isolated context for verification.</p>
 
-<p>It starts with a declaration of the interface of the object. This usually consists of <a href="type.html">types</a>, <a href="function.html">functions</a> and <a href="action.html">actions</a> that are provided by the object. It may also include <a href="action.html">action</a> declarations, typically abstract (without implementation).</p>
+<p>An isolate is also an <a href="object.html">object</a>, meaning that is an instance of a <a href="module.html">module</a>. Declaring an isolate therefore requires either <a href="declaration.html">declaring</a> and defining an object in-line, or else declaring that an existing object is an isolate (i.e. that it should be verified in isolation).</p>
 
-<p>The next section is the <code>specification</code>. This usually consists of <a href="variable.html">variables</a>, <a href="property.html">properties</a> and <a href="monitor.html">monitors</a> that are visible outside the isolate.</p>
+<p>The isolation of an isolate is accomplished through information-hiding similar to visibility control in a programming language. Specifically, declarations in an isolate are treated differently according to 3 different levels of visibility:</p>
 
-<p>Finally, we have the <code>implementation</code>. It usually consists of <a href="variable.html">variables</a>, <a href="function.html">function</a> <a href="definition.html">definitions</a> and <a href="action.html">action</a> <a href="implementation.html">implementations</a> that are hidden.</p>
+<ul>
+<li><strong>specification</strong> declarations, in a <code>specification { ... }</code> block</li>
+<li><strong>implementation</strong> declarations, in an <code>implementation { ... }</code> block </li>
+<li><strong>private</strong> declarations, in a <code>private { ... }</code> block</li>
+</ul>
 
-<p>An isolate may depend on the visible parts of other objects. This is declared using the keyword <code>with</code>.</p>
+<p>These blocks may occur within modules, objects, or in-line isolate declarations. That is, one can write any of the following:</p>
+
+<ul>
+<li><code>module foo = { ... specification { ... } }</code></li>
+<li><code>object foo = { ... specification { ... } }</code></li>
+<li><code>isolate foo = { ... specification { ... } }</code></li>
+</ul>
+
+<p>Each of these blocks marks all the declarations inside it as having the given visibility, which in turn affects how verification treats them and, in particular, the <strong>relationships</strong> between the visibility levels of declarations in the current isolate and those in any other isolate that's provided as a <code>with</code> argument to the current isolate declaration. The visibility-modifying blocks do not otherwise affect the module or object nesting structure. </p>
+
+<p>By default, every program has a single top-level isolate (which is anonymous but can be denoted by <code>this</code> at the top-level). </p>
+
+<p>Additional isolates can be declared inside the program in a variety of forms:</p>
+
+<ul>
+<li><code>isolate &lt;symbol&gt; = { ... }</code> declares and defines an object as an isolate</li>
+<li><code>isolate &lt;symbol&gt; = &lt;symbol&gt;</code> declares that an existing object should be isolated</li>
+<li><code>isolate &lt;symbol&gt; = &lt;symbol&gt; with &lt;other_isolate&gt;</code> and</li>
+<li><code>isolate &lt;symbol&gt; = { ... } with &lt;other_isolate&gt;</code> declares an isolate that includes the specification portion of the isolate <code>&lt;other_isolate&gt;</code></li>
+</ul>
+
+<p>Additional isolates do not automatically have visible access to their enclosing isolate. Instead, they may be given such access by declaring them using <code>isolate ... with this</code></p>
 
 <h2 id="example">Example:</h2>
 
@@ -164,7 +197,7 @@ export evens.step
 export evens.put
 </code></pre>
 
-<p>Notice the implementation of <code>odds.put</code> has been eliminated, and what remains is just the assertion that the input value is odd (IVy verifies that the eliminated side effect of <code>odds.put</code> is in fact invisible to <code>evens</code>). The assertion that inputs to <code>evens</code> are even has in effect become an assumption. We can prove this isolate is safe by showing that <code>even.number</code> is invariantly even, which means that <code>odds.put</code> is always called with an odd number.</p>
+<p>Notice the implementation of <code>odds.put</code> has been eliminated, and what remains is just the assertion that the input value is odd (IVy verifies that the eliminated side effect of <code>odds.put</code> is in fact invisible to <code>evens</code>). The <a href="assertion.html">assertion</a> that inputs to <code>evens</code> are even has in effect become an <a href="assumption.html">assumption</a>. We can prove this isolate is safe by showing that <code>even.number</code> is <a href="invariant.html">invariantly</a> even, which means that <code>odds.put</code> is always called with an odd number.</p>
 
 <p>The other isolate, <code>odds</code>, looks like this:</p>
 
@@ -211,10 +244,13 @@ export odds.put
 <ul>
 <li><a href="action.html">action</a></li>
 <li><a href="declaration.html">declaration</a></li>
+<li><a href="export.html">export</a></li>
+<li><a href="invariant.html">invariant</a></li>
 <li><a href="keywords.html">keywords</a></li>
 <li><a href="module.html">module</a></li>
 <li><a href="object.html">object</a></li>
 <li><a href="singleton-object.html">singleton object</a></li>
+<li><a href="weakest-liberal-precondition.html">weakest liberal precondition</a></li>
 </ul>
 
 </div>

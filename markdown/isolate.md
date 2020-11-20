@@ -1,14 +1,32 @@
 [[keywords|Keyword]]: `isolate`
 
-An isolate is a special kind of [[object]] that acts as a unit of verification. It generally has three parts.
+An isolate is an isolated context for verification.
 
-It starts with a declaration of the interface of the object. This usually consists of [[type|types]], [[function|functions]] and [[action|actions]] that are provided by the object. It may also include [[action]] declarations, typically abstract (without implementation).
+An isolate is also an [[object]], meaning that is an instance of a [[module]]. Declaring an isolate therefore requires either [[declaration|declaring]] and defining an object in-line, or else declaring that an existing object is an isolate (i.e. that it should be verified in isolation).
 
-The next section is the `specification`. This usually consists of [[variable|variables]], [[property|properties]] and [[monitor|monitors]] that are visible outside the isolate.
+The isolation of an isolate is accomplished through information-hiding similar to visibility control in a programming language. Specifically, declarations in an isolate are treated differently according to 3 different levels of visibility:
 
-Finally, we have the `implementation`. It usually consists of [[variable|variables]], [[function]] [[definition|definitions]] and [[action]] [[implementation|implementations]] that are hidden.
+  - **specification** declarations, in a `specification { ... }` block
+  - **implementation** declarations, in an `implementation { ... }` block 
+  - **private** declarations, in a `private { ... }` block
 
-An isolate may depend on the visible parts of other objects. This is declared using the keyword `with`.
+These blocks may occur within modules, objects, or in-line isolate declarations. That is, one can write any of the following:
+
+  - `module foo = { ... specification { ... } }`
+  - `object foo = { ... specification { ... } }`
+  - `isolate foo = { ... specification { ... } }`
+
+Each of these blocks marks all the declarations inside it as having the given visibility, which in turn affects how verification treats them and, in particular, the **relationships** between the visibility levels of declarations in the current isolate and those in any other isolate that's provided as a `with` argument to the current isolate declaration. The visibility-modifying blocks do not otherwise affect the module or object nesting structure. 
+
+By default, every program has a single top-level isolate (which is anonymous but can be denoted by `this` at the top-level). 
+
+Additional isolates can be declared inside the program in a variety of forms:
+  - `isolate <symbol> = { ... }` declares and defines an object as an isolate
+  - `isolate <symbol> = <symbol>` declares that an existing object should be isolated
+  - `isolate <symbol> = <symbol> with <other_isolate>` and
+  - `isolate <symbol> = { ... } with <other_isolate>` declares an isolate that includes the specification portion of the isolate `<other_isolate>`
+
+Additional isolates do not automatically have visible access to their enclosing isolate. Instead, they may be given such access by declaring them using `isolate ... with this`
 
 ## Example:
 
@@ -121,7 +139,7 @@ export evens.step
 export evens.put
 ```
 
-Notice the implementation of `odds.put` has been eliminated, and what remains is just the assertion that the input value is odd (IVy verifies that the eliminated side effect of `odds.put` is in fact invisible to `evens`). The assertion that inputs to `evens` are even has in effect become an assumption. We can prove this isolate is safe by showing that `even.number` is invariantly even, which means that `odds.put` is always called with an odd number.
+Notice the implementation of `odds.put` has been eliminated, and what remains is just the assertion that the input value is odd (IVy verifies that the eliminated side effect of `odds.put` is in fact invisible to `evens`). The [[assertion]] that inputs to `evens` are even has in effect become an [[assumption]]. We can prove this isolate is safe by showing that `even.number` is [[invariant|invariantly]] even, which means that `odds.put` is always called with an odd number.
 
 The other isolate, `odds`, looks like this:
 

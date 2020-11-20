@@ -1,6 +1,6 @@
 A part of an explicit [[proof]].
 
-To use (or "apply") a named [[property]], [[axiom]], or [[schema]] in a [[proof]], use the [[tactic]] `apply`.
+To use (or "apply") a named [[property]], [[axiom]], [[axiom schema]] or [[theorem]] in a [[proof]], use the [[tactic]] `apply`.
 
 (In some documentation this is also called [[instantiation]] but that term is heavily overloaded so we try to avoid it here.)
 

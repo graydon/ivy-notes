@@ -58,4 +58,4 @@ then we would write:
 x := y + next
 ```
 
-The lack of parentheses introduces no ambiguity, since the action `next` is not a value and cannot itself be passed as an argument to the function `+`. An advantage of this convention is that we don't have to remember whether `next` is an action or a variable, and we can easily replace a variable by an action without modifying all references to the variable.
+The lack of parentheses introduces no ambiguity, since the action `next` is not a value and cannot itself be passed as an argument to the function `+`. An advantage of this convention is that we don't have to remember whether `next` is an [[action]] or a [[variable]], and we can easily replace a variable by an action without modifying all references to the variable.

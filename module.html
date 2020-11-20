@@ -29,10 +29,18 @@
       <div>
         <h3>Navigation</h3>
         <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
           <li><a href="keywords.html">Keywords</a></li>
           <li><a href="declaration.html">Declarations</a></li>
           <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
           <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
           <li><a href="further-info.html">Further info</a></li>
         </ul>
       </div>
@@ -49,9 +57,9 @@
 
 <p>In this way it is similar to a template class in an object-oriented programming language.</p>
 
-<p>Any IVy declaration can be contained in a module. This includes axioms, invariants, instances and modules.</p>
+<p>Any IVy <a href="declaration.html">declaration</a> can be contained in a module.</p>
 
-<p>An instance of a module is called an <a href="object.html">object</a>, and there is special syntax for declaring a <a href="singleton-object.html">singleton object</a> that is the sole instance of a module. A further special type of object is an <a href="isolate.html">isolate</a>, which is verified in isolation from other modules.</p>
+<p>An instance of a module is called an <a href="object.html">object</a>, and there is special syntax for declaring a <a href="singleton-object.html">singleton object</a> that is the sole instance of a module. A further special type of object is an <a href="isolate.html">isolate</a>, which is verified in isolation from other objects.</p>
 
 <p>Besides defining classes of objects, modules can be used to capture a re-usable theory, or structure a modular proof.</p>
 
@@ -66,25 +74,25 @@
 <p>Here is a simple example of a module representing an up/down counter<br />
 with a test for zero:</p>
 
-<pre><code>    module counter(t) = {
+<pre><code>module counter(t) = {
+    individual val : t
 
-        individual val : t
-        after init {
-            val := 0
-        }
-
-        action up = {
-            val := val + 1
-        }
-
-        action down = {
-            val := val - 1
-        }
-
-        action is_zero returns(z : bool) = {
-            z := (val = 0)
-        }
+    after init {
+        val := 0
     }
+
+    action up = {
+        val := val + 1
+    }
+
+    action down = {
+        val := val - 1
+    }
+
+    action is_zero returns(z : bool) = {
+        z := (val = 0)
+    }
+}
 </code></pre>
 
 <p>This module takes a single parameter <code>t</code> which is the type of the counter value <code>val</code>.</p>
@@ -99,8 +107,7 @@ with a test for zero:</p>
 }
 </code></pre>
 
-<p>This module takes a type <code>t</code> and a relation <code>lt</code> over <code>t</code>. It provides<br />
-axioms stating that <code>lt</code> is transitive and antisymmetric.</p>
+<p>This module takes a type <code>t</code> and a relation <code>lt</code> over <code>t</code>. It provides axioms stating that <code>lt</code> is transitive and antisymmetric.</p>
 
 <div class="backlinks">
 
@@ -109,6 +116,7 @@ axioms stating that <code>lt</code> is transitive and antisymmetric.</p>
 <ul>
 <li><a href="declaration.html">declaration</a></li>
 <li><a href="instantiation.html">instantiation</a></li>
+<li><a href="isolate.html">isolate</a></li>
 <li><a href="keywords.html">keywords</a></li>
 <li><a href="module-instantiation.html">module instantiation</a></li>
 <li><a href="object.html">object</a></li>

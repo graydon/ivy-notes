@@ -1,11 +1,11 @@
 One of the following [[logical judgment]] (which are in turn kinds of [[declaration]]):
 
   - [[type]] declarations
-  - [[function]], [[relation]] and [[individual]] declarations
+  - [[function]], [[relation]], [[variable]] and [[individual]] declarations
   - [[primitive axiom|primitive axioms]]
   - [[property|properties]]
   - [[definition]]
   - [[theory instantiation]]
-  - [[assertion|assertions]], [[precondition|preconditions]], [[postcondition|postconditions]], and [[invariant|invariants]]
+  - [[invariant|invariants]]
 
 In a [[proof]], primitive axioms and properties are automatically applied by the default tactic unless they are qualified by the `explicit` keyword, in which case they must be expicitly [[judgment application|applied]] using the `apply` keyword, like [[schema|compound judgments]].

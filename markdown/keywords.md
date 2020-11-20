@@ -6,8 +6,8 @@
   - `alias`
   - `apply`: [[judgment application]] in a [[proof]]
   - `around`
-  - `assert`: [[statement]] asserting a [[proposition]]
-  - `assume`: [[statement]] of an [[assumption]]
+  - `assert`: [[statement]] [[assertion|asserting]] a [[proposition]]
+  - `assume`: [[statement]] of an [[assumption]]; also a [[tactic]]
   - `attribute`
   - `autoinstance`
   - `axiom`: [[declaration]] of an [[axiom]]
@@ -28,7 +28,7 @@
   - `execute`
   - `exists`: existential logical quantifier for an [[expression]]
   - `explicit`: qualifier for [[primitive judgment|primitive judgments]]
-  - `export`
+  - `export`: marks an [[action]] as [[export|exported]]
   - `extract`
   - `false`: primitive [[proposition]]
   - `forall`: universal logical quantifier for an [[expression]]
@@ -38,16 +38,16 @@
   - `ghost`
   - `if`: positive branch of a [[conditional]] [[statement]]
   - `implement`: provides an implementation of an abstract [[action]]
-  - `implementation`: marks the private portion of an [[isolate]]
+  - `implementation`: marks declarations as "implementation" in [[isolate]] verification
   - `import`: 
   - `in`
   - `include`: incorporates another IVy source file's declarations into the current file
   - `individual`: [[declaration]] of an [[individual]]
   - `init`
-  - `instance`: [[declaration]] of an [[object]] that [[module instantiation|instantiates a module]]
-  - `instantiate`: performs [[explicit quantifier instantiation]] in a [[proof]]
+  - `instance`: [[declaration]] of an [[object]] that [[module instantiation|instantiates a module]], also a [[tactic]] that does [[explicit quantifier instantiation]] in a [[proof]]
+  - `instantiate`: lexically synonymous with `instance`
   - `interpret`: [[primitive judgment]] of [[theory instantiation]]
-  - `invariant`
+  - `invariant`: [[primitive judgment]] of an [[invariant]]
   - `isolate`: [[declaration|declares]] a special kind of [[object]] verified in isolation from others
   - `let`
   - `local`
@@ -67,7 +67,7 @@
   - `old`
   - `parameter`
   - `params`
-  - `private`
+  - `private`: marks declarations as "private" in [[isolate]] verification
   - `progress`
   - `proof`: optionally provides a [[proof]] following a [[property]] or [[theorem]]
   - `property`
@@ -79,7 +79,7 @@
   - `schema`
   - `set`
   - `some`
-  - `specification`: marks the public portion of an [[isolate]]
+  - `specification`: marks declarations as "specification" in [[isolate]] verification
   - `state`
   - `struct`
   - `tactic`
