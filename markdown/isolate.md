@@ -1,22 +1,10 @@
 [[keywords|Keyword]]: `isolate`
 
-An isolate is an isolated context for verification.
+An isolate is an isolated (or "modular") context for verification.
 
 An isolate is also an [[object]], meaning that is an instance of a [[module]]. Declaring an isolate therefore requires either [[declaration|declaring]] and defining an object in-line, or else declaring that an existing object is an isolate (i.e. that it should be verified in isolation).
 
-The isolation of an isolate is accomplished through information-hiding similar to visibility control in a programming language. Specifically, declarations in an isolate are treated differently according to 3 different levels of visibility:
-
-  - **specification** declarations, in a `specification { ... }` block
-  - **implementation** declarations, in an `implementation { ... }` block 
-  - **private** declarations, in a `private { ... }` block
-
-These blocks may occur within modules, objects, or in-line isolate declarations. That is, one can write any of the following:
-
-  - `module foo = { ... specification { ... } }`
-  - `object foo = { ... specification { ... } }`
-  - `isolate foo = { ... specification { ... } }`
-
-Each of these blocks marks all the declarations inside it as having the given visibility, which in turn affects how verification treats them and, in particular, the **relationships** between the visibility levels of declarations in the current isolate and those in any other isolate that's provided as a `with` argument to the current isolate declaration. The visibility-modifying blocks do not otherwise affect the module or object nesting structure. 
+The isolation of an isolate is not total: the `specification` portions of other objects may be made available to the isolate through a trailing `... with <others>` clause after the isolate declaration. Splitting an object's declarations into separate specifications and implementations is supported through [[visibility qualifiers]].
 
 By default, every program has a single top-level isolate (which is anonymous but can be denoted by `this` at the top-level). 
 

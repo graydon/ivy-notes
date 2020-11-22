@@ -40,6 +40,7 @@
           <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
           <li><a href="logical-fragment.html">Logical fragment</a></li>
           <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
           <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
           <li><a href="further-info.html">Further info</a></li>
         </ul>
@@ -51,60 +52,19 @@
     </nav>
     <article>
       <header>variable</header>
-      <div id="content"><p><a href="keywords.html">Keyword</a>: <code>var</code></p>
+      <div id="content"><p>The word "variable" is somewhat overloaded in IVy, and refers (depending on context) to either:</p>
 
-<p>Variables are a type of <a href="declaration.html">declaration</a> (so can be declared at <a href="module.html">module</a> level) but they can also occur as a <a href="statement.html">statement</a> locally within an <a href="action.html">action</a>.</p>
-
-<p>A variable can be <a href="definition.html">defined</a> using a separate <code>definition</code> declaration, which will make it immutable.</p>
-
-<p>If a variable is not immutable, it is a <a href="state-variable.html">state variable</a> that can be <a href="assignment.html">assigned</a> during an action.</p>
-
-<h2 id="examples">Examples:</h2>
-
-<h3 id="example-immutable-variable">Example: immutable variable</h3>
-
-<pre><code>type color = {red, green, blue}
-var v: color
-definition v = red
-</code></pre>
-
-<p>This <a href="definition.html">defines</a> an immutable variable <code>v</code> of type <code>color</code> with value <code>red</code>.</p>
-
-<h3 id="example-mutable-variable">Example: mutable variable</h3>
-
-<pre><code>type color = {red, green, blue}
-var v: color
-
-action change_to_green = {
-   v := green
-}
-</code></pre>
-
-<p>This <a href="declaration.html">declares</a> a <a href="state-variable.html">state variable</a> <code>v</code> of type <code>color</code> and an action that <a href="assignment.html">assigns</a> the value <code>green</code> to <code>v</code>.</p>
-
-<h3 id="example-local-variable">Example: local variable</h3>
-
-<pre><code>type color = {red, green, blue}
-
-action set_local_green = {
-   var v: color;
-   v := green
-}
-</code></pre>
-
-<p>This <a href="declaration.html">declares</a> a _local_ variable <code>v</code> of type <code>color</code> inside an action that <a href="assignment.html">assigns</a> the value <code>green</code> to <code>v</code>.</p>
+<ul>
+<li>A <a href="declared-variable.html">declared variable</a>, which is a kind of <a href="state-variable.html">state variable</a></li>
+<li>A <a href="logical-variable.html">logical variable</a>, which is a placeholder in a quantified logical formula</li>
+</ul>
 
 <div class="backlinks">
 
 <h2 id="backlinks">Backlinks</h2>
 
 <ul>
-<li><a href="call.html">call</a></li>
-<li><a href="definition.html">definition</a></li>
-<li><a href="keywords.html">keywords</a></li>
-<li><a href="primitive-judgment.html">primitive judgment</a></li>
-<li><a href="state-variable.html">state variable</a></li>
-<li><a href="statement.html">statement</a></li>
+<li><a href="logical-variable.html">logical variable</a></li>
 </ul>
 
 </div>

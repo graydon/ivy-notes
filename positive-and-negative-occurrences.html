@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>positive and negative occurrences</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2><a href="index.html">IVy notes</a></h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+          <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
+          <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
+          <li><a href="further-info.html">Further info</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>positive and negative occurrences</header>
+      <div id="content"><p>A <strong>positive</strong> occurrence of a sub-formula within a <a href="formula.html">formula</a> is one under an even number of negations, while a <strong>negative</strong> occurrence is under an odd number.</p>
+
+<h2 id="example">Example:</h2>
+
+<p>For example, in the following formula:</p>
+
+<pre><code>~(~P | Q)
+</code></pre>
+
+<p><code>P</code> occurs positively and <code>Q</code> occurs negatively. In the formula <code>P -&gt; Q</code>, <code>P</code> occurs negatively and <code>Q</code> positively, since this is equivalent to <code>~P | Q</code>. In the formula <code>P &lt;-&gt; Q</code>, <code>P</code> and <code>Q</code> occur <em>both</em> positively and negatively, since this is equivalent to <code>(P -&gt; Q) &amp; (Q -&gt; P)</code>.</p>
+
+<p>In the negated <a href="verification-condition.html">verification conditions</a>, generally speaking, an <a href="assumption.html">assumption</a> occurs positively, while a <a href="guarantee.html">guarantee</a> occurs negatively.</p>
+
+<p><a href="assignment.html">Assignments</a> in the code behave like assumptions.  To see this, we can rewrite the semantics of <a href="assignment.html">assignment</a> using a <a href="quantifier.html">quantifier</a>, like this:</p>
+
+<pre><code>wlp(y := e, R) = R[e/y]
+               = forall y. y = e -&gt; R
+</code></pre>
+
+<p>Using this method, and converting to <a href="prenex-normal-form.html">prenex normal form</a>, the negated VC for our example becomes a conjunction of the following three formulas:</p>
+
+<pre><code>x &gt; 0
+y = x - 1
+~(x &lt; y)
+</code></pre>
+
+<p>We can see that the assumption <code>x &gt; 0</code> occurs positively, the assignment <code>y = x - 1</code> occurs positively as an equation, and the guarantee <code>x &lt; y</code> occurs negatively. </p>
+
+<p>On the other hand, as noted above, the VC's for a program <a href="invariant.html">invariant</a> <code>I</code> have this form: <code>I -&gt; wlp(a,I)</code>. This means that the invariant <code>I</code> occurs both positively and negatively (or put another way, it is both an assumption and a guarantee). </p>
+
+<p>Understanding which formulas occur positively and negatively in the negated VC will be important in understanding why the VC is or is not in the <a href="logical-fragment.html">decidable fragment</a>.</p>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="arithmetic-literal.html">arithmetic literal</a></li>
+<li><a href="assumption.html">assumption</a></li>
+<li><a href="effectively-propositional.html">effectively propositional</a></li>
+<li><a href="guarantee.html">guarantee</a></li>
+<li><a href="stratification.html">stratification</a></li>
+<li><a href="verification-condition.html">verification condition</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>

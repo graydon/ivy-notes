@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>visibility qualifiers</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2><a href="index.html">IVy notes</a></h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+          <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
+          <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
+          <li><a href="further-info.html">Further info</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>visibility qualifiers</header>
+      <div id="content"><p><a href="declaration.html">Declarations</a> in a module (and therefore also an <a href="object.html">object</a> or <a href="isolate.html">isolate</a>) can be qualified by one of three different levels of visibility, similar to the visibility qualifiers in a conventional programmaing language:</p>
+
+<ul>
+<li><strong>specification</strong> declarations, in a <code>specification { ... }</code> block</li>
+<li><strong>implementation</strong> declarations, in an <code>implementation { ... }</code> block </li>
+<li><strong>private</strong> declarations, in a <code>private { ... }</code> block</li>
+</ul>
+
+<p>These blocks may occur (syntactically) within <a href="modules.html">modules</a>, <a href="objects.html">objects</a>, or in-line <a href="isolate.html">isolate</a> declarations. That is, one can write any of the following:</p>
+
+<ul>
+<li><code>module foo = { ... specification { ... } }</code></li>
+<li><code>object foo = { ... specification { ... } }</code></li>
+<li><code>isolate foo = { ... specification { ... } }</code></li>
+</ul>
+
+<p>Each of these blocks marks all the declarations inside it as having the given visibility, which in turn affects how verification treats them and, in particular, the <strong>relationships</strong> between the visibility levels of declarations in the current isolate and those in any other isolate that's provided as a <code>with</code> argument to the current isolate declaration. The visibility-modifying blocks do not otherwise affect the module or object nesting structure. </p>
+
+<h2 id="meaning-of-visibility-qualifiers">Meaning of visibility qualifiers</h2>
+
+<p>Private declarations are not visible outside the module. These are typically used to contain invariants that rule out unreachable states, supporting a publicly visible inductive <a href="invariant.html">invariant</a>.</p>
+
+<p>Specification and implementation declarations allow splitting declarations in two pieces.</p>
+
+<ul>
+<li>The specification declarations in an <a href="object.html">object</a> <code>X</code> are visible to any other isolate that is declared <code>isolate { ... } with X</code>. That is, when <code>X</code> is supplied as a visible input to the other isolate.</li>
+<li>The implementation declarations in an object are verified when the object itself is verified, and are checked for consistency with any specification they are a part of.</li>
+</ul>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="assumption.html">assumption</a></li>
+<li><a href="guarantee.html">guarantee</a></li>
+<li><a href="isolate.html">isolate</a></li>
+<li><a href="module.html">module</a></li>
+<li><a href="recovering-decidability.html">recovering decidability</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>

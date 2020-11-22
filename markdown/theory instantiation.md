@@ -4,7 +4,7 @@ One of the [[primitive judgment|primitive judgments]].
 
 (Not to be confused with the [[instantiation|many other meanings of the term "instantiation"]])
 
-The normal way of using IVy is to declare uninterpreted [[type|types]] and to give the necessary [[axiom|axioms]] over those types to prove desired [[property|properties]] of a system. However, it is also possible in IVy to associate [[type|types]] with *sorts* that are interpreted in the underlying theorem prover by declaring `interpret <ty> -> <sort>`
+The normal way of using IVy is to declare [[uninterpreted type|uninterpreted types]] and to give the necessary [[axiom|axioms]] over those types to prove desired [[property|properties]] of a system. However, it is also possible in IVy to associate [[type|types]] with [[sort|sorts]] that are interpreted in the underlying theorem prover by declaring `interpret <ty> -> <sort>`
 
 Concrete sorts that are currently available for interpreting IVy types are:
 

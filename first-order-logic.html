@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>first-order logic</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2><a href="index.html">IVy notes</a></h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+          <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
+          <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
+          <li><a href="further-info.html">Further info</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>first-order logic</header>
+      <div id="content"><p>First-order logic is an extension of preciate logic to include the <a href="universal-quantifier.html">universal</a> and <a href="existential-quantifier.html">existential</a> quantifiers, potentially over multiple disjoint sets called <a href="sort.html">sorts</a>.</p>
+
+<p>Satisfiability in first-order logic is only semi-dedicable: procedures exist that can enumerate the space of possible satisfying assignments for a formula, but that space is both infinite and sufficiently rich that such procedures may fail to terminate with any answer.</p>
+
+<p>IVy reasons primarily over a <a href="logical-fragment.html">restricted fragment</a> of first-order logic called FAU. </p>
+
+<p>Though IVy's <a href="expression.html">expressions</a> can denote any term in unrestricted first-order logic, some <a href="verification-condition.html">verification conditions</a> will be rejected if they lie outside FAU. The user must then <a href="recovering-decidability.html">recover decidability</a> of the VC.</p>
+
+<p>When running <code>ivy_check</code> in <code>complete=fo</code> mode, IVy will attempt to form and check <a href="verification-condition.html">verification conditions</a> in unrestricted first-order logic. This may cause checking to fail to terminate.</p>
+
+<p>First-order logic does not allow writing formulas that quantify over other formulas. Such quantification is only possible in <a href="https://en.wikipedia.org/wiki/Second-order_logic">second-order</a> and <a href="https://en.wikipedia.org/wiki/Second-order_logic">higher-order logic</a>. Instead, in first-order logic one may write and prove a <a href="schema.html">schema</a> in the surrounding metalanguage -- a language like IVy's language of declarations, proofs and tactics, <strong>outside</strong> the logic -- and explicitly instantiate the schema's premises with formulas.</p>
+
+<p>See also the <a href="https://en.wikipedia.org/wiki/First-order_logic">wikipedia page</a> on first-order logic.</p>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="effectively-propositional.html">effectively propositional</a></li>
+<li><a href="finite-almost-uninterpreted.html">finite almost uninterpreted</a></li>
+<li><a href="finite-essentially-uninterpreted.html">finite essentially uninterpreted</a></li>
+<li><a href="logical-fragment.html">logical fragment</a></li>
+<li><a href="logical-variable.html">logical variable</a></li>
+<li><a href="many-sorted-logic.html">many-sorted logic</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>

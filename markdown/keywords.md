@@ -26,12 +26,12 @@
   - `ensures`
   - `entry`
   - `execute`
-  - `exists`: existential logical quantifier for an [[expression]]
+  - `exists`: [[existential quantifier]] for an [[expression]]
   - `explicit`: qualifier for [[primitive judgment|primitive judgments]]
   - `export`: marks an [[action]] as [[export|exported]]
   - `extract`
   - `false`: primitive [[proposition]]
-  - `forall`: universal logical quantifier for an [[expression]]
+  - `forall`: [[universal quantifier]] for an [[expression]]
   - `fresh`
   - `from`
   - `function`: [[declaration]] of a [[function]]
@@ -91,7 +91,7 @@
   - `type`: [[primitive judgment]] introducing a [[type]]
   - `update`
   - `using`
-  - `var`: [[primitive judgment]] introducing a [[variable]]
+  - `var`: [[primitive judgment]] introducing a [[declared variable]]
   - `variant`
   - `while`: [[loop]] [[statement]]
   - `with`
@@ -116,7 +116,7 @@
     - `instantiate` [[module instantiation|instantiates]] a [[module]] into an [[object]]
     - `object` introduces a singleton [[module instantiation]]
     - `proof` optionally provides a [[proof]] following a [[property]] or [[theorem]]
-    - `var` declares a [[variable]]
+    - `var` declares a [[declared variable]]
     - 
 
   - [[tactic|Tactics]] within [[proof|proofs]]

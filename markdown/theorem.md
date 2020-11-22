@@ -1,3 +1,5 @@
+[[keywords|Keyword]]: `theorem`
+
 One of the [[schema|compound judgments]].
 
 Like [[property|properties]], admitted only with [[proof]]. Essentially the "compound judgment" form of a property, or in other words a "proerty schema". In yet more other words: a property parameterized by *premises* that must be supplied when it is [[judgment application|applied]].
@@ -17,7 +19,7 @@ The proof may be generated and checked automatically in simple cases; in more co
     }
 ```
 
-This theorem expresses the transitivity of equality. No explicit proof is required here, IVy's default tactic generates the following verification condition:
+This theorem expresses the transitivity of equality. No explicit proof is required here, IVy's default tactic generates the following [[verification condition]]:
 
 ```
 #-   X = Y & Y = Z -> X = Z
@@ -29,13 +31,15 @@ Which Z3 can prove by itself.
 
 Here is a theorem that lets us eliminate universal quantifiers:
 
-    theorem [elimA] {
-        type t
-        function p(W:t) : bool
-        property [prem] forall Y. p(Y)
-        #--------------------------------
-        property p(X)
-    }
+```
+theorem [elimA] {
+    type t
+    function p(W:t) : bool
+    property [prem] forall Y. p(Y)
+    #--------------------------------
+    property p(X)
+}
+```
 
 It says, for any predicate `p`, if `p(Y)` holds for all `Y`, then `p(X)` holds for a particular `X`. Again, Z3 can prove this easily.
 
@@ -73,9 +77,7 @@ This means we'll need to apply some other tactic. Here is one possible proof:
     }
 ```
 
-We think this theorem holds because `f(f(f(X)))` is equal to `f(f(X))`
-(by idempotence of *f*) which in turn is equal to `f(X)` (again, by
-idempotence of *f*). We then apply transitivity to infer `f(f(f(X))) = f(X)`.
+We think this theorem holds because `f(f(f(X)))` is equal to `f(f(X))` (by idempotence of *f*) which in turn is equal to `f(X)` (again, by idempotence of *f*). We then apply transitivity to infer `f(f(f(X))) = f(X)`.
 
 To prove that `f(f(f(X))) = f(f(X))` from idempotence, we apply the `elimA` theorem with `idem` as the premise. Let's look in a little more detail at how this works. The `elimA` theorem has a premise `forall X. p(X)`. Ivy matches has to find a substitution that will match this formulas `idem`, the premise that we want to use, which is `forall X. f(f(X)) = f(X)`.
 

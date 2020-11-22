@@ -10,9 +10,7 @@ An instance of a module is called an [[object]], and there is special syntax for
 
 Besides defining classes of objects, modules can be used to capture a re-usable theory, or structure a modular proof.
 
-Modules can contain `private` blocks, which contain declarations not visible outside the module. These are typically used to contain invariants that rule out unreachable states, supporting a publicly visible inductive invariant.
-
-A module can also use `specification` and `implementation` blocks to split its declarations between abstract logical specifications and concrete implementations. Examples of this are shown in the page on [[isolate|isolates]].
+Declarations within modules are subject to [[visibility qualifiers]], that limit how module members may be seen when verified as an [[isolate]].
 
 ## Examples:
 

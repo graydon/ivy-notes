@@ -40,6 +40,7 @@
           <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
           <li><a href="logical-fragment.html">Logical fragment</a></li>
           <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
           <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
           <li><a href="further-info.html">Further info</a></li>
         </ul>
@@ -51,18 +52,24 @@
     </nav>
     <article>
       <header>sort</header>
-      <div id="content"><p>A "sort" is formal-logic jargon for the same concept as a "type" in programming languages, generally.</p>
+      <div id="content"><p>A "sort" is formal-logic jargon for the same concept as a "type" in programming languages, generally. It denotes a set of objects in the domain of discourse for <a href="many-sorted-logic.html">many-sorted logic</a>.</p>
 
 <p>In IVy's case, "sorts" denote <strong>specifically</strong> the sorts that are available for interpretation by the underlying SMT solver Z3. There are not many of these: <code>int</code>, <code>nat</code>, enumerated sorts, subrange sorts and bitvector sorts.</p>
 
-<p>User-defined types in IVy can be interpreted as such a sort using <a href="theory-instantiation.html">theory instantiation</a>, but usually it's desirable to <em>avoid</em> such interpretation, as it risks giving "too much theory" to any <a href="expressions.html">expressions</a> using the type, such that any resulting <a href="verification-condition.html">verification conditions</a> fall outside the FAU <a href="logical-fragment.html">logical fragment</a> that Z3 can decide without help.</p>
+<p>User-defined types in IVy can be <strong>interpreted</strong> as such a sort using <a href="theory-instantiation.html">theory instantiation</a>, but usually it's desirable to <em>avoid</em> such interpretation, as it risks giving "too much theory" to any <a href="expressions.html">expressions</a> using the type, such that any resulting <a href="verification-condition.html">verification conditions</a> fall outside the FAU <a href="logical-fragment.html">logical fragment</a> that Z3 can decide without help.</p>
 
 <div class="backlinks">
 
 <h2 id="backlinks">Backlinks</h2>
 
 <ul>
+<li><a href="existential-quantifier.html">existential quantifier</a></li>
 <li><a href="expression.html">expression</a></li>
+<li><a href="first-order-logic.html">first-order logic</a></li>
+<li><a href="many-sorted-logic.html">many-sorted logic</a></li>
+<li><a href="theory-instantiation.html">theory instantiation</a></li>
+<li><a href="uninterpreted-type.html">uninterpreted type</a></li>
+<li><a href="universal-quantifier.html">universal quantifier</a></li>
 </ul>
 
 </div>

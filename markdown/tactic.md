@@ -9,13 +9,13 @@ Possible tactics include:
   - `let` performs [[explicit quantifier instantiation]] on existing goals
   - `showgoals` prints the current list of proof goals
   - `defergoal`
-  - `assume` adds an assumption
+  - `assume` adds an [[assumption]]
   - `unfold`
   - `forget`
   - `spoil`
   - `property`, `axiom`, etc. allow declaring (and proving) a local sub-[[logical judgment|judgment]]
   - `tactic` invokes extended, non-keyword tactics:
-    - `tactic skolemize` performs Skolemization
+    - `tactic skolemize` performs [[skolemization|Skolemization]]
     - `tactic vcgen` is the default VC-generating tactic
     - `tactic l2s` translates [[temporal properties]] about liveness to safety properties
     - `tactic invariance` also related to [[temporal properties]]

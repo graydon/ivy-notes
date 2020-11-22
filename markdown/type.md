@@ -6,7 +6,7 @@ Introduces a new type.
 
 Types may be interpreted or uninterpreted.
 
-An uninterpreted type is treated as a set with at least one element, but no _specific_ elements.
+An [[uninterpreted type]] is treated as a set with at least one element, but no **specific** elements.
 
 An interpreted type has specific elements, defined either through [[theory instantiation]] or by enumerating the elements of the type "in extension".
 

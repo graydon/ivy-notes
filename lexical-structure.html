@@ -40,6 +40,7 @@
           <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
           <li><a href="logical-fragment.html">Logical fragment</a></li>
           <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
           <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
           <li><a href="further-info.html">Further info</a></li>
         </ul>
@@ -58,7 +59,7 @@
 <li><strong>Comments</strong> which begin with <code>#</code> and extend to the end of the line.</li>
 <li><strong>Punctuation</strong> elements drawn from the following list: <code>~</code>, <code>,</code>, <code>+</code>, <code>*</code>, <code>/</code>, <code>-</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>*&gt;</code>, <code>(</code>, <code>)</code>, <code>|</code>, <code>&amp;</code>, <code>=</code>, <code>~=</code>, <code>;</code>, <code>:=</code>, <code>.</code>, <code>{</code>, <code>}</code>, <code>-&gt;</code>,  <code>&lt;-&gt;</code>, <code>:</code>, <code>..</code>, <code>...</code>, <code>$</code>, <code>^</code></li>
 <li><strong>Symbols</strong> which begin with a lower-case letter, underscore or digit and continue with any mix of letters, digits and underscores. These typically name types, modules, objects, parameters, local variables, and similar declarations. These also include numeral-literals and boolean-literals in expressions. For example: <code>a</code>, <code>_v_</code>, <code>10</code>, <code>foo123</code>, <code>lowerUPPER</code>, <code>false</code>, <code>this</code></li>
-<li><strong>Variables</strong> which begin with upper-case letter and continue with any mix of letters, digits and underscores. These typically denote universally-quantified variables in expressions. For example: <code>A</code>, <code>VAR_12</code>, <code>Thing</code></li>
+<li><strong>Variables</strong> which begin with upper-case letter and continue with any mix of letters, digits and underscores. These denote "logical variables" bound by a <a href="universal-quantifier.html">universal quantifier</a> or <a href="existential-quantifier.html">existential quantifier</a> in an <a href="expression.html">expression</a>. For example: <code>A</code>, <code>VAR_12</code>, <code>Thing</code></li>
 <li><strong>Labels</strong> which are any letters, digits or underscores contained in square brackets. These typically denote logical formulas and are declared in-line with many <a href="logical-judgment.html">logical judgments</a>. For example: <code>[premise]</code>, <code>[f0]</code>, <code>[NO_WAY]</code></li>
 <li><strong>Native Quotations</strong> which are any text between a matching pair of triple angle brackets (<code>&lt;&lt;&lt;</code> and <code>&gt;&gt;&gt;</code>)</li>
 </ul>
@@ -70,7 +71,10 @@
 <h2 id="backlinks">Backlinks</h2>
 
 <ul>
+<li><a href="existential-quantifier.html">existential quantifier</a></li>
 <li><a href="expression.html">expression</a></li>
+<li><a href="logical-variable.html">logical variable</a></li>
+<li><a href="universal-quantifier.html">universal quantifier</a></li>
 </ul>
 
 </div>

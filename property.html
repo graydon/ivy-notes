@@ -40,6 +40,7 @@
           <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
           <li><a href="logical-fragment.html">Logical fragment</a></li>
           <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
           <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
           <li><a href="further-info.html">Further info</a></li>
         </ul>
@@ -59,7 +60,7 @@
 
 <p>If a proof is not supplied, IVy applies its default proof <a href="tactic.html">tactic</a>.  This calls the automated prover Z3 to attempt to prove the property from the previously admitted judgments in the current context.</p>
 
-<p>The default tactic works by generating a <a href="verification-condition.html">verification condition</a> to be checked by Z3. This is a formula whose validity implies that the property is true in the current context.</p>
+<p>The default tactic works by generating a <a href="verification-condition.html">verification condition</a> to be checked by Z3. This is a <a href="formula.html">formula</a> whose validity implies that the property is true in the current context.</p>
 
 <h2 id="example">Example:</h2>
 

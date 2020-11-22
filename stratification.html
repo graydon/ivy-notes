@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>stratification</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2><a href="index.html">IVy notes</a></h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+          <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
+          <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
+          <li><a href="further-info.html">Further info</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>stratification</header>
+      <div id="content"><p>The concept of <strong>stratification</strong> allows us to extend <a href="effectively-propositional.html">EPR</a> with some <a href="ground-term.html">ground terms</a> (including some functions) while remaining decidable.</p>
+
+<h2 id="stratified-function-symbols">Stratified function symbols</h2>
+
+<p><a href="effectively-propositional.html">EPR</a> is a very restrictive logic, since in effect it only allows us to say that something exists if it has an explicit name. We can go a bit further by adding <strong>stratified function symbols</strong>. For example, suppose we define the following vocabulary of functions and constants:</p>
+
+<pre><code>individual x : t
+function f(X:t) : u
+function g(Y:u) : v
+</code></pre>
+
+<p>Using this vocabulary, we can only generate three <a href="ground-term.html">ground terms</a>: <code>x</code>, <code>f(x)</code>, <code>g(f(x))</code>. This means the <a href="quantifier-alternation.html">EA formulas</a> using this vocabulary are decidable.</p>
+
+<p>In general, suppose we construct a directed graph <code>(V,E)</code> where the vertices <code>V</code> are the <a href="type.html">types</a>, and we have an edge <code>(t,u)</code> in <code>E</code> whenever there is a <a href="function.html">function</a> from <code>... * t * ...</code> to <code>u</code>. The function symbols are <strong>stratified</strong> if there is no cycle in this graph (including trivial cycles from <code>t</code> to <code>t</code>). Stratified <a href="quantifier-alternation.html">EA formulas</a> are in the <a href="logical-fragment.html">decidable fragment</a>. Since the axioms of equality are in EPR, the equality symbol is also allowed.</p>
+
+<p>Using stratified function symbols is an important strategy for keeping <a href="verification-condition.html">verification conditions</a> in the decidable fragment. When planning the specification of a system, it is useful to carefully choose an order on the types, so that it is possible to use only functions from lesser to greater types. When a functions from types <code>t</code> to <code>u</code> and <code>u</code> to <code>t</code> are both needed, the best practice is to separate these function symbols by confining them to different <a href="isolate.html">isolates</a>.</p>
+
+<h2 id="stratified-quantifier-alternationsquantifier-alternationshtml">Stratified <a href="quantifier-alternations.html">quantifier alternations</a></h2>
+
+<p>Ultimately we need to be able to write formulas in <a href="quantifier-alternation.html">AE form</a>. That is, we want to say things like “for every epoch E there exists a leader L”. When these formulas occur <a href="positive-and-negative-occurrences.html">positively</a> (as <a href="assumption.html">assumptions</a>) they are not in EPR. However, the decidable fragment still contains a limited subset of such formulas.</p>
+
+<p>To see this, we need to understand how AE formulas are handled when determining satisfiability. This is done using a transformation called <a href="skolemization.html">skolemization</a>. The formula <code>forall X. exists Y. p(X,Y)</code> is satisfiable if and only if <code>forall X. p(X,f(X))</code> is satisfiable for a fresh function symbol <code>f</code> called a Skolem function. This means that we can always eliminate all of the existential quantifiers from the negated VC. However, the Skolem functions must also be considered with regard to decidability. That is, if the set of all function symbols, including Skolem functions, is stratified, then the formula is in the decidable fragment. Another way to think of this is that the quantifier sequence <code>forall X:t. exists Y:u</code> induces an arc from <code>t</code> to <code>u</code> in the type graph.</p>
+
+<p>In fact, we can be a little more liberal than this. Consider the formula:</p>
+
+<pre><code>forall X:t,Y:u. q(X,Y) -&gt; exists Z:v. p(X,Z)
+</code></pre>
+
+<p>There is no arc induced from type <code>u</code> to type <code>v</code>, since the variable <code>Y</code> does not occur under the existential quantifier, and thus the Skolem function does not depend on it.</p>
+
+<p>Because of stratified quantifier alternations, the negated VC of the following program is in the decidable fragment:</p>
+
+<pre><code>require forall X:t. exists Y:u. r(X,Y);
+if f(x) = y {
+    r(x,y) := true
+};       
+ensure forall X:t. exists Y:u. r(X,Y)
+</code></pre>
+
+<p>The <a href="precondition.html">precondition</a> occurs positively, so in introduces an arc from <code>t</code> to <code>u</code>. The <a href="postcondition.html">postcondition</a> occurs negatively, so it is an EA formula. Since there are no other arcs in the type graph, it is acyclic, so the negated VC is stratified.</p>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="finite-essentially-uninterpreted.html">finite essentially uninterpreted</a></li>
+<li><a href="function-cycle.html">function cycle</a></li>
+<li><a href="logical-fragment.html">logical fragment</a></li>
+<li><a href="relevant-vocabulary.html">relevant vocabulary</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>

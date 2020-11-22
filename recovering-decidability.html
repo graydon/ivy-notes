@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>recovering decidability</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2><a href="index.html">IVy notes</a></h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+          <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
+          <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
+          <li><a href="further-info.html">Further info</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>recovering decidability</header>
+      <div id="content"><p>IVy’s <a href="logical-fragment.html">decidable fragment</a> consists of all the formulas that are in FAU after full <a href="unfold.html">unfolding</a> of all the non-<a href="recursion.html">recursive</a> <a href="definitions.html">definitions</a>.</p>
+
+<p>When a <a href="verification-condition.html">verification condition</a> is not in the decidable fragment, IVy refuses to check it, and instead produces an error message explaining the problem. This explanation is generally either:</p>
+
+<ul>
+<li>A list of terms that induce a cycle in the <a href="relevant-vocabulary.html">relevant vocabulary</a> graph.</li>
+<li>An instance of an <a href="theory-instantiation.html">interpreted symbol</a> applied to universal variable that is not an <a href="arithmetic-literal.html">arithmetic literal</a>.</li>
+</ul>
+
+<p>There are several approaches to correcting such a problem:</p>
+
+<ul>
+<li>Change the encoding of the state of the system to <a href="use-relations-instead-of-functions.html">use relations instead of functions</a>.</li>
+<li><a href="visibility-qualifiers.html">Use modularity to hide a function symbol or theory</a> that is problematic.</li>
+<li>Use proof tactics to transform the property to be proved:<br />
+<ul><br />
+<li><a href="judgment-application.html">Apply an existing judgment</a> that may not be automatically applied.</li><br />
+<li><a href="skolemization.html">Skolemize premises</a> to eliminate their existential quantifiers.</li><br />
+<li><a href="explicit-quantifier-instantiation.html">Explicitly instantiate</a> remaining quantifiers.</li><br />
+</ul></li>
+</ul>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="first-order-logic.html">first-order logic</a></li>
+<li><a href="logical-fragment.html">logical fragment</a></li>
+<li><a href="relevant-vocabulary.html">relevant vocabulary</a></li>
+<li><a href="skolemization.html">skolemization</a></li>
+<li><a href="verification-condition.html">verification condition</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>

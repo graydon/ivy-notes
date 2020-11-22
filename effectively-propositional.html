@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>effectively propositional</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2><a href="index.html">IVy notes</a></h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+          <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
+          <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
+          <li><a href="further-info.html">Further info</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>effectively propositional</header>
+      <div id="content"><p>EPR ("effectively propositional") is a <a href="logical-fragment.html">fragment</a> of <a href="first-order-logic.html">first-order logic</a> restricted to relational first-order formulas (i.e., formulas over a vocabulary that contains constant symbols and relation symbols but <strong>no function symbols</strong>) with a <a href="quantifier-alternation.html">quantifier prefix</a> <code>∃∗∀∗</code> in <a href="prenex-normal-form.html">prenex normal form</a>.</p>
+
+<p>Satisfiability of EPR formulas is decidable. It is NEXPTIME-complete but in practice SMT solvers can decide many practical instances in a reasonable amount of time.</p>
+
+<p>Moreover, formulas in this fragment enjoy the <a href="https://en.wikipedia.org/wiki/Finite_model_property">finite model property</a>, meaning that a satisfiable formula is guaranteed to have a finite model. The size of this model is bounded by the total number of existential quantifiers and constants in the formula. The reason for this is that given an <code>∃∗∀∗</code>-formula, we can obtain an equi-satisfiable quantifier-free formula by <a href="skolemization.html">skolemization</a>, i.e., replacing the existentially quantified variables by constants, and then instantiating the universal quantifiers for all constants.</p>
+
+<p>See also the <a href="https://en.wikipedia.org/wiki/Bernays%E2%80%93Sch%C3%B6nfinkel_class">wikipedia page</a>.</p>
+
+<h2 id="example">Example</h2>
+
+<p>Suppose we take the <a href="axioms.html">axioms</a> of a partial order as <a href="assumption.html">assumptions</a>:</p>
+
+<pre><code>forall X,Y,Z. X &lt; Y &amp; Y &lt; Z -&gt; X &lt; Z
+forall X,Y. ~(X &lt; Y &amp; Y &lt; Z)
+</code></pre>
+
+<p>Notice these are in EPR. The <a href="verification-condition.html">VC</a> for the following program is also in EPR:</p>
+
+<pre><code>require forall X,Y. r(X,Y) -&gt; X &gt; Y;
+if r(x,y) &amp; r(y,z) {
+    r(x,z) := true
+};
+ensure forall X,Y. r(X,Y) -&gt; X &gt; Y;
+</code></pre>
+
+<p>To see this, let’s expand it out to the conjunction of the following formulas in prenex normal form:</p>
+
+<pre><code>forall X,Y. r(X,Y) -&gt; X &gt; Y
+r(x,y) &amp; r(y,z) -&gt; (r'(x,z) &amp; forall X,Y. X ~= x | Y ~= y | r'(X,Y) = r(X,Y))
+~(r(x,y) &amp; r(y,z)) -&gt; r'(X,Y) = r(X,Y))
+exists X,Y. ~(r'(X,Y) -&gt; X &gt; Y)
+</code></pre>
+
+<p>The first of these formulas says that the <a href="precondition.html">precondition</a> holds.</p>
+
+<p>The second says that if we take the “<code>if</code>” branch, then <code>r</code> is updated so that <code>r(x,z)</code> holds and otherwise it remains unchanged.</p>
+
+<p>The third says that if we take the “<code>else</code>” branch, <code>r</code> is unchanged.</p>
+
+<p>The last says that, finally, the <a href="guarantee.html">guarantee</a> is <code>false</code>.</p>
+
+<p>Notice that a fresh symbol <code>r’</code> was introduced. Technically, this symbol was introduced to allow us to move a universal quantifier on <code>r</code> to prenex position without "capturing" other occurrences of <code>r</code>. However, we can think of it as just the “next” value of <code>r</code>, after the assignment (that is: treating the program as a <a href="transition-relation.html">transition relation</a> between <code>r</code> and <code>r'</code>)</p>
+
+<p>We can see that the <a href="precondition.html">precondition</a> and the constraint defining the semantics of assignment both occur <a href="positive-and-negative-occurrences.html">positively</a>. These formulas are in EPR, and so the corresponding conjuncts of the negated VC also are.</p>
+
+<p>The <a href="postcondition.html">guarantee formula</a> occurs negatively as <code>exists X,Y. ~(r'(X,Y) -&gt; X &gt; Y)</code>. That is, when we see <code>~forall X. p(X)</code>, we convert it to the equivalent <code>exists X. ~p(X)</code> in prenex form. This formula is also in EPR. In fact, IVy will convert it to <code>~(r'(a,b) -&gt; a &gt; b)</code>, where <code>a</code> and <code>b</code> are fresh constant symbols.</p>
+
+<p>In general, if we don’t use function symbols, and if all of our assumptions and guarantees are <code>forall</code> formulas (so-called "A"-formulas), then the negated VC will be in EPR.</p>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="logical-fragment.html">logical fragment</a></li>
+<li><a href="quantifier-alternation.html">quantifier alternation</a></li>
+<li><a href="relevant-vocabulary.html">relevant vocabulary</a></li>
+<li><a href="stratification.html">stratification</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>

@@ -40,6 +40,7 @@
           <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
           <li><a href="logical-fragment.html">Logical fragment</a></li>
           <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
           <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
           <li><a href="further-info.html">Further info</a></li>
         </ul>
@@ -53,17 +54,15 @@
       <header>precondition</header>
       <div id="content"><p><a href="keywords.html">Keyword</a>: <code>require</code></p>
 
+<p>A precondition introduces an <a href="assumption.html">assumption</a> in the action <code>A</code> it occurs within, and a <a href="guarantee.html">guarantee</a> in any action that calls <code>A</code>.</p>
+
+<p>This includes calls from the <a href="environment.html">environment</a>: the environment is presumed to have fulfilled any guarantee imposed on it by a precondition in an action it calls.</p>
+
 <p>A precondition is a statement with strictly logical content. It does not modify state variables.</p>
 
-<p>Preconditions are <em>not</em> checked at runtime, they are checked statically (logically) by <code>ivy_check</code> as it verifies a module's actions, and this makes for counter-intuitive behaviour concerning calls to <a href="export.html">exported</a> actions made from the environment.</p>
+<p>The exact relationship between callee preconditions and caller <a href="verification-condition.html">verification conditions</a> is discussed in the <a href="weakest-liberal-precondition.html">weakest liberal precondition</a> page, and the page on <a href="assume-guarantee-reasoning.html">assume-guarantee reasoning</a>.</p>
 
-<p>Specifically: placing a precondition on an <a href="action.html">action</a> <code>A</code> does not guarantee that the environment will invoke <code>A</code> in a state that meets the precondition, nor that <code>A</code> will signal any sort of runtime error should the precondition not hold.</p>
-
-<p>Rather, it adds a <em>logical assumption</em> about the state on entry to <code>A</code> when called from the environment. The precondition is simpy assumed to be true. This has to be so, because IVy is not responsible for verifying the environment.</p>
-
-<p>When an action is <strong>called from another action</strong>, preconditions behave more normally (and usefully): the caller is obliged to meet the preconditions of the calee, and the caller's verification fails if it does not.</p>
-
-<p>The exact relationship between callee <a href="precondition.html">preconditions</a> and caller <a href="verification-condition.html">verification conditions</a> is discussed in the <a href="weakest-liberal-precondition.html">weakest liberal precondition</a> page.</p>
+<p>See also <a href="postcondition.html">postconditions</a>, the symmetric concept.</p>
 
 <div class="backlinks">
 
@@ -71,9 +70,13 @@
 
 <ul>
 <li><a href="assertion.html">assertion</a></li>
+<li><a href="assumption.html">assumption</a></li>
+<li><a href="effectively-propositional.html">effectively propositional</a></li>
 <li><a href="initializer.html">initializer</a></li>
 <li><a href="keywords.html">keywords</a></li>
+<li><a href="postcondition.html">postcondition</a></li>
 <li><a href="statement.html">statement</a></li>
+<li><a href="stratification.html">stratification</a></li>
 <li><a href="verification-condition.html">verification condition</a></li>
 <li><a href="weakest-liberal-precondition.html">weakest liberal precondition</a></li>
 </ul>

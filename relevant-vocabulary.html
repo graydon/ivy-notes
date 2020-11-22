@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>relevant vocabulary</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2><a href="index.html">IVy notes</a></h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+          <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
+          <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
+          <li><a href="further-info.html">Further info</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>relevant vocabulary</header>
+      <div id="content"><p>The concept of <strong>relevant vocabularies</strong> extends the concept of <a href="stratification.html">stratification</a>. Both allow extending <a href="effectively-propositional.html">EPR</a> with more <a href="ground-term.html">ground terms</a> (including some functions) while remaining decidable.</p>
+
+<p>Following <a href="http://leodemoura.github.io/files/ci.pdf">Ge and de Moura</a>, we will define a <strong>relevant vocabulary</strong> for every <a href="universal-quantifier.html">universal quantifier</a> and for each argument of every <a href="uninterpreted-function.html">uninterpreted function</a> or predicate symbol. The idea is that, if we instantiate each universal quantifier with just the <a href="ground-term.html">ground terms</a> in its relevant vocabulary, then any model of these instances can be converted to a model of the original formula. If the relevant vocabulary is finite, the formula is in the decidable fragment.</p>
+
+<p>To determine the relevant vocabularies, we have a set of rules that depend on the formula. We will say that <code>V[X]</code> is the relevant vocabulary of universally quantified variable <code>X</code> and <code>V[f,i]</code> is the relevant vocabulary of argument <code>i</code> of uninterpreted function or predicate symbol <code>f</code>.  The rules are in one of two forms:</p>
+
+<ul>
+<li>If vocabulary <code>V</code> contains term <code>t</code> then vocabulary <code>W</code> contains term <code>u</code>, or</li>
+<li>Vocabulary <code>V</code> equals vocabulary <code>U</code>.</li>
+</ul>
+
+<p>The relevant vocabularies are the least ones that satisfy all the rules. To express the rules, we use <code>t[X1...XN]</code> to stand for a term with free variables <code>X1...XN</code> (so if N=0, it is a ground term). We use <code>t[V1...VN]</code> to stand for any instantiation of <code>t</code> using the<br />
+vocabularies <code>V1...VN</code>.</p>
+
+<p>For first-order logic, we have the following rules:</p>
+
+<ul>
+<li>if <code>t[X1...XN]</code> is the <code>i</code>th argument of <code>f</code>, every instance <code>t[V[X1],...,V[X1]]</code> is in <code>V[f,i]</code></li>
+<li>if universal variable <code>X</code> is the <code>i</code>th argument of <code>f</code>, then <code>V[X] = V[f,i]</code>.</li>
+</ul>
+
+<p>To handle equality, we introduce a vocabulary <code>V[t]</code> for each type <code>t</code> and add these rules:</p>
+
+<ul>
+<li>If <code>X:u = e</code> or <code>e = X:u</code> occurs, then <code>V[X] = V[u]</code>,</li>
+<li>If <code>t[X1...XN]:u = e</code> or <code>e = t[X1...XN]:u</code>  occurs then every instance <code>t[V[X1],...,V[XN]]</code> is in <code>V[u]</code>.</li>
+</ul>
+
+<h2 id="finiteness-and-cycles">Finiteness and cycles</h2>
+
+<p>To determine if the relevant vocabulary is finite, we don't need to compute it. It suffices to determine if the rules create a cycle that can generate an infinite set of terms.  To do this, we build a graph whose nodes are vocabularies and whose arcs are defined by the<br />
+following rules:</p>
+
+<table>
+<thead>
+<tr>
+  <th>term</th>
+  <th>arc(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>f(..,X,..)</code></td>
+  <td><code>V[X] &lt;-&gt; V[f,i]</code></td>
+</tr>
+<tr>
+  <td><code>f(..,t[..,X,..],..)</code></td>
+  <td><code>V[X] -&gt; V[f,i]</code></td>
+</tr>
+<tr>
+  <td><code>X:u = e</code></td>
+  <td><code>V[X] &lt;-&gt; V[u]</code></td>
+</tr>
+<tr>
+  <td><code>t[...,X:u,...] = e</code></td>
+  <td><code>V[X] -&gt; V[u]</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Where <code>i</code> is the relevant argument position in <code>f</code> and <code>x = y</code> is considered equivalent to <code>y = x</code>.</p>
+
+<p>IVy constructs this graph for each negated VC. If the graph has a cycle, Ivy reports the sequence of terms that induced the cycle (and gives references to line numbers in the IVy program). This information can be used to determine the source of the problem and and <a href="recovering-decidability.html">correct it</a>.</p>
+
+<h2 id="examples">Examples:</h2>
+
+<h3 id="example-finite-relevant-vocabularies-without-equality-rules">Example: finite relevant vocabularies, without equality rules</h3>
+
+<p>Consider the conjunction of the following formulas:</p>
+
+<pre><code>r(f(a),c)
+forall X. r(f(X),X)
+</code></pre>
+
+<p>The relevant vocabularies are:</p>
+
+<pre><code>V[f,1] = {a,c}
+V[r,1] = {f(a),f(c)}
+V[r,2] = {a,c}
+V[X] = {a,c}
+</code></pre>
+
+<p>We can arrive at this result by just applying the rules until we reach a fixed point. From the first rule, we have <code>V[f,1] = {a}</code> and <code>V[r,2] = {c}</code>. Then, from the second rule, because <em>X</em> occurs in argument position 1 of <em>f</em> and 2 of <em>r</em>, we have <code>V[f,1] = V[r,2] = V[X] = {a,c}</code>.  The first rule then gives us <code>V[r,1] = {f(a),f(c)}</code> and we have reached a fixed point.</p>
+
+<p>Since the relevant vocabularies are finite, this conjunction is in the decidable fragment.</p>
+
+<h3 id="example-finite-relevant-vocabularies-with-equality">Example: finite relevant vocabularies, with equality</h3>
+
+<p>Suppose <code>f</code> is a function from <code>u</code> to <code>u</code> and we have this conjunction:</p>
+
+<pre><code>f(a) = c
+forall X. r(f(X),X)
+</code></pre>
+
+<p>The relevant vocabularies are:</p>
+
+<pre><code>V[u] = {f(a),c}
+V[f,1] = {a}
+V[r,1] = {f(a)}
+V[r,2] = {a}
+V[X] = {a}
+</code></pre>
+
+<p>That is, even though the function <code>f</code> is not <a href="stratified.html">stratified</a>, we still need only a finite instantiation to determine satisfiability of this formula. It is easy seen, however, that all the stratified formulas have finite relevant vocabularies.</p>
+
+<h3 id="example-infinite-cyclical-relevant-vocabulary">Example: infinite (cyclical) relevant vocabulary</h3>
+
+<p>As an example, consider the following formula:</p>
+
+<pre><code>forall X. r(X,a) -&gt; r(f(X),X)
+</code></pre>
+
+<p>There is a cycle <code>V[X] -&gt; V[f,1] -&gt; V[r,1] -&gt; V[X]</code> induced by these terms:</p>
+
+<pre><code>f(X)
+r(f(X),X)
+r(X,a)
+</code></pre>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="arithmetic-literal.html">arithmetic literal</a></li>
+<li><a href="finite-essentially-uninterpreted.html">finite essentially uninterpreted</a></li>
+<li><a href="function-cycle.html">function cycle</a></li>
+<li><a href="logical-fragment.html">logical fragment</a></li>
+<li><a href="recovering-decidability.html">recovering decidability</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>skolemization</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2><a href="index.html">IVy notes</a></h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+          <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
+          <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
+          <li><a href="further-info.html">Further info</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>skolemization</header>
+      <div id="content"><p>Skolemization is the process of replacing existentially-quantified _variables_ with _functions_ of existing univerally-quantified variables, producing an equi-satisfiable formula with prenex consisting strictly of universal quantifiers.</p>
+
+<p>As free (unbound) function symbols in first-order formulae are, for the sake of satisfiability,  _implicitly_ existentially quantified, this essentially "hoists existential quantifiers" out of the inside of a formula, moving them to the outermost level where they quantify over <a href="uninterpreted-function.html">uninterpreted functions</a> and can be ignored: any satisfiability query for <code>f:T-&gt;U</code> is the same as a query for <code>exists f. f:T-&gt;U</code>.</p>
+
+<p>See also <a href="https://en.wikipedia.org/wiki/Skolem_normal_form">wikipedia's page</a></p>
+
+<p>Skolemization is done automatically in many contexts in IVy, but is also available as a <a href="tactic.html">tactic</a> called <code>tactic skolemize</code> which can be manually applied during a <a href="proof.html">proof</a>. This tactic Skolemizes all the <strong>premises</strong> (but not the conclusion) of a proof goal. This is typically done before <a href="explicit-quantifier-instantiation.html">explicit quantifier instantiation</a> in order to <a href="recovering-decidability.html">recover decidability</a>.</p>
+
+<h2 id="examples">Examples:</h2>
+
+<h3 id="example-basic-skolemization">Example: basic Skolemization</h3>
+
+<p>Initial formula <code>forall X:t . exists Y:u . f(x,y)</code><br />
+Skolemizes as: <code>forall X:t . f(x,s(x))</code> (introducing the Skolem function <code>s:t-&gt;u</code>)</p>
+
+<h3 id="example-skolemization-in-support-of-quantifier-instantiation">Example: Skolemization in support of quantifier instantiation</h3>
+
+<p>Suppose we are attempting to prove this <a href="theorem.html">theorem</a>:</p>
+
+<pre><code>theorem [sk1] {
+    type t
+    individual a : t
+    relation r(X:t,Y:t)
+    property [prem] forall X. exists Y. r(X,Y)
+    #---
+    property exists Z. r(a,Z)
+}
+</code></pre>
+
+<p>This theorem says "if we have some individual <code>a:t</code> and some relation <code>r(X,Y)</code>, and we have established as a premise that <code>forall X. exists Y. r(X,Y)</code>, then we can conclude <code>exists X. r(a, Z)</code>".</p>
+
+<p>In other words: if <code>r</code> models the <code>(input, output)</code> pairs of an injective function, then that function is defined at input <code>a</code>.</p>
+
+<p>Applying <code>tactic skolemize</code> implicitly transforms this to a theorem that states <strong>exactly that</strong>:</p>
+
+<pre><code>theorem [sk1] {
+    function _Y(V0:t) : t
+    type t
+    individual a : t
+    relation r(V0:t,V1:t)
+    property [prem] forall X. r(X,_Y(X))
+    property exists Z. r(a,Z)
+}
+</code></pre>
+
+<p>Here the Skolem function <code>_Y:(V0:t) : t</code> has been introduced and the premise property <code>[prem]</code> rewritten to say that <code>r</code> models the function <code>_Y</code> injectively: <code>forall X. r(X, _Y(X))</code></p>
+
+<p>When <code>tactic skolemize</code> is done in this example, the premises have only universal quantifiers, and the conclusion has only existential quantifiers. Now, we can finish the proof by <a href="explicit-quantifier-instantiation.html">instantiating</a> the universal <code>X</code> in <code>prem</code> with <code>a</code>, giving <code>r(a,_Y(a))</code>, and then <a href="explicit-quantifier-instantiation.html">instantiating</a> the existentially quantified <code>Z</code> in the conclusion with <code>_Y(a)</code> , which also gives <code>r(a,_Y(a))</code>.</p>
+
+<p>One way to describe the instantiation of the conclusion is that we have provided the term <code>_Y(a)</code> as a <strong>witness</strong> for the existential quantifier.</p>
+
+<p>The completed proof is therefore:</p>
+
+<pre><code>proof {
+    tactic skolemize
+    instantiate prem with X=a
+    instantiate with Z = _Y(a)
+}
+</code></pre>
+
+<p>All of this wasn’t really necessary, since the original theorem is in the <a href="logical-fragment.html">decidable fragment</a>. However, the approach of Skolemization followed by selective instantiation of quantifiers can be a quick way to reduce a proof problem to a decidable one. First, we try to get Z3 to discharge the proof goal automatically. If Ivy complains about a quantified variable, we eliminate that variable by Skolemization and instantiation. If we guess the wrong instantiation, Ivy will give us a counterexample.</p>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="effectively-propositional.html">effectively propositional</a></li>
+<li><a href="existential-quantifier.html">existential quantifier</a></li>
+<li><a href="explicit-quantifier-instantiation.html">explicit quantifier instantiation</a></li>
+<li><a href="logical-fragment.html">logical fragment</a></li>
+<li><a href="recovering-decidability.html">recovering decidability</a></li>
+<li><a href="stratification.html">stratification</a></li>
+<li><a href="tactic.html">tactic</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>

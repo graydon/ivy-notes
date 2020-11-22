@@ -4,9 +4,9 @@ One of the [[primitive judgment|primitive judgments]].
 
 A special form of [[axiom]] that cannot introduce an inconsistency.
 
-Definitions can also be provided in-line with the declaration of a [[function]] or [[relation]], by following the declaration with an equals sign (`=`) and an expression.
+Definitions can also be provided in-line with the declaration of a [[function]] or [[relation]], by following the declaration with an equals sign (`=`) and an [[expression]].
 
-Defining a [[function]], [[relation]] or [[variable]] changes it from being a [[state variable]] to being immutable. Immutable definitions cannot be [[assignment|assigned]] in [[action|actions]].
+Defining a [[function]], [[relation]] or [[declared variable]] changes it from being a [[state variable]] to being immutable. Immutable definitions cannot be [[assignment|assigned]] in [[action|actions]].
 
 ## Example:
 ```

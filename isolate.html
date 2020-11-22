@@ -40,6 +40,7 @@
           <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
           <li><a href="logical-fragment.html">Logical fragment</a></li>
           <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
           <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
           <li><a href="further-info.html">Further info</a></li>
         </ul>
@@ -53,27 +54,11 @@
       <header>isolate</header>
       <div id="content"><p><a href="keywords.html">Keyword</a>: <code>isolate</code></p>
 
-<p>An isolate is an isolated context for verification.</p>
+<p>An isolate is an isolated (or "modular") context for verification.</p>
 
 <p>An isolate is also an <a href="object.html">object</a>, meaning that is an instance of a <a href="module.html">module</a>. Declaring an isolate therefore requires either <a href="declaration.html">declaring</a> and defining an object in-line, or else declaring that an existing object is an isolate (i.e. that it should be verified in isolation).</p>
 
-<p>The isolation of an isolate is accomplished through information-hiding similar to visibility control in a programming language. Specifically, declarations in an isolate are treated differently according to 3 different levels of visibility:</p>
-
-<ul>
-<li><strong>specification</strong> declarations, in a <code>specification { ... }</code> block</li>
-<li><strong>implementation</strong> declarations, in an <code>implementation { ... }</code> block </li>
-<li><strong>private</strong> declarations, in a <code>private { ... }</code> block</li>
-</ul>
-
-<p>These blocks may occur within modules, objects, or in-line isolate declarations. That is, one can write any of the following:</p>
-
-<ul>
-<li><code>module foo = { ... specification { ... } }</code></li>
-<li><code>object foo = { ... specification { ... } }</code></li>
-<li><code>isolate foo = { ... specification { ... } }</code></li>
-</ul>
-
-<p>Each of these blocks marks all the declarations inside it as having the given visibility, which in turn affects how verification treats them and, in particular, the <strong>relationships</strong> between the visibility levels of declarations in the current isolate and those in any other isolate that's provided as a <code>with</code> argument to the current isolate declaration. The visibility-modifying blocks do not otherwise affect the module or object nesting structure. </p>
+<p>The isolation of an isolate is not total: the <code>specification</code> portions of other objects may be made available to the isolate through a trailing <code>... with &lt;others&gt;</code> clause after the isolate declaration. Splitting an object's declarations into separate specifications and implementations is supported through <a href="visibility-qualifiers.html">visibility qualifiers</a>.</p>
 
 <p>By default, every program has a single top-level isolate (which is anonymous but can be denoted by <code>this</code> at the top-level). </p>
 
@@ -243,13 +228,17 @@ export odds.put
 
 <ul>
 <li><a href="action.html">action</a></li>
+<li><a href="assumption.html">assumption</a></li>
 <li><a href="declaration.html">declaration</a></li>
 <li><a href="export.html">export</a></li>
+<li><a href="guarantee.html">guarantee</a></li>
 <li><a href="invariant.html">invariant</a></li>
 <li><a href="keywords.html">keywords</a></li>
 <li><a href="module.html">module</a></li>
 <li><a href="object.html">object</a></li>
 <li><a href="singleton-object.html">singleton object</a></li>
+<li><a href="stratification.html">stratification</a></li>
+<li><a href="visibility-qualifiers.html">visibility qualifiers</a></li>
 <li><a href="weakest-liberal-precondition.html">weakest liberal precondition</a></li>
 </ul>
 

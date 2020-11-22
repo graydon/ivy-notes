@@ -6,7 +6,7 @@ A property is a [[proposition]] that can be admitted as true only if it follows 
 
 If a proof is not supplied, IVy applies its default proof [[tactic]].  This calls the automated prover Z3 to attempt to prove the property from the previously admitted judgments in the current context.
 
-The default tactic works by generating a [[verification condition]] to be checked by Z3. This is a formula whose validity implies that the property is true in the current context.
+The default tactic works by generating a [[verification condition]] to be checked by Z3. This is a [[formula]] whose validity implies that the property is true in the current context.
 
 ## Example:
 ```

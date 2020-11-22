@@ -40,6 +40,7 @@
           <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
           <li><a href="logical-fragment.html">Logical fragment</a></li>
           <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
           <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
           <li><a href="further-info.html">Further info</a></li>
         </ul>
@@ -103,7 +104,7 @@ x := temp if c else z
 <pre><code>x := y + next
 </code></pre>
 
-<p>The lack of parentheses introduces no ambiguity, since the action <code>next</code> is not a value and cannot itself be passed as an argument to the function <code>+</code>. An advantage of this convention is that we don't have to remember whether <code>next</code> is an <a href="action.html">action</a> or a <a href="variable.html">variable</a>, and we can easily replace a variable by an action without modifying all references to the variable.</p>
+<p>The lack of parentheses introduces no ambiguity, since the action <code>next</code> is not a value and cannot itself be passed as an argument to the function <code>+</code>. An advantage of this convention is that we don't have to remember whether <code>next</code> is an <a href="action.html">action</a> or a <a href="declared-variable.html">declared variable</a>, and we can easily replace a variable by an action without modifying all references to the variable.</p>
 
 <div class="backlinks">
 

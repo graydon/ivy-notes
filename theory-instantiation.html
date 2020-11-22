@@ -40,6 +40,7 @@
           <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
           <li><a href="logical-fragment.html">Logical fragment</a></li>
           <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
           <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
           <li><a href="further-info.html">Further info</a></li>
         </ul>
@@ -57,7 +58,7 @@
 
 <p>(Not to be confused with the <a href="instantiation.html">many other meanings of the term "instantiation"</a>)</p>
 
-<p>The normal way of using IVy is to declare uninterpreted <a href="type.html">types</a> and to give the necessary <a href="axiom.html">axioms</a> over those types to prove desired <a href="property.html">properties</a> of a system. However, it is also possible in IVy to associate <a href="type.html">types</a> with <em>sorts</em> that are interpreted in the underlying theorem prover by declaring <code>interpret &lt;ty&gt; -&gt; &lt;sort&gt;</code></p>
+<p>The normal way of using IVy is to declare <a href="uninterpreted-type.html">uninterpreted types</a> and to give the necessary <a href="axiom.html">axioms</a> over those types to prove desired <a href="property.html">properties</a> of a system. However, it is also possible in IVy to associate <a href="type.html">types</a> with <a href="sort.html">sorts</a> that are interpreted in the underlying theorem prover by declaring <code>interpret &lt;ty&gt; -&gt; &lt;sort&gt;</code></p>
 
 <p>Concrete sorts that are currently available for interpreting IVy types are:</p>
 
@@ -104,11 +105,17 @@ interpret extract_lo -&gt; bfe[3][0]
 
 <ul>
 <li><a href="expression.html">expression</a></li>
+<li><a href="finite-almost-uninterpreted.html">finite almost uninterpreted</a></li>
+<li><a href="finite-essentially-uninterpreted.html">finite essentially uninterpreted</a></li>
 <li><a href="instantiation.html">instantiation</a></li>
 <li><a href="keywords.html">keywords</a></li>
+<li><a href="logical-fragment.html">logical fragment</a></li>
+<li><a href="many-sorted-logic.html">many-sorted logic</a></li>
 <li><a href="primitive-judgment.html">primitive judgment</a></li>
+<li><a href="recovering-decidability.html">recovering decidability</a></li>
 <li><a href="sort.html">sort</a></li>
 <li><a href="type.html">type</a></li>
+<li><a href="uninterpreted-type.html">uninterpreted type</a></li>
 </ul>
 
 </div>

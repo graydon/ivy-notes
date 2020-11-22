@@ -40,6 +40,7 @@
           <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
           <li><a href="logical-fragment.html">Logical fragment</a></li>
           <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
           <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
           <li><a href="further-info.html">Further info</a></li>
         </ul>
@@ -51,7 +52,9 @@
     </nav>
     <article>
       <header>theorem</header>
-      <div id="content"><p>One of the <a href="schema.html">compound judgments</a>.</p>
+      <div id="content"><p><a href="keywords.html">Keyword</a>: <code>theorem</code></p>
+
+<p>One of the <a href="schema.html">compound judgments</a>.</p>
 
 <p>Like <a href="property.html">properties</a>, admitted only with <a href="proof.html">proof</a>. Essentially the "compound judgment" form of a property, or in other words a "proerty schema". In yet more other words: a property parameterized by <em>premises</em> that must be supplied when it is <a href="judgment-application.html">applied</a>.</p>
 
@@ -70,7 +73,7 @@
     }
 </code></pre>
 
-<p>This theorem expresses the transitivity of equality. No explicit proof is required here, IVy's default tactic generates the following verification condition:</p>
+<p>This theorem expresses the transitivity of equality. No explicit proof is required here, IVy's default tactic generates the following <a href="verification-condition.html">verification condition</a>:</p>
 
 <pre><code>#-   X = Y &amp; Y = Z -&gt; X = Z
 </code></pre>
@@ -122,9 +125,7 @@
     }
 </code></pre>
 
-<p>We think this theorem holds because <code>f(f(f(X)))</code> is equal to <code>f(f(X))</code><br />
-(by idempotence of <em>f</em>) which in turn is equal to <code>f(X)</code> (again, by<br />
-idempotence of <em>f</em>). We then apply transitivity to infer <code>f(f(f(X))) = f(X)</code>.</p>
+<p>We think this theorem holds because <code>f(f(f(X)))</code> is equal to <code>f(f(X))</code> (by idempotence of <em>f</em>) which in turn is equal to <code>f(X)</code> (again, by idempotence of <em>f</em>). We then apply transitivity to infer <code>f(f(f(X))) = f(X)</code>.</p>
 
 <p>To prove that <code>f(f(f(X))) = f(f(X))</code> from idempotence, we apply the <code>elimA</code> theorem with <code>idem</code> as the premise. Let's look in a little more detail at how this works. The <code>elimA</code> theorem has a premise <code>forall X. p(X)</code>. Ivy matches has to find a substitution that will match this formulas <code>idem</code>, the premise that we want to use, which is <code>forall X. f(f(X)) = f(X)</code>.</p>
 
@@ -172,6 +173,7 @@ idempotence of <em>f</em>). We then apply transitivity to infer <code>f(f(f(X)))
 <li><a href="keywords.html">keywords</a></li>
 <li><a href="proof.html">proof</a></li>
 <li><a href="schema.html">schema</a></li>
+<li><a href="skolemization.html">skolemization</a></li>
 </ul>
 
 </div>

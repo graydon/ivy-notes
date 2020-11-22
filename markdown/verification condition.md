@@ -1,6 +1,6 @@
 A **verification condition** is a [[formula]] that, if valid, implies the correctness of a [[program]] (or [[action]], [[logical judgment]], or logical [[statement]]).
 
-IVy's default [[tactic]] for a [[proof]] automatically generates a verification condition for the context requiring the proof. If the verification condition does not fall within the FAU [[logical fragment]], the user will need to participate in constructing a proof.
+IVy's default [[tactic]] for a [[proof]] automatically generates a verification condition for the context requiring the proof. If the verification condition does not fall within the FAU [[logical fragment]], the user will need to participate in [[recovering decidability|constructing a proof or changing the context]].
 
 The same default verification condition generation tactic is involved in proving a free-standing [[logical judgment]] or an [[assertion]], [[precondition]] or [[postcondition]] statement inside an action. Only the input to the tactic varies depending on context.
 
@@ -68,33 +68,5 @@ Counter-models are extremely important from the point of view of transparency.  
 
 ## Positive and negative occurrences of formulas in VCs
 
-Verification conditions for even moderately complex programs are big messy formulas that are hard to read. Fortunately, from the point of view of decidability, we need not be concerned with the exact form of the VC. Rather, for each formula occurring in the program or its specifications, we will be concerned with whether the formula occurs *positively* in the VC, or *negatively* or both. 
+Verification conditions for even moderately complex programs are big messy formulas that are hard to read. Fortunately, from the point of view of decidability, we need not be concerned with the exact form of the VC. Rather, for each formula occurring in the program or its specifications, we will be concerned with whether the formula occurs [[positive and negative occurrences|positively in the VC, or negatively]] or both. 
 
-A positive occurrence is one under an even number of negations, while a negative occurrence is under an odd number. For example, in the following formula:
-
-```
-~(~P | Q)
-```
-
-`P` occurs positively and `Q` occurs negatively. In the formula `P -> Q`, `P` occurs negatively and `Q` positively, since this is equivalent to `~P | Q`. In the formula `P <-> Q`, `P` and `Q` occur *both* positively and negatively, since this is equivalent to `(P -> Q) & (Q -> P)`.
-
-In the negated verification conditions, generally speaking, an assumption occurs positively, while a guarantee occurs negatively. Assignments in the code behave like assumptions.  To see this, we can rewrite the semantics of assignment using a quantifier, like this:
-
-```
-wlp(y := e, R) = R[e/y]
-               = forall y. y = e -> R
-```
-
-Using this method, and converting to [prenex normal form](https://en.wikipedia.org/wiki/Prenex_normal_form), the negated VC for our example becomes a conjunction of the following three formulas:
-
-```
-x > 0
-y = x - 1
-~(x < y)
-```
-
-We can see that the assumption `x > 0` occurs positively, the assignment `y = x - 1` occurs positively as an equation, and the guarantee `x < y` occurs negatively. 
-
-On the other hand, as noted above, the VC's for a program invariant *I* have this form: `I -> wlp(a,I)`. This means that the invariant *I* occurs both positively and negatively (or put another way, it is both an assumption and a guarantee). 
-
-Understanding which formulas occur positively and negatively in the negated VC will be important in understanding why the VC is or is not in the [[logical fragment|decidable fragment]].

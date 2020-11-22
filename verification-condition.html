@@ -40,6 +40,7 @@
           <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
           <li><a href="logical-fragment.html">Logical fragment</a></li>
           <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
           <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
           <li><a href="further-info.html">Further info</a></li>
         </ul>
@@ -53,7 +54,7 @@
       <header>verification condition</header>
       <div id="content"><p>A <strong>verification condition</strong> is a <a href="formula.html">formula</a> that, if valid, implies the correctness of a <a href="program.html">program</a> (or <a href="action.html">action</a>, <a href="logical-judgment.html">logical judgment</a>, or logical <a href="statement.html">statement</a>).</p>
 
-<p>IVy's default <a href="tactic.html">tactic</a> for a <a href="proof.html">proof</a> automatically generates a verification condition for the context requiring the proof. If the verification condition does not fall within the FAU <a href="logical-fragment.html">logical fragment</a>, the user will need to participate in constructing a proof.</p>
+<p>IVy's default <a href="tactic.html">tactic</a> for a <a href="proof.html">proof</a> automatically generates a verification condition for the context requiring the proof. If the verification condition does not fall within the FAU <a href="logical-fragment.html">logical fragment</a>, the user will need to participate in <a href="recovering-decidability.html">constructing a proof or changing the context</a>.</p>
 
 <p>The same default verification condition generation tactic is involved in proving a free-standing <a href="logical-judgment.html">logical judgment</a> or an <a href="assertion.html">assertion</a>, <a href="precondition.html">precondition</a> or <a href="postcondition.html">postcondition</a> statement inside an action. Only the input to the tactic varies depending on context.</p>
 
@@ -116,44 +117,28 @@ why the proof doesn't work.</p>
 
 <h2 id="positive-and-negative-occurrences-of-formulas-in-vcs">Positive and negative occurrences of formulas in VCs</h2>
 
-<p>Verification conditions for even moderately complex programs are big messy formulas that are hard to read. Fortunately, from the point of view of decidability, we need not be concerned with the exact form of the VC. Rather, for each formula occurring in the program or its specifications, we will be concerned with whether the formula occurs <em>positively</em> in the VC, or <em>negatively</em> or both. </p>
-
-<p>A positive occurrence is one under an even number of negations, while a negative occurrence is under an odd number. For example, in the following formula:</p>
-
-<pre><code>~(~P | Q)
-</code></pre>
-
-<p><code>P</code> occurs positively and <code>Q</code> occurs negatively. In the formula <code>P -&gt; Q</code>, <code>P</code> occurs negatively and <code>Q</code> positively, since this is equivalent to <code>~P | Q</code>. In the formula <code>P &lt;-&gt; Q</code>, <code>P</code> and <code>Q</code> occur <em>both</em> positively and negatively, since this is equivalent to <code>(P -&gt; Q) &amp; (Q -&gt; P)</code>.</p>
-
-<p>In the negated verification conditions, generally speaking, an assumption occurs positively, while a guarantee occurs negatively. Assignments in the code behave like assumptions.  To see this, we can rewrite the semantics of assignment using a quantifier, like this:</p>
-
-<pre><code>wlp(y := e, R) = R[e/y]
-               = forall y. y = e -&gt; R
-</code></pre>
-
-<p>Using this method, and converting to <a href="https://en.wikipedia.org/wiki/Prenex_normal_form">prenex normal form</a>, the negated VC for our example becomes a conjunction of the following three formulas:</p>
-
-<pre><code>x &gt; 0
-y = x - 1
-~(x &lt; y)
-</code></pre>
-
-<p>We can see that the assumption <code>x &gt; 0</code> occurs positively, the assignment <code>y = x - 1</code> occurs positively as an equation, and the guarantee <code>x &lt; y</code> occurs negatively. </p>
-
-<p>On the other hand, as noted above, the VC's for a program invariant <em>I</em> have this form: <code>I -&gt; wlp(a,I)</code>. This means that the invariant <em>I</em> occurs both positively and negatively (or put another way, it is both an assumption and a guarantee). </p>
-
-<p>Understanding which formulas occur positively and negatively in the negated VC will be important in understanding why the VC is or is not in the <a href="logical-fragment.html">decidable fragment</a>.</p>
+<p>Verification conditions for even moderately complex programs are big messy formulas that are hard to read. Fortunately, from the point of view of decidability, we need not be concerned with the exact form of the VC. Rather, for each formula occurring in the program or its specifications, we will be concerned with whether the formula occurs <a href="positive-and-negative-occurrences.html">positively in the VC, or negatively</a> or both. </p>
 
 <div class="backlinks">
 
 <h2 id="backlinks">Backlinks</h2>
 
 <ul>
+<li><a href="assumption.html">assumption</a></li>
+<li><a href="effectively-propositional.html">effectively propositional</a></li>
+<li><a href="first-order-logic.html">first-order logic</a></li>
+<li><a href="guarantee.html">guarantee</a></li>
 <li><a href="invariant.html">invariant</a></li>
+<li><a href="logical-fragment.html">logical fragment</a></li>
+<li><a href="positive-and-negative-occurrences.html">positive and negative occurrences</a></li>
+<li><a href="postcondition.html">postcondition</a></li>
 <li><a href="precondition.html">precondition</a></li>
 <li><a href="property.html">property</a></li>
+<li><a href="recovering-decidability.html">recovering decidability</a></li>
 <li><a href="sort.html">sort</a></li>
+<li><a href="stratification.html">stratification</a></li>
 <li><a href="tactic.html">tactic</a></li>
+<li><a href="theorem.html">theorem</a></li>
 <li><a href="transition-relation.html">transition relation</a></li>
 <li><a href="weakest-liberal-precondition.html">weakest liberal precondition</a></li>
 </ul>

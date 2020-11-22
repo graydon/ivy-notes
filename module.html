@@ -40,6 +40,7 @@
           <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
           <li><a href="logical-fragment.html">Logical fragment</a></li>
           <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
           <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
           <li><a href="further-info.html">Further info</a></li>
         </ul>
@@ -63,9 +64,7 @@
 
 <p>Besides defining classes of objects, modules can be used to capture a re-usable theory, or structure a modular proof.</p>
 
-<p>Modules can contain <code>private</code> blocks, which contain declarations not visible outside the module. These are typically used to contain invariants that rule out unreachable states, supporting a publicly visible inductive invariant.</p>
-
-<p>A module can also use <code>specification</code> and <code>implementation</code> blocks to split its declarations between abstract logical specifications and concrete implementations. Examples of this are shown in the page on <a href="isolate.html">isolates</a>.</p>
+<p>Declarations within modules are subject to <a href="visibility-qualifiers.html">visibility qualifiers</a>, that limit how module members may be seen when verified as an <a href="isolate.html">isolate</a>.</p>
 
 <h2 id="examples">Examples:</h2>
 
@@ -115,13 +114,15 @@ with a test for zero:</p>
 
 <ul>
 <li><a href="declaration.html">declaration</a></li>
+<li><a href="declared-variable.html">declared variable</a></li>
+<li><a href="existential-quantifier.html">existential quantifier</a></li>
 <li><a href="instantiation.html">instantiation</a></li>
 <li><a href="isolate.html">isolate</a></li>
 <li><a href="keywords.html">keywords</a></li>
 <li><a href="module-instantiation.html">module instantiation</a></li>
 <li><a href="object.html">object</a></li>
 <li><a href="singleton-object.html">singleton object</a></li>
-<li><a href="variable.html">variable</a></li>
+<li><a href="universal-quantifier.html">universal quantifier</a></li>
 </ul>
 
 </div>

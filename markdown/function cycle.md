@@ -1,0 +1,1 @@
+A "function cycle" is another term for a cycle in the [[relevant vocabulary]] graph (or in merely [[stratification|stratified]] logic, in the stratification graph). The occurrence of such a cycle takes a term outside the [[logical fragment|decidable fragment]].

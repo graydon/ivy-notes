@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>uninterpreted function</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2><a href="index.html">IVy notes</a></h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+          <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
+          <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
+          <li><a href="further-info.html">Further info</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>uninterpreted function</header>
+      <div id="content"><p>A <a href="function.html">function</a> is <strong>uninterpreted</strong> when it is defined on <a href="uninterpreted-type.html">uninterpreted types</a>.</p>
+
+<p>This means that there is no additional theory associated with the function's input and output types (either providing or constraining possible inputs or outputs) beyond <a href="declaration.html">declarations</a> and <a href="definition.html">definitions</a> provided by the user.</p>
+
+<p>Many functions in IVy programs are uninterpreted.</p>
+
+<p>All a solver knows about an uninterpreted function is:</p>
+
+<ul>
+<li>The function <strong>exists</strong>.</li>
+<li>It can be applied to terms of its input type.</li>
+<li>Such applications are terms of its output type.</li>
+<li>Occurrences of the function must satisfy other properties or axioms declared by the user.</li>
+</ul>
+
+<p>Importantly: satisfiability of terms in the theory of <a href="https://en.wikipedia.org/wiki/Uninterpreted_function">uninterpreted functions</a> ("UF") is decidable, and all SMT solvers include a decision procedure for it (called "unification").</p>
+
+<p>This fact -- that satisfiability of UF is decidable -- may seem surprising or counterintuitive because solvers "know so little" about the functions in UF. They may be anything!</p>
+
+<p>But the point is that UF itself is a small theory -- it doesn't include basic arithmetic -- and since the types involved in an uninterpreted function are themselves uninterpreted, there are:</p>
+
+<ul>
+<li>very few <strong>possibilities</strong> for <a href="ground-terms.html">ground terms</a> of an uninterpreted type serving as input to the function (only those <a href="individual.html">individuals</a> explicitly declared, or other applications of <a href="uninterpreted-function.html">uninterpreted function</a>) </li>
+<li>very few possible <strong>constraints</strong> that might occur in a UF formula that would cause a given candidate model not to satisfy the formula</li>
+</ul>
+
+<p>So simple decision procedures like "plug in all possible ground terms" work.</p>
+
+<p>In general, more-powerful theories become less decidable; and UF is not a very powerful theory.</p>
+
+<p>UF is a sub-theory of all the <a href="logical-fragment.html">fragments</a> used in IVy.</p>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="finite-essentially-uninterpreted.html">finite essentially uninterpreted</a></li>
+<li><a href="logical-variable.html">logical variable</a></li>
+<li><a href="many-sorted-logic.html">many-sorted logic</a></li>
+<li><a href="relevant-vocabulary.html">relevant vocabulary</a></li>
+<li><a href="skolemization.html">skolemization</a></li>
+<li><a href="uninterpreted-type.html">uninterpreted type</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>

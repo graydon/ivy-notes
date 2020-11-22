@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>quantifier alternation</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2><a href="index.html">IVy notes</a></h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+          <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
+          <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
+          <li><a href="further-info.html">Further info</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>quantifier alternation</header>
+      <div id="content"><p>One way of characterizing the complexity of various decision problems in formal logic involves looking at the nesting structure of the quantifier prefix in their <a href="prenex-normal-form.html">prenex normal form</a>.</p>
+
+<p>In particular, <strong>alternations</strong> in the nesting structure are relevant: positions where one or more <a href="universal-quantifier.html">universal quantifiers</a> are followed by one or more <a href="existential-quantifier.html">existential quantifiers</a>, or vice-versa.</p>
+
+<p>This is a fairly large topic itself but for our purposes, it's only relevant that:</p>
+
+<ul>
+<li>The number and order of quantifier alternations matter to the complexity of analyzing a formula. The restrictions of the various <a href="logical-fragment.html">logical fragments</a> of interest in IVy are almost all about limiting discourse to specific alternations (for example <a href="effectively-propositional.html">EPR</a> is <code>exists.forall.</code>)</li>
+<li>Depending on the writer, the alternation structure of a formula may be abbreviated a few equivalent ways:<br />
+<ul><br />
+<li>The universal quantifier is written <code>forall</code> in IVy but <code>∀</code> in formal logic and simply <code>A</code> in a fair amount of literature. That is, a writer might refer to an "A formula".</li><br />
+<li>The existential quantifier is written <code>exists</code> in IVy but <code>∃</code> in formal logic and imply <code>E</code> in a fair amount of literature. That is, a writer might refer to an "E formula".</li><br />
+<li>Therefore people may write about, for example, <code>∀∃∀</code> formulas for those formulas that have a prefix that alternates between universal, existential, and finally universal quantification. Other authors might just call this an "AEA formula".</li><br />
+<li>In many contexts, sequences of quantifiers of the same type (universal or existential) are abbreviated by an asterisk, for example <code>∀*∃∀</code> might refer to formulas that have <strong>multiple</strong> universal quantifiers before the first alternation to an existential quantifier. In other contexts the asterisks might be omitted, and an <code>∀∃∀</code> formula might really mean "any formula with any number of repetitions of each quantifier type".</li><br />
+</ul></li>
+</ul>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="effectively-propositional.html">effectively propositional</a></li>
+<li><a href="logical-fragment.html">logical fragment</a></li>
+<li><a href="prenex-normal-form.html">prenex normal form</a></li>
+<li><a href="stratification.html">stratification</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>
