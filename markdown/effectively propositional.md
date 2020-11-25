@@ -9,7 +9,7 @@ See also the [wikipedia page](https://en.wikipedia.org/wiki/Bernays%E2%80%93Sch%
 
 ## Example
 
-Suppose we take the [[axioms]] of a partial order as [[assumption|assumptions]]:
+Suppose we take the [[axiom|axioms]] of a partial order as [[assumption|assumptions]]:
 
 ```
 forall X,Y,Z. X < Y & Y < Z -> X < Z

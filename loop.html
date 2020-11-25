@@ -12,7 +12,7 @@
   <!-- CSS (uses absolute weblinks to work around relative path issues) -->
   <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
 
-  <title>invariant</title>
+  <title>loop</title>
 </head>
 
 <body>
@@ -51,39 +51,75 @@
       </div>
     </nav>
     <article>
-      <header>invariant</header>
-      <div id="content"><p><a href="keywords.html">Keyword</a>: <code>invariant</code></p>
+      <header>loop</header>
+      <div id="content"><p><a href="keywords.html">Keyword</a>: <code>while</code></p>
 
-<h2 id="in-a-modulemodulehtml">In a <a href="module.html">module</a></h2>
+<p>Loops are discouraged in Ivy. Often, the effect of a loop can be described using an assignment or an <code>if some</code> conditional. </p>
 
-<p>An invariant <a href="declaration.html">declaration</a> is a <a href="primitive-judgment.html">primitive judgment</a> associated with a specific <a href="isolate.html">isolate</a>, <a href="object.html">object</a> or <a href="module.html">module</a> (or at top-level, the program's global module). Its is <a href="verification-condition.html">verified</a> by checking that it is an <strong>inductive</strong> invariant. This involves two steps:</p>
+<p>For example, instead of something like this (note: IVy has no <code>for</code> loops at all):</p>
 
-<ul>
-<li>Initiation: checking whether the isolate's <a href="initializer.html">initializer</a> establishes the invariant.</li>
-<li>Consecution: checking whether every <a href="export.html">exported</a> <a href="action.html">action</a> within the isolate, individually, preserves the invariant.</li>
-</ul>
+<pre><code># Note: not legal IVy code
+for y in type {
+    link(x,y) := false
+}
+</code></pre>
 
-<p>When verifying an invariant's consecution for a given action, the invariant is <a href="assumption.html">assumed</a> before the action and must be <a href="guarantee.html">guaranteed</a> by the action.</p>
+<p>we can write this, using a <a href="free-variable.html">free variable</a> in an <a href="assignment.html">assignment</a>:</p>
 
-<h2 id="in-a-looploophtml">In a <a href="loop.html">loop</a></h2>
+<pre><code>link(x,Y) := false
+</code></pre>
 
-<p>A <a href="loop.html">loop</a> invariant is an annotation on a loop body that provides both an <a href="assumption.html">assumption</a> and <a href="guarantee.html">guarantee</a> about each iteration of the loop -- effectively an <a href="assertion.html">assertion</a> on the state variables at both the beginning and end of the loop body.</p>
+<p>When a loop is needed, it can be written like this:</p>
+
+<pre><code>sum := 0;
+i := x;
+while i &gt; 0
+{
+    sum := sum + f(i);
+    i := i - 1
+}
+</code></pre>
+
+<p>This loop computes the sum of <code>f(i)</code> for <code>i</code> in the range <code>(0,x]</code>.</p>
+
+<h2 id="loop-invariants">Loop invariants</h2>
+
+<p>A loop can be decorated with a <a href="invariant.html">invariants</a>, like this:</p>
+
+<pre><code>while i &gt; 0
+invariant sum &gt;= 0
+{
+    sum := sum + f(i);
+    i := i - 1
+}
+</code></pre>
+
+<p>The invariant <code>sum &gt;= 0</code> is a special assertion that is applied on each loop iteration, before the evaluation of the condition. Invariants are helpful in proving properties of programs with loops.</p>
+
+<h2 id="termination-and-ranking-functions">Termination and ranking functions</h2>
+
+<p>In some situations we need to guarantee that a loop always terminates. We can do this with ranking function that is supplied by the keyword <code>decreases</code>, like this:</p>
+
+<pre><code>while i &gt; 0
+invariant sum &gt;= 0
+decreases i
+{
+    sum := sum + f(i);
+    i := i - 1
+}
+</code></pre>
+
+<p>The argument of <code>decreases</code> is an expression whose value must decrease with every loop iteration and such that the loop is never entered when the expression is less than <code>0</code>.</p>
 
 <div class="backlinks">
 
 <h2 id="backlinks">Backlinks</h2>
 
 <ul>
-<li><a href="assumption.html">assumption</a></li>
-<li><a href="guarantee.html">guarantee</a></li>
-<li><a href="initializer.html">initializer</a></li>
-<li><a href="isolate.html">isolate</a></li>
+<li><a href="free-variable.html">free variable</a></li>
+<li><a href="invariant.html">invariant</a></li>
 <li><a href="keywords.html">keywords</a></li>
-<li><a href="loop.html">loop</a></li>
-<li><a href="positive-and-negative-occurrences.html">positive and negative occurrences</a></li>
-<li><a href="primitive-judgment.html">primitive judgment</a></li>
-<li><a href="visibility-qualifiers.html">visibility qualifiers</a></li>
-<li><a href="weakest-liberal-precondition.html">weakest liberal precondition</a></li>
+<li><a href="statement.html">statement</a></li>
 </ul>
 
 </div>

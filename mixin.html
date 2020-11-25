@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>mixin</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2><a href="index.html">IVy notes</a></h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+          <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
+          <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
+          <li><a href="further-info.html">Further info</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>mixin</header>
+      <div id="content"><p><a href="keywords.html">Keywords</a>:  <code>mixin</code>, <code>execute</code>, <code>before</code>, <code>after</code>, <code>around</code></p>
+
+<p>A mixin is a (possibly anonymous) <a href="action.html">action</a> whose execution is coupled to some other named target action (possibly in a different <a href="module.html">module</a> or <a href="object.html">object</a>) such that any call to the target action is preceded or followed by a call to the mixin.</p>
+
+<p>Each mixin is declared with a mode:</p>
+
+<ul>
+<li><code>mixin X before Y</code> executes mixin action <code>X</code>  before target action <code>Y</code></li>
+<li><code>mixin X after Y</code> executes mixin action <code>X</code> after target action <code>Y</code></li>
+</ul>
+
+<p>Mixins are invoked with the same arguments as their target actions. An <code>after</code> mixin can also see the (named) return value of the target action.</p>
+
+<p>Any <a href="precondition.html">precondition</a> or <a href="postcondition.html">postcondition</a> of a mixin is added to the target action as a <a href="precondition.html">precondition</a> or <a href="postcondition.html">postcondition</a> of the target.</p>
+
+<p>Mixins may be declared with separate <a href="visibility-qualifiers.html">visibility qualifiers</a> from implementations. It is typical to declare mixins with pre and post conditions for an action that is otherwise abstract in a <code>specification</code> block, while placing the body of the action in the <code>implementation</code> block.</p>
+
+<p>Mixins are ubiquitous enough that they have several abbreviations and synonyms:</p>
+
+<ul>
+<li>The keyword <code>execute</code> is a synonym for <code>mixin</code>, so <code>execute X before Y</code> is a mixin declaration identical to <code>mixin X before Y</code></li>
+<li>Actions that exist <em>solely</em> to be mixins may be declared anonymously and associated with a target in a single declaration:<br />
+<ul><br />
+<li><code>before Y(&lt;arguments&gt;) { &lt;statements&gt; }</code></li><br />
+<li><code>after Y(&lt;arguments&gt;) { &lt;statements&gt; }</code></li><br />
+</ul></li>
+<li>Since the arguments for an mixin must match those of their target action, the arguments list of an anonymous mixin may be omitted -- it will be implicitly identical to that of the target, with the same argument names:<br />
+<ul><br />
+<li><code>before Y { &lt;statements&gt; }</code></li><br />
+<li><code>after Y { &lt;statements&gt; }</code></li><br />
+</ul></li>
+<li><p>As a further abbreviation, a pair of anonymous before/after mixins may be declared using <code>around X { &lt;before-statements&gt; ... &lt;after-statements&gt; }</code> where <code>...</code> is a literal punctuation token consisting of three dots.</p>
+
+<h2 id="examples">Examples</h2>
+
+<h2 id="example-adding-a-precondition">Example: adding a precondition</h2></li>
+</ul>
+
+<pre><code>action pre_connect(x:client,y:server) = {
+    require semaphore(y)
+}        
+execute pre_connect before connect
+ ```
+
+ This example adds a [precondition](precondition.html) to any call to some [action](action.html) `connect(x:client,y:server)`. It is equivalent to declaring:
+
+</code></pre>
+
+<p>before connect(x:client,y:server) {<br />
+    require semaphore(y)<br />
+}</p>
+
+<pre><code>
+Or even more tersely:
+
+</code></pre>
+
+<p>before connect {<br />
+    require semaphore(y)<br />
+}</p>
+
+<pre><code>
+## Example: adding a postcondition
+</code></pre>
+
+<p>action post_incr(inp:t) returns(out:t) = {<br />
+    ensure inp &lt; out<br />
+}</p>
+
+<p>execute post_incr after incr</p>
+
+<pre><code>
+This example adds a [postcondition](postcondition.html) to any call to some [action](action.html) `incr(inp:t) returns (out:t)`. It is equivalent to declaring:
+
+</code></pre>
+
+<p>after incr(inp:t) returns(out:t) {<br />
+    ensure inp &lt; out<br />
+}</p>
+
+<pre><code>
+Or even more tersely:
+
+</code></pre>
+
+<p>after incr {<br />
+    ensure inp &lt; out<br />
+}<br />
+```</p>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="initializer.html">initializer</a></li>
+<li><a href="keywords.html">keywords</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>

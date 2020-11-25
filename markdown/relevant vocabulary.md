@@ -81,7 +81,7 @@ V[r,2] = {a}
 V[X] = {a}
 ```
 
-That is, even though the function `f` is not [[stratified]], we still need only a finite instantiation to determine satisfiability of this formula. It is easy seen, however, that all the stratified formulas have finite relevant vocabularies.
+That is, even though the function `f` is not [[stratification|stratified]], we still need only a finite instantiation to determine satisfiability of this formula. It is easy seen, however, that all the stratified formulas have finite relevant vocabularies.
 
 ### Example: infinite (cyclical) relevant vocabulary
 

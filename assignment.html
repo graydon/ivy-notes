@@ -56,6 +56,91 @@
 
 <p>It is denoted by the <code>:=</code> operator.</p>
 
+<p>Assignments may modify multiple state variables simultaneously, in order to capture multiple return values from a <a href="call.html">called</a> <a href="action.html">action</a>.</p>
+
+<p>The right-hand side of an assignment may be any of:</p>
+
+<ul>
+<li>An <a href="expression.html">expression</a>, causing assignment of concrete values</li>
+<li>A <a href="nondeterministic-choice.html">nondeterministic choice</a> (<code>*</code>) operator, causing an arbitrary assignment</li>
+<li>A <a href="call.html">call</a> to another <a href="action.html">action</a>, causing assignment of the action's return value(s)</li>
+</ul>
+
+<p>Assignments may make use of <a href="free-variable.html">free variables</a> to assign multiple values within a <a href="function.html">function</a> or <a href="relation.html">relation</a> simultaneously.</p>
+
+<p>Assignment may also be combined with the <a href="declared-variable.html">declaration of a local variable</a>.</p>
+
+<h2 id="examples">Examples:</h2>
+
+<h3 id="example-state-variable-assignment">Example: State variable assignment</h3>
+
+<pre><code>var x:bool
+
+action foo = {
+    x := true
+}
+</code></pre>
+
+<h3 id="example-relation-assignment">Example: relation assignment</h3>
+
+<pre><code>type t = {red, green, blue}
+
+relation bar(X:t, Y:t)
+
+action foo = {
+    bar(red,blue) := true
+}
+</code></pre>
+
+<h3 id="example-call-assignment">Example: call assignment</h3>
+
+<pre><code>action foo returns (x:bool) = {
+    x := true
+}
+
+var y: bool
+action bar = {
+    y := foo
+}
+</code></pre>
+
+<h3 id="example-multi-value-call-assignment">Example: multi-value call assignment</h3>
+
+<pre><code>action foo returns (a:bool, b:bool) = {
+    a := true;
+    b := false
+}
+
+var x: bool
+var y: bool
+
+action bar = {
+    (x, y) := foo
+}
+</code></pre>
+
+<h3 id="example-nondeterministic-choice">Example: nondeterministic choice</h3>
+
+<pre><code>type t = {red, green, blue}
+
+relation bar(X:t, Y:t)
+
+action foo = {
+    bar(red,blue) := *
+}
+</code></pre>
+
+<h3 id="example-free-variable-assignment">Example: free variable assignment</h3>
+
+<pre><code>type t = {red, green, blue}
+
+relation bar(X:t, Y:t)
+
+action foo = {
+    bar(P, Q) := true
+}
+</code></pre>
+
 <div class="backlinks">
 
 <h2 id="backlinks">Backlinks</h2>
@@ -65,6 +150,7 @@
 <li><a href="definition.html">definition</a></li>
 <li><a href="function.html">function</a></li>
 <li><a href="logical-variable.html">logical variable</a></li>
+<li><a href="loop.html">loop</a></li>
 <li><a href="positive-and-negative-occurrences.html">positive and negative occurrences</a></li>
 <li><a href="relation.html">relation</a></li>
 <li><a href="state-variable.html">state variable</a></li>

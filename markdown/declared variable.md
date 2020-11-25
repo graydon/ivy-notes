@@ -6,6 +6,8 @@ A variable can be [[definition|defined]] using a separate `definition` declarati
 
 If a variable is not immutable, it is a [[state variable]] that can be [[assignment|assigned]] during an action.
 
+A local variable without an initial assignment is equivalent to assigning a [[nondeterministic choice]] for the variable's initial value.
+
 ## Examples:
 
 ### Example: immutable variable

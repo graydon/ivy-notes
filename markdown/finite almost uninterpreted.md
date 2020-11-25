@@ -1,4 +1,4 @@
-"Finite almost uninterpreted" (FAU) is a [[logical fragment]] of [[first-order logic]] that extends [[FEU]] with one (important) special case: whereas [[universal quantifier|universal]] [[logical variable|variables]] are prohibited from use as arguments to [[theory instantiation|interpreted]] functions in FEU, in FAU they are allowed to be arguments to [[arithmetic literal|arithmetic literals]].
+"Finite almost uninterpreted" (FAU) is a [[logical fragment]] of [[first-order logic]] that extends [[finite essentially uninterpreted|FEU]] with one (important) special case: whereas [[universal quantifier|universal]] [[logical variable|variables]] are prohibited from use as arguments to [[theory instantiation|interpreted]] functions in FEU, in FAU they are allowed to be arguments to [[arithmetic literal|arithmetic literals]].
 
 ## Example
 

@@ -1,4 +1,4 @@
-Keyword: `call`
+[[keywords|Keyword]]: `call`
 
 An [[action]] can call another action, passing arguments, using the `call` keyword, for example:
 

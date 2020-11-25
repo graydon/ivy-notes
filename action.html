@@ -52,7 +52,7 @@
     </nav>
     <article>
       <header>action</header>
-      <div id="content"><p><a href="keywords.html">Keyword</a>: <code>action</code></p>
+      <div id="content"><p><a href="keywords.html">Keyword</a>: <code>action</code>, <code>returns</code></p>
 
 <p>A type of <a href="declaration.html">declaration</a>.</p>
 
@@ -67,7 +67,7 @@
 <li>All actions are isolated, that is, they appear to occur instantaneously, with no interruption.</li>
 </ul>
 
-<p>Actions may or may not terminate. An action terminates when control reaches the end of the action without any statements failing. If any statement fails, the action does not terminate.</p>
+<p>An action may return a value by listing a <code>returns (&lt;symbol&gt;:&lt;type&gt;)</code> in its signature. The named return value must then be assigned within the action.</p>
 
 <p>An action is logically interpreted as a <a href="transition-relation.html">transition relation</a> over <a href="state-variable.html">state variables</a>.</p>
 
@@ -98,6 +98,16 @@
 }
 </code></pre>
 
+<h3 id="example-returning-a-value">Example: returning a value</h3>
+
+<pre><code>type t
+interpret t -&gt; int
+
+action incr(x:t) returns (out:t) = {
+   out := x + 1
+}
+</code></pre>
+
 <div class="backlinks">
 
 <h2 id="backlinks">Backlinks</h2>
@@ -116,6 +126,7 @@
 <li><a href="invariant.html">invariant</a></li>
 <li><a href="keywords.html">keywords</a></li>
 <li><a href="logical-variable.html">logical variable</a></li>
+<li><a href="mixin.html">mixin</a></li>
 <li><a href="module-instantiation.html">module instantiation</a></li>
 <li><a href="relation.html">relation</a></li>
 <li><a href="state-variable.html">state variable</a></li>

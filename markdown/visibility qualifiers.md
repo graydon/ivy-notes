@@ -4,7 +4,7 @@
   - **implementation** declarations, in an `implementation { ... }` block 
   - **private** declarations, in a `private { ... }` block
 
-These blocks may occur (syntactically) within [[modules]], [[objects]], or in-line [[isolate]] declarations. That is, one can write any of the following:
+These blocks may occur (syntactically) within [[module]], [[object]], or in-line [[isolate]] declarations. That is, one can write any of the following:
 
   - `module foo = { ... specification { ... } }`
   - `object foo = { ... specification { ... } }`

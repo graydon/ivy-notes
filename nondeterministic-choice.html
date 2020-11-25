@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>nondeterministic choice</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2><a href="index.html">IVy notes</a></h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+          <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
+          <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
+          <li><a href="further-info.html">Further info</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>nondeterministic choice</header>
+      <div id="content"><p><a href="keywords.html">Keywords</a>: <code>some</code>, <code>maximizing</code>, <code>minimizing</code></p>
+
+<p>IVy supports nondeterminism in actions using the asterisk (<code>*</code>) symbol in various forms.</p>
+
+<h2 id="nondeterministic-assignment">Nondeterministic assignment</h2>
+
+<p>Assigning <code>*</code> to a <a href="state-variable.html">state variable</a> simply picks "some value" of the appropriate type for the variable.</p>
+
+<h2 id="nondeterministic-conditional">Nondeterministic conditional</h2>
+
+<p>A nondeterministic branch can be taken using <code>if * {... }</code>, optionally with an <code>else</code> branch for the case when the <code>if</code> branch is not taken.</p>
+
+<p>The <code>if some &lt;symbol&gt; . &lt;constraint&gt; { ... }</code> statement combines a nondeterministic branch with a nondeterministic choice and a constraint: if the constraint can be satisfied, a choice is made for a satisfying value and the conditional is taken, otherwise it is not (and any possible <code>else</code> block may be taken instead).</p>
+
+<p>If it also possible to choose a value in such a conditional either <code>minimizing</code> or <code>maximizing</code> some function of the value.</p>
+
+<h2 id="examples">Examples:</h2>
+
+<h3 id="example-nondeterministic-conditional">Example: nondeterministic conditional</h3>
+
+<pre><code>if some x:t. f(x) = y {
+    z := x + y
+} else {
+    z := y
+}        
+</code></pre>
+
+<p>Here, if there is any value <code>x</code> of type <code>t</code> such that <code>f(x) = y</code>, then such a value is assigned to <code>x</code> and the assignment <code>z := x + y</code> is executed. If there is more than one such value, the choice is non-deterministic. If there is no such value, the <code>else</code> clause is executed. The symbol <code>x</code> is only in scope in the <code>if</code> clause. It acts like a <a href="declared-variable.html">local variable</a> and is distinct from any <code>x</code> declared in an outer scope. </p>
+
+<h3 id="example-nondeterministic-conditional-with-minimizing">Example: nondeterministic conditional with minimizing</h3>
+
+<p>For example, we can find an element of a set <code>s</code> with the least key like this:</p>
+
+<pre><code>if some x:t. s(x) minimizing key(x) {
+    ...
+}
+</code></pre>
+
+<p>This is logically equivalent to the following:</p>
+
+<pre><code>if some x:t. s(x) &amp; ~exists Y. s(Y) &amp; key(Y) &lt; key(x) {
+   ...
+}
+</code></pre>
+
+<p>Besides being more concise, the <code>minimizing</code> syntax can be more efficiently compiled and is easier for Ivy to reason about. The keyword <code>maximizing</code> produces the same result with the direction of <code>&lt;</code> reversed.</p>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="assignment.html">assignment</a></li>
+<li><a href="declared-variable.html">declared variable</a></li>
+<li><a href="keywords.html">keywords</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>

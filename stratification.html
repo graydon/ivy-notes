@@ -69,7 +69,7 @@ function g(Y:u) : v
 
 <p>Using stratified function symbols is an important strategy for keeping <a href="verification-condition.html">verification conditions</a> in the decidable fragment. When planning the specification of a system, it is useful to carefully choose an order on the types, so that it is possible to use only functions from lesser to greater types. When a functions from types <code>t</code> to <code>u</code> and <code>u</code> to <code>t</code> are both needed, the best practice is to separate these function symbols by confining them to different <a href="isolate.html">isolates</a>.</p>
 
-<h2 id="stratified-quantifier-alternationsquantifier-alternationshtml">Stratified <a href="quantifier-alternations.html">quantifier alternations</a></h2>
+<h2 id="stratified-quantifier-alternationsquantifier-alternationhtml">Stratified <a href="quantifier-alternation.html">quantifier alternations</a></h2>
 
 <p>Ultimately we need to be able to write formulas in <a href="quantifier-alternation.html">AE form</a>. That is, we want to say things like “for every epoch E there exists a leader L”. When these formulas occur <a href="positive-and-negative-occurrences.html">positively</a> (as <a href="assumption.html">assumptions</a>) they are not in EPR. However, the decidable fragment still contains a limited subset of such formulas.</p>
 

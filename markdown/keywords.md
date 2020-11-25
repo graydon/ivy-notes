@@ -2,30 +2,30 @@
 ## Alphabetical keyword list
 
   - `action`: [[declaration]] of an [[action]] 
-  - `after`: [[declaration]] of a [[monitor action]]
+  - `after`: [[declaration]] of a [[mixin]]
   - `alias`
   - `apply`: [[judgment application]] in a [[proof]]
-  - `around`
+  - `around`: abbreviation for a pair of anonymous [[mixin|mixins]]
   - `assert`: [[statement]] [[assertion|asserting]] a [[proposition]]
   - `assume`: [[statement]] of an [[assumption]]; also a [[tactic]]
   - `attribute`
   - `autoinstance`
   - `axiom`: [[declaration]] of an [[axiom]]
-  - `before`: [[declaration]] of a [[monitor action]]
+  - `before`: [[declaration]] of a [[mixin]]
   - `call`: [[statement]] invoking an [[action]]
   - `class`
   - `concept`
-  - `conjecture`
-  - `decreases`: qualifier of a [[loop]]
+  - `conjecture`: obsolete keyword from earlier IVy versions
+  - `decreases`: ranking function of a [[loop]]
   - `definition`: [[declaration]] of a [[definition]]
   - `delegate`
   - `derived`
   - `destructor`
   - `else`: negative branch of a [[conditional]] [[statement]]
-  - `ensure`
-  - `ensures`
+  - `ensure`: [[postcondition]]
+  - `ensures`: obsolete keyword from earlier IVy versions
   - `entry`
-  - `execute`
+  - `execute`: synonym for `mixin` (declaring a [[mixin]])
   - `exists`: [[existential quantifier]] for an [[expression]]
   - `explicit`: qualifier for [[primitive judgment|primitive judgments]]
   - `export`: marks an [[action]] as [[export|exported]]
@@ -43,25 +43,25 @@
   - `in`
   - `include`: incorporates another IVy source file's declarations into the current file
   - `individual`: [[declaration]] of an [[individual]]
-  - `init`
+  - `init`: [[mixin]] declaration for an [[initializer]]
   - `instance`: [[declaration]] of an [[object]] that [[module instantiation|instantiates a module]], also a [[tactic]] that does [[explicit quantifier instantiation]] in a [[proof]]
-  - `instantiate`: lexically synonymous with `instance`
+  - `instantiate`: synonym for `instance`
   - `interpret`: [[primitive judgment]] of [[theory instantiation]]
   - `invariant`: [[primitive judgment]] of an [[invariant]]
   - `isolate`: [[declaration|declares]] a special kind of [[object]] verified in isolation from others
-  - `let`
+  - `let`: binds a local symbol in a [[proof]]
   - `local`
   - `macro`
-  - `match`
-  - `maximizing`
-  - `maximizing`
-  - `method`
-  - `mixin`
+  - `match`: obsolete keyword from earlier IVy versions
+  - `maximizing`: qualifier for [[nondeterministic choice]]
+  - `maximizing`: qualifier for [[nondeterministic choice]]
+  - `method`: synonym for `action` (declaring an [[action]])
+  - `mixin`: [[declaration]] of a [[mixin]]
   - `mixord`
-  - `modifies`
+  - `modifies`: solete keyword from earlier IVy versions
   - `module`: [[declaration]] of a [[module]]
   - `named`
-  - `null`
+  - `null`: obsolete keyword from earlier IVy versions
   - `object`: [[declaration]] of a [[singleton object]]
   - `of`
   - `old`
@@ -70,21 +70,21 @@
   - `private`: marks declarations as "private" in [[isolate]] verification
   - `progress`
   - `proof`: optionally provides a [[proof]] following a [[property]] or [[theorem]]
-  - `property`
-  - `relation`
+  - `property`: [[declaration|declares]] a [[property]]
+  - `relation`: [[declaration|declares]] a [[relation]]
   - `rely`
-  - `require`
-  - `requires`
+  - `require`: [[precondition]]
+  - `requires`: obsolete keyword from earlier IVy versions
   - `returns`: qualifier of an [[action]] indicating its return type
   - `schema`
-  - `set`
-  - `some`
+  - `set`: obsolete keyword from earlier IVy versions
+  - `some`: selects a value with [[nondeterministic choice]]
   - `specification`: marks declarations as "specification" in [[isolate]] verification
-  - `state`
+  - `state`: obsolete keyword from earlier IVy versions
   - `struct`
-  - `tactic`
+  - `tactic`: invokes an extended [[tactic]] in a [[proof]]
   - `temporal`
-  - `theorem`
+  - `theorem`: [[declaration|declares]] a [[theorem]]
   - `this`: alias for the innermost enclosing [[module]]
   - `true`: primitive [[proposition]]
   - `trusted`
@@ -94,7 +94,7 @@
   - `var`: [[primitive judgment]] introducing a [[declared variable]]
   - `variant`
   - `while`: [[loop]] [[statement]]
-  - `with`
+  - `with`: qualifier for [[isolate]] combination, in [[isolate]] [[declaration|declarations]]  
 
 
 ## Categorical
@@ -105,9 +105,10 @@
     - `function` introduces a [[function]]
     - `relation` introduces a [[relation]]
     - `individual` introduces an [[individual]]
+    - `var` declares a [[declared variable]]
     - `axiom` introduces an [[axiom]] or [[axiom schema]] (a [[proposition]] without [[proof]])
     - `property` introduces a [[property]] (a [[proposition]] with [[proof]])
-    - `theorem` introduces a [[theorem]] (a [[schema]] for [[properties]])
+    - `theorem` introduces a [[theorem]] (a [[schema]] for [[property|properties]])
     - `definition` introduces a [[definition]], a special-case [[axiom]]
     - `interpret` performs [[theory instantiation]]
 
@@ -115,19 +116,24 @@
     - `module` introduces a [[module]]
     - `instantiate` [[module instantiation|instantiates]] a [[module]] into an [[object]]
     - `object` introduces a singleton [[module instantiation]]
+    - `isolate` introduces an [[isolate]]
     - `proof` optionally provides a [[proof]] following a [[property]] or [[theorem]]
-    - `var` declares a [[declared variable]]
-    - 
+    - `action`  introduces an [[action]]
+    - `before` and `after` introduce [[mixin|mixins]]
+    - `private`, `specification` and `implementation` are [[visibility qualifiers]]
+    - `implement` implements the body of an [[action]]
 
-  - [[tactic|Tactics]] within [[proof|proofs]]
-	- `apply`
-	- `tactic`
-
-  - [[statement|Statements]]
+  - [[statement|Statements]] inside [[action|actions]]
 	  - `ensure` is a [[postcondition]]: asserts a [[proposition]] and blames the current [[action]] if it fails
 	  - `require` is a [[precondition]]: asserts a [[proposition]] and blames the caller if it fails (or else assumes the environment guarantees it)
-	  - `assume`
-	  - `assert`
+	  - `assume` introduces an [[assumption]]
+	  - `assert` introduces an [[assertion]]
 	  - `call` [[call|calls]] another action
 	  - `if` / `else`: form a [[conditional]]
 	  - `while` forms a [[loop]]
+	  - `var` declares a local [[declared variable|variable]]
+
+  - [[tactic|Tactics]] within [[proof|proofs]]
+	- `apply` instantiates a [[schema|compound judgment]] and supplies premises to it
+	- `instantiate` instantiates a [[primitive judgment]] and performs [[explicit quantifier instantiation]]
+	- `tactic skolemize` performs [[skolemization]]

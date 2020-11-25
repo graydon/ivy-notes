@@ -4,7 +4,7 @@ To use (or "apply") a named [[property]], [[axiom]], [[axiom schema]] or [[theor
 
 (In some documentation this is also called [[instantiation]] but that term is heavily overloaded so we try to avoid it here.)
 
-[[schemas|Schemas (or "compound judgments")]] are never applied automatically. [[primitive judgments|Primitive judgments]] may be.
+[[schema|Schemas (or "compound judgments")]] are never applied automatically. [[primitive judgment|Primitive judgments]] may be.
 
 Sometimes a schema application can match its premises with terms in the proof environment automatically. But this problem (so-called "second order matching") in general is hard and so some applications require an explicit list of input premises.
 

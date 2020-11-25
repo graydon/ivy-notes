@@ -52,9 +52,11 @@
     </nav>
     <article>
       <header>initializer</header>
-      <div id="content"><p>Every object runs a single <a href="export.html">exported</a> <a href="action.html">action</a> at the beginning of its existence called its <strong>initializer</strong>.</p>
+      <div id="content"><p><a href="keywords.html">Keyword</a>: <code>init</code></p>
 
-<p>This action is declared by the special block <code>after init { ... }</code></p>
+<p>Every object runs a single <a href="export.html">exported</a> <a href="action.html">action</a> at the beginning of its existence called its <strong>initializer</strong>.</p>
+
+<p>This action is declared by the special block <code>after init { ... }</code>, which is to say it appears syntactically as a <a href="mixin.html">mixin</a> for a special reserved action named <code>init</code></p>
 
 <p>Initializers typically exist to support verification of inductive <a href="invariant.html">invariants</a>, which in turn support verifying the <a href="precondition.html">preconditions</a> of other <a href="action.html">actions</a>.</p>
 
@@ -64,6 +66,7 @@
 
 <ul>
 <li><a href="invariant.html">invariant</a></li>
+<li><a href="keywords.html">keywords</a></li>
 <li><a href="weakest-liberal-precondition.html">weakest liberal precondition</a></li>
 </ul>
 

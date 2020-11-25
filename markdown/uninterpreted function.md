@@ -15,7 +15,7 @@ Importantly: satisfiability of terms in the theory of [uninterpreted functions](
 This fact -- that satisfiability of UF is decidable -- may seem surprising or counterintuitive because solvers "know so little" about the functions in UF. They may be anything!
 
 But the point is that UF itself is a small theory -- it doesn't include basic arithmetic -- and since the types involved in an uninterpreted function are themselves uninterpreted, there are:
-  - very few **possibilities** for [[ground terms]] of an uninterpreted type serving as input to the function (only those [[individual|individuals]] explicitly declared, or other applications of [[uninterpreted function]]) 
+  - very few **possibilities** for [[ground term|ground terms]] of an uninterpreted type serving as input to the function (only those [[individual|individuals]] explicitly declared, or other applications of [[uninterpreted function]]) 
   - very few possible **constraints** that might occur in a UF formula that would cause a given candidate model not to satisfy the formula
 
 So simple decision procedures like "plug in all possible ground terms" work.

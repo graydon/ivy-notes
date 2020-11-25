@@ -1,4 +1,4 @@
-[[keywords|Keyword]]: `action`
+[[keywords|Keyword]]: `action`, `returns`
 
 A type of [[declaration]].
 
@@ -11,7 +11,7 @@ Actions are semantically synchronous. This means that:
   - All actions occur in reaction to input from the environment, and
   - All actions are isolated, that is, they appear to occur instantaneously, with no interruption.
 
-Actions may or may not terminate. An action terminates when control reaches the end of the action without any statements failing. If any statement fails, the action does not terminate.
+An action may return a value by listing a `returns (<symbol>:<type>)` in its signature. The named return value must then be assigned within the action.
 
 An action is logically interpreted as a [[transition relation]] over [[state variable|state variables]].
 
@@ -41,5 +41,16 @@ isolate network = {
 		    link(x,y) := true
 		}
 	}
+}
+```
+
+### Example: returning a value
+
+```
+type t
+interpret t -> int
+
+action incr(x:t) returns (out:t) = {
+   out := x + 1
 }
 ```
