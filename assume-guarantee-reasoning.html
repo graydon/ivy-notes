@@ -52,7 +52,269 @@
     </nav>
     <article>
       <header>assume-guarantee reasoning</header>
-      <div id="content"><div class="backlinks">
+      <div id="content"><p>Assume-guarantee reasoning is a family of methods for modular verification of concurrent systems.</p>
+
+<p>They are generally related to Jones' "rely-guarantee" reasoning of the early 80s, which in turn is an extension of an earlier Hoare-logic variant for parallel verification developed by Owicki and Gries in the late 70s.</p>
+
+<p>The key concepts in all these approaches are:</p>
+
+<ul>
+<li>Abstracting-away portions of the system into <strong>assumptions</strong>.</li>
+<li>Verifying that the remaining un-abstracted portion of the system upholds <strong>guarantees</strong>.</li>
+<li>Checking <strong>non-interference</strong> between abstracted and verified portions of the system, to ensure soundness of the abstraction.</li>
+<li>Checking <strong>coverage</strong> of all assertions in all mixtures of abstraction and verification.</li>
+</ul>
+
+<p>IVy uses <a href="isolate.html">isolates</a> as its units of assume-guarantee reasoning, along with <a href="visibility-qualifiers.html">visibility qualifiers</a>.</p>
+
+<p>Specifically, when verifying some <a href="isolate.html">isolate</a> <code>X</code>:</p>
+
+<ul>
+<li>The <a href="action.html">actions</a> and <a href="state-variable.html">state variables</a> of <code>X</code> are preserved and verified, as well as all actions and state variables at the <code>specification</code> <a href="visibility-qualifiers.html">visibility level</a> of any other isolates listed in the <code>with</code> portion of <code>X</code>.</li>
+<li>The contents of all other isolates in the program -- including <code>implementation</code> and <code>private</code> <a href="visibility-qualifiers.html">visibility levels</a> of isolates listed in the <code>with</code> clause of <code>X</code> -- are abstracted (erased) from verification.</li>
+<li>Any action that is to be abstracted is first checked to ensure that it does not modify any of the same state variables as any of the actions in <code>X</code>. If it does, an error is signalled.</li>
+<li>All <a href="guarantee.html">guarantees</a> in the system are checked for coverage from the perspective of each <a href="isolate.html">isolate</a>.</li>
+</ul>
+
+<p>Furthermore, all <a href="precondition.html">preconditions</a> and <a href="postcondition.html">postconditions</a> are contextually interpreted as <a href="assumption.html">assumptions</a> and <a href="guarantee.html">guarantees</a>, depending on caller/callee relationship to the isolate <code>X</code>.</p>
+
+<p>Specifically:</p>
+
+<ul>
+<li><p>The following are <a href="guarantee.html">guarantees</a> in <code>X</code> (that verification must prove):</p>
+
+<ul>
+<li>A <code>require</code> assertion in another isolate that <code>X</code> calls into</li>
+<li><p>An <code>ensure</code> assertion within <code>X</code></p></li>
+<li><p>The following are <a href="assumption.html">assumptions</a> in <code>X</code> (that verification may assume):</p></li>
+<li>A <code>require</code> assertion within <code>X</code></li>
+<li>An <code>ensure</code> assertion in another isolate that <code>X</code> calls into</li>
+</ul></li>
+</ul>
+
+<h2 id="example">Example:</h2>
+
+<p>Suppose we have the following simple client/server system:</p>
+
+<pre><code>isolate client = {
+    specification {
+        type count
+        interpret count -&gt; int
+        var n_send:count
+        var n_recv:count
+        action send_req = {
+            n_send := n_send + 1;
+            call server.req;
+        }
+        action recv_res = {
+            require n_send &gt; n_recv;
+            n_recv := n_recv + 1;
+        }
+        invariant n_recv &lt;= n_send
+    }
+    implementation {
+        after init {
+            n_send := 0;
+            n_recv := 0;
+        }
+    }
+} with server
+
+isolate server = {
+    specification {
+        action req
+        before req {
+            require client.n_send &gt; client.n_recv;
+        }
+    }
+    implementation {
+        implement req {
+            call client.recv_res;
+        }
+    }
+} with client
+
+export client.send_req
+export client.recv_res
+export server.req
+</code></pre>
+
+<p>Each isolate verifies on its own:</p>
+
+<ul>
+<li>The client actions establish and maintain the <a href="invariant.html">invariant</a></li>
+<li>The client <code>recv_res</code> action has a <a href="precondition.html">precondition</a> which is treated as an <a href="assumption.html">assumption</a> guaranteed by the <a href="environment.html">environment</a> while verifying <code>client</code> -- and this allows it to <a href="guarantee.html">guarantee</a> the invariant.</li>
+<li>The <a href="precondition.html">precondition</a> on <code>recv_res</code> is met by the <code>server</code> requiring it as well in its <code>specification</code></li>
+</ul>
+
+<p>If we begin hiding parts of the implementation, however, we run into a problem. For example if we hide the <code>implementation</code> of <code>send_req</code> and <code>recv_res</code> (while preserving the precondition of <code>recv_res</code> in a <a href="mixin.html">mixin</a>):</p>
+
+<pre><code>isolate client = {
+    specification {
+        type count
+        interpret count -&gt; int
+        var n_send:count
+        var n_recv:count
+        action send_req
+        action recv_res
+
+#+++ New mixin added here
+        before recv_res {
+            require n_send &gt; n_recv
+        }
+
+        invariant n_recv &lt;= n_send
+    }
+    implementation {
+        after init {
+            n_send := 0;
+            n_recv := 0;
+        }
+
+#+++ New implement blocks added here
+        implement send_req {
+            n_send := n_send + 1;
+            call server.req;
+        }
+        implement recv_res {
+            n_recv := n_recv + 1;
+        }
+    }
+} with server
+
+isolate server = {
+    specification {
+        action req
+        before req {
+            require client.n_send &gt; client.n_recv;
+        }
+    }
+    implementation {
+        implement req {
+            call client.recv_res;
+        }
+    }
+} with client
+
+export client.send_req
+export client.recv_res
+export server.req
+</code></pre>
+
+<p>Now <code>client</code> still verifies, but verifying the <code>server</code> isolate now fails:</p>
+
+<pre><code>Isolate server:
+t.ivy: line 34: error: Call out to client.recv_res[implement5] may have visible effect on client.n_recv
+t.ivy: line 12: referenced here
+t.ivy: line 34: referenced here
+</code></pre>
+
+<p>This happens because IVy tracks which actions modify which state variables, in particular it notices that <code>client.recv_res</code> modifies <code>client.n_recv</code>.</p>
+
+<p>IVy then attempts to verify <code>server</code> in <a href="isolate.html">isolation</a>, and its first step is to check that actions <strong>outside</strong> server can be safely abstracted (erased). Erasing <code>client.recv_res</code> is only safe if the variables it alters are only used by other abstract (to-be-erased) actions.</p>
+
+<p>Unfortunately <code>client.n_recv</code> is mentioned in the (still-visible, not-erased) precondition in the mixin <code>before client.recv_res</code>, and that precondition is a <a href="guarantee.html">guarantee</a> that <code>server</code> has to maintain. It cannot safely do so if <code>client.recv_res</code> is abstracted away, as its effect on <code>client.n_recv</code> will be unknown.</p>
+
+<p>If we attempt to recover from this by moving the precondition on <code>client.recv_res</code> into the <code>implement</code> block as well, as follows:</p>
+
+<pre><code>isolate client = {
+    specification {
+        type count
+        interpret count -&gt; int
+        var n_send:count
+        var n_recv:count
+        action send_req
+        action recv_res
+        invariant n_recv &lt;= n_send
+    }
+    implementation {
+        implement send_req {
+            n_send := n_send + 1;
+            call server.req;
+        }
+        implement recv_res {
+            require n_recv &lt; n_send;
+            n_recv := n_recv + 1;
+        }
+        after init {
+            n_send := 0;
+            n_recv := 0;
+        }
+    }
+} with server
+
+isolate server = {
+    specification {
+        action req
+    }
+    implementation {
+        implement req {
+            call client.recv_res;
+        }
+    }
+} with client
+
+export client.send_req
+export client.recv_res
+export server.req
+</code></pre>
+
+<p>We get a different error:</p>
+
+<pre><code>t.ivy: line 19: error: assertion is not checked
+t.ivy: line 10: error: ...in action client.recv_res
+t.ivy: line 35: error: ...when called from server.req[implement6]
+error: Some assertions are not checked
+</code></pre>
+
+<p>This is a coverage error: when verifying <code>server</code>, IVy will abstract-away (erase) the implementation of <code>recv_res</code>, which means an precondition that is only in the isolate's <code>implementation</code> will not be checked.</p>
+
+<p>The best we can do, then, is change the implementation assertion into a dynamic condition, which will at least still preserve the isolate's weaker invariant:</p>
+
+<pre><code>isolate client = {
+    specification {
+        type count
+        interpret count -&gt; int
+        var n_send:count
+        var n_recv:count
+        action send_req
+        action recv_res
+        invariant n_recv &lt;= n_send
+    }
+    implementation {
+        implement send_req {
+            n_send := n_send + 1;
+            call server.req;
+        }
+        implement recv_res {
+            if n_recv &lt; n_send {
+                n_recv := n_recv + 1;
+            }
+        }
+        after init {
+            n_send := 0;
+            n_recv := 0;
+        }
+    }
+} with server
+
+isolate server = {
+    specification {
+        action req
+    }
+    implementation {
+        implement req {
+            call client.recv_res;
+        }
+    }
+} with client
+
+export client.send_req
+export client.recv_res
+export server.req
+</code></pre>
+
+<div class="backlinks">
 
 <h2 id="backlinks">Backlinks</h2>
 

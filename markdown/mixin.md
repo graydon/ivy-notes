@@ -2,6 +2,8 @@
 
 A mixin is a (possibly anonymous) [[action]] whose execution is coupled to some other named target action (possibly in a different [[module]] or [[object]]) such that any call to the target action is preceded or followed by a call to the mixin.
 
+IVy also often refers to a mixin as a "[[monitor]]", and as an object that only contains mixins for some other object as a "monitor object".
+
 Each mixin is declared with a mode:
   - `mixin X before Y` executes mixin action `X`  before target action `Y`
   - `mixin X after Y` executes mixin action `X` after target action `Y`

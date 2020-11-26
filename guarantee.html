@@ -56,7 +56,8 @@
 
 <ul>
 <li>An <a href="assertion.html">assertion</a> (keyword <code>assert</code>) which is a general free-standing guarantee in an <a href="action.html">action</a> not associated with the action's <a href="visibility-qualifiers.html">visibility qualifiers</a> or <a href="assume-guarantee-reasoning.html">assume-guarantee reasoning</a> between actions.</li>
-<li>A <a href="postcondition.html">postcondition</a> (keyword <code>ensure</code>) which is part of its enclosing <a href="action.html">action</a>'s specification when considered in terms of <a href="isolate.html">modular verification</a>.</li>
+<li>A <a href="postcondition.html">postcondition</a> (keyword <code>ensure</code>) when considered from the perspective of verifying the <a href="action.html">action</a> containing the <code>ensure</code> statement.</li>
+<li>A <a href="precondition.html">precondition</a> (keyword <code>require</code>) when considered from the perspective of verifying an <a href="action.html">action</a> that <strong>calls</strong> the action containing the <code>require</code> statement.</li>
 <li>An <a href="invariant.html">invariant</a> (keyword <code>invariant</code>) which also introduces an <a href="assumption.html">assumption</a> (as invariants are <strong>inductive</strong>, they both assume and guarantee).</li>
 </ul>
 
@@ -70,8 +71,10 @@
 
 <ul>
 <li><a href="assertion.html">assertion</a></li>
+<li><a href="assume-guarantee-reasoning.html">assume-guarantee reasoning</a></li>
 <li><a href="assumption.html">assumption</a></li>
 <li><a href="effectively-propositional.html">effectively propositional</a></li>
+<li><a href="environment.html">environment</a></li>
 <li><a href="invariant.html">invariant</a></li>
 <li><a href="positive-and-negative-occurrences.html">positive and negative occurrences</a></li>
 <li><a href="postcondition.html">postcondition</a></li>

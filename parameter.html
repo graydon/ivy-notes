@@ -12,7 +12,7 @@
   <!-- CSS (uses absolute weblinks to work around relative path issues) -->
   <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
 
-  <title>invariant</title>
+  <title>parameter</title>
 </head>
 
 <body>
@@ -51,40 +51,34 @@
       </div>
     </nav>
     <article>
-      <header>invariant</header>
-      <div id="content"><p><a href="keywords.html">Keyword</a>: <code>invariant</code></p>
+      <header>parameter</header>
+      <div id="content"><p><a href="keywords.html">Keyword</a>: <code>parameter</code></p>
 
-<h2 id="in-a-modulemodulehtml">In a <a href="module.html">module</a></h2>
+<p>A <strong>parameter</strong> is a value supplied by the <a href="environment.html">environment</a> before <a href="initializer.html">initialization</a>.</p>
 
-<p>An invariant <a href="declaration.html">declaration</a> is a <a href="primitive-judgment.html">primitive judgment</a> associated with a specific <a href="isolate.html">isolate</a>, <a href="object.html">object</a> or <a href="module.html">module</a> (or at top-level, the program's global module). Its is <a href="verification-condition.html">verified</a> by checking that it is an <strong>inductive</strong> invariant. This involves two steps:</p>
+<p>A parameter is <a href="declaration.html">declared</a> like this:</p>
 
-<ul>
-<li>Initiation: checking whether the isolate's <a href="initializer.html">initializer</a> establishes the invariant.</li>
-<li>Consecution: checking whether every <a href="export.html">exported</a> <a href="action.html">action</a> within the isolate, individually, preserves the invariant.</li>
-</ul>
+<pre><code>parameter p : t
+</code></pre>
 
-<p>When verifying an invariant's consecution for a given action, the invariant is <a href="assumption.html">assumed</a> before the action and must be <a href="guarantee.html">guaranteed</a> by the action.</p>
+<p>where <code>p</code> is the parameter name and <code>t</code> is the type.</p>
 
-<h2 id="in-a-looploophtml">In a <a href="loop.html">loop</a></h2>
+<p>Parameters may be declared anywhere in the object hierarchy.</p>
 
-<p>A <a href="loop.html">loop</a> invariant is an annotation on a loop body that provides both an <a href="assumption.html">assumption</a> and <a href="guarantee.html">guarantee</a> about each iteration of the loop -- effectively an <a href="assertion.html">assertion</a> on the state variables at both the beginning and end of the loop body.</p>
+<p>Except for the fact that it is initialized by the environment, a parameter is identical to an <a href="individual.html">individual</a>.</p>
+
+<p>The manner in which parameters are supplied is dependent on the compiler. For example, if a program is compiled to an executable file, the parameter values are supplied on the command line. If it is compiled to a class in C++, parameters are supplied as arguments to the constructor.</p>
+
+<p>In either case, the order of parameters is the same as their order of declaration in the program.</p>
 
 <div class="backlinks">
 
 <h2 id="backlinks">Backlinks</h2>
 
 <ul>
-<li><a href="assume-guarantee-reasoning.html">assume-guarantee reasoning</a></li>
-<li><a href="assumption.html">assumption</a></li>
-<li><a href="guarantee.html">guarantee</a></li>
-<li><a href="initializer.html">initializer</a></li>
-<li><a href="isolate.html">isolate</a></li>
+<li><a href="declaration.html">declaration</a></li>
+<li><a href="environment.html">environment</a></li>
 <li><a href="keywords.html">keywords</a></li>
-<li><a href="loop.html">loop</a></li>
-<li><a href="positive-and-negative-occurrences.html">positive and negative occurrences</a></li>
-<li><a href="primitive-judgment.html">primitive judgment</a></li>
-<li><a href="visibility-qualifiers.html">visibility qualifiers</a></li>
-<li><a href="weakest-liberal-precondition.html">weakest liberal precondition</a></li>
 </ul>
 
 </div>

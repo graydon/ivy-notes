@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>alpha renaming</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2><a href="index.html">IVy notes</a></h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+          <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
+          <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
+          <li><a href="further-info.html">Further info</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>alpha renaming</header>
+      <div id="content"><p>When <a href="judgment-application.html">applying judgments</a>, one sometimes wishes to change the names of <a href="logical-variable.html">logical variables</a> in the applied jugements or premises, to avoid name clashes between introduced variables in a <a href="proof.html">proof</a>.</p>
+
+<p>This can be done by writing an alpha-renaming qualifier, written <code>&lt;X/Y&gt;</code> where <code>X</code> is the new variable and <code>Y</code> is the variable in the formula to alpha-rename.</p>
+
+<h2 id="example">Example:</h2>
+
+<p>Suppose we have this axiom:</p>
+
+<pre><code>relation s(X:t,Y:t)
+axiom [prem] forall X. exists Y. s(X,Y)
+</code></pre>
+
+<p>We would like to prove this property:</p>
+
+<pre><code>individual a : t
+individual b : t
+property [sk2] exists Z,W. s(a,Z) &amp; s(b,W)
+</code></pre>
+
+<p>To prove this, we would like to use the axiom twice, once for <code>X=a</code> and once for <code>X=b</code>. So let’s create two instances of it:</p>
+
+<pre><code>proof {
+    instantiate [p1] prem with X=a
+    instantiate [p2] prem with X=b
+    tactic skolemize
+    showgoals
+}
+</code></pre>
+
+<p>Notice we gave the two instances distinct names, <code>p1</code> and <code>p2</code>. After <a href="skolemization.html">Skolemization</a>, this is the proof goal we got:</p>
+
+<pre><code>#- theorem [prop1] {
+#-     individual _Y : t
+#-     individual _Y_a : t
+#-     property [p1] s(a,_Y)
+#-     property [p2] s(b,_Y_a)
+#-     property exists W,Z. s(a,Z) &amp; s(b,W)
+#- }
+</code></pre>
+
+<p>The Skolem symbol in <code>p2</code> was automatically given a fresh name <code>_Y_a</code> so as not to clash with the symbol <code>_Y</code> used in <code>p1</code>. Now we could witness the conclusion with <code>W=_Y</code> and <code>Z=_Y_a</code>. This is fragile, though, because changes to the proof might result in a name different from <code>_Y_a</code>. A better approach is to use alpha renaming to the two quantifiers different variable names. For example:</p>
+
+<pre><code>property exists Z,W. s(a,Z) &amp; s(b,W)
+proof {
+    instantiate [p1] prem&lt;Y1/Y&gt; with X=a
+    instantiate [p2] prem&lt;Y2/Y&gt; with X=b
+    tactic skolemize
+    instantiate with Z=_Y1, W=_Y2
+}
+</code></pre>
+
+<p>By renaming the bound variables in our two copies of the axiom to be <code>Y1</code> and <code>Y2</code>, we can make sure that the Skolem symbols have predictable names. Again, there was no need to use <a href="explicit-quantifier-instantiation.html">manual instantiation</a> for this simple problem, but in more complex cases with nested quantifiers, this approach can make it possible to let Z3 do most of the quantifier instantiation work by only instantiating the quantifiers that the fragment checker complains about.</p>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="explicit-quantifier-instantiation.html">explicit quantifier instantiation</a></li>
+<li><a href="tactic.html">tactic</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>

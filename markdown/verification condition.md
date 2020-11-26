@@ -1,4 +1,4 @@
-A **verification condition** is a [[formula]] that, if valid, implies the correctness of a [[program]] (or [[action]], [[logical judgment]], or logical [[statement]]).
+A **verification condition** is a [[formula]] that, if valid, implies the correctness of an [[action]], [[logical judgment]], or logical [[statement]].
 
 IVy's default [[tactic]] for a [[proof]] automatically generates a verification condition for the context requiring the proof. If the verification condition does not fall within the FAU [[logical fragment]], the user will need to participate in [[recovering decidability|constructing a proof or changing the context]].
 

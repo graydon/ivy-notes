@@ -1,0 +1,1 @@
+Another term for a [[mixin]], typically when discussing the use of a mixin for providing additional specification [[ghost]] code.

@@ -17,6 +17,7 @@ There's a wealth of additional information to read in and around IVy:
   - POPL 2018 - **Reducing Liveness to Safety in First-Order Logic** (by Oded Padon, Jochen Hoenicke, Giuliano Losa, Andreas Podelski, Mooly Sagiv, Sharon Shoham) ([pdf](https://dl.acm.org/doi/pdf/10.1145/3158114)
   - CAV 2009 - **Complete instantiation for quantified formulas in Satisfiability Modulo Theories** (by Leonardo de Moura and Yeting Ge) [pdf](http://leodemoura.github.io/files/citr09.pdf)
   - LPAR 2007 - **Decidable Fragments of Many-Sorted Logic** (by Ahaon Abadi, Alexander Rabinovich and Mooly Sagiv) [pdf](http://www.cs.tau.ac.il/~msagiv/lpar07.pdf)
+  - TOPLAS 1983 - **Tentative Steps Toward a Development Method for Interfering Programs** (by C. B. Jones) -- origin of "rely-guarantee reasoning" [pdf](http://staff.ustc.edu.cn/~xyfeng/reading/p596-jones-RG.pdf)
 
 ## Thesis
 

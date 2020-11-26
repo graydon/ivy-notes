@@ -12,7 +12,7 @@
   <!-- CSS (uses absolute weblinks to work around relative path issues) -->
   <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
 
-  <title>invariant</title>
+  <title>import</title>
 </head>
 
 <body>
@@ -51,40 +51,49 @@
       </div>
     </nav>
     <article>
-      <header>invariant</header>
-      <div id="content"><p><a href="keywords.html">Keyword</a>: <code>invariant</code></p>
+      <header>import</header>
+      <div id="content"><p><a href="keywords.html">Keyword</a>: <code>import</code></p>
 
-<h2 id="in-a-modulemodulehtml">In a <a href="module.html">module</a></h2>
+<p>An <strong>imported action</strong> is an action whose implementation is provided by the environment.</p>
 
-<p>An invariant <a href="declaration.html">declaration</a> is a <a href="primitive-judgment.html">primitive judgment</a> associated with a specific <a href="isolate.html">isolate</a>, <a href="object.html">object</a> or <a href="module.html">module</a> (or at top-level, the program's global module). Its is <a href="verification-condition.html">verified</a> by checking that it is an <strong>inductive</strong> invariant. This involves two steps:</p>
+<p>Imported actions are declared like any other action. A separate <code>import &lt;action&gt;</code> declaration marks them as imported.</p>
 
-<ul>
-<li>Initiation: checking whether the isolate's <a href="initializer.html">initializer</a> establishes the invariant.</li>
-<li>Consecution: checking whether every <a href="export.html">exported</a> <a href="action.html">action</a> within the isolate, individually, preserves the invariant.</li>
-</ul>
+<p>An imported action may not be implemented by the program, but it can be given <a href="mixin.html">mixins</a>.</p>
 
-<p>When verifying an invariant's consecution for a given action, the invariant is <a href="assumption.html">assumed</a> before the action and must be <a href="guarantee.html">guaranteed</a> by the action.</p>
+<h2 id="example">Example:</h2>
 
-<h2 id="in-a-looploophtml">In a <a href="loop.html">loop</a></h2>
+<p>For example:</p>
 
-<p>A <a href="loop.html">loop</a> invariant is an annotation on a loop body that provides both an <a href="assumption.html">assumption</a> and <a href="guarantee.html">guarantee</a> about each iteration of the loop -- effectively an <a href="assertion.html">assertion</a> on the state variables at both the beginning and end of the loop body.</p>
+<pre><code>action callback(x:nat) returns (y:nat)
+import callback
+</code></pre>
+
+<p>or simply:</p>
+
+<pre><code>import action callback(x:nat) returns (y:nat)
+</code></pre>
+
+<p>Like any action, the imported action may be given preconditions and postconditions.  For example:</p>
+
+<pre><code>before callback {
+    require x &gt; 0;
+}
+
+after callback {
+    ensure y = x - 1;
+}
+</code></pre>
+
+<p>The <code>require</code> in this case is guarantee for the program and an assumption for the environment. Similarly, the <code>ensure</code> is an assumption for the program and a guarantee for the environment.  The environment is assumed to be non-interfering, that is, Ivy assumes that the call to <code>callback</code> has no visible side effect on the program. </p>
 
 <div class="backlinks">
 
 <h2 id="backlinks">Backlinks</h2>
 
 <ul>
-<li><a href="assume-guarantee-reasoning.html">assume-guarantee reasoning</a></li>
-<li><a href="assumption.html">assumption</a></li>
-<li><a href="guarantee.html">guarantee</a></li>
-<li><a href="initializer.html">initializer</a></li>
-<li><a href="isolate.html">isolate</a></li>
+<li><a href="declaration.html">declaration</a></li>
+<li><a href="environment.html">environment</a></li>
 <li><a href="keywords.html">keywords</a></li>
-<li><a href="loop.html">loop</a></li>
-<li><a href="positive-and-negative-occurrences.html">positive and negative occurrences</a></li>
-<li><a href="primitive-judgment.html">primitive judgment</a></li>
-<li><a href="visibility-qualifiers.html">visibility qualifiers</a></li>
-<li><a href="weakest-liberal-precondition.html">weakest liberal precondition</a></li>
 </ul>
 
 </div>

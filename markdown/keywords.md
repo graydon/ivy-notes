@@ -28,18 +28,18 @@
   - `execute`: synonym for `mixin` (declaring a [[mixin]])
   - `exists`: [[existential quantifier]] for an [[expression]]
   - `explicit`: qualifier for [[primitive judgment|primitive judgments]]
-  - `export`: marks an [[action]] as [[export|exported]]
+  - `export`: marks an [[action]] as [[export|exported]] to the [[environment]]
   - `extract`
   - `false`: primitive [[proposition]]
   - `forall`: [[universal quantifier]] for an [[expression]]
   - `fresh`
   - `from`
   - `function`: [[declaration]] of a [[function]]
-  - `ghost`
+  - `ghost`: indicates that a [[type]] is to be considered [[ghost]] code
   - `if`: positive branch of a [[conditional]] [[statement]]
   - `implement`: provides an implementation of an abstract [[action]]
   - `implementation`: marks declarations as "implementation" in [[isolate]] verification
-  - `import`: 
+  - `import`:  marks an action as [[import|imported]] from the [[environment]]
   - `in`
   - `include`: incorporates another IVy source file's declarations into the current file
   - `individual`: [[declaration]] of an [[individual]]
@@ -65,7 +65,7 @@
   - `object`: [[declaration]] of a [[singleton object]]
   - `of`
   - `old`
-  - `parameter`
+  - `parameter`: [[declaration]] of a [[parameter]]
   - `params`
   - `private`: marks declarations as "private" in [[isolate]] verification
   - `progress`

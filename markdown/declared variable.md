@@ -2,6 +2,8 @@
 
 Variables are a type of [[declaration]] (so can be declared at [[module]] level) but they can also occur as a [[statement]] locally within an [[action]].
 
+At module level, a declared variable is identical to an [[individual]] [[declaration]].
+
 A variable can be [[definition|defined]] using a separate `definition` declaration, which will make it immutable.
 
 If a variable is not immutable, it is a [[state variable]] that can be [[assignment|assigned]] during an action.
