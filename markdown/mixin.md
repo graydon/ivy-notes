@@ -33,7 +33,7 @@ action pre_connect(x:client,y:server) = {
     require semaphore(y)
 }        
 execute pre_connect before connect
- ```
+```
  
  This example adds a [[precondition]] to any call to some [[action]] `connect(x:client,y:server)`. It is equivalent to declaring:
  

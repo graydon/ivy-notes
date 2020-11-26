@@ -96,53 +96,44 @@
     require semaphore(y)
 }        
 execute pre_connect before connect
- ```
-
- This example adds a [precondition](precondition.html) to any call to some [action](action.html) `connect(x:client,y:server)`. It is equivalent to declaring:
-
 </code></pre>
 
-<p>before connect(x:client,y:server) {<br />
-    require semaphore(y)<br />
-}</p>
+<p>This example adds a <a href="precondition.html">precondition</a> to any call to some <a href="action.html">action</a> <code>connect(x:client,y:server)</code>. It is equivalent to declaring:</p>
 
-<pre><code>
-Or even more tersely:
-
+<pre><code>before connect(x:client,y:server) {
+    require semaphore(y)
+}
 </code></pre>
 
-<p>before connect {<br />
-    require semaphore(y)<br />
-}</p>
+<p>Or even more tersely:</p>
 
-<pre><code>
-## Example: adding a postcondition
+<pre><code>before connect {
+    require semaphore(y)
+}
 </code></pre>
 
-<p>action post_incr(inp:t) returns(out:t) = {<br />
-    ensure inp &lt; out<br />
-}</p>
+<h2 id="example-adding-a-postcondition">Example: adding a postcondition</h2>
 
-<p>execute post_incr after incr</p>
+<pre><code>action post_incr(inp:t) returns(out:t) = {
+    ensure inp &lt; out
+}
 
-<pre><code>
-This example adds a [postcondition](postcondition.html) to any call to some [action](action.html) `incr(inp:t) returns (out:t)`. It is equivalent to declaring:
-
+execute post_incr after incr
 </code></pre>
 
-<p>after incr(inp:t) returns(out:t) {<br />
-    ensure inp &lt; out<br />
-}</p>
+<p>This example adds a <a href="postcondition.html">postcondition</a> to any call to some <a href="action.html">action</a> <code>incr(inp:t) returns (out:t)</code>. It is equivalent to declaring:</p>
 
-<pre><code>
-Or even more tersely:
-
+<pre><code>after incr(inp:t) returns(out:t) {
+    ensure inp &lt; out
+}
 </code></pre>
 
-<p>after incr {<br />
-    ensure inp &lt; out<br />
-}<br />
-```</p>
+<p>Or even more tersely:</p>
+
+<pre><code>after incr {
+    ensure inp &lt; out
+}
+</code></pre>
 
 <div class="backlinks">
 
