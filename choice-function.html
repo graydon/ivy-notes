@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>choice function</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2><a href="index.html">IVy notes</a></h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+          <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
+          <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
+          <li><a href="further-info.html">Further info</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>choice function</header>
+      <div id="content"><p><a href="keywords.html">Keyword</a>: <code>some</code></p>
+
+<p>A <strong>choice function</strong> is a special form of <a href="definition.html">definition</a> that introduces a different <a href="axiom.html">axiom</a> than usual: one with an implication operator (<code>-&gt;</code>) guarded by an <a href="existential-quantifier.html">existential quantifier</a>.</p>
+
+<h2 id="example">Example:</h2>
+
+<p>Suppose we want to define a function <code>finv</code> that is the inverse of function <code>f</code>. We can write the definition like this:</p>
+
+<pre><code>definition finv(X) = some Y. f(Y) = X in Y
+</code></pre>
+
+<p>This special form of definition says that <code>finv(X)</code> is <code>Y</code> for <em>some</em> <code>Y</code> such that <code>f(Y) = X</code>. If there is no such <code>Y</code>, <code>finv(X)</code> is left undefined. The corresponding axiom is:</p>
+
+<pre><code>axiom forall X. ((exists Y. f(Y) = X) -&gt; f(finv(X)) = X)
+</code></pre>
+
+<p>With this definition, <code>finv</code> is a function, but it isn't fully specified.  If a given element <code>Y</code> has two inverses, <code>finv</code> will yield one of them. This isn't a <a href="nondeterministic-choice.html">nondeterministic choice</a>, however. Since <code>f</code> is a function, it will always yield the <em>same</em> inverse of any given value <code>Y</code>.</p>
+
+<p>If we want to specify the value of <code>finv</code> in case there is no inverse, we can write the definition like this:</p>
+
+<pre><code>definition finv(X) = some Y. f(Y) = X in Y else 0
+</code></pre>
+
+<p>The <code>else</code> part gives us this additional axiom:</p>
+
+<pre><code>axiom forall X. ((~exists Y. f(Y) = X) -&gt; finv(X) = 0)
+</code></pre>
+
+<p>Notice that this axiom contains a quantifier alternation. If this is a problem, we could use a macro instead:</p>
+
+<pre><code>definition finv(x) = some Y. f(Y) = x in Y else 0
+</code></pre>
+
+<p>The axiom we get is</p>
+
+<pre><code>axiom (~exists Y. f(Y) = x) -&gt; finv(x) = 0)
+</code></pre>
+
+<p>which is alternation-free.</p>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="nondeterministic-choice.html">nondeterministic choice</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <!-- IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS (uses absolute weblinks to work around relative path issues) -->
+  <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
+
+  <title>macro definition</title>
+</head>
+
+<body>
+  <div class="grid">
+    <nav>
+      <div>
+        <h2><a href="index.html">IVy notes</a></h2>
+        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <br/>
+        <br/>
+        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="lexical-structure.html">Lexical structure</a></li>
+          <li><a href="keywords.html">Keywords</a></li>
+          <li><a href="declaration.html">Declarations</a></li>
+          <li><a href="definition.html">Definitions</a></li>
+          <li><a href="expression.html">Expressions</a></li>
+          <li><a href="action.html">Actions</a></li>
+          <li><a href="statement.html">Statements</a></li>
+          <li><a href="property.html">Properties</a> and <a href="theorem.html">Theorems</a></li>
+          <li><a href="isolate.html">Isolates</a> and <a href="invariant.html">Invariants</a></li>
+          <li><a href="logical-fragment.html">Logical fragment</a></li>
+          <li><a href="verification-condition.html">Verification conditions</a></li>
+          <li><a href="recovering-decidability.html">Recovering decidability</a></li>
+          <li><a href="proof.html">Proof</a> and <a href="tactic.html">Tactics</a></li>
+          <li><a href="further-info.html">Further info</a></li>
+        </ul>
+      </div>
+      <div class="footer">
+        <p>Notes taken with <a href="http://obsidian.md">obsidian</a></p>
+        <p>Rendered with <a href="http://github.com/kmaasrud/obsidian-html">obsidian-html</a></p>
+      </div>
+    </nav>
+    <article>
+      <header>macro definition</header>
+      <div id="content"><p>A <strong>macro definition</strong> is a <a href="definition.html">definition</a> that is only "unfolded" when it is used. </p>
+
+<p>Not to be confused with a <a href="macro-action.html">macro action</a> declared with the <code>macro</code> keyword.</p>
+
+<h2 id="example">Example:</h2>
+
+<p>Suppose we want to define a predicate <code>rng</code> that is true of all the elements in range of function <code>f</code>. We could write it like this:</p>
+
+<pre><code>definition rng(X) = exists Y. f(Y) = X
+</code></pre>
+
+<p>The corresponding axiom might be problematic, however. Writing it out with explicit quantifiers, we have:</p>
+
+<pre><code>axiom forall X. (rng(X) &lt;-&gt; exists Y. f(Y) = X)
+</code></pre>
+
+<p>This formula has an <a href="quantifier-alternation.html">alternation of quantifiers</a> that might result in <a href="verification-condition.html">verification conditions</a> that IVy can't <a href="logical-fragment.html">decide</a></p>
+
+<p>Suppose though, that we only need to know the truth value of <code>rng</code> for some specific arguments. We can instead write the definition like this:</p>
+
+<pre><code>definition rng(x:t) = exists Y. f(Y) = x
+</code></pre>
+
+<p>Notice that the argument of <code>rng</code> is a constant <code>x</code>, not a place-holder <code>X</code>. This definition acts like a macro (or an <a href="axiom-schema.html">axiom schema</a>) that can be instantiated for specific values of <code>x</code>. So, for example, if we have an <a href="assertion.html">assertion</a> to prove like this:</p>
+
+<pre><code>ensure rng(y)
+</code></pre>
+
+<p>IVy will instantiate the definition like this:</p>
+
+<pre><code>axiom rng(y) &lt;-&gt; exists Y. f(Y) = y
+</code></pre>
+
+<p>In fact, all instances of the macro will be alternation-free, since IVy guarantees to instantiate the macro using only <a href="ground-term.html">ground terms</a> for the constant arguments.  A macro can have both <a href="variable.html">variables</a> and constants as arguments. For example, consider this definition:</p>
+
+<pre><code>definition g(x,Y) = x &lt; Y &amp; exists Z. Z &lt; x
+</code></pre>
+
+<p>Given a term <code>g(f(a),b)</code>, Ivy will instantiate this macro as:</p>
+
+<pre><code>axiom g(f(a),Y) = f(a) &lt; Y &amp; exists Z. Z &lt; f(a)
+</code></pre>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="ivy-check-command.html">ivy_check command</a></li>
+<li><a href="macro-action.html">macro action</a></li>
+</ul>
+
+</div>
+</div>
+    </article>
+  </div>
+</body>
+
+</html>

@@ -1,16 +1,8 @@
-[[keywords|Keywords]]: `some`, `maximizing`, `minimizing`
+A nondeterministic choice combines a [[choice function]] with a [[nondeterministic conditional]].
 
-IVy supports nondeterminism in actions using the asterisk (`*`) symbol in various forms.
+Its syntactic form is thus  `if some <symbol> . <constraint> { ... }`
 
-## Nondeterministic assignment
-
-Assigning `*` to a [[state variable]] simply picks "some value" of the appropriate type for the variable.
-
-## Nondeterministic conditional
-
-A nondeterministic branch can be taken using `if * {... }`, optionally with an `else` branch for the case when the `if` branch is not taken.
-
-The `if some <symbol> . <constraint> { ... }` statement combines a nondeterministic branch with a nondeterministic choice and a constraint: if the constraint can be satisfied, a choice is made for a satisfying value and the conditional is taken, otherwise it is not (and any possible `else` block may be taken instead).
+If the choice function succeeds, and some `<symbol>` does exist that meets `<constraint>`, the conditional `if` branch is taken (binding a value nondeterministically), otherwise it is not taken (and any optional `else` branch is taken).
 
 If it also possible to choose a value in such a conditional either `minimizing` or `maximizing` some function of the value.
 

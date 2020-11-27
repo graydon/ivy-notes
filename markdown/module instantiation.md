@@ -10,6 +10,7 @@ Instantiation may take one of two forms:
   - Creating a freshly-named object, typically with the `instance` keyword (see the first example below).
   - Instantiating a module's declarations into the enclosing object, typically with the `instantiate` keyword (see the second example below).
 
+In cases with many instances with many parameters, it may be more convenient to use an [[autoinstance]] declaration.
 
 ## Examples:
 

@@ -1,10 +1,10 @@
 [[keywords|Keyword]]: `import`
 
-An **imported action** is an action whose implementation is provided by the environment.
+An **imported action** is an [[action]] whose implementation is provided by the [[environment]].
 
-Imported actions are declared like any other action. A separate `import <action>` declaration marks them as imported.
+Imported actions are declared like any other action. A separate `import <action>` [[declaration]] marks them as imported.
 
-An imported action may not be implemented by the program, but it can be given [[mixin|mixins]].
+An imported action must not be implemented by the [[program]], but it can be augmented with [[mixin|mixins]].
 
 ## Example:
 

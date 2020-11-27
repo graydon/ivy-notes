@@ -71,7 +71,7 @@
 
 <ul>
 <li>The <a href="action.html">actions</a> and <a href="state-variable.html">state variables</a> of <code>X</code> are preserved and verified, as well as all actions and state variables at the <code>specification</code> <a href="visibility-qualifiers.html">visibility level</a> of any other isolates listed in the <code>with</code> portion of <code>X</code>.</li>
-<li>The contents of all other isolates in the program -- including <code>implementation</code> and <code>private</code> <a href="visibility-qualifiers.html">visibility levels</a> of isolates listed in the <code>with</code> clause of <code>X</code> -- are abstracted (erased) from verification.</li>
+<li>The contents of all other isolates in the <a href="program.html">program</a> -- including <code>implementation</code> and <code>private</code> <a href="visibility-qualifiers.html">visibility levels</a> of isolates listed in the <code>with</code> clause of <code>X</code> -- are abstracted (erased) from verification.</li>
 <li>Any action that is to be abstracted is first checked to ensure that it does not modify any of the same state variables as any of the actions in <code>X</code>. If it does, an error is signalled.</li>
 <li>All <a href="guarantee.html">guarantees</a> in the system are checked for coverage from the perspective of each <a href="isolate.html">isolate</a>.</li>
 </ul>
@@ -322,6 +322,7 @@ export server.req
 <li><a href="assertion.html">assertion</a></li>
 <li><a href="assumption.html">assumption</a></li>
 <li><a href="guarantee.html">guarantee</a></li>
+<li><a href="ivy-check-command.html">ivy_check command</a></li>
 <li><a href="postcondition.html">postcondition</a></li>
 <li><a href="precondition.html">precondition</a></li>
 </ul>

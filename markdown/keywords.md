@@ -3,33 +3,33 @@
 
   - `action`: [[declaration]] of an [[action]] 
   - `after`: [[declaration]] of a [[mixin]]
-  - `alias`
+  - `alias`: [[declaration]] of an [[alias]]
   - `apply`: [[judgment application]] in a [[proof]]
   - `around`: abbreviation for a pair of anonymous [[mixin|mixins]]
   - `assert`: [[statement]] [[assertion|asserting]] a [[proposition]]
   - `assume`: [[statement]] of an [[assumption]]; also a [[tactic]]
-  - `attribute`
-  - `autoinstance`
+  - `attribute`: [[declaration]] of an [[attribute]]
+  - `autoinstance`: [[declaration]] of an [[autoinstance]]
   - `axiom`: [[declaration]] of an [[axiom]]
   - `before`: [[declaration]] of a [[mixin]]
   - `call`: [[statement]] invoking an [[action]]
-  - `class`
-  - `concept`
+  - `class`: synonym for [[module]]
+  - `concept`: related to "concept graphs", undocumented
   - `conjecture`: obsolete keyword from earlier IVy versions
   - `decreases`: ranking function of a [[loop]]
   - `definition`: [[declaration]] of a [[definition]]
-  - `delegate`
-  - `derived`
-  - `destructor`
+  - `delegate`: related to preconditions, unclear.
+  - `derived`: related to "derived relations", unclear.
+  - `destructor`: [[declaration]] of a [[private destructor]]
   - `else`: negative branch of a [[conditional]] [[statement]]
   - `ensure`: [[postcondition]]
   - `ensures`: obsolete keyword from earlier IVy versions
-  - `entry`
+  - `entry`:
   - `execute`: synonym for `mixin` (declaring a [[mixin]])
   - `exists`: [[existential quantifier]] for an [[expression]]
   - `explicit`: qualifier for [[primitive judgment|primitive judgments]]
   - `export`: marks an [[action]] as [[export|exported]] to the [[environment]]
-  - `extract`
+  - `extract`: indicates which [[isolate|isolates]] should be subject to [[code extraction]]
   - `false`: primitive [[proposition]]
   - `forall`: [[universal quantifier]] for an [[expression]]
   - `fresh`
@@ -51,7 +51,7 @@
   - `isolate`: [[declaration|declares]] a special kind of [[object]] verified in isolation from others
   - `let`: binds a local symbol in a [[proof]]
   - `local`
-  - `macro`
+  - `macro`: [[declaration]] of a [[macro action]]
   - `match`: obsolete keyword from earlier IVy versions
   - `maximizing`: qualifier for [[nondeterministic choice]]
   - `maximizing`: qualifier for [[nondeterministic choice]]
@@ -64,7 +64,7 @@
   - `null`: obsolete keyword from earlier IVy versions
   - `object`: [[declaration]] of a [[singleton object]]
   - `of`
-  - `old`
+  - `old`: allows referring to an [[old value]] in an [[action]]
   - `parameter`: [[declaration]] of a [[parameter]]
   - `params`
   - `private`: marks declarations as "private" in [[isolate]] verification
@@ -81,15 +81,15 @@
   - `some`: selects a value with [[nondeterministic choice]]
   - `specification`: marks declarations as "specification" in [[isolate]] verification
   - `state`: obsolete keyword from earlier IVy versions
-  - `struct`
+  - `struct`: provides a [[struct]] definition for a [[type]]
   - `tactic`: invokes an extended [[tactic]] in a [[proof]]
-  - `temporal`
+  - `temporal`: [[declaration]] of a [[temporal property]]
   - `theorem`: [[declaration|declares]] a [[theorem]]
   - `this`: alias for the innermost enclosing [[module]]
   - `true`: primitive [[proposition]]
   - `trusted`
   - `type`: [[primitive judgment]] introducing a [[type]]
-  - `update`
+  - `update`: part of "pattern based updates", undocumented
   - `using`
   - `var`: [[primitive judgment]] introducing a [[declared variable]]
   - `variant`

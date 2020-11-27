@@ -52,19 +52,11 @@
     </nav>
     <article>
       <header>nondeterministic choice</header>
-      <div id="content"><p><a href="keywords.html">Keywords</a>: <code>some</code>, <code>maximizing</code>, <code>minimizing</code></p>
+      <div id="content"><p>A nondeterministic choice combines a <a href="choice-function.html">choice function</a> with a <a href="nondeterministic-conditional.html">nondeterministic conditional</a>.</p>
 
-<p>IVy supports nondeterminism in actions using the asterisk (<code>*</code>) symbol in various forms.</p>
+<p>Its syntactic form is thus  <code>if some &lt;symbol&gt; . &lt;constraint&gt; { ... }</code></p>
 
-<h2 id="nondeterministic-assignment">Nondeterministic assignment</h2>
-
-<p>Assigning <code>*</code> to a <a href="state-variable.html">state variable</a> simply picks "some value" of the appropriate type for the variable.</p>
-
-<h2 id="nondeterministic-conditional">Nondeterministic conditional</h2>
-
-<p>A nondeterministic branch can be taken using <code>if * {... }</code>, optionally with an <code>else</code> branch for the case when the <code>if</code> branch is not taken.</p>
-
-<p>The <code>if some &lt;symbol&gt; . &lt;constraint&gt; { ... }</code> statement combines a nondeterministic branch with a nondeterministic choice and a constraint: if the constraint can be satisfied, a choice is made for a satisfying value and the conditional is taken, otherwise it is not (and any possible <code>else</code> block may be taken instead).</p>
+<p>If the choice function succeeds, and some <code>&lt;symbol&gt;</code> does exist that meets <code>&lt;constraint&gt;</code>, the conditional <code>if</code> branch is taken (binding a value nondeterministically), otherwise it is not taken (and any optional <code>else</code> branch is taken).</p>
 
 <p>If it also possible to choose a value in such a conditional either <code>minimizing</code> or <code>maximizing</code> some function of the value.</p>
 
@@ -105,8 +97,11 @@
 
 <ul>
 <li><a href="assignment.html">assignment</a></li>
+<li><a href="choice-function.html">choice function</a></li>
+<li><a href="conditional.html">conditional</a></li>
 <li><a href="declared-variable.html">declared variable</a></li>
 <li><a href="keywords.html">keywords</a></li>
+<li><a href="nondeterminism.html">nondeterminism</a></li>
 </ul>
 
 </div>

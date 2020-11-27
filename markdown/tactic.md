@@ -18,5 +18,5 @@ Possible tactics include:
   - `tactic` invokes extended, non-keyword tactics:
     - `tactic skolemize` performs [[skolemization|Skolemization]]
     - `tactic vcgen` is the default VC-generating tactic
-    - `tactic l2s` translates [[temporal properties]] about liveness to safety properties
-    - `tactic invariance` also related to [[temporal properties]]
+    - `tactic l2s` translates an `eventually` [[temporal property]] about liveness to a safety property
+    - `tactic invariance` proves a `globally` safety [[temporal property]] by conversion to an [[invariant]]

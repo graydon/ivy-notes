@@ -1,6 +1,6 @@
 When [[judgment application|applying judgments]], one sometimes wishes to change the names of [[logical variable|logical variables]] in the applied jugements or premises, to avoid name clashes between introduced variables in a [[proof]].
 
-This can be done by writing an alpha-renaming qualifier, written `<X/Y>` where `X` is the new variable and `Y` is the variable in the formula to alpha-rename.
+This can be done by writing an alpha-renaming qualifier after the name of a premise, written `premname<X/Y>` where `X` is the new variable and `Y` is the variable in the formula to alpha-rename.
 
 ## Example:
 

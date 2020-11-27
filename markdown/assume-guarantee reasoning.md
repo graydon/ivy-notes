@@ -14,7 +14,7 @@ IVy uses [[isolate|isolates]] as its units of assume-guarantee reasoning, along 
 Specifically, when verifying some [[isolate]] `X`:
 
   - The [[action|actions]] and [[state variable|state variables]] of `X` are preserved and verified, as well as all actions and state variables at the `specification` [[visibility qualifiers|visibility level]] of any other isolates listed in the `with` portion of `X`.
-  - The contents of all other isolates in the program -- including `implementation` and `private` [[visibility qualifiers|visibility levels]] of isolates listed in the `with` clause of `X` -- are abstracted (erased) from verification.
+  - The contents of all other isolates in the [[program]] -- including `implementation` and `private` [[visibility qualifiers|visibility levels]] of isolates listed in the `with` clause of `X` -- are abstracted (erased) from verification.
   - Any action that is to be abstracted is first checked to ensure that it does not modify any of the same state variables as any of the actions in `X`. If it does, an error is signalled.
   - All [[guarantee|guarantees]] in the system are checked for coverage from the perspective of each [[isolate]].
 

@@ -1,0 +1,1 @@
+The term "constant" is a synonym in IVy for "[[individual]]" -- a single element of some first-order [[type]].

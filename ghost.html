@@ -54,11 +54,11 @@
       <header>ghost</header>
       <div id="content"><p><a href="keywords.html">Keyword</a>: <code>ghost</code></p>
 
-<p>The term "ghost" or "ghost code" refers to any code that has logical content (for purposes of specification and verification) but which is erased from an executable implementation (eg. during compilation or code extraction from a verified program).</p>
+<p>The term "ghost" or "ghost code" refers to any code that has logical content (for purposes of specification and verification) but which is erased from an executable implementation (eg. during <a href="code-extraction.html">code extraction</a> as a verified C++ program).</p>
 
 <p>Since ghost code exists strictly for logical purposes, there are no requirements that it be efficient, use bounded storage, or otherwise be "realistic". For example, it is common for ghost code in a verified program implementing a protocol to retain a ghost list (or function, relation, etc.) of every message the program ever receives. Such a ghost data structure can then serve as a term in <a href="verification-condition.html">verification conditions</a> -- for example, in an assertion about values in it or their order -- even though it will never really be kept in-memory in an executable version of the program.</p>
 
-<p>In IVy, the keyword <code>ghost</code> can prefix a <a href="type.html">type</a> declaration to indicate that variables and expressions of the type should be considered ghost code and erased during extraction or compilation.</p>
+<p>In IVy, the keyword <code>ghost</code> can prefix a <a href="type.html">type</a> declaration to indicate that <a href="state-variable.html">state variables</a> and <a href="expression.html">expressions</a> of the type should be considered ghost code and erased during <a href="code-extraction.html">code extraction</a>.</p>
 
 <div class="backlinks">
 
