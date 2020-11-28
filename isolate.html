@@ -54,7 +54,7 @@
     </nav>
     <article>
       <header>isolate</header>
-      <div id="content"><p><a href="keywords.html">Keyword</a>: <code>isolate</code></p>
+      <div id="content"><p><a href="keywords.html">Keywords</a>: <code>isolate</code>, <code>trusted</code></p>
 
 <p>An isolate is an isolated (or "modular") context for verification.</p>
 
@@ -74,6 +74,8 @@
 </ul>
 
 <p>Additional isolates do not automatically have visible access to their enclosing isolate. Instead, they may be given such access by declaring them using <code>isolate ... with this</code></p>
+
+<p>If an isolate is declared as <code>trusted isolate ...</code> it will be considered as verified without proof. This may be useful for isolates that contain <a href="import.html">imported</a> actions, or or as a temporary measure during development. </p>
 
 <h2 id="example">Example:</h2>
 

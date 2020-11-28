@@ -1,4 +1,4 @@
-[[keywords|Keyword]]: `some`
+[[keywords|Keyword]]: `some`, `in`
 
 A **choice function** is a special form of [[definition]] that introduces a different [[axiom]] than usual: one with an implication operator (`->`) guarded by an [[existential quantifier]].
 

@@ -1,6 +1,8 @@
 [[keywords|Keyword]]: `var`
 
-Variables are a type of [[declaration]] (so can be declared at [[module]] level) but they can also occur as a [[statement]] locally within an [[action]].
+Variables are a type of [[declaration]] (so can be declared at [[module]] level) .
+
+They can also occur as a [[statement]] locally within an [[action]], in which case they are identical to a [[local variable]].
 
 At module level, a declared variable is identical to an [[individual]] [[declaration]].
 
@@ -44,4 +46,16 @@ action set_local_green = {
 }
 ```
 
-This [[declaration|declares]] a _local_ variable `v` of type `color` inside an action that [[assignment|assigns]] the value `green` to `v`.
+This [[declaration|declares]] a variable `v` of type `color` inside an action that [[assignment|assigns]] the value `green` to `v`.
+
+It is identical to the following action using a [[local variable]]:
+
+```
+type color = {red, green, blue}
+
+action set_local_green = {
+   local v:color {
+       v := green
+   }
+}
+```

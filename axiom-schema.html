@@ -54,7 +54,9 @@
     </nav>
     <article>
       <header>axiom schema</header>
-      <div id="content"><p>One of the <a href="schema.html">compound judgments</a>.</p>
+      <div id="content"><p><a href="keywords.html">Keywords</a>: <code>axiom</code>, <code>schema</code></p>
+
+<p>One of the <a href="schema.html">compound judgments</a>.</p>
 
 <p>Like <a href="primitive-axiom.html">primitive axioms</a>, admitted without <a href="proof.html">proof</a> to the current context.</p>
 
@@ -69,7 +71,18 @@
 }
 </code></pre>
 
-<p>The keyword <code>axiom</code> tells IVy that this schema should be taken as valid without proof</p>
+<p>The keyword <code>axiom</code> tells IVy that this schema should be taken as valid without proof. The braces indicate that it is a <a href="schema.html">schema</a> and not a <a href="primitive-axiom.html">primitive axiom</a>.</p>
+
+<p>The same axiom schema can be written as</p>
+
+<pre><code>schema congruence = {
+    type d
+    type r
+    function f(X:d) : r
+    #--------------------------
+    property X = Y -&gt; f(X) = f(Y)
+}
+</code></pre>
 
 <div class="backlinks">
 
@@ -81,6 +94,7 @@
 <li><a href="keywords.html">keywords</a></li>
 <li><a href="macro-definition.html">macro definition</a></li>
 <li><a href="proof.html">proof</a></li>
+<li><a href="recursion.html">recursion</a></li>
 <li><a href="schema.html">schema</a></li>
 </ul>
 

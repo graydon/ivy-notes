@@ -1,6 +1,7 @@
 One of the following [[logical judgment]] (which are in turn kinds of [[declaration]]):
 
   - [[type]] declarations
+  - [[variant]] declarations
   - [[function]], [[relation]], [[declared variable]] and [[individual]] declarations
   - [[primitive axiom|primitive axioms]]
   - [[property|properties]]

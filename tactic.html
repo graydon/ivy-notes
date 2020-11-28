@@ -66,12 +66,12 @@
 <li><code>apply</code> applies a named <a href="schema.html">compound judgment</a>, followed by an optional <a href="alpha-renaming.html">alpha renaming</a> and a <code>with</code> clause listing explicit premise instances</li>
 <li><code>instance</code>, or <code>instantiate</code> applies a named <a href="primitive-judgment.html">primitive judgment</a>, followed by an optional <a href="alpha-renaming.html">alpha renaming</a> and a <code>with</code> clause listing explicit substitutions for <a href="explicit-quantifier-instantiation.html">quantified variables</a></li>
 <li><code>let</code> performs <a href="explicit-quantifier-instantiation.html">explicit quantifier instantiation</a> on existing goals</li>
-<li><code>showgoals</code> prints the current list of proof goals</li>
-<li><code>defergoal</code></li>
+<li><code>showgoals</code>: prints the current list of proof goals</li>
+<li><code>defergoal</code>: defers the current proof goal, moving it to the back of the list of proof goals</li>
 <li><code>assume</code> adds an <a href="assumption.html">assumption</a></li>
-<li><code>unfold</code></li>
-<li><code>forget</code></li>
-<li><code>spoil</code></li>
+<li><code>unfold</code> <a href="unfold.html">unfolds</a> a <a href="definition.html">definition</a></li>
+<li><code>forget</code>: removes a declaration from the set of premises</li>
+<li><code>spoil</code>: undocumented</li>
 <li><code>property</code>, <code>axiom</code>, etc. allow declaring (and proving) a local sub-<a href="logical-judgment.html">judgment</a></li>
 <li><code>tactic</code> invokes extended, non-keyword tactics:<br />
 <ul><br />
@@ -96,6 +96,7 @@
 <li><a href="schema.html">schema</a></li>
 <li><a href="skolemization.html">skolemization</a></li>
 <li><a href="temporal-property.html">temporal property</a></li>
+<li><a href="unfold.html">unfold</a></li>
 <li><a href="verification-condition.html">verification condition</a></li>
 </ul>
 

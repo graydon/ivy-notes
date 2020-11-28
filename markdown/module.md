@@ -1,4 +1,4 @@
-keyword: `module`
+[[keywords|Keyword]]: `module`
 
 A module in IVy is a group of declarations that can be [[module instantiation|instantiated]].
 
@@ -53,4 +53,4 @@ module po(t,lt) = {
 }
 ```
 
-This module takes a type `t` and a relation `lt` over `t`. It provides axioms stating that `lt` is transitive and antisymmetric.
+This module takes a [[type]] `t` and a [[relation]] `lt` over `t`. It provides axioms stating that `lt` is transitive and antisymmetric.

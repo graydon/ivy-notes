@@ -1,4 +1,4 @@
-[[keywords|Keyword]]: `isolate`
+[[keywords|Keywords]]: `isolate`, `trusted`
 
 An isolate is an isolated (or "modular") context for verification.
 
@@ -15,6 +15,8 @@ Additional isolates can be declared inside the program in a variety of forms:
   - `isolate <symbol> = { ... } with <other_isolate>` declares an isolate that includes the specification portion of the isolate `<other_isolate>`
 
 Additional isolates do not automatically have visible access to their enclosing isolate. Instead, they may be given such access by declaring them using `isolate ... with this`
+
+If an isolate is declared as `trusted isolate ...` it will be considered as verified without proof. This may be useful for isolates that contain [[import|imported]] actions, or or as a temporary measure during development. 
 
 ## Example:
 

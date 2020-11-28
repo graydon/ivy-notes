@@ -8,12 +8,12 @@ Possible tactics include:
   - `apply` applies a named [[schema|compound judgment]], followed by an optional [[alpha renaming]] and a `with` clause listing explicit premise instances
   -  `instance`, or `instantiate` applies a named [[primitive judgment]], followed by an optional [[alpha renaming]] and a `with` clause listing explicit substitutions for [[explicit quantifier instantiation|quantified variables]]
   - `let` performs [[explicit quantifier instantiation]] on existing goals
-  - `showgoals` prints the current list of proof goals
-  - `defergoal`
+  - `showgoals`: prints the current list of proof goals
+  - `defergoal`: defers the current proof goal, moving it to the back of the list of proof goals
   - `assume` adds an [[assumption]]
-  - `unfold`
-  - `forget`
-  - `spoil`
+  - `unfold` [[unfold|unfolds]] a [[definition]]
+  - `forget`: removes a declaration from the set of premises
+  - `spoil`: undocumented
   - `property`, `axiom`, etc. allow declaring (and proving) a local sub-[[logical judgment|judgment]]
   - `tactic` invokes extended, non-keyword tactics:
     - `tactic skolemize` performs [[skolemization|Skolemization]]

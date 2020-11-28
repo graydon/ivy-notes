@@ -54,7 +54,45 @@
     </nav>
     <article>
       <header>local variable</header>
-      <div id="content"><p></p>
+      <div id="content"><p><a href="keywords.html">Keyword</a>: <code>local</code></p>
+
+<p>A local variable is a <a href="statement.html">statement</a> that introduces a new <a href="state-variable.html">state variable</a> inside an <a href="action.html">action</a>.</p>
+
+<p>A local variable carries an associated block that indicates the scope of the variable.</p>
+
+<h2 id="example">Example:</h2>
+
+<p>This <a href="declaration.html">declares</a> a local variable <code>v</code> of type <code>color</code> inside an action that <a href="assignment.html">assigns</a> the value <code>green</code> to <code>v</code>.</p>
+
+<pre><code>type color = {red, green, blue}
+
+action set_local_green = {
+   local v:color {
+       v := green
+   }
+}
+</code></pre>
+
+<p>It is identical to the following action, using a <a href="declared-variable.html">declared variable</a>:</p>
+
+<pre><code>type color = {red, green, blue}
+
+action set_local_green = {
+   var v: color;
+   v := green
+}
+</code></pre>
+
+<div class="backlinks">
+
+<h2 id="backlinks">Backlinks</h2>
+
+<ul>
+<li><a href="declared-variable.html">declared variable</a></li>
+<li><a href="keywords.html">keywords</a></li>
+</ul>
+
+</div>
 </div>
     </article>
   </div>

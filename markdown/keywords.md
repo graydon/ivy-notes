@@ -16,7 +16,9 @@
   - `class`: synonym for [[module]]
   - `concept`: related to "concept graphs", undocumented
   - `conjecture`: obsolete keyword from earlier IVy versions
+  - `constructor`: undocumented
   - `decreases`: ranking function of a [[loop]]
+  - `defergoal`: [[tactic]] that defers a proof goal
   - `definition`: [[declaration]] of a [[definition]]
   - `delegate`: related to preconditions, unclear.
   - `derived`: related to "derived relations", unclear.
@@ -24,23 +26,27 @@
   - `else`: negative branch of a [[conditional]] [[statement]]
   - `ensure`: [[postcondition]]
   - `ensures`: obsolete keyword from earlier IVy versions
-  - `entry`:
+  - `entry`: obsolete keyword from earlier IVy versions
+  - `eventually`: term in a [[temporal property]]
   - `execute`: synonym for `mixin` (declaring a [[mixin]])
   - `exists`: [[existential quantifier]] for an [[expression]]
   - `explicit`: qualifier for [[primitive judgment|primitive judgments]]
   - `export`: marks an [[action]] as [[export|exported]] to the [[environment]]
   - `extract`: indicates which [[isolate|isolates]] should be subject to [[code extraction]]
   - `false`: primitive [[proposition]]
+  - `finite`: undocumented
   - `forall`: [[universal quantifier]] for an [[expression]]
-  - `fresh`
-  - `from`
+  - `forget`: [[tactic]] that forgets a declaration from premises
+  - `fresh`: adds a [[freshness qualifier]] to a [[schema]] premise
+  - `from`: part of "pattern based updates", undocumented
   - `function`: [[declaration]] of a [[function]]
   - `ghost`: indicates that a [[type]] is to be considered [[ghost]] code
+  - `globally`: term in a [[temporal property]]
   - `if`: positive branch of a [[conditional]] [[statement]]
   - `implement`: provides an implementation of an abstract [[action]]
   - `implementation`: marks declarations as "implementation" in [[isolate]] verification
   - `import`:  marks an action as [[import|imported]] from the [[environment]]
-  - `in`
+  - `in`: indicates chosen value in [[choice function]]
   - `include`: incorporates another IVy source file's declarations into the current file
   - `individual`: [[declaration]] of an [[individual]]
   - `init`: [[mixin]] declaration for an [[initializer]]
@@ -48,57 +54,62 @@
   - `instantiate`: synonym for `instance`
   - `interpret`: [[primitive judgment]] of [[theory instantiation]]
   - `invariant`: [[primitive judgment]] of an [[invariant]]
+  - `isa`: tests whether type is-a specific [[variant]] (subtype)
   - `isolate`: [[declaration|declares]] a special kind of [[object]] verified in isolation from others
   - `let`: binds a local symbol in a [[proof]]
-  - `local`
+  - `local`: binds a [[logical variable]] in an [[action]]
   - `macro`: [[declaration]] of a [[macro action]]
   - `match`: obsolete keyword from earlier IVy versions
   - `maximizing`: qualifier for [[nondeterministic choice]]
-  - `maximizing`: qualifier for [[nondeterministic choice]]
   - `method`: synonym for `action` (declaring an [[action]])
+  - `minimizing`: qualifier for [[nondeterministic choice]]
   - `mixin`: [[declaration]] of a [[mixin]]
-  - `mixord`
+  - `mixord`: [[declaration]] of a "mixin order relation"; undocumented
   - `modifies`: solete keyword from earlier IVy versions
   - `module`: [[declaration]] of a [[module]]
-  - `named`
+  - `named`: introduces a [[named existential]]
   - `null`: obsolete keyword from earlier IVy versions
   - `object`: [[declaration]] of a [[singleton object]]
-  - `of`
+  - `of`: indicates [[type]] of [[variant]]
   - `old`: allows referring to an [[old value]] in an [[action]]
   - `parameter`: [[declaration]] of a [[parameter]]
-  - `params`
+  - `params`: part of "pattern based updates", undocumented
   - `private`: marks declarations as "private" in [[isolate]] verification
-  - `progress`
+  - `progress`: obsolete keyword from earlier IVy versions
   - `proof`: optionally provides a [[proof]] following a [[property]] or [[theorem]]
   - `property`: [[declaration|declares]] a [[property]]
   - `relation`: [[declaration|declares]] a [[relation]]
-  - `rely`
+  - `rely`: obsolete keyword from earlier IVy versions
   - `require`: [[precondition]]
   - `requires`: obsolete keyword from earlier IVy versions
   - `returns`: qualifier of an [[action]] indicating its return type
-  - `schema`
+  - `scenario`: part of "scenario mixins", undocumented
+  - `schema`: [[declaration]] of an [[axiom schema]]
   - `set`: obsolete keyword from earlier IVy versions
+  - `showgoals`: [[tactic]] that prints current proof goals
   - `some`: selects a value with [[nondeterministic choice]]
   - `specification`: marks declarations as "specification" in [[isolate]] verification
+  - `spoil`: undocumented [[tactic]]
   - `state`: obsolete keyword from earlier IVy versions
   - `struct`: provides a [[struct]] definition for a [[type]]
   - `tactic`: invokes an extended [[tactic]] in a [[proof]]
   - `temporal`: [[declaration]] of a [[temporal property]]
   - `theorem`: [[declaration|declares]] a [[theorem]]
   - `this`: alias for the innermost enclosing [[module]]
+  - `thunk`: defines a [[thunk]]
   - `true`: primitive [[proposition]]
-  - `trusted`
+  - `trusted`: marks an [[isolate]] as verified without proof
   - `type`: [[primitive judgment]] introducing a [[type]]
+  - `unfold`: [[tactic]] for [[unfold|unfolding]] a definition
   - `update`: part of "pattern based updates", undocumented
-  - `using`
-  - `var`: [[primitive judgment]] introducing a [[declared variable]]
-  - `variant`
+  - `using`: undocumented, similar to `include`
+  - `var`: [[primitive judgment]] introducing a [[declared variable]]; in an [[action]], synonymous with a [[local variable]]
+  - `variant`: [[declaration]] of a [[variant]]
   - `while`: [[loop]] [[statement]]
   - `with`: qualifier for [[isolate]] combination, in [[isolate]] [[declaration|declarations]]  
 
 
 ## Categorical
-
 
   - [[logical judgment|Logical judgment]] [[declaration|declarations]]
     - `type` introduces a [[type]]

@@ -54,7 +54,11 @@
     </nav>
     <article>
       <header>schema</header>
-      <div id="content"><p>A compound judgment or "schema" takes a collection of judgments as input (the premises) and produces a judgment as output (the conclusion).</p>
+      <div id="content"><p><a href="keywords.html">Keywords</a>: <code>schema</code>, <code>axiom</code>, <code>theorem</code></p>
+
+<p>A compound judgment or "schema" takes a collection of judgments as input (the premises) and produces a judgment as output (the conclusion).</p>
+
+<p>The keyword <code>schema</code> introduces an <a href="axiom-schema.html">axiom schema</a> as does the block form of an <code>axiom</code> declaration. The keyword <code>theorem</code> introduces a <a href="theorem.html">theorem</a>.</p>
 
 <p>If the schema is valid, then we can provide any type-correct values for the premises and the conclusion will follow.</p>
 
@@ -62,13 +66,13 @@
 
 <h2 id="example">Example:</h2>
 
-<pre><code>    axiom [congruence] {
-        type d
-        type r
-        function f(X:d) : r
-        #--------------------------
-        property X = Y -&gt; f(X) = f(Y)
-    }
+<pre><code>axiom [congruence] {
+    type d
+    type r
+    function f(X:d) : r
+    #--------------------------
+    property X = Y -&gt; f(X) = f(Y)
+}
 </code></pre>
 
 <p>The schema is contained in curly brackets. This differentiates it from a <a href="primitive-judgment.html">primitive judgment</a>.</p>
@@ -93,6 +97,8 @@ variable is only the function declaration. It has no relation to the variable <c
 <ul>
 <li><a href="axiom-schema.html">axiom schema</a></li>
 <li><a href="first-order-logic.html">first-order logic</a></li>
+<li><a href="fresh-name.html">fresh name</a></li>
+<li><a href="freshness-qualifier.html">freshness qualifier</a></li>
 <li><a href="judgment-application.html">judgment application</a></li>
 <li><a href="keywords.html">keywords</a></li>
 <li><a href="logical-judgment.html">logical judgment</a></li>

@@ -72,7 +72,9 @@
 <li><code>class</code>: synonym for <a href="module.html">module</a></li>
 <li><code>concept</code>: related to "concept graphs", undocumented</li>
 <li><code>conjecture</code>: obsolete keyword from earlier IVy versions</li>
+<li><code>constructor</code>: undocumented</li>
 <li><code>decreases</code>: ranking function of a <a href="loop.html">loop</a></li>
+<li><code>defergoal</code>: <a href="tactic.html">tactic</a> that defers a proof goal</li>
 <li><code>definition</code>: <a href="declaration.html">declaration</a> of a <a href="definition.html">definition</a></li>
 <li><code>delegate</code>: related to preconditions, unclear.</li>
 <li><code>derived</code>: related to "derived relations", unclear.</li>
@@ -80,23 +82,27 @@
 <li><code>else</code>: negative branch of a <a href="conditional.html">conditional</a> <a href="statement.html">statement</a></li>
 <li><code>ensure</code>: <a href="postcondition.html">postcondition</a></li>
 <li><code>ensures</code>: obsolete keyword from earlier IVy versions</li>
-<li><code>entry</code>:</li>
+<li><code>entry</code>: obsolete keyword from earlier IVy versions</li>
+<li><code>eventually</code>: term in a <a href="temporal-property.html">temporal property</a></li>
 <li><code>execute</code>: synonym for <code>mixin</code> (declaring a <a href="mixin.html">mixin</a>)</li>
 <li><code>exists</code>: <a href="existential-quantifier.html">existential quantifier</a> for an <a href="expression.html">expression</a></li>
 <li><code>explicit</code>: qualifier for <a href="primitive-judgment.html">primitive judgments</a></li>
 <li><code>export</code>: marks an <a href="action.html">action</a> as <a href="export.html">exported</a> to the <a href="environment.html">environment</a></li>
 <li><code>extract</code>: indicates which <a href="isolate.html">isolates</a> should be subject to <a href="code-extraction.html">code extraction</a></li>
 <li><code>false</code>: primitive <a href="proposition.html">proposition</a></li>
+<li><code>finite</code>: undocumented</li>
 <li><code>forall</code>: <a href="universal-quantifier.html">universal quantifier</a> for an <a href="expression.html">expression</a></li>
-<li><code>fresh</code></li>
-<li><code>from</code></li>
+<li><code>forget</code>: <a href="tactic.html">tactic</a> that forgets a declaration from premises</li>
+<li><code>fresh</code>: adds a <a href="freshness-qualifier.html">freshness qualifier</a> to a <a href="schema.html">schema</a> premise</li>
+<li><code>from</code>: part of "pattern based updates", undocumented</li>
 <li><code>function</code>: <a href="declaration.html">declaration</a> of a <a href="function.html">function</a></li>
 <li><code>ghost</code>: indicates that a <a href="type.html">type</a> is to be considered <a href="ghost.html">ghost</a> code</li>
+<li><code>globally</code>: term in a <a href="temporal-property.html">temporal property</a></li>
 <li><code>if</code>: positive branch of a <a href="conditional.html">conditional</a> <a href="statement.html">statement</a></li>
 <li><code>implement</code>: provides an implementation of an abstract <a href="action.html">action</a></li>
 <li><code>implementation</code>: marks declarations as "implementation" in <a href="isolate.html">isolate</a> verification</li>
 <li><code>import</code>:  marks an action as <a href="import.html">imported</a> from the <a href="environment.html">environment</a></li>
-<li><code>in</code></li>
+<li><code>in</code>: indicates chosen value in <a href="choice-function.html">choice function</a></li>
 <li><code>include</code>: incorporates another IVy source file's declarations into the current file</li>
 <li><code>individual</code>: <a href="declaration.html">declaration</a> of an <a href="individual.html">individual</a></li>
 <li><code>init</code>: <a href="mixin.html">mixin</a> declaration for an <a href="initializer.html">initializer</a></li>
@@ -104,51 +110,57 @@
 <li><code>instantiate</code>: synonym for <code>instance</code></li>
 <li><code>interpret</code>: <a href="primitive-judgment.html">primitive judgment</a> of <a href="theory-instantiation.html">theory instantiation</a></li>
 <li><code>invariant</code>: <a href="primitive-judgment.html">primitive judgment</a> of an <a href="invariant.html">invariant</a></li>
+<li><code>isa</code>: tests whether type is-a specific <a href="variant.html">variant</a> (subtype)</li>
 <li><code>isolate</code>: <a href="declaration.html">declares</a> a special kind of <a href="object.html">object</a> verified in isolation from others</li>
 <li><code>let</code>: binds a local symbol in a <a href="proof.html">proof</a></li>
-<li><code>local</code></li>
+<li><code>local</code>: binds a <a href="logical-variable.html">logical variable</a> in an <a href="action.html">action</a></li>
 <li><code>macro</code>: <a href="declaration.html">declaration</a> of a <a href="macro-action.html">macro action</a></li>
 <li><code>match</code>: obsolete keyword from earlier IVy versions</li>
 <li><code>maximizing</code>: qualifier for <a href="nondeterministic-choice.html">nondeterministic choice</a></li>
-<li><code>maximizing</code>: qualifier for <a href="nondeterministic-choice.html">nondeterministic choice</a></li>
 <li><code>method</code>: synonym for <code>action</code> (declaring an <a href="action.html">action</a>)</li>
+<li><code>minimizing</code>: qualifier for <a href="nondeterministic-choice.html">nondeterministic choice</a></li>
 <li><code>mixin</code>: <a href="declaration.html">declaration</a> of a <a href="mixin.html">mixin</a></li>
-<li><code>mixord</code></li>
+<li><code>mixord</code>: <a href="declaration.html">declaration</a> of a "mixin order relation"; undocumented</li>
 <li><code>modifies</code>: solete keyword from earlier IVy versions</li>
 <li><code>module</code>: <a href="declaration.html">declaration</a> of a <a href="module.html">module</a></li>
-<li><code>named</code></li>
+<li><code>named</code>: introduces a <a href="named-existential.html">named existential</a></li>
 <li><code>null</code>: obsolete keyword from earlier IVy versions</li>
 <li><code>object</code>: <a href="declaration.html">declaration</a> of a <a href="singleton-object.html">singleton object</a></li>
-<li><code>of</code></li>
+<li><code>of</code>: indicates <a href="type.html">type</a> of <a href="variant.html">variant</a></li>
 <li><code>old</code>: allows referring to an <a href="old-value.html">old value</a> in an <a href="action.html">action</a></li>
 <li><code>parameter</code>: <a href="declaration.html">declaration</a> of a <a href="parameter.html">parameter</a></li>
-<li><code>params</code></li>
+<li><code>params</code>: part of "pattern based updates", undocumented</li>
 <li><code>private</code>: marks declarations as "private" in <a href="isolate.html">isolate</a> verification</li>
-<li><code>progress</code></li>
+<li><code>progress</code>: obsolete keyword from earlier IVy versions</li>
 <li><code>proof</code>: optionally provides a <a href="proof.html">proof</a> following a <a href="property.html">property</a> or <a href="theorem.html">theorem</a></li>
 <li><code>property</code>: <a href="declaration.html">declares</a> a <a href="property.html">property</a></li>
 <li><code>relation</code>: <a href="declaration.html">declares</a> a <a href="relation.html">relation</a></li>
-<li><code>rely</code></li>
+<li><code>rely</code>: obsolete keyword from earlier IVy versions</li>
 <li><code>require</code>: <a href="precondition.html">precondition</a></li>
 <li><code>requires</code>: obsolete keyword from earlier IVy versions</li>
 <li><code>returns</code>: qualifier of an <a href="action.html">action</a> indicating its return type</li>
-<li><code>schema</code></li>
+<li><code>scenario</code>: part of "scenario mixins", undocumented</li>
+<li><code>schema</code>: <a href="declaration.html">declaration</a> of an <a href="axiom-schema.html">axiom schema</a></li>
 <li><code>set</code>: obsolete keyword from earlier IVy versions</li>
+<li><code>showgoals</code>: <a href="tactic.html">tactic</a> that prints current proof goals</li>
 <li><code>some</code>: selects a value with <a href="nondeterministic-choice.html">nondeterministic choice</a></li>
 <li><code>specification</code>: marks declarations as "specification" in <a href="isolate.html">isolate</a> verification</li>
+<li><code>spoil</code>: undocumented <a href="tactic.html">tactic</a></li>
 <li><code>state</code>: obsolete keyword from earlier IVy versions</li>
 <li><code>struct</code>: provides a <a href="struct.html">struct</a> definition for a <a href="type.html">type</a></li>
 <li><code>tactic</code>: invokes an extended <a href="tactic.html">tactic</a> in a <a href="proof.html">proof</a></li>
 <li><code>temporal</code>: <a href="declaration.html">declaration</a> of a <a href="temporal-property.html">temporal property</a></li>
 <li><code>theorem</code>: <a href="declaration.html">declares</a> a <a href="theorem.html">theorem</a></li>
 <li><code>this</code>: alias for the innermost enclosing <a href="module.html">module</a></li>
+<li><code>thunk</code>: defines a <a href="thunk.html">thunk</a></li>
 <li><code>true</code>: primitive <a href="proposition.html">proposition</a></li>
-<li><code>trusted</code></li>
+<li><code>trusted</code>: marks an <a href="isolate.html">isolate</a> as verified without proof</li>
 <li><code>type</code>: <a href="primitive-judgment.html">primitive judgment</a> introducing a <a href="type.html">type</a></li>
+<li><code>unfold</code>: <a href="tactic.html">tactic</a> for <a href="unfold.html">unfolding</a> a definition</li>
 <li><code>update</code>: part of "pattern based updates", undocumented</li>
-<li><code>using</code></li>
-<li><code>var</code>: <a href="primitive-judgment.html">primitive judgment</a> introducing a <a href="declared-variable.html">declared variable</a></li>
-<li><code>variant</code></li>
+<li><code>using</code>: undocumented, similar to <code>include</code></li>
+<li><code>var</code>: <a href="primitive-judgment.html">primitive judgment</a> introducing a <a href="declared-variable.html">declared variable</a>; in an <a href="action.html">action</a>, synonymous with a <a href="local-variable.html">local variable</a></li>
+<li><code>variant</code>: <a href="declaration.html">declaration</a> of a <a href="variant.html">variant</a></li>
 <li><code>while</code>: <a href="loop.html">loop</a> <a href="statement.html">statement</a></li>
 <li><code>with</code>: qualifier for <a href="isolate.html">isolate</a> combination, in <a href="isolate.html">isolate</a> <a href="declaration.html">declarations</a>  </li>
 </ul>
@@ -216,6 +228,7 @@
 <li><a href="attribute.html">attribute</a></li>
 <li><a href="autoinstance.html">autoinstance</a></li>
 <li><a href="axiom.html">axiom</a></li>
+<li><a href="axiom-schema.html">axiom schema</a></li>
 <li><a href="call.html">call</a></li>
 <li><a href="choice-function.html">choice function</a></li>
 <li><a href="code-extraction.html">code extraction</a></li>
@@ -225,6 +238,7 @@
 <li><a href="existential-quantifier.html">existential quantifier</a></li>
 <li><a href="explicit-quantifier-instantiation.html">explicit quantifier instantiation</a></li>
 <li><a href="export.html">export</a></li>
+<li><a href="freshness-qualifier.html">freshness qualifier</a></li>
 <li><a href="function.html">function</a></li>
 <li><a href="ghost.html">ghost</a></li>
 <li><a href="import.html">import</a></li>
@@ -233,9 +247,12 @@
 <li><a href="invariant.html">invariant</a></li>
 <li><a href="isolate.html">isolate</a></li>
 <li><a href="lexical-structure.html">lexical structure</a></li>
+<li><a href="local-variable.html">local variable</a></li>
 <li><a href="loop.html">loop</a></li>
 <li><a href="macro-action.html">macro action</a></li>
 <li><a href="mixin.html">mixin</a></li>
+<li><a href="module.html">module</a></li>
+<li><a href="named-existential.html">named existential</a></li>
 <li><a href="nondeterminism.html">nondeterminism</a></li>
 <li><a href="old-value.html">old value</a></li>
 <li><a href="parameter.html">parameter</a></li>
@@ -245,13 +262,17 @@
 <li><a href="proof.html">proof</a></li>
 <li><a href="property.html">property</a></li>
 <li><a href="relation.html">relation</a></li>
+<li><a href="schema.html">schema</a></li>
 <li><a href="singleton-object.html">singleton object</a></li>
 <li><a href="struct.html">struct</a></li>
 <li><a href="temporal-property.html">temporal property</a></li>
 <li><a href="theorem.html">theorem</a></li>
 <li><a href="theory-instantiation.html">theory instantiation</a></li>
+<li><a href="thunk.html">thunk</a></li>
 <li><a href="type.html">type</a></li>
+<li><a href="unfold.html">unfold</a></li>
 <li><a href="universal-quantifier.html">universal quantifier</a></li>
+<li><a href="variant.html">variant</a></li>
 </ul>
 
 </div>

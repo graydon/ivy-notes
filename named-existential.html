@@ -12,7 +12,7 @@
   <!-- CSS (uses absolute weblinks to work around relative path issues) -->
   <link rel="stylesheet" type="text/css" href="https://www.kmaasrud.com/main.css">
 
-  <title>primitive judgment</title>
+  <title>named existential</title>
 </head>
 
 <body>
@@ -53,41 +53,29 @@
       </div>
     </nav>
     <article>
-      <header>primitive judgment</header>
-      <div id="content"><p>One of the following <a href="logical-judgment.html">logical judgment</a> (which are in turn kinds of <a href="declaration.html">declaration</a>):</p>
+      <header>named existential</header>
+      <div id="content"><p><a href="keywords.html">Keyword</a>: <code>named</code></p>
 
-<ul>
-<li><a href="type.html">type</a> declarations</li>
-<li><a href="variant.html">variant</a> declarations</li>
-<li><a href="function.html">function</a>, <a href="relation.html">relation</a>, <a href="declared-variable.html">declared variable</a> and <a href="individual.html">individual</a> declarations</li>
-<li><a href="primitive-axiom.html">primitive axioms</a></li>
-<li><a href="property.html">properties</a></li>
-<li><a href="definition.html">definition</a></li>
-<li><a href="theory-instantiation.html">theory instantiation</a></li>
-<li><a href="invariant.html">invariants</a></li>
-</ul>
+<p>A named existential binds a <a href="skolemization.html">skolem function</a> to a <a href="fresh-name.html">fresh name</a>.</p>
 
-<p>In a <a href="proof.html">proof</a>, primitive axioms and properties are automatically applied by the default tactic unless they are qualified by the <code>explicit</code> keyword, in which case they must be expicitly <a href="judgment-application.html">applied</a> using the <code>apply</code> keyword, like <a href="schema.html">compound judgments</a>.</p>
+<h2 id="example">Example:</h2>
+
+<p>If we can prove that something exists, we can give it a name.  For example, suppose that we can prove that, for every <code>X</code>, there exists a <code>Y</code> such that <code>succ(X,Y)</code>. Then there exists a (Skolem) function that, given an <code>X</code>, produces such a <code>Y</code>. We can define such a function called <code>next</code> in the following way:</p>
+
+<pre><code>relation succ(X:t,Y:t)
+axiom exists Y. succ(X,Y)
+
+property exists Y. succ(X,Y) named next(X)
+</code></pre>
+
+<p>Provided we can prove the property, and that <code>next</code> is fresh, we can infer that, for all <code>X</code>, <code>succ(X,next(X))</code> holds. Defining a function in this way, (that is, as a Skolem function) can be quite useful in constructing a proof.  However, since proofs in Ivy are not generally constructive, we have no way to <em>compute</em> the function <code>next</code>, so we can't use it in extracted code.</p>
 
 <div class="backlinks">
 
 <h2 id="backlinks">Backlinks</h2>
 
 <ul>
-<li><a href="definition.html">definition</a></li>
-<li><a href="function.html">function</a></li>
-<li><a href="individual.html">individual</a></li>
-<li><a href="invariant.html">invariant</a></li>
-<li><a href="judgment-application.html">judgment application</a></li>
 <li><a href="keywords.html">keywords</a></li>
-<li><a href="logical-judgment.html">logical judgment</a></li>
-<li><a href="primitive-axiom.html">primitive axiom</a></li>
-<li><a href="property.html">property</a></li>
-<li><a href="relation.html">relation</a></li>
-<li><a href="schema.html">schema</a></li>
-<li><a href="tactic.html">tactic</a></li>
-<li><a href="theory-instantiation.html">theory instantiation</a></li>
-<li><a href="type.html">type</a></li>
 </ul>
 
 </div>

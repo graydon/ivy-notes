@@ -1,4 +1,8 @@
+[[keywords|Keywords]]: `schema`, `axiom`, `theorem`
+
 A compound judgment or "schema" takes a collection of judgments as input (the premises) and produces a judgment as output (the conclusion).
+
+The keyword `schema` introduces an [[axiom schema]] as does the block form of an `axiom` declaration. The keyword `theorem` introduces a [[theorem]].
 
 If the schema is valid, then we can provide any type-correct values for the premises and the conclusion will follow.
 
@@ -7,13 +11,13 @@ The default [[proof]] [[tactic]] never uses a schema automatically; to use a sch
 ## Example:
 
 ```
-    axiom [congruence] {
-        type d
-        type r
-        function f(X:d) : r
-        #--------------------------
-        property X = Y -> f(X) = f(Y)
-    }
+axiom [congruence] {
+    type d
+    type r
+    function f(X:d) : r
+    #--------------------------
+    property X = Y -> f(X) = f(Y)
+}
 ```
 
 The schema is contained in curly brackets. This differentiates it from a [[primitive judgment]].
