@@ -2,7 +2,7 @@ This is a set of notes made in an attempt to organize my reading of, and thinkin
 
 IVy's existing documentation is organized *mostly* as a series of tutorials, each of which introduces some concepts (but not all) in some order (not necessarily the order you want) and assuming a great deal of background understanding of terms in formal logic, verification and distributed systems.
 
-There are also a couple reference pages on the language and [[command]] line, but the language reference page is quite incomplete and disorganized, hard to navigate or look up information on. Much of what one needs to know about each topic referenced is actually hidden somewhere in a tutorial.
+There are also a couple reference pages on the language and [[command]] line, but the language reference page is quite incomplete and disorganized, hard to navigate or look up information on. Much of what one needs to know about each topic referenced is actually hidden somewhere in a tutorial, testcase,.
 
 Having attempted to read the tutorials "end to end" multiple times, and become frustrated, confused or unable to keep everything in my head at once, I've subsequently found it difficult to gain enough understanding of the tool's theory (and even legal forms of syntax) to be able to make progress when working on examples.
 
