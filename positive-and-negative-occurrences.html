@@ -60,8 +60,7 @@
 
 <p>For example, in the following formula:</p>
 
-<pre><code>~(~P | Q)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">~(~P | Q)</code></pre>
 
 <p><code>P</code> occurs positively and <code>Q</code> occurs negatively. In the formula <code>P -&gt; Q</code>, <code>P</code> occurs negatively and <code>Q</code> positively, since this is equivalent to <code>~P | Q</code>. In the formula <code>P &lt;-&gt; Q</code>, <code>P</code> and <code>Q</code> occur <em>both</em> positively and negatively, since this is equivalent to <code>(P -&gt; Q) &amp; (Q -&gt; P)</code>.</p>
 
@@ -69,26 +68,24 @@
 
 <p><a href="assignment.html">Assignments</a> in the code behave like assumptions.  To see this, we can rewrite the semantics of <a href="assignment.html">assignment</a> using a <a href="quantifier.html">quantifier</a>, like this:</p>
 
-<pre><code>wlp(y := e, R) = R[e/y]
-               = forall y. y = e -&gt; R
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">wlp(y := e, R) = R[e/y]
+               = forall y. y = e -> R</code></pre>
 
 <p>Using this method, and converting to <a href="prenex-normal-form.html">prenex normal form</a>, the negated VC for our example becomes a conjunction of the following three formulas:</p>
 
-<pre><code>x &gt; 0
+<pre><code class="plaintext lang-plaintext language-plaintext">x > 0
 y = x - 1
-~(x &lt; y)
-</code></pre>
+~(x < y)</code></pre>
 
 <p>We can see that the assumption <code>x &gt; 0</code> occurs positively, the assignment <code>y = x - 1</code> occurs positively as an equation, and the guarantee <code>x &lt; y</code> occurs negatively. </p>
 
 <p>On the other hand, as noted above, the VC's for a program <a href="invariant.html">invariant</a> <code>I</code> have this form: <code>I -&gt; wlp(a,I)</code>. This means that the invariant <code>I</code> occurs both positively and negatively (or put another way, it is both an assumption and a guarantee). </p>
 
 <p>Understanding which formulas occur positively and negatively in the negated VC will be important in understanding why the VC is or is not in the <a href="logical-fragment.html">decidable fragment</a>.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="arithmetic-literal.html">arithmetic literal</a></li>
@@ -100,7 +97,7 @@ y = x - 1
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

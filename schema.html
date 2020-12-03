@@ -66,14 +66,13 @@
 
 <h2 id="example">Example:</h2>
 
-<pre><code>axiom [congruence] {
+<pre><code class="plaintext lang-plaintext language-plaintext">axiom [congruence] {
     type d
     type r
     function f(X:d) : r
-    #--------------------------
-    property X = Y -&gt; f(X) = f(Y)
-}
-</code></pre>
+    <span class="tag">--------------------------</span>
+    property X = Y -> f(X) = f(Y)
+}</code></pre>
 
 <p>The schema is contained in curly brackets. This differentiates it from a <a href="primitive-judgment.html">primitive judgment</a>.</p>
 
@@ -89,10 +88,10 @@
 variable is only the function declaration. It has no relation to the variable <code>X</code> in the conclusion.</p>
 
 <p>The keyword <code>axiom</code> tells IVy that this schema should be taken as valid without proof: it is an <a href="axiom-schema.html">axiom schema</a> rather than a <a href="theorem.html">theorem</a>.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="axiom-schema.html">axiom schema</a></li>
@@ -108,7 +107,7 @@ variable is only the function declaration. It has no relation to the variable <c
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

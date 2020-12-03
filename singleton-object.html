@@ -62,7 +62,7 @@
 
 <p>We can create a module with just one instance like this:</p>
 
-<pre><code>object foo = {
+<pre><code class="plaintext lang-plaintext language-plaintext">object foo = {
     relation bit
     after init {
         bit := false
@@ -70,16 +70,15 @@
     action flip = {
         bit := ~bit
     }
-}
-</code></pre>
+}</code></pre>
 
 <p>This creates a single object <code>foo</code> with members <code>foo.bit</code> and <code>foo.flip</code>, exactly as if we had created a module and instantiated it once.</p>
 
 <p>An <a href="isolate.html">isolate</a> is a special kind of <code>object</code>.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="keywords.html">keywords</a></li>
@@ -88,7 +87,7 @@
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

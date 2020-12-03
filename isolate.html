@@ -79,7 +79,7 @@
 
 <h2 id="example">Example:</h2>
 
-<pre><code>isolate evens = {
+<pre><code class="plaintext lang-plaintext language-plaintext">isolate evens = {
 
     action step
     action put(n:num)
@@ -140,8 +140,7 @@ isolate odds = {
 
     }
 }
-with evens,num
-</code></pre>
+with evens,num</code></pre>
 
 <p>This is a pair of isolates that depend on one another. </p>
 
@@ -153,7 +152,7 @@ with evens,num
 
 <p>When we verifiy isolate <code>evens</code>, the result is as if we had actually entered the following program:</p>
 
-<pre><code>object nat {
+<pre><code class="plaintext lang-plaintext language-plaintext">object nat {
     ...
 }
 
@@ -183,14 +182,13 @@ object odds = {
 }
 
 export evens.step
-export evens.put
-</code></pre>
+export evens.put</code></pre>
 
 <p>Notice the implementation of <code>odds.put</code> has been eliminated, and what remains is just the assertion that the input value is odd (IVy verifies that the eliminated side effect of <code>odds.put</code> is in fact invisible to <code>evens</code>). The <a href="assertion.html">assertion</a> that inputs to <code>evens</code> are even has in effect become an <a href="assumption.html">assumption</a>. We can prove this isolate is safe by showing that <code>even.number</code> is <a href="invariant.html">invariantly</a> even, which means that <code>odds.put</code> is always called with an odd number.</p>
 
 <p>The other isolate, <code>odds</code>, looks like this:</p>
 
-<pre><code>object nat {
+<pre><code class="plaintext lang-plaintext language-plaintext">object nat {
     ...
 }
 
@@ -219,16 +217,15 @@ object odds = {
 }
 
 export odds.step
-export odds.put
-</code></pre>
+export odds.put</code></pre>
 
 <p>If both of these isolates are safe, then we know that neither assertion is the first to fail, so the original program is safe.</p>
 
 <p>The general rule is that a <code>require</code> assertion is a guarantee for the calling isolate and and assumption for the called isolate, while an <code>ensure</code> action is a guarantee for the called isolate and an assumption for the calling isolate. When we verify an isolate, we check only those assertions that are gurantees for actions in the isolate.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="action.html">action</a></li>
@@ -252,7 +249,7 @@ export odds.put
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

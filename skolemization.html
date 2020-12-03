@@ -73,15 +73,14 @@ Skolemizes as: <code>forall X:t . f(x,s(x))</code> (introducing the Skolem funct
 
 <p>Suppose we are attempting to prove this <a href="theorem.html">theorem</a>:</p>
 
-<pre><code>theorem [sk1] {
+<pre><code class="plaintext lang-plaintext language-plaintext">theorem [sk1] {
     type t
     individual a : t
     relation r(X:t,Y:t)
     property [prem] forall X. exists Y. r(X,Y)
-    #---
+    <span class="tag">---</span>
     property exists Z. r(a,Z)
-}
-</code></pre>
+}</code></pre>
 
 <p>This theorem says "if we have some individual <code>a:t</code> and some relation <code>r(X,Y)</code>, and we have established as a premise that <code>forall X. exists Y. r(X,Y)</code>, then we can conclude <code>exists X. r(a, Z)</code>".</p>
 
@@ -89,15 +88,14 @@ Skolemizes as: <code>forall X:t . f(x,s(x))</code> (introducing the Skolem funct
 
 <p>Applying <code>tactic skolemize</code> implicitly transforms this to a theorem that states <strong>exactly that</strong>:</p>
 
-<pre><code>theorem [sk1] {
+<pre><code class="plaintext lang-plaintext language-plaintext">theorem [sk1] {
     function _Y(V0:t) : t
     type t
     individual a : t
     relation r(V0:t,V1:t)
     property [prem] forall X. r(X,_Y(X))
     property exists Z. r(a,Z)
-}
-</code></pre>
+}</code></pre>
 
 <p>Here the Skolem function <code>_Y:(V0:t) : t</code> has been introduced and the premise property <code>[prem]</code> rewritten to say that <code>r</code> models the function <code>_Y</code> injectively: <code>forall X. r(X, _Y(X))</code></p>
 
@@ -107,18 +105,17 @@ Skolemizes as: <code>forall X:t . f(x,s(x))</code> (introducing the Skolem funct
 
 <p>The completed proof is therefore:</p>
 
-<pre><code>proof {
+<pre><code class="plaintext lang-plaintext language-plaintext">proof {
     tactic skolemize
     instantiate prem with X=a
     instantiate with Z = _Y(a)
-}
-</code></pre>
+}</code></pre>
 
 <p>All of this wasn’t really necessary, since the original theorem is in the <a href="logical-fragment.html">decidable fragment</a>. However, the approach of Skolemization followed by selective instantiation of quantifiers can be a quick way to reduce a proof problem to a decidable one. First, we try to get Z3 to discharge the proof goal automatically. If Ivy complains about a quantified variable, we eliminate that variable by Skolemization and instantiation. If we guess the wrong instantiation, Ivy will give us a counterexample.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="alpha-renaming.html">alpha renaming</a></li>
@@ -134,7 +131,7 @@ Skolemizes as: <code>forall X:t . f(x,s(x))</code> (introducing the Skolem funct
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

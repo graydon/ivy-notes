@@ -62,31 +62,29 @@
 
 <h2 id="example">Example:</h2>
 
-<pre><code>axiom [congruence] {
+<pre><code class="plaintext lang-plaintext language-plaintext">axiom [congruence] {
     type d
     type r
     function f(X:d) : r
-    #--------------------------
-    property X = Y -&gt; f(X) = f(Y)
-}
-</code></pre>
+    <span class="tag">--------------------------</span>
+    property X = Y -> f(X) = f(Y)
+}</code></pre>
 
 <p>The keyword <code>axiom</code> tells IVy that this schema should be taken as valid without proof. The braces indicate that it is a <a href="schema.html">schema</a> and not a <a href="primitive-axiom.html">primitive axiom</a>.</p>
 
 <p>The same axiom schema can be written as</p>
 
-<pre><code>schema congruence = {
+<pre><code class="plaintext lang-plaintext language-plaintext">schema congruence = {
     type d
     type r
     function f(X:d) : r
-    #--------------------------
-    property X = Y -&gt; f(X) = f(Y)
-}
-</code></pre>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+    <span class="tag">--------------------------</span>
+    property X = Y -> f(X) = f(Y)
+}</code></pre>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="axiom.html">axiom</a></li>
@@ -99,7 +97,7 @@
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

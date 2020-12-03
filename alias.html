@@ -60,7 +60,7 @@
 
 <h2 id="example">Example:</h2>
 
-<pre><code>module set(elem) = {
+<pre><code class="plaintext lang-plaintext language-plaintext">module set(elem) = {
 
     type this
     alias t = this
@@ -69,16 +69,15 @@
     action emptyset returns(s:t)
     action add(s:t,e:elem) returns (s:t)
     ...
-}
-</code></pre>
+}</code></pre>
 
 <p>Notice something new here: <code>type this</code>.  This declares a <a href="type.html">type</a> with the same name as the <a href="object.html">object</a> we are declaring (which won't be known until we <a href="module-instantiation.html">instantiate</a> this <a href="module.html">module</a>).</p>
 
 <p>For convenience, we create an alias <code>t</code> for this type. This interface of our abstact set type contains a relation and two actions.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="declaration.html">declaration</a></li>
@@ -86,7 +85,7 @@
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

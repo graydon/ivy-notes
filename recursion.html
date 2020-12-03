@@ -56,15 +56,14 @@
       <header>recursion</header>
       <div id="content"><p>Recursive <a href="definition.html">definitions</a> are permitted in IVy by instantiating a definitional schema. As an example, consider the following <a href="axiom-schema.html">axiom schema</a>:</p>
 
-<pre><code>axiom [rec[u]] {
+<pre><code class="plaintext lang-plaintext language-plaintext">axiom [rec[u]] {
     type q
     function base(X:u) : q
     function step(X:q,Y:u) : q
     fresh function fun(X:u) : q
-    #---------------------------------------------------------
-    definition fun(X:u) = base(X) if X &lt;= 0 else step(fun(X-1),X)
-}
-</code></pre>
+    <span class="tag">---------------------------------------------------------</span>
+    definition fun(X:u) = base(X) if X <= 0 else step(fun(X-1),X)
+}</code></pre>
 
 <p>This axiom was provided as part of the integer theory when we<br />
 interpreted type <code>u</code> as <code>int</code>.  It gives a way to construct a fresh function <code>fun</code> from two functions:</p>
@@ -76,15 +75,14 @@ interpreted type <code>u</code> as <code>int</code>.  It gives a way to construc
 
 <p>A definition schema such as this requires that the defined function symbol be fresh. With this schema, we can define a recursive function that adds the non-negative numbers less than or equal to <code>X</code> like this:</p>
 
-<pre><code>function sum(X:u) : u
+<pre><code class="plaintext lang-plaintext language-plaintext">function sum(X:u) : u
 
 definition {
-   sum(X:u) = 0 if X &lt;= 0 else (X + sum(X-1))
+   sum(X:u) = 0 if X <= 0 else (X + sum(X-1))
 }
 proof {
    apply rec[u]
-}
-</code></pre>
+}</code></pre>
 
 <p>Notice that we wrote the <a href="definition.html">definition</a> in curly brackets. This causes IVy to treat it as an <a href="axiom-schema.html">axiom schema</a>, as opposed to a simple <a href="axiom.html">axiom</a>.</p>
 
@@ -92,8 +90,7 @@ proof {
 
 <p>In order to admit this definition, we applied the definition schema <code>rec[u]</code>. IVy infers the following substitution:</p>
 
-<pre><code>q=t, base(X) = 0, step(X,Y) = Y + X, fun(X) = sum(X)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">q=t, base(X) = 0, step(X,Y) = Y + X, fun(X) = sum(X)</code></pre>
 
 <p>This allows the recursive definition to be admitted, providing that <code>sum</code> is fresh in the current context (i.e., we have not previously referred to <code>sum</code> except to declare its type).</p>
 
@@ -101,62 +98,58 @@ proof {
 
 <p>Suppose we want to define a recursive function that takes an additional parameter. For example, before summing, we want to divide all the numbers by <code>N</code>. We can define such a function like this:</p>
 
-<pre><code>function sumdiv(N:u,X:u) : u
+<pre><code class="plaintext lang-plaintext language-plaintext">function sumdiv(N:u,X:u) : u
 
 definition
-    sumdiv(N,X) = 0 if X &lt;= 0 else (X/N + sumdiv(N,X-1))
+    sumdiv(N,X) = 0 if X <= 0 else (X/N + sumdiv(N,X-1))
 proof
-    apply rec[u]
-</code></pre>
+    apply rec[u]</code></pre>
 
 <p>In matching the recursion schema <code>rec[u]</code>, IVy will extend the function symbols in the premises of <code>rec[u]</code> with an extra parameter <code>N</code> so that schema becomes:</p>
 
-<pre><code>axiom [rec[u]] = {
+<pre><code class="plaintext lang-plaintext language-plaintext">axiom [rec[u]] = {
     type q
     function base(N:u,X:u) : q
     function step(N:u,X:q,Y:u) : q
     fresh function fun(N:u,X:u) : q
-    #---------------------------------------------------------
-    definition fun(N:u,X:u) = base(N,X) if X &lt;= 0 else step(N,fun(N,X-1),X)
-}
-</code></pre>
+    <span class="tag">---------------------------------------------------------</span>
+    definition fun(N:u,X:u) = base(N,X) if X <= 0 else step(N,fun(N,X-1),X)
+}</code></pre>
 
 <p>The extended schema matches the definition, with the following assignment:</p>
 
-<pre><code>q=t, base(N,X)=0, step(N,X,Y)=Y/N+X, fun(N,X) = sum2(N,X)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">q=t, base(N,X)=0, step(N,X,Y)=Y/N+X, fun(N,X) = sum2(N,X)</code></pre>
 
 <p>This is somewhat as if the functions were "curried", in which case the free symbol <code>fun</code> would match the partially applied term <code>sumdiv N</code>. Since IVy's logic doesn't allow for partial application of functions, extended matching provides an alternative. Notice that, to match the recursion schema, a function definition must be recursive in its <em>last</em> parameter.</p>
 
-<h1 id="induction">Induction</h1>
+<p>Induction<br />
+<mark class="highlight"></mark>)<mark class="highlight"></mark>)=</p>
 
 <p>The default tactic can't generally prove properties by induction. For that IVy needs manual help. To prove a property by induction, we define an invariant and prove it by instantiating an induction schema. Here is an example of such a schema, that works for the non-negative integers:</p>
 
-<pre><code>axiom [ind[u]] {
+<pre><code class="plaintext lang-plaintext language-plaintext">axiom [ind[u]] {
     relation p(X:u)
     theorem [base] {
         individual x:u
-        property x &lt;= 0 -&gt; p(x)
+        property x <= 0 -> p(x)
     }
     theorem [step] {
         individual x:u
-        property p(x) -&gt; p(x+1)
+        property p(x) -> p(x+1)
     }
-    #--------------------------
+    <span class="tag">--------------------------</span>
     property p(X)    
-}
-</code></pre>
+}</code></pre>
 
 <p>Like the recursion schema <code>rec[u]</code>, the induction schema <code>ind[u]</code> is part of the integer theory, and becomes available when we interpret type <code>u</code> as <code>int</code>.</p>
 
 <p>Suppose we want to prove that <code>sum(Y)</code> is always greater than or equal to <code>Y</code>, that is:</p>
 
-<pre><code>property [sumprop] sum(Y) &gt;= Y
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">property [sumprop] sum(Y) >= Y</code></pre>
 
 <p>We can prove this by applying our induction schema. Here is a backward version of the proof:</p>
 
-<pre><code>proof [sumprop] {
+<pre><code class="plaintext lang-plaintext language-plaintext">proof [sumprop] {
     apply ind[u] with X = Y
     proof [base] {
         instantiate sum with X = x
@@ -164,21 +157,19 @@ proof
     proof [step] {
         instantiate sum with X = x + 1
     }
-}
-</code></pre>
+}</code></pre>
 
 <p>Applying <code>ind[u]</code> produces two sub-goals, a base case and an induction step:</p>
 
-<pre><code>theorem [base] {
+<pre><code class="plaintext lang-plaintext language-plaintext">theorem [base] {
     individual x:u
-    property x &lt;= 0 -&gt; sum(x) &gt;= x
+    property x <= 0 -> sum(x) >= x
 }
 
 theorem [step] {
     individual x:u
-    property [step] sum(x) &gt;= x -&gt; sum(x+1) &gt;= x + 1
-}
-</code></pre>
+    property [step] sum(x) >= x -> sum(x+1) >= x + 1
+}</code></pre>
 
 <p>The default tactic can't prove these goals because the definition of <code>sum</code> is a schema that must explicitly instantiated. Fortunately, it suffices to instantiate this schema just for the specific arguments of <code>sum</code> in our subgoals. For the base case, we need to instantiate the definition for <code>X</code>, while for the induction step, we need <code>X+1</code>. The effect of the <code>instantiate</code> tactic is to add an instance of the definition of <code>sum</code> to the proof context, so in particular, it will be used by the default tactic.</p>
 
@@ -188,67 +179,64 @@ to it by this name.</p>
 
 <p>After instantiating the definition of <code>sum</code>, our two subgoals look like this:</p>
 
-<pre><code>theorem [prop5] {
-    property [def2] sum(Y + 1) = (0 if Y + 1 &lt;= 0 else Y + 1 + sum(Y + 1 - 1))
-    property sum(Y) &gt;= Y -&gt; sum(Y + 1) &gt;= Y + 1
+<pre><code class="plaintext lang-plaintext language-plaintext">theorem [prop5] {
+    property [def2] sum(Y + 1) = (0 if Y + 1 <= 0 else Y + 1 + sum(Y + 1 - 1))
+    property sum(Y) >= Y -> sum(Y + 1) >= Y + 1
 }
 
 
 theorem [prop4] {
-    property [def2] sum(Y) = (0 if Y &lt;= 0 else Y + sum(Y - 1))
-    property Y:u &lt;= 0 -&gt; sum(Y) &gt;= Y
-}
-</code></pre>
+    property [def2] sum(Y) = (0 if Y <= 0 else Y + sum(Y - 1))
+    property Y:u <= 0 -> sum(Y) >= Y
+}</code></pre>
 
 <p>Because these goals are quantifier-free the default tactic can easily handle them, so our proof is complete.</p>
 
 <p>As an alternative, here is the slightly more verbose forward version of this proof:</p>
 
-<pre><code>property [sumprop2] sum(Y) &gt;= Y
+<pre><code class="plaintext lang-plaintext language-plaintext">property [sumprop2] sum(Y) >= Y
 
 proof [sumprop2] {
     theorem [base] {
         individual x:u
-        property x &lt;= 0 -&gt; sum(x) &gt;= x
+        property x <= 0 -> sum(x) >= x
     } proof {
         instantiate sum with X = x
     }
     theorem [step] {
         individual x:u
-        property sum(x) &gt;= x -&gt; sum(x+1) &gt;= x + 1
+        property sum(x) >= x -> sum(x+1) >= x + 1
     } proof {
         instantiate sum with X = x + 1
     }
     apply ind[u]
-}
-</code></pre>
+}</code></pre>
 
 <p>This version is more clear than the backward version in that the base case and inductive step of the proof are stated explicitly. For a complex inductive hypothesis, this style might get a bit verbose. To reduce the amount of text we need to type, we can introduce a function definition inside a proof, like this:</p>
 
-<pre><code>theorem [foo] {property sum(X) &gt;= X}
+<pre><code class="plaintext lang-plaintext language-plaintext">theorem [foo] {property sum(X) >= X}
 proof {
-    function inv(X) = sum(X) &gt;= X
+    function inv(X) = sum(X) >= X
     property inv(X) proof {
         theorem [base] {
             individual x:u
-            property x &lt;= 0 -&gt; inv(x)
+            property x <= 0 -> inv(x)
         } proof {
             instantiate sum with X = x
         }
         theorem [step] {
             individual x:u
-            property inv(x) -&gt; inv(x + 1)
+            property inv(x) -> inv(x + 1)
         } proof {
             instantiate sum with X = x + 1
         }
         apply ind[u]
     }
-}
-</code></pre>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+}</code></pre>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="definition.html">definition</a></li>
@@ -257,7 +245,7 @@ proof {
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

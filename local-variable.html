@@ -64,28 +64,26 @@
 
 <p>This <a href="declaration.html">declares</a> a local variable <code>v</code> of type <code>color</code> inside an action that <a href="assignment.html">assigns</a> the value <code>green</code> to <code>v</code>.</p>
 
-<pre><code>type color = {red, green, blue}
+<pre><code class="plaintext lang-plaintext language-plaintext">type color = {red, green, blue}
 
 action set_local_green = {
    local v:color {
        v := green
    }
-}
-</code></pre>
+}</code></pre>
 
 <p>It is identical to the following action, using a <a href="declared-variable.html">declared variable</a>:</p>
 
-<pre><code>type color = {red, green, blue}
+<pre><code class="plaintext lang-plaintext language-plaintext">type color = {red, green, blue}
 
 action set_local_green = {
    var v: color;
    v := green
-}
-</code></pre>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+}</code></pre>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="declared-variable.html">declared variable</a></li>
@@ -93,7 +91,7 @@ action set_local_green = {
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

@@ -60,10 +60,9 @@
 
 <p><a href="effectively-propositional.html">EPR</a> is a very restrictive logic, since in effect it only allows us to say that something exists if it has an explicit name. We can go a bit further by adding <strong>stratified function symbols</strong>. For example, suppose we define the following vocabulary of functions and constants:</p>
 
-<pre><code>individual x : t
+<pre><code class="plaintext lang-plaintext language-plaintext">individual x : t
 function f(X:t) : u
-function g(Y:u) : v
-</code></pre>
+function g(Y:u) : v</code></pre>
 
 <p>Using this vocabulary, we can only generate three <a href="ground-term.html">ground terms</a>: <code>x</code>, <code>f(x)</code>, <code>g(f(x))</code>. This means the <a href="quantifier-alternation.html">EA formulas</a> using this vocabulary are decidable.</p>
 
@@ -79,25 +78,23 @@ function g(Y:u) : v
 
 <p>In fact, we can be a little more liberal than this. Consider the formula:</p>
 
-<pre><code>forall X:t,Y:u. q(X,Y) -&gt; exists Z:v. p(X,Z)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">forall X:t,Y:u. q(X,Y) -> exists Z:v. p(X,Z)</code></pre>
 
 <p>There is no arc induced from type <code>u</code> to type <code>v</code>, since the variable <code>Y</code> does not occur under the existential quantifier, and thus the Skolem function does not depend on it.</p>
 
 <p>Because of stratified quantifier alternations, the negated VC of the following program is in the decidable fragment:</p>
 
-<pre><code>require forall X:t. exists Y:u. r(X,Y);
+<pre><code class="plaintext lang-plaintext language-plaintext">require forall X:t. exists Y:u. r(X,Y);
 if f(x) = y {
     r(x,y) := true
 };       
-ensure forall X:t. exists Y:u. r(X,Y)
-</code></pre>
+ensure forall X:t. exists Y:u. r(X,Y)</code></pre>
 
 <p>The <a href="precondition.html">precondition</a> occurs positively, so in introduces an arc from <code>t</code> to <code>u</code>. The <a href="postcondition.html">postcondition</a> occurs negatively, so it is an EA formula. Since there are no other arcs in the type graph, it is acyclic, so the negated VC is stratified.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="finite-essentially-uninterpreted.html">finite essentially uninterpreted</a></li>
@@ -107,7 +104,7 @@ ensure forall X:t. exists Y:u. r(X,Y)
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

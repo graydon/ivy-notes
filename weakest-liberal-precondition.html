@@ -62,34 +62,30 @@
 
 <p>As an example, consider the following IVy code:</p>
 
-<pre><code>type t
-interpret t -&gt; nat
+<pre><code class="plaintext lang-plaintext language-plaintext">type t
+interpret t -> nat
 
 action decr(x:t) returns (y:t) = {
-    require x &gt; 0;
+    require x > 0;
     y := x - 1;
-    ensure y &lt; x;
+    ensure y < x;
 }
 
-export decr
-</code></pre>
+export decr</code></pre>
 
 <p>The verification condition for this program can be written as:</p>
 
-<pre><code>x &gt; 0 -&gt; wlp(y := x - 1, y &lt; x)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">x > 0 -> wlp(y := x - 1, y < x)</code></pre>
 
 <p>That is, the <a href="precondition.html">precondition</a> <code>x &gt; 0</code> has to imply that after executing <code>y := x - 1</code>, the <a href="postcondition.html">postcondition</a> <code>y &lt; x</code> holds (assuming the theory of the natural numbers holds for type <code>t</code>).</p>
 
 <p>One of the rules of the wlp calculus is this:</p>
 
-<pre><code>wlp(y := e,R) = R[e/y]
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">wlp(y := e,R) = R[e/y]</code></pre>
 
 <p>That is to get the weakest liberal precondition of <code>R</code> with respect the the assignment <code>y := e</code>, we just substitute <code>e</code> for <code>y</code> in <code>R</code>. In our example above, the verification condition can therefore be written as:</p>
 
-<pre><code>x &gt; 0 -&gt; x - 1 &lt; x
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">x > 0 -> x - 1 < x</code></pre>
 
 <p>Since this <a href="formula.html">formula</a> is valid over the natural numbers, meaning it holds true for any natural number <code>x</code>, we conclude that the program is correct. </p>
 
@@ -99,16 +95,14 @@ export decr
 
 <p>The wlp calculus provides us with rules to cover all of the basic programming constructs in the IVy language. For example, another way to look at the above example is to consider <code>requires</code> and <code>ensures</code> as program statements that have a semantics in terms of wlp. When verifying action <code>decr</code>, IVy treats the <code>requires</code> statement as an <em>assumption</em> and the <code>ensures</code> statement as a <em>guarantee</em>. This means the program statement we must verify is really:</p>
 
-<pre><code>assume x &gt; 0;
+<pre><code class="plaintext lang-plaintext language-plaintext">assume x > 0;
 y := x - 1;
-assert y &lt; x
-</code></pre>
+assert y < x</code></pre>
 
 <p>The semantics of the <code>assume</code> and <code>assert</code> statements are given by:</p>
 
-<pre><code>wlp(assume Q, R) = (Q -&gt; R)
-wlp(assert Q, R) = (Q &amp; R)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">wlp(assume Q, R) = (Q -> R)
+wlp(assert Q, R) = (Q & R)</code></pre>
 
 <p>That is, we treat <code>assume Q</code> as a statement that only terminates if <code>Q</code> is true, and <code>assert Q</code> as a statement that only succeeds if <code>Q</code> is true (that is, if <code>Q</code> is false, it does not even satisfy the postcondition <code>true</code>). </p>
 
@@ -116,51 +110,45 @@ wlp(assert Q, R) = (Q &amp; R)
 
 <p>A program (or an <a href="isolate.html">isolate</a>) maintains its <a href="invariant.html">invariant</a> <code>I</code> if its <a href="initializer.html">initializer</a> establishes <code>I</code> and if each <a href="export.html">exported</a> <a href="action.html">action</a> preserves <code>I</code>. Thus, the <a href="verification-condition.html">verification condition</a> for a program is:</p>
 
-<pre><code>wlp(init,I)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">wlp(init,I)</code></pre>
 
 <p>where <code>init</code> is the initializer, and, for each exported action <code>a</code>:</p>
 
-<pre><code>I -&gt; wlp(a,I)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">I -> wlp(a,I)</code></pre>
 
 <h2 id="wlp-calculus-for-other-statements">WLP calculus for other statements</h2>
 
 <p>We can compute the wlp of a sequential composition of <a href="statement.html">statements</a> like this:</p>
 
-<pre><code>wlp(S;T, R) = wlp(S,wlp(T,R))
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">wlp(S;T, R) = wlp(S,wlp(T,R))</code></pre>
 
 <p>To show that our action <code>decr</code> satisfies its guarantees, assuming its assumptions,<br />
 we compute the wlp of <code>true</code>. Computing this for our example using the above rule,<br />
 we have:</p>
 
-<pre><code>wlp(assert y &lt; x, true) = (y &lt; x)
-wlp(y := x -1, y &lt; x) = (x - 1 &lt; x)
-wlp(assume x &gt; 0, x - 1 &lt; x) = (x &gt; 0 -&gt; x - 1 &lt; x)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">wlp(assert y < x, true) = (y < x)
+wlp(y := x -1, y < x) = (x - 1 < x)
+wlp(assume x > 0, x - 1 < x) = (x > 0 -> x - 1 < x)</code></pre>
 
 <p>which is just what we got before.</p>
 
 <p>Carrying on, we have this rule for conditionals:</p>
 
-<pre><code>wlp(if C {T} {E}, R) = ((C -&gt; wlp(T,R)) &amp; (~C -&gt; wlp(E,R)))
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">wlp(if C {T} {E}, R) = ((C -> wlp(T,R)) & (~C -> wlp(E,R)))</code></pre>
 
 <p>For a while loop with invariant <code>I</code>, the wlp is defined as:</p>
 
-<pre><code>wlp(while C invariant I {B}, R) = I
-                                &amp; forall mod(B). I &amp; C -&gt; wlp(B,I)
-                                &amp; forall mod(B). I &amp; ~C -&gt; R
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">wlp(while C invariant I {B}, R) = I
+                                & forall mod(B). I & C -> wlp(B,I)
+                                & forall mod(B). I & ~C -> R</code></pre>
 
 <p>Where <code>mod(B)</code> is the list of variables modified in the loop body <code>B</code>. This says, essentially, that the invariant must initially hold, that the loop body must preserve the invariant if the entry condition holds, and that otherwise the invariant implies the postcondition.</p>
 
 <p>Notice we haven't dealt with procedure calls here, but for present purposes we can consider that all calls are "in-lined" when verifying the program.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="assertion.html">assertion</a></li>
@@ -170,7 +158,7 @@ wlp(assume x &gt; 0, x - 1 &lt; x) = (x &gt; 0 -&gt; x - 1 &lt; x)
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

@@ -60,27 +60,24 @@
 
 <p>For example, instead of something like this (note: IVy has no <code>for</code> loops at all):</p>
 
-<pre><code># Note: not legal IVy code
+<pre><code class="plaintext lang-plaintext language-plaintext"># Note: not legal IVy code
 for y in type {
     link(x,y) := false
-}
-</code></pre>
+}</code></pre>
 
 <p>we can write this, using a <a href="free-variable.html">free variable</a> in an <a href="assignment.html">assignment</a>:</p>
 
-<pre><code>link(x,Y) := false
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">link(x,Y) := false</code></pre>
 
 <p>When a loop is needed, it can be written like this:</p>
 
-<pre><code>sum := 0;
+<pre><code class="plaintext lang-plaintext language-plaintext">sum := 0;
 i := x;
-while i &gt; 0
+while i > 0
 {
     sum := sum + f(i);
     i := i - 1
-}
-</code></pre>
+}</code></pre>
 
 <p>This loop computes the sum of <code>f(i)</code> for <code>i</code> in the range <code>(0,x]</code>.</p>
 
@@ -88,13 +85,12 @@ while i &gt; 0
 
 <p>A loop can be decorated with a <a href="invariant.html">invariants</a>, like this:</p>
 
-<pre><code>while i &gt; 0
-invariant sum &gt;= 0
+<pre><code class="plaintext lang-plaintext language-plaintext">while i > 0
+invariant sum >= 0
 {
     sum := sum + f(i);
     i := i - 1
-}
-</code></pre>
+}</code></pre>
 
 <p>The invariant <code>sum &gt;= 0</code> is a special assertion that is applied on each loop iteration, before the evaluation of the condition. Invariants are helpful in proving properties of programs with loops.</p>
 
@@ -102,20 +98,19 @@ invariant sum &gt;= 0
 
 <p>In some situations we need to guarantee that a loop always terminates. We can do this with ranking function that is supplied by the keyword <code>decreases</code>, like this:</p>
 
-<pre><code>while i &gt; 0
-invariant sum &gt;= 0
+<pre><code class="plaintext lang-plaintext language-plaintext">while i > 0
+invariant sum >= 0
 decreases i
 {
     sum := sum + f(i);
     i := i - 1
-}
-</code></pre>
+}</code></pre>
 
 <p>The argument of <code>decreases</code> is an expression whose value must decrease with every loop iteration and such that the loop is never entered when the expression is less than <code>0</code>.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="free-variable.html">free variable</a></li>
@@ -126,7 +121,7 @@ decreases i
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

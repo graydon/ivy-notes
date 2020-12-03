@@ -66,31 +66,28 @@
 
 <p>For example:</p>
 
-<pre><code>action callback(x:nat) returns (y:nat)
-import callback
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">action callback(x:nat) returns (y:nat)
+import callback</code></pre>
 
 <p>or simply:</p>
 
-<pre><code>import action callback(x:nat) returns (y:nat)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">import action callback(x:nat) returns (y:nat)</code></pre>
 
 <p>Like any action, the imported action may be given preconditions and postconditions.  For example:</p>
 
-<pre><code>before callback {
-    require x &gt; 0;
+<pre><code class="plaintext lang-plaintext language-plaintext">before callback {
+    require x > 0;
 }
 
 after callback {
     ensure y = x - 1;
-}
-</code></pre>
+}</code></pre>
 
 <p>The <code>require</code> in this case is guarantee for the program and an assumption for the environment. Similarly, the <code>ensure</code> is an assumption for the program and a guarantee for the environment.  The environment is assumed to be non-interfering, that is, Ivy assumes that the call to <code>callback</code> has no visible side effect on the program. </p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="declaration.html">declaration</a></li>
@@ -100,7 +97,7 @@ after callback {
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

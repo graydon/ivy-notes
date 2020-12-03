@@ -71,11 +71,10 @@
 
 <p>Suppose we have the formulas</p>
 
-<pre><code>type t
+<pre><code class="plaintext lang-plaintext language-plaintext">type t
 type u
 var s:t
-function f(X:t): u
-</code></pre>
+function f(X:t): u</code></pre>
 
 <p>The <a href="type.html">type</a> <code>t</code> is a ground term, as is the type <code>u</code>.</p>
 
@@ -87,14 +86,13 @@ function f(X:t): u
 
 <p>In a formula with an explicit logical variable such as:</p>
 
-<pre><code>forall V:t. V = s
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">forall V:t. V = s</code></pre>
 
 <p>We have a new logical variable <code>V</code> which may range over ground terms of type <code>t</code>, such as <code>s</code> or <code>f(s)</code>. That is, the formula may be instantiated as <code>s = s</code> or <code>f(s) = s</code>, each of which is a ground term of type <code>bool</code>.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="alpha-renaming.html">alpha renaming</a></li>
@@ -114,7 +112,7 @@ function f(X:t): u
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

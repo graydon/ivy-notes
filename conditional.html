@@ -69,25 +69,23 @@
 
 <p>For example, the following code clears the incoming links to node <code>y</code> if <code>y</code> is in the failed set:</p>
 
-<pre><code>if failed(y) {
+<pre><code class="plaintext lang-plaintext language-plaintext">if failed(y) {
     link(X,y) := false
-}
-</code></pre>
+}</code></pre>
 
 <p>The curly brackets around the assignment are required. No parentheses are need around the condition.  A conditional can have an associated <code>else</code> clause, for example:</p>
 
-<pre><code>if failed(y) {
+<pre><code class="plaintext lang-plaintext language-plaintext">if failed(y) {
     link(X,y) := false
 } else {
     link(y,z) := true
-}
-</code></pre>
+}</code></pre>
 
 <p>Because brackets are required, there is no ambiguity as to which <code>if</code> an <code>else</code> belongs to.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="call.html">call</a></li>
@@ -97,7 +95,7 @@
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

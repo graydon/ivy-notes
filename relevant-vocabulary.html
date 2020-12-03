@@ -124,17 +124,15 @@ following rules:</p>
 
 <p>Consider the conjunction of the following formulas:</p>
 
-<pre><code>r(f(a),c)
-forall X. r(f(X),X)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">r(f(a),c)
+forall X. r(f(X),X)</code></pre>
 
 <p>The relevant vocabularies are:</p>
 
-<pre><code>V[f,1] = {a,c}
+<pre><code class="plaintext lang-plaintext language-plaintext">V[f,1] = {a,c}
 V[r,1] = {f(a),f(c)}
 V[r,2] = {a,c}
-V[X] = {a,c}
-</code></pre>
+V[X] = {a,c}</code></pre>
 
 <p>We can arrive at this result by just applying the rules until we reach a fixed point. From the first rule, we have <code>V[f,1] = {a}</code> and <code>V[r,2] = {c}</code>. Then, from the second rule, because <em>X</em> occurs in argument position 1 of <em>f</em> and 2 of <em>r</em>, we have <code>V[f,1] = V[r,2] = V[X] = {a,c}</code>.  The first rule then gives us <code>V[r,1] = {f(a),f(c)}</code> and we have reached a fixed point.</p>
 
@@ -144,18 +142,16 @@ V[X] = {a,c}
 
 <p>Suppose <code>f</code> is a function from <code>u</code> to <code>u</code> and we have this conjunction:</p>
 
-<pre><code>f(a) = c
-forall X. r(f(X),X)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">f(a) = c
+forall X. r(f(X),X)</code></pre>
 
 <p>The relevant vocabularies are:</p>
 
-<pre><code>V[u] = {f(a),c}
+<pre><code class="plaintext lang-plaintext language-plaintext">V[u] = {f(a),c}
 V[f,1] = {a}
 V[r,1] = {f(a)}
 V[r,2] = {a}
-V[X] = {a}
-</code></pre>
+V[X] = {a}</code></pre>
 
 <p>That is, even though the function <code>f</code> is not <a href="stratification.html">stratified</a>, we still need only a finite instantiation to determine satisfiability of this formula. It is easy seen, however, that all the stratified formulas have finite relevant vocabularies.</p>
 
@@ -163,19 +159,17 @@ V[X] = {a}
 
 <p>As an example, consider the following formula:</p>
 
-<pre><code>forall X. r(X,a) -&gt; r(f(X),X)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">forall X. r(X,a) -> r(f(X),X)</code></pre>
 
 <p>There is a cycle <code>V[X] -&gt; V[f,1] -&gt; V[r,1] -&gt; V[X]</code> induced by these terms:</p>
 
-<pre><code>f(X)
+<pre><code class="plaintext lang-plaintext language-plaintext">f(X)
 r(f(X),X)
-r(X,a)
-</code></pre>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+r(X,a)</code></pre>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="arithmetic-literal.html">arithmetic literal</a></li>
@@ -186,7 +180,7 @@ r(X,a)
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

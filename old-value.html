@@ -64,7 +64,7 @@
 
 <p>Suppose we have a function <code>reverse2</code> that reverses a <a href="state-variable.html">state variable</a> <code>x</code> twice, leaving it equal to the value it started with. Then the following <a href="mixin.html">mixin</a> can be written that uses <code>old</code> to refer to the old value along with the new one:</p>
 
-<pre><code>specification {
+<pre><code class="plaintext lang-plaintext language-plaintext">specification {
     after reverse2 {
         ensure x = old x
     }
@@ -74,22 +74,21 @@ implementation {
         x := my_rev.reverse(x);
         x := my_rev.reverse(x);
     }
-}
-</code></pre>
+}</code></pre>
 
 <h3 id="example-old-state-variable-in-loop-invariant">Example: old state variable in loop invariant</h3>
 
 <p>The following example implements array reversal in terms of a <code>while</code> <a href="loop.html">loop</a>. The loop invariant refers to the array's state at each iteration of the loop and relates it to the <code>old</code> state of the array, in the previous iteration (or the state on-entry to the loop).</p>
 
-<pre><code>    implement reverse {
-        if a.end &gt; 0 {
+<pre><code class="plaintext lang-plaintext language-plaintext">    implement reverse {
+        if a.end > 0 {
             var i : idx := 0;
             var j := rt.reverse(i,a.end);
-            while i &lt; j
-            invariant 0 &lt;= i &amp; i &lt;= a.end &amp; a.end = old a.end &amp; rt.rev(a.end,i,j)
-            invariant forall I. (0 &lt;= I &amp; I &lt; i | j &lt; I &amp; I &lt; a.end) 
-                                &amp; rt.rev(a.end,I,J)-&gt; a.value(J) = old a.value(I)
-            invariant i &lt;= I &amp; I &lt;= j -&gt; a.value(I) = old a.value(I)
+            while i < j
+            invariant 0 <= i & i <= a.end & a.end = old a.end & rt.rev(a.end,i,j)
+            invariant forall I. (0 <= I & I < i | j < I & I < a.end) 
+                                & rt.rev(a.end,I,J)-> a.value(J) = old a.value(I)
+            invariant i <= I & I <= j -> a.value(I) = old a.value(I)
             {
                 var tmp := a.value(j);
                 a := a.set(j,a.value(i));
@@ -98,19 +97,18 @@ implementation {
                 j := rt.reverse(i,a.end);
             };
         }
-    }
-</code></pre>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+    }</code></pre>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="keywords.html">keywords</a></li>
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

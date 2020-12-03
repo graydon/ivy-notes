@@ -66,7 +66,7 @@
 
 <p>Suppose we have the following functions recording a bijective key-value map:</p>
 
-<pre><code>type key
+<pre><code class="plaintext lang-plaintext language-plaintext">type key
 type val
 function valof(K:key):val
 function keyof(V:val):key
@@ -75,36 +75,33 @@ action add_key(k:key, v:val) = {
     keyof(v) := k;
     require forall V:val . valof(keyof(V)) = V
 }
-export add_key
-</code></pre>
+export add_key</code></pre>
 
 <p>The postcondition has a function cycle for <code>V:val</code>, causing the following error:</p>
 
-<pre><code>Isolate this:
+<pre><code class="plaintext lang-plaintext language-plaintext">Isolate this:
 error: The verification condition is not in the fragment FAU.
 
 The following terms may generate an infinite sequence of instantiations:
 
-t.ivy: line 7: new_valof(new_keyof(V)) = V
-</code></pre>
+t.ivy: line 7: new_valof(new_keyof(V)) = V</code></pre>
 
 <p>However, an equivalent formulation that uses relations:</p>
 
-<pre><code>type key
+<pre><code class="plaintext lang-plaintext language-plaintext">type key
 type val
 relation valof(K:key,V:val)
 relation keyof(V:val,K:key)
 action add_key(k:key, v:val) = {
     valof(k,v) := true;
     keyof(v,k) := true;
-    require forall V:val, K:key . keyof(V,K) -&gt; valof(K,V)
+    require forall V:val, K:key . keyof(V,K) -> valof(K,V)
 }
-export add_key
-</code></pre>
+export add_key</code></pre>
 
 <p>Stays within FAU and verifies successfully:</p>
 
-<pre><code>Isolate this:
+<pre><code class="plaintext lang-plaintext language-plaintext">Isolate this:
 
     The following action implementations are present:
         t.ivy: line 7: implementation of add_key
@@ -113,21 +110,20 @@ export add_key
         in action add_key when called from the environment:
             t.ivy: line 10: assumption
 
-OK
-</code></pre>
+OK</code></pre>
 
 <p>As a bonus, the relational formulation requires fewer relations -- the <code>keyof</code> relation is redundant, as there is no image or preimage "directionality" to a relation as there is to a function.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="recovering-decidability.html">recovering decidability</a></li>
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

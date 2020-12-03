@@ -79,21 +79,18 @@ and <code>-&gt;</code>.</p>
 <p>Expressions may also use logical quantifiers. For example, this formula says that<br />
 there exists a node <code>X</code> such that for every node <code>Y</code>, <code>X</code> is linked to <code>Y</code>:</p>
 
-<pre><code>exists X. forall Y. link(X,Y)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">exists X. forall Y. link(X,Y)</code></pre>
 
 <p>In this case, the variables do not need type annotations, since we can infer that<br />
 both <code>X</code> and <code>Y</code> are nodes. However, in some cases, annotations are needed. </p>
 
 <p>For example, this is a statement of the transitivity of equality:</p>
 
-<pre><code>forall X,Y,Z. X=Y &amp; Y=Z -&gt; X=Y
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">forall X,Y,Z. X=Y & Y=Z -> X=Y</code></pre>
 
 <p>We can determine from this expression that <code>X</code>, <code>Y</code> and <code>Z</code> must all be of the same type, but not what that type is. This means we have to annotate at least one variable, like this:</p>
 
-<pre><code>forall X:node,Y,Z. X=Y &amp; Y=Z -&gt; X=Y
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">forall X:node,Y,Z. X=Y & Y=Z -> X=Y</code></pre>
 
 <h2 id="grammar">Grammar</h2>
 
@@ -140,10 +137,10 @@ both <code>X</code> and <code>Y</code> are nodes. However, in some cases, annota
 </ul>
 
 <p><code>&lt;variable&gt;</code> and <code>&lt;symbol&gt;</code> are the corresponding <a href="lexical-structure.html">lexical tokens</a></p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="action.html">action</a></li>
@@ -162,7 +159,7 @@ both <code>X</code> and <code>Y</code> are nodes. However, in some cases, annota
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

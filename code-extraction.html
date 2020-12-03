@@ -64,16 +64,15 @@
 
 <p>For example, if we have some type <code>node</code> and some declarations for a module <code>leader(n:node)</code> and parameter <code>pid(n:node)</code>. Then we can specify an extract named <code>code</code> at a single arbitrary representative <code>node</code> value like so:</p>
 
-<pre><code>extract code(n:node) = leader(n), pid(n), node, id
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">extract code(n:node) = leader(n), pid(n), node, id</code></pre>
 
 <p>The extract is parameterized on a node <code>n</code>. It consists of the <code>leader</code> isolate for parameter <code>n</code>, the value of the <code>pid</code> map for <code>n</code>, as well as the node and id isolates (which are not parameterized, and which therefore cannot have state). </p>
 
 <p>When we extract code, the <a href="visibility-qualifiers.html">specification</a> sections of the <a href="isolate.html">isolates</a> are erased.  The specification <a href="state-variable.html">state variables</a> and code (including assertions) are not present in the extract. IVy verifies that this erasure is sound, in the sense that the erased code has no effects that are visible to the remaining code (including non termination). This means that the observable behavior of the program is not affected by erasure of the specifications.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="attribute.html">attribute</a></li>
@@ -84,7 +83,7 @@
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

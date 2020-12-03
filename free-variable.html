@@ -68,18 +68,17 @@
 
 <p>The following two declarations are equivalent</p>
 
-<pre><code># Explicit quantifiers:
+<pre><code class="plaintext lang-plaintext language-plaintext"># Explicit quantifiers:
 axiom [foo] forall X:t. forall Y:t. bar(X,Y)
 
 # Implicit quantifiers
-axiom [foo] bar(X,Y)
-</code></pre>
+axiom [foo] bar(X,Y)</code></pre>
 
 <h3 id="statement">Statement</h3>
 
 <p>In the following example, the two groups of assignments are equivalent</p>
 
-<pre><code>type t = {red, green}
+<pre><code class="plaintext lang-plaintext language-plaintext">type t = {red, green}
 relation foo(X:t, Y:t)
 
 action bar = {
@@ -93,12 +92,11 @@ action bar = {
     # Implicit assignment, ranging over all X:t and Y:t
     foo(X, Y) := true
 
-}
-</code></pre>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+}</code></pre>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="assignment.html">assignment</a></li>
@@ -107,7 +105,7 @@ action bar = {
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

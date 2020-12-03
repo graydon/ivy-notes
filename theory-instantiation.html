@@ -90,20 +90,19 @@ interpret idx -&gt; int
 
 <h3 id="example-bit-vectors">Example: bit vectors</h3>
 
-<pre><code>type t
+<pre><code class="plaintext lang-plaintext language-plaintext">type t
 type s
 function extract_lo(X:t) : s
 
-interpret t -&gt; bv[8]
-interpret s -&gt; bv[4]
-interpret extract_lo -&gt; bfe[3][0]
-</code></pre>
+interpret t -> bv[8]
+interpret s -> bv[4]
+interpret extract_lo -> bfe[3][0]</code></pre>
 
 <p>Here <code>bfe[3][0]</code> is the bit field extraction operator the takes the low order 4 bits of a bit vector.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="expression.html">expression</a></li>
@@ -122,7 +121,7 @@ interpret extract_lo -&gt; bfe[3][0]
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

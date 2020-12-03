@@ -66,26 +66,23 @@
 
 <p>Suppose we take the <a href="axiom.html">axioms</a> of a partial order as <a href="assumption.html">assumptions</a>:</p>
 
-<pre><code>forall X,Y,Z. X &lt; Y &amp; Y &lt; Z -&gt; X &lt; Z
-forall X,Y. ~(X &lt; Y &amp; Y &lt; Z)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">forall X,Y,Z. X < Y & Y < Z -> X < Z
+forall X,Y. ~(X < Y & Y < Z)</code></pre>
 
 <p>Notice these are in EPR. The <a href="verification-condition.html">VC</a> for the following program is also in EPR:</p>
 
-<pre><code>require forall X,Y. r(X,Y) -&gt; X &gt; Y;
-if r(x,y) &amp; r(y,z) {
+<pre><code class="plaintext lang-plaintext language-plaintext">require forall X,Y. r(X,Y) -> X > Y;
+if r(x,y) & r(y,z) {
     r(x,z) := true
 };
-ensure forall X,Y. r(X,Y) -&gt; X &gt; Y;
-</code></pre>
+ensure forall X,Y. r(X,Y) -> X > Y;</code></pre>
 
 <p>To see this, let’s expand it out to the conjunction of the following formulas in prenex normal form:</p>
 
-<pre><code>forall X,Y. r(X,Y) -&gt; X &gt; Y
-r(x,y) &amp; r(y,z) -&gt; (r'(x,z) &amp; forall X,Y. X ~= x | Y ~= y | r'(X,Y) = r(X,Y))
-~(r(x,y) &amp; r(y,z)) -&gt; r'(X,Y) = r(X,Y))
-exists X,Y. ~(r'(X,Y) -&gt; X &gt; Y)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">forall X,Y. r(X,Y) -> X > Y
+r(x,y) & r(y,z) -> (r'(x,z) & forall X,Y. X ~= x | Y ~= y | r'(X,Y) = r(X,Y))
+~(r(x,y) & r(y,z)) -> r'(X,Y) = r(X,Y))
+exists X,Y. ~(r'(X,Y) -> X > Y)</code></pre>
 
 <p>The first of these formulas says that the <a href="precondition.html">precondition</a> holds.</p>
 
@@ -102,10 +99,10 @@ exists X,Y. ~(r'(X,Y) -&gt; X &gt; Y)
 <p>The <a href="postcondition.html">guarantee formula</a> occurs negatively as <code>exists X,Y. ~(r'(X,Y) -&gt; X &gt; Y)</code>. That is, when we see <code>~forall X. p(X)</code>, we convert it to the equivalent <code>exists X. ~p(X)</code> in prenex form. This formula is also in EPR. In fact, IVy will convert it to <code>~(r'(a,b) -&gt; a &gt; b)</code>, where <code>a</code> and <code>b</code> are fresh constant symbols.</p>
 
 <p>In general, if we don’t use function symbols, and if all of our assumptions and guarantees are <code>forall</code> formulas (so-called "A"-formulas), then the negated VC will be in EPR.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="finite-essentially-uninterpreted.html">finite essentially uninterpreted</a></li>
@@ -117,7 +114,7 @@ exists X,Y. ~(r'(X,Y) -&gt; X &gt; Y)
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

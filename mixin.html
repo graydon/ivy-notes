@@ -94,52 +94,46 @@
 <h2 id="example-adding-a-precondition">Example: adding a precondition</h2></li>
 </ul>
 
-<pre><code>action pre_connect(x:client,y:server) = {
+<pre><code class="plaintext lang-plaintext language-plaintext">action pre_connect(x:client,y:server) = {
     require semaphore(y)
 }        
-execute pre_connect before connect
-</code></pre>
+execute pre_connect before connect</code></pre>
 
 <p>This example adds a <a href="precondition.html">precondition</a> to any call to some <a href="action.html">action</a> <code>connect(x:client,y:server)</code>. It is equivalent to declaring:</p>
 
-<pre><code>before connect(x:client,y:server) {
+<pre><code class="plaintext lang-plaintext language-plaintext">before connect(x:client,y:server) {
     require semaphore(y)
-}
-</code></pre>
+}</code></pre>
 
 <p>Or even more tersely:</p>
 
-<pre><code>before connect {
+<pre><code class="plaintext lang-plaintext language-plaintext">before connect {
     require semaphore(y)
-}
-</code></pre>
+}</code></pre>
 
 <h2 id="example-adding-a-postcondition">Example: adding a postcondition</h2>
 
-<pre><code>action post_incr(inp:t) returns(out:t) = {
-    ensure inp &lt; out
+<pre><code class="plaintext lang-plaintext language-plaintext">action post_incr(inp:t) returns(out:t) = {
+    ensure inp < out
 }
 
-execute post_incr after incr
-</code></pre>
+execute post_incr after incr</code></pre>
 
 <p>This example adds a <a href="postcondition.html">postcondition</a> to any call to some <a href="action.html">action</a> <code>incr(inp:t) returns (out:t)</code>. It is equivalent to declaring:</p>
 
-<pre><code>after incr(inp:t) returns(out:t) {
-    ensure inp &lt; out
-}
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">after incr(inp:t) returns(out:t) {
+    ensure inp < out
+}</code></pre>
 
 <p>Or even more tersely:</p>
 
-<pre><code>after incr {
-    ensure inp &lt; out
-}
-</code></pre>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+<pre><code class="plaintext lang-plaintext language-plaintext">after incr {
+    ensure inp < out
+}</code></pre>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="assume-guarantee-reasoning.html">assume-guarantee reasoning</a></li>
@@ -151,7 +145,7 @@ execute post_incr after incr
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

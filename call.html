@@ -58,59 +58,51 @@
 
 <p>An <a href="action.html">action</a> can call another action, passing arguments, using the <code>call</code> keyword, for example:</p>
 
-<pre><code>action connect_unique(a:node, b:node) = {
+<pre><code class="plaintext lang-plaintext language-plaintext">action connect_unique(a:node, b:node) = {
     call clear(a);
     call connect(a,b)
-}
-</code></pre>
+}</code></pre>
 
 <p>IVy uses the <a href="https://en.wikipedia.org/wiki/Evaluation_strategy#Call_by_value">call-by-value</a> convention. That is, when we call <code>clear(a)</code> a local variable <code>x</code> is created during the execution of <code>clear</code> and assigned the value <code>a</code>. This means that, as in the <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C programming language</a>, modifying the value of <code>x</code> in <code>clear</code> would not result in modifying the value of <code>a</code> in <code>connect_unique</code>.</p>
 
 <p>The return values of an action can be obtained like this:</p>
 
-<pre><code>call x,y := swap(x,y)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">call x,y := swap(x,y)</code></pre>
 
 <p>An action with a single return value can be called within an <a href="expression.html">expression</a>. For example, if <code>sqrt</code> is an action, then:</p>
 
-<pre><code>x := y + sqrt(z)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">x := y + sqrt(z)</code></pre>
 
 <p>is equivalent to</p>
 
-<pre><code>call temp := sqrt(z)
-x := y + temp
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">call temp := sqrt(z)
+x := y + temp</code></pre>
 
 <p>If there is more than one call within an <a href="expression.html">expression</a>, the calls are executed in left-to-right order. Calls inside <a href="conditional.html">conditional</a> operators occur whether or not the condition is true. For example, the <a href="statement.html">statement</a>:</p>
 
-<pre><code>x := sqrt(y) if c else z
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">x := sqrt(y) if c else z</code></pre>
 
 <p>is equivalent to:</p>
 
-<pre><code>call temp := sqrt(y);
-x := temp if c else z
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">call temp := sqrt(y);
+x := temp if c else z</code></pre>
 
 <p>Parentheses are not used when calling an action with no parameters. For example, if we have:</p>
 
-<pre><code>action next returns (val:t) = {
+<pre><code class="plaintext lang-plaintext language-plaintext">action next returns (val:t) = {
     current := current + 1;
     val := current
-}
-</code></pre>
+}</code></pre>
 
 <p>then we would write:</p>
 
-<pre><code>x := y + next
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">x := y + next</code></pre>
 
 <p>The lack of parentheses introduces no ambiguity, since the action <code>next</code> is not a value and cannot itself be passed as an argument to the function <code>+</code>. An advantage of this convention is that we don't have to remember whether <code>next</code> is an <a href="action.html">action</a> or a <a href="declared-variable.html">declared variable</a>, and we can easily replace a variable by an action without modifying all references to the variable.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="assignment.html">assignment</a></li>
@@ -119,7 +111,7 @@ x := temp if c else z
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

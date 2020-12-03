@@ -76,39 +76,36 @@
 
 <h3 id="example-state-variable-assignment">Example: State variable assignment</h3>
 
-<pre><code>var x:bool
+<pre><code class="plaintext lang-plaintext language-plaintext">var x:bool
 
 action foo = {
     x := true
-}
-</code></pre>
+}</code></pre>
 
 <h3 id="example-relation-assignment">Example: relation assignment</h3>
 
-<pre><code>type t = {red, green, blue}
+<pre><code class="plaintext lang-plaintext language-plaintext">type t = {red, green, blue}
 
 relation bar(X:t, Y:t)
 
 action foo = {
     bar(red,blue) := true
-}
-</code></pre>
+}</code></pre>
 
 <h3 id="example-call-assignment">Example: call assignment</h3>
 
-<pre><code>action foo returns (x:bool) = {
+<pre><code class="plaintext lang-plaintext language-plaintext">action foo returns (x:bool) = {
     x := true
 }
 
 var y: bool
 action bar = {
     y := foo
-}
-</code></pre>
+}</code></pre>
 
 <h3 id="example-multi-value-call-assignment">Example: multi-value call assignment</h3>
 
-<pre><code>action foo returns (a:bool, b:bool) = {
+<pre><code class="plaintext lang-plaintext language-plaintext">action foo returns (a:bool, b:bool) = {
     a := true;
     b := false
 }
@@ -118,34 +115,31 @@ var y: bool
 
 action bar = {
     (x, y) := foo
-}
-</code></pre>
+}</code></pre>
 
 <h3 id="example-nondeterministic-choice">Example: nondeterministic choice</h3>
 
-<pre><code>type t = {red, green, blue}
+<pre><code class="plaintext lang-plaintext language-plaintext">type t = {red, green, blue}
 
 relation bar(X:t, Y:t)
 
 action foo = {
     bar(red,blue) := *
-}
-</code></pre>
+}</code></pre>
 
 <h3 id="example-free-variable-assignment">Example: free variable assignment</h3>
 
-<pre><code>type t = {red, green, blue}
+<pre><code class="plaintext lang-plaintext language-plaintext">type t = {red, green, blue}
 
 relation bar(X:t, Y:t)
 
 action foo = {
     bar(P, Q) := true
-}
-</code></pre>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+}</code></pre>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="declared-variable.html">declared variable</a></li>
@@ -163,7 +157,7 @@ action foo = {
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

@@ -72,51 +72,47 @@
 
 <h3 id="example-immutable-variable">Example: immutable variable</h3>
 
-<pre><code>type color = {red, green, blue}
+<pre><code class="plaintext lang-plaintext language-plaintext">type color = {red, green, blue}
 var v: color
-definition v = red
-</code></pre>
+definition v = red</code></pre>
 
 <p>This <a href="definition.html">defines</a> an immutable variable <code>v</code> of type <code>color</code> with value <code>red</code>.</p>
 
 <h3 id="example-mutable-variable">Example: mutable variable</h3>
 
-<pre><code>type color = {red, green, blue}
+<pre><code class="plaintext lang-plaintext language-plaintext">type color = {red, green, blue}
 var v: color
 
 action change_to_green = {
    v := green
-}
-</code></pre>
+}</code></pre>
 
 <p>This <a href="declaration.html">declares</a> a <a href="state-variable.html">state variable</a> <code>v</code> of type <code>color</code> and an action that <a href="assignment.html">assigns</a> the value <code>green</code> to <code>v</code>.</p>
 
 <h3 id="example-local-variable">Example: local variable</h3>
 
-<pre><code>type color = {red, green, blue}
+<pre><code class="plaintext lang-plaintext language-plaintext">type color = {red, green, blue}
 
 action set_local_green = {
    var v: color;
    v := green
-}
-</code></pre>
+}</code></pre>
 
 <p>This <a href="declaration.html">declares</a> a variable <code>v</code> of type <code>color</code> inside an action that <a href="assignment.html">assigns</a> the value <code>green</code> to <code>v</code>.</p>
 
 <p>It is identical to the following action using a <a href="local-variable.html">local variable</a>:</p>
 
-<pre><code>type color = {red, green, blue}
+<pre><code class="plaintext lang-plaintext language-plaintext">type color = {red, green, blue}
 
 action set_local_green = {
    local v:color {
        v := green
    }
-}
-</code></pre>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+}</code></pre>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="assignment.html">assignment</a></li>
@@ -135,7 +131,7 @@ action set_local_green = {
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

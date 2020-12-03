@@ -70,29 +70,26 @@
 
 <h3 id="example-uninterpreted-type">Example: uninterpreted type</h3>
 
-<pre><code>type t
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">type t</code></pre>
 
 <p>This judgment can be read as "let <code>t</code> be a type". It is admissible provided <code>t</code> is a new symbol that has not been used up to this point in the development.</p>
 
 <h3 id="example-interpreted-type-defined-by-enumeration">Example: interpreted type defined by enumeration</h3>
 
-<pre><code>type color = {red,green,blue}
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">type color = {red,green,blue}</code></pre>
 
 <p>This declares a type with exactly three distinct values, and also declares individuals <code>red</code>, <code>green</code> and <code>blue</code> as its elements.</p>
 
 <h3 id="example-interpreted-type-defined-by-theory-instantiation">Example: interpreted type defined by theory instantiation</h3>
 
-<pre><code>type foo
-interpret foo -&gt; int
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">type foo
+interpret foo -> int</code></pre>
 
 <p>This declares a type <code>foo</code> with an interpretation that is a separate copy of the theory of integers (including overloaded symbols for most integer operators such as <code>+</code> and <code>&lt;</code>)</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="alias.html">alias</a></li>
@@ -117,7 +114,7 @@ interpret foo -&gt; int
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

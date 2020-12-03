@@ -62,12 +62,12 @@
 
 <h2 id="example">Example:</h2>
 
-<pre><code>schema elimE = {
+<pre><code class="plaintext lang-plaintext language-plaintext">schema elimE = {
     type t
     relation p(X:t)
     property exists X. p(X)
     fresh individual n:t
-    #----------------------
+    <span class="tag">----------------------</span>
     property p(n)
 }
 
@@ -81,14 +81,13 @@ proof {
     apply elimE with
         n = next(X),
         p(Y) = succ(X,Y)
-}
-</code></pre>
+}</code></pre>
 
 <p>In this example, the <code>elimE</code> <a href="schema.html">schema</a> is defined as requiring a <a href="fresh-name.html">fresh name</a> for the premise <code>n</code>. When the schema is <a href="judgment-application.html">applied</a> in the proof, <code>n</code> is bound to <code>next(X)</code>, which is fresh since no <a href="definition.html">definitions</a> or <a href="property.html">properties</a> have mentioned it yet.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="fresh-name.html">fresh name</a></li>
@@ -96,7 +95,7 @@ proof {
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

@@ -68,22 +68,20 @@
 
 <p>For example, the following program:</p>
 
-<pre><code>type t
-interpret t -&gt; nat
+<pre><code class="plaintext lang-plaintext language-plaintext">type t
+interpret t -> nat
 
 action decr(x:t) returns (y:t) = {
-    require x &gt; 0;
+    require x > 0;
     y := x - 1;
-    ensure y &lt; x;
+    ensure y < x;
 }
 
-export decr
-</code></pre>
+export decr</code></pre>
 
 <p>has the following VC:</p>
 
-<pre><code>x &gt; 0 -&gt; x - 1 &lt; x
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">x > 0 -> x - 1 < x</code></pre>
 
 <p>See the page on <a href="weakest-liberal-precondition.html">weakest liberal precondition</a> for details on exactly how it is calculated.</p>
 
@@ -95,20 +93,17 @@ export decr
 
 <p>Technically, the way this is done is by <em>negating</em> the formula, then passing it to the solver to determine if it is <em>satisfiable</em>. In this case, the negated verification condition is:</p>
 
-<pre><code>~(x &gt; 0 -&gt; x - 1 &lt; x)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">~(x > 0 -> x - 1 < x)</code></pre>
 
 <p>which is logically equivalent to:</p>
 
-<pre><code>x &gt; 0 &amp; x - 1 &gt;= x
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">x > 0 & x - 1 >= x</code></pre>
 
 <p>We can easily see that this is unsatisfiable, in the sense that there is no natural number <code>x</code> that makes it true.</p>
 
 <p>If the negated verification condition has a solution, it means that the verification condition is not valid, so something is wrong with our proof. Suppose, for example, we change the precondition of action <code>decr</code> from <code>x &gt; 0</code> to <code>x &lt; 42</code>. The negated verification condition becomes:</p>
 
-<pre><code>x &lt; 42 &amp; x - 1 &gt;= x
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">x < 42 & x - 1 >= x</code></pre>
 
 <h2 id="models-and-counter-models">Models and counter-models</h2>
 
@@ -120,10 +115,10 @@ why the proof doesn't work.</p>
 <h2 id="positive-and-negative-occurrences-of-formulas-in-vcs">Positive and negative occurrences of formulas in VCs</h2>
 
 <p>Verification conditions for even moderately complex programs are big messy formulas that are hard to read. Fortunately, from the point of view of decidability, we need not be concerned with the exact form of the VC. Rather, for each formula occurring in the program or its specifications, we will be concerned with whether the formula occurs <a href="positive-and-negative-occurrences.html">positively in the VC, or negatively</a> or both. </p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="assumption.html">assumption</a></li>
@@ -149,7 +144,7 @@ why the proof doesn't work.</p>
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

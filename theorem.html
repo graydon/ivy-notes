@@ -66,19 +66,17 @@
 
 <h3 id="example-transitivity-of-equality">Example: Transitivity of equality</h3>
 
-<pre><code>    theorem [trans] {
+<pre><code class="plaintext lang-plaintext language-plaintext">    theorem [trans] {
         type t
         property [left] X:t = Y
         property [right] Y:t = Z
-        #--------------------------------
+        <span class="tag">--------------------------------</span>
         property X:t = Z
-    }
-</code></pre>
+    }</code></pre>
 
 <p>This theorem expresses the transitivity of equality. No explicit proof is required here, IVy's default tactic generates the following <a href="verification-condition.html">verification condition</a>:</p>
 
-<pre><code>#-   X = Y &amp; Y = Z -&gt; X = Z
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext"><span class="tag">-</span>   X = Y & Y = Z -> X = Z</code></pre>
 
 <p>Which Z3 can prove by itself.</p>
 
@@ -86,14 +84,13 @@
 
 <p>Here is a theorem that lets us eliminate universal quantifiers:</p>
 
-<pre><code>theorem [elimA] {
+<pre><code class="plaintext lang-plaintext language-plaintext">theorem [elimA] {
     type t
     function p(W:t) : bool
     property [prem] forall Y. p(Y)
-    #--------------------------------
+    <span class="tag">--------------------------------</span>
     property p(X)
-}
-</code></pre>
+}</code></pre>
 
 <p>It says, for any predicate <code>p</code>, if <code>p(Y)</code> holds for all <code>Y</code>, then <code>p(X)</code> holds for a particular <code>X</code>. Again, Z3 can prove this easily.</p>
 
@@ -101,31 +98,28 @@
 
 <p>Now let's derive a consequence of the previous two examples. A function <code>f</code> is <em>idempotent</em> if applying it twice gives the same result as applying it once. This example theorem says that, if <code>f</code> is idempotent, then applying <code>f</code> three times is the same as applying it once:</p>
 
-<pre><code>    theorem [idem2] {
+<pre><code class="plaintext lang-plaintext language-plaintext">    theorem [idem2] {
         type t
         function f(X:t) : t
         property [idem] forall X. f(f(X)) = f(X)
-        #--------------------------------
+        <span class="tag">--------------------------------</span>
         property f(f(f(X))) = f(X)
-    }
-</code></pre>
+    }</code></pre>
 
 <p>The default tactic can't prove this because the premise contains a <a href="function-cycle.html">function cycle</a> with a universally quantified variable. Here's the error message it gives:</p>
 
-<pre><code>    #- error: The verification condition is not in the fragment FAU.
-    #-
-    #- The following terms may generate an infinite sequence of instantiations:
-    #-   proving.ivy: line 331: f(f(X_h))
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">    <span class="tag">-</span> error: The verification condition is not in the fragment FAU.
+    <span class="tag">-</span>
+    <span class="tag">-</span> The following terms may generate an infinite sequence of instantiations:
+    <span class="tag">-</span>   proving.ivy: line 331: f(f(X_h))</code></pre>
 
 <p>This means we'll need to apply some other tactic. Here is one possible proof:</p>
 
-<pre><code>    proof {
+<pre><code class="plaintext lang-plaintext language-plaintext">    proof {
         property [lem1] f(f(f(X))) = f(f(X)) proof {apply elimA with prem=idem}
         property [lem2] f(f(X)) = f(X) proof {apply elimA with prem=idem}
         apply trans with left = lem1
-    }
-</code></pre>
+    }</code></pre>
 
 <p>We think this theorem holds because <code>f(f(f(X)))</code> is equal to <code>f(f(X))</code> (by idempotence of <em>f</em>) which in turn is equal to <code>f(X)</code> (again, by idempotence of <em>f</em>). We then apply transitivity to infer <code>f(f(f(X))) = f(X)</code>.</p>
 
@@ -133,42 +127,37 @@
 
 <p>It discovers the following substitution:</p>
 
-<pre><code>    #- t = t
-    #- p(Y) = f(f(Y)) = f(Y)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">    <span class="tag">-</span> t = t
+    <span class="tag">-</span> p(Y) = f(f(Y)) = f(Y)</code></pre>
 
 <p>Now Ivy tries to match the conclusion <code>p(X)</code> against the property <code>lem1</code> we are proving, which  is <code>f(f(f(X))) = f(f(X))</code>. It first plugs in the above substitution, so <code>p(X)</code> becomes:</p>
 
-<pre><code>    #- f(f(X)) = f(X)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">    <span class="tag">-</span> f(f(X)) = f(X)</code></pre>
 
 <p>Matching this with our goal <code>lem1</code>, it then gets this substitution:</p>
 
-<pre><code>   #- X = f(X)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">   <span class="tag">-</span> X = f(X)</code></pre>
 
 <p>Plugging these substitutions into <code>elimA</code> as defined above, we obtain:</p>
 
-<pre><code>    #- theorem [elimA] {
-    #-     property [prem] forall Y. f(f(Y)) = f(Y)
-    #-     #--------------------------------
-    #-     property f(f(f(X))) = f(f(X))
-    #- }
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">    <span class="tag">-</span> theorem [elimA] {
+    <span class="tag">-</span>     property [prem] forall Y. f(f(Y)) = f(Y)
+    <span class="tag">-</span>     <span class="tag">--------------------------------</span>
+    <span class="tag">-</span>     property f(f(f(X))) = f(f(X))
+    <span class="tag">-</span> }</code></pre>
 
 <p>which is just the inference we want to make. This might give the impression that Ivy can magically arrive at the instantiation of a lemma needed to produce a desired inference. In general, however, this is a hard problem. If Ivy fails, we can still write out the full substitution manually, like this:</p>
 
-<pre><code>    #- property [lem1] f(f(f(X))) = f(f(X))
-    #- proof {
-    #-     apply elimA with t=t, p(Y) = f(f(Y)) = f(Y), X=f(X)
-    #- }
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">    <span class="tag">-</span> property [lem1] f(f(f(X))) = f(f(X))
+    <span class="tag">-</span> proof {
+    <span class="tag">-</span>     apply elimA with t=t, p(Y) = f(f(Y)) = f(Y), X=f(X)
+    <span class="tag">-</span> }</code></pre>
 
 <p>The second step of our proof, deriving the fact <code>f(f(X) = f(X)</code> is a similar application of <code>idem</code>.  The final step uses transitivity, with our two lemmas as premises. In this case, we only have to specify the the <code>left</code> premise of <code>trans</code> is <code>lem1</code>. This is enough to infer the needed substitution.  There would be no harm, however, in writing <code>right=lem2</code>.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="judgment-application.html">judgment application</a></li>
@@ -179,7 +168,7 @@
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

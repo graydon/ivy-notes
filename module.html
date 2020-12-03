@@ -75,7 +75,7 @@
 <p>Here is a simple example of a module representing an up/down counter<br />
 with a test for zero:</p>
 
-<pre><code>module counter(t) = {
+<pre><code class="plaintext lang-plaintext language-plaintext">module counter(t) = {
     individual val : t
 
     after init {
@@ -93,8 +93,7 @@ with a test for zero:</p>
     action is_zero returns(z : bool) = {
         z := (val = 0)
     }
-}
-</code></pre>
+}</code></pre>
 
 <p>This module takes a single parameter <code>t</code> which is the type of the counter value <code>val</code>.</p>
 
@@ -102,17 +101,16 @@ with a test for zero:</p>
 
 <p>As an example, here is a module representing a theory of partial orders:</p>
 
-<pre><code>module po(t,lt) = {
-    axiom lt(X:t,Y) &amp; lt(Y,Z) -&gt; lt(X,Z)
-    axiom ~(lt(X:t,Y) &amp; lt(Y,X))
-}
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">module po(t,lt) = {
+    axiom lt(X:t,Y) & lt(Y,Z) -> lt(X,Z)
+    axiom ~(lt(X:t,Y) & lt(Y,X))
+}</code></pre>
 
 <p>This module takes a <a href="type.html">type</a> <code>t</code> and a <a href="relation.html">relation</a> <code>lt</code> over <code>t</code>. It provides axioms stating that <code>lt</code> is transitive and antisymmetric.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="alias.html">alias</a></li>
@@ -134,7 +132,7 @@ with a test for zero:</p>
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

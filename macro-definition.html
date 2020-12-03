@@ -62,44 +62,37 @@
 
 <p>Suppose we want to define a predicate <code>rng</code> that is true of all the elements in range of function <code>f</code>. We could write it like this:</p>
 
-<pre><code>definition rng(X) = exists Y. f(Y) = X
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">definition rng(X) = exists Y. f(Y) = X</code></pre>
 
 <p>The corresponding axiom might be problematic, however. Writing it out with explicit quantifiers, we have:</p>
 
-<pre><code>axiom forall X. (rng(X) &lt;-&gt; exists Y. f(Y) = X)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">axiom forall X. (rng(X) <-> exists Y. f(Y) = X)</code></pre>
 
 <p>This formula has an <a href="quantifier-alternation.html">alternation of quantifiers</a> that might result in <a href="verification-condition.html">verification conditions</a> that IVy can't <a href="logical-fragment.html">decide</a></p>
 
 <p>Suppose though, that we only need to know the truth value of <code>rng</code> for some specific arguments. We can instead write the definition like this:</p>
 
-<pre><code>definition rng(x:t) = exists Y. f(Y) = x
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">definition rng(x:t) = exists Y. f(Y) = x</code></pre>
 
 <p>Notice that the argument of <code>rng</code> is a constant <code>x</code>, not a place-holder <code>X</code>. This definition acts like a macro (or an <a href="axiom-schema.html">axiom schema</a>) that can be instantiated for specific values of <code>x</code>. So, for example, if we have an <a href="assertion.html">assertion</a> to prove like this:</p>
 
-<pre><code>ensure rng(y)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">ensure rng(y)</code></pre>
 
 <p>IVy will instantiate the definition like this:</p>
 
-<pre><code>axiom rng(y) &lt;-&gt; exists Y. f(Y) = y
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">axiom rng(y) <-> exists Y. f(Y) = y</code></pre>
 
 <p>In fact, all instances of the macro will be alternation-free, since IVy guarantees to instantiate the macro using only <a href="ground-term.html">ground terms</a> for the constant arguments.  A macro can have both <a href="variable.html">variables</a> and constants as arguments. For example, consider this definition:</p>
 
-<pre><code>definition g(x,Y) = x &lt; Y &amp; exists Z. Z &lt; x
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">definition g(x,Y) = x < Y & exists Z. Z < x</code></pre>
 
 <p>Given a term <code>g(f(a),b)</code>, Ivy will instantiate this macro as:</p>
 
-<pre><code>axiom g(f(a),Y) = f(a) &lt; Y &amp; exists Z. Z &lt; f(a)
-</code></pre>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+<pre><code class="plaintext lang-plaintext language-plaintext">axiom g(f(a),Y) = f(a) < Y & exists Z. Z < f(a)</code></pre>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="ivy-check-command.html">ivy_check command</a></li>
@@ -107,7 +100,7 @@
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

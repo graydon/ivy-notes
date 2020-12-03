@@ -98,10 +98,10 @@
 
 <p>Suppose we have the following simple client/server system:</p>
 
-<pre><code>isolate client = {
+<pre><code class="plaintext lang-plaintext language-plaintext">isolate client = {
     specification {
         type count
-        interpret count -&gt; int
+        interpret count -> int
         var n_send:count
         var n_recv:count
         action send_req = {
@@ -109,10 +109,10 @@
             call server.req;
         }
         action recv_res = {
-            require n_send &gt; n_recv;
+            require n_send > n_recv;
             n_recv := n_recv + 1;
         }
-        invariant n_recv &lt;= n_send
+        invariant n_recv <= n_send
     }
     implementation {
         after init {
@@ -126,7 +126,7 @@ isolate server = {
     specification {
         action req
         before req {
-            require client.n_send &gt; client.n_recv;
+            require client.n_send > client.n_recv;
         }
     }
     implementation {
@@ -138,8 +138,7 @@ isolate server = {
 
 export client.send_req
 export client.recv_res
-export server.req
-</code></pre>
+export server.req</code></pre>
 
 <p>Each isolate verifies on its own:</p>
 
@@ -151,10 +150,10 @@ export server.req
 
 <p>If we begin hiding parts of the implementation, however, we run into a problem. For example if we hide the <code>implementation</code> of <code>send_req</code> and <code>recv_res</code> (while preserving the precondition of <code>recv_res</code> in a <a href="mixin.html">mixin</a>):</p>
 
-<pre><code>isolate client = {
+<pre><code class="plaintext lang-plaintext language-plaintext">isolate client = {
     specification {
         type count
-        interpret count -&gt; int
+        interpret count -> int
         var n_send:count
         var n_recv:count
         action send_req
@@ -162,10 +161,10 @@ export server.req
 
 #+++ New mixin added here
         before recv_res {
-            require n_send &gt; n_recv
+            require n_send > n_recv
         }
 
-        invariant n_recv &lt;= n_send
+        invariant n_recv <= n_send
     }
     implementation {
         after init {
@@ -188,7 +187,7 @@ isolate server = {
     specification {
         action req
         before req {
-            require client.n_send &gt; client.n_recv;
+            require client.n_send > client.n_recv;
         }
     }
     implementation {
@@ -200,16 +199,14 @@ isolate server = {
 
 export client.send_req
 export client.recv_res
-export server.req
-</code></pre>
+export server.req</code></pre>
 
 <p>Now <code>client</code> still verifies, but verifying the <code>server</code> isolate now fails:</p>
 
-<pre><code>Isolate server:
+<pre><code class="plaintext lang-plaintext language-plaintext">Isolate server:
 t.ivy: line 34: error: Call out to client.recv_res[implement5] may have visible effect on client.n_recv
 t.ivy: line 12: referenced here
-t.ivy: line 34: referenced here
-</code></pre>
+t.ivy: line 34: referenced here</code></pre>
 
 <p>This happens because IVy tracks which actions modify which state variables, in particular it notices that <code>client.recv_res</code> modifies <code>client.n_recv</code>.</p>
 
@@ -219,15 +216,15 @@ t.ivy: line 34: referenced here
 
 <p>If we attempt to recover from this by moving the precondition on <code>client.recv_res</code> into the <code>implement</code> block as well, as follows:</p>
 
-<pre><code>isolate client = {
+<pre><code class="plaintext lang-plaintext language-plaintext">isolate client = {
     specification {
         type count
-        interpret count -&gt; int
+        interpret count -> int
         var n_send:count
         var n_recv:count
         action send_req
         action recv_res
-        invariant n_recv &lt;= n_send
+        invariant n_recv <= n_send
     }
     implementation {
         implement send_req {
@@ -235,7 +232,7 @@ t.ivy: line 34: referenced here
             call server.req;
         }
         implement recv_res {
-            require n_recv &lt; n_send;
+            require n_recv < n_send;
             n_recv := n_recv + 1;
         }
         after init {
@@ -258,30 +255,28 @@ isolate server = {
 
 export client.send_req
 export client.recv_res
-export server.req
-</code></pre>
+export server.req</code></pre>
 
 <p>We get a different error:</p>
 
-<pre><code>t.ivy: line 19: error: assertion is not checked
+<pre><code class="plaintext lang-plaintext language-plaintext">t.ivy: line 19: error: assertion is not checked
 t.ivy: line 10: error: ...in action client.recv_res
 t.ivy: line 35: error: ...when called from server.req[implement6]
-error: Some assertions are not checked
-</code></pre>
+error: Some assertions are not checked</code></pre>
 
 <p>This is a coverage error: when verifying <code>server</code>, IVy will abstract-away (erase) the implementation of <code>recv_res</code>, which means an precondition that is only in the isolate's <code>implementation</code> will not be checked.</p>
 
 <p>The best we can do, then, is change the implementation assertion into a dynamic condition, which will at least still preserve the isolate's weaker invariant:</p>
 
-<pre><code>isolate client = {
+<pre><code class="plaintext lang-plaintext language-plaintext">isolate client = {
     specification {
         type count
-        interpret count -&gt; int
+        interpret count -> int
         var n_send:count
         var n_recv:count
         action send_req
         action recv_res
-        invariant n_recv &lt;= n_send
+        invariant n_recv <= n_send
     }
     implementation {
         implement send_req {
@@ -289,7 +284,7 @@ error: Some assertions are not checked
             call server.req;
         }
         implement recv_res {
-            if n_recv &lt; n_send {
+            if n_recv < n_send {
                 n_recv := n_recv + 1;
             }
         }
@@ -313,12 +308,11 @@ isolate server = {
 
 export client.send_req
 export client.recv_res
-export server.req
-</code></pre>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+export server.req</code></pre>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="assertion.html">assertion</a></li>
@@ -330,7 +324,7 @@ export server.req
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

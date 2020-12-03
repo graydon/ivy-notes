@@ -62,24 +62,23 @@
 
 <p>If we can prove that something exists, we can give it a name.  For example, suppose that we can prove that, for every <code>X</code>, there exists a <code>Y</code> such that <code>succ(X,Y)</code>. Then there exists a (Skolem) function that, given an <code>X</code>, produces such a <code>Y</code>. We can define such a function called <code>next</code> in the following way:</p>
 
-<pre><code>relation succ(X:t,Y:t)
+<pre><code class="plaintext lang-plaintext language-plaintext">relation succ(X:t,Y:t)
 axiom exists Y. succ(X,Y)
 
-property exists Y. succ(X,Y) named next(X)
-</code></pre>
+property exists Y. succ(X,Y) named next(X)</code></pre>
 
 <p>Provided we can prove the property, and that <code>next</code> is fresh, we can infer that, for all <code>X</code>, <code>succ(X,next(X))</code> holds. Defining a function in this way, (that is, as a Skolem function) can be quite useful in constructing a proof.  However, since proofs in Ivy are not generally constructive, we have no way to <em>compute</em> the function <code>next</code>, so we can't use it in extracted code.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="keywords.html">keywords</a></li>
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

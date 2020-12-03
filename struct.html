@@ -58,11 +58,10 @@
 
 <p>A <code>struct</code> is an aggregate of named components. Structs are declared like this:</p>
 
-<pre><code>type point = struct {
+<pre><code class="plaintext lang-plaintext language-plaintext">type point = struct {
     x : coord,
     y : coord
-}
-</code></pre>
+}</code></pre>
 
 <p>This defines a <a href="type.html">type</a> <code>point</code> whose elements are structures consisting of members <code>x</code> and <code>y</code> of type <code>coord</code>.</p>
 
@@ -72,48 +71,42 @@
 
 <p>The members of a structure can be assigned. For example, to assign <code>0</code> to the <code>x</code> coordinate of point <code>p</code>, we would write:</p>
 
-<pre><code>x(p) := 0
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">x(p) := 0</code></pre>
 
 <p>This mutates not the destructor function <code>x</code>, which is immutable, but rather the value of <code>p</code>. The value of <code>y(p)</code> remains unchanged by this <a href="assignment.html">assignment</a>.</p>
 
 <p>Members of a struct can also be <a href="function.html">functions</a> and <a href="relation.html">relations</a>. For example:</p>
 
-<pre><code>type point = struct {
+<pre><code class="plaintext lang-plaintext language-plaintext">type point = struct {
     coords(X:dimension) : nat
-}
-</code></pre>
+}</code></pre>
 
 <p>Our points now have one coordinate value for each dimension defined by some arbitrary type <code>dimension</code>. Suppose we declare:</p>
 
-<pre><code>type dimension = {x,y,z}
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">type dimension = {x,y,z}</code></pre>
 
 <p>We could then refer to the <code>x</code> coordinate of a point <code>p</code> as <code>coord(p,x)</code>, and we could assign <code>0</code> to it like this:</p>
 
-<pre><code>coord(p,x) := 0
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">coord(p,x) := 0</code></pre>
 
 <p>This would be written in many programming languages as something like <code>p.coord[x] = 0</code>. The type <code>dimension</code> need not be an enumerated type, however. It could be an <a href="uninterpreted-type.html">uninterpreted type</a>, or an <a href="theory-instantiation.html">interpreted type</a> (for example, an integer type) or even another structure type.</p>
 
 <p>Structs can also contain structs. For example:</p>
 
-<pre><code>type line = {
+<pre><code class="plaintext lang-plaintext language-plaintext">type line = {
     begin : point,
     end : point
-}
-</code></pre>
+}</code></pre>
 
 <p>To set the <code>x</code> coordinate of the begin point of a line <code>l</code>, we could write:</p>
 
-<pre><code>coord(begin(l),x) := 0
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">coord(begin(l),x) := 0</code></pre>
 
 <p>This mutates <code>l</code> and not the immutable destructor functions <code>coord</code> and <code>begin</code>.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="keywords.html">keywords</a></li>
@@ -122,7 +115,7 @@
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

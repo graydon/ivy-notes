@@ -66,12 +66,11 @@
 
 <h3 id="example-nondeterministic-conditional">Example: nondeterministic conditional</h3>
 
-<pre><code>if some x:t. f(x) = y {
+<pre><code class="plaintext lang-plaintext language-plaintext">if some x:t. f(x) = y {
     z := x + y
 } else {
     z := y
-}        
-</code></pre>
+}        </code></pre>
 
 <p>Here, if there is any value <code>x</code> of type <code>t</code> such that <code>f(x) = y</code>, then such a value is assigned to <code>x</code> and the assignment <code>z := x + y</code> is executed. If there is more than one such value, the choice is non-deterministic. If there is no such value, the <code>else</code> clause is executed. The symbol <code>x</code> is only in scope in the <code>if</code> clause. It acts like a <a href="declared-variable.html">local variable</a> and is distinct from any <code>x</code> declared in an outer scope. </p>
 
@@ -79,10 +78,9 @@
 
 <p>For example, we can find an element of a set <code>s</code> with the least key like this:</p>
 
-<pre><code>if some x:t. s(x) minimizing key(x) {
+<pre><code class="plaintext lang-plaintext language-plaintext">if some x:t. s(x) minimizing key(x) {
     ...
-}
-</code></pre>
+}</code></pre>
 
 <p>This is logically equivalent to the following:</p>
 
@@ -92,10 +90,10 @@
 </code></pre>
 
 <p>Besides being more concise, the <code>minimizing</code> syntax can be more efficiently compiled and is easier for Ivy to reason about. The keyword <code>maximizing</code> produces the same result with the direction of <code>&lt;</code> reversed.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="assignment.html">assignment</a></li>
@@ -107,7 +105,7 @@
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

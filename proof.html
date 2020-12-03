@@ -66,7 +66,7 @@
 
 <h3 id="example-proof-trailing-a-judgment">Example: proof trailing a judgment</h3>
 
-<pre><code>include deduction
+<pre><code class="plaintext lang-plaintext language-plaintext">include deduction
 
 theorem [symm] {
     type t
@@ -76,8 +76,7 @@ theorem [symm] {
 proof { 
     apply introEq;
     apply elimEq with x = X, y = Y
-}
-</code></pre>
+}</code></pre>
 
 <p>This proof follows the <a href="theorem.html">theorem</a> named <code>[symm]</code> and consists of two <code>apply</code> tactics. </p>
 
@@ -87,7 +86,7 @@ proof {
 
 <h3 id="example-separate-proof-declaration">Example: separate proof declaration</h3>
 
-<pre><code>include deduction
+<pre><code class="plaintext lang-plaintext language-plaintext">include deduction
 
 theorem [symm] {
     type t
@@ -102,14 +101,13 @@ individual k:j
 proof [symm] {
     apply introEq;
     apply elimEq with x = X, y = Y
-}
-</code></pre>
+}</code></pre>
 
 <p>This proof is identical to the first example, but shows that a proof can be given for a labeled judgment in some significantly-later declaration, by referring to the label of the judgment.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="alpha-renaming.html">alpha renaming</a></li>
@@ -131,7 +129,7 @@ proof [symm] {
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>

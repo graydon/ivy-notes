@@ -77,7 +77,7 @@
 
 <p>Given a <a href="module.html">module</a> declaration such as: </p>
 
-<pre><code>module counter(t) = {
+<pre><code class="plaintext lang-plaintext language-plaintext">module counter(t) = {
     individual val : t
     after init {
         val := 0
@@ -92,14 +92,12 @@
     action is_zero returns(z : bool) = {
         z := (val = 0)
     }
-}
-</code></pre>
+}</code></pre>
 
 <p>we can create an instance of the module like this:</p>
 
-<pre><code>     type foo
-     instance c : counter(foo)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">     type foo
+     instance c : counter(foo)</code></pre>
 
 <p>This creates an <em><a href="object.html">object</a></em> <code>c</code> with members <code>c.val</code>, <code>c.up</code>, <code>c.down</code> and <code>c.is_zero</code>. The individual member <code>c.val</code> is of type <code>foo</code>.</p>
 
@@ -107,23 +105,21 @@
 
 <p>For example, given this module (a theory of partial orders):</p>
 
-<pre><code>    module po(t,lt) = {
-        axiom lt(X:t,Y) &amp; lt(Y,Z) -&gt; lt(X,Z)
-        axiom ~(lt(X:t,Y) &amp; lt(Y,X))
-    }
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">    module po(t,lt) = {
+        axiom lt(X:t,Y) & lt(Y,Z) -> lt(X,Z)
+        axiom ~(lt(X:t,Y) & lt(Y,X))
+    }</code></pre>
 
 <p>We can instantiate the theory into the current object (or at the limit, the global object) like this:</p>
 
-<pre><code>    type foo
-    instantiate po(foo,&lt;)
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">    type foo
+    instantiate po(foo,<)</code></pre>
 
 <p>Notice that we passed the overloaded infix symbol <code>&lt;</code> as a parameter. Any symbol representing a <a href="type.html">type</a>, <a href="function.html">function</a>, <a href="relation.html">relation</a>, <a href="action.html">action</a> or <a href="object.html">object</a> can be passed as a <a href="module.html">module</a> parameter.</p>
-
-<div class="backlinks">
-
-<h2 id="backlinks">Backlinks</h2>
+</div>
+      <hr />
+      <h2 id="backlinks">Backlinks</h2>
+      <div class="backlinks">
 
 <ul>
 <li><a href="alias.html">alias</a></li>
@@ -138,7 +134,7 @@
 </ul>
 
 </div>
-</div>
+
     </article>
   </div>
 </body>
