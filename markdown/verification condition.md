@@ -1,6 +1,6 @@
 A **verification condition** is a [[formula]] that, if valid, implies the correctness of an [[action]], [[logical judgment]], or logical [[statement]].
 
-IVy's default [[tactic]] for a [[proof]] automatically generates a verification condition for the context requiring the proof. If the verification condition does not fall within the FAU [[logical fragment]], the user will need to participate in [[recovering decidability|constructing a proof or changing the context]].
+Ivy's default [[tactic]] for a [[proof]] automatically generates a verification condition for the context requiring the proof. If the verification condition does not fall within the FAU [[logical fragment]], the user will need to participate in [[recovering decidability|constructing a proof or changing the context]].
 
 The same default verification condition generation tactic is involved in proving a free-standing [[logical judgment]] or an [[assertion]], [[precondition]] or [[postcondition]] statement inside an action. Only the input to the tactic varies depending on context.
 
@@ -8,7 +8,7 @@ This tactic can also be invoked explicitly within a manual proof with `tactic vc
 
 Anywhere a proof is required but not provided, it is equivalent to there being a proof consisting of `tactic vcgen`.
 
-Verification conditions in IVy are generated from the calculus of [[weakest liberal precondition|weakest liberal preconditions]].
+Verification conditions in Ivy are generated from the calculus of [[weakest liberal precondition|weakest liberal preconditions]].
 
 For example, the following program:
 
@@ -35,7 +35,7 @@ See the page on [[weakest liberal precondition]] for details on exactly how it i
 
 ## Checking VCs with SMT solvers
 
-A typical [SMT solver](https://en.wikipedia.org/wiki/Satisfiability_modulo_theories) solver (including Z3, the one IVy uses) can determine definitely whether this [[formula]] is satisfiable, since it is expressed in the form of affine constraints over the natural numbers without quantifiers. Solving constraints of this kind is an NP-complete problem. This means that all known solution algorithms use exponential time in the worst case, but in practice we can almost always solve problems that have a moderate number of variables.
+A typical [SMT solver](https://en.wikipedia.org/wiki/Satisfiability_modulo_theories) solver (including Z3, the one Ivy uses) can determine definitely whether this [[formula]] is satisfiable, since it is expressed in the form of affine constraints over the natural numbers without quantifiers. Solving constraints of this kind is an NP-complete problem. This means that all known solution algorithms use exponential time in the worst case, but in practice we can almost always solve problems that have a moderate number of variables.
 
 More generally, a typical SMT solver can handle a theory called QFLIA, which stands for "quantifier-free linear integer arithmetic" and allows us to form arbitrary combinations of affine constraints with "and", "or" and "not". We can easily reduce formulas with natural-number variables to formulas using only integer variables, so the solver doesn't need a special theory for natural numbers.
 

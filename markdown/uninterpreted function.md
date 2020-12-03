@@ -2,7 +2,7 @@ A [[function]] is **uninterpreted** when it is defined on [[uninterpreted type|u
 
 This means that there is no additional theory associated with the function's input and output types (either providing or constraining possible inputs or outputs) beyond [[declaration|declarations]] and [[definition|definitions]] provided by the user.
 
-Many functions in IVy programs are uninterpreted.
+Many functions in Ivy programs are uninterpreted.
 
 All a solver knows about an uninterpreted function is:
   - The function **exists**.
@@ -22,4 +22,4 @@ So simple decision procedures like "plug in all possible ground terms" work.
 
 In general, more-powerful theories become less decidable; and UF is not a very powerful theory.
 
-UF is a sub-theory of all the [[logical fragment|fragments]] used in IVy.
+UF is a sub-theory of all the [[logical fragment|fragments]] used in Ivy.

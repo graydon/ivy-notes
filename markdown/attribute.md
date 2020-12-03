@@ -1,6 +1,6 @@
 [[keywords|Keyword]]: `attribute`
 
-An attribute declares some practical aspect of the way an [[object]] is treated by the various IVy [[command|commands]]. Typically these relate to [[code extraction]].
+An attribute declares some practical aspect of the way an [[object]] is treated by the various Ivy [[command|commands]]. Typically these relate to [[code extraction]].
 
 Attributes may name a dot-separated [[object]] name prefix, in which case they apply only to the named object. If there is no prefix provided, they apply the object enclosing their [[declaration]].
 

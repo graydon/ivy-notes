@@ -1,4 +1,4 @@
-Expressions -- also called [[term|terms]] or [[formula|formulas]] -- in IVy are drawn from the many-[[sort|sorted]] theory of [first-order logic](https://en.wikipedia.org/wiki/First-order_logic) with equality.
+Expressions -- also called [[term|terms]] or [[formula|formulas]] -- in Ivy are drawn from the many-[[sort|sorted]] theory of [first-order logic](https://en.wikipedia.org/wiki/First-order_logic) with equality.
 
 Ivy provides the following built-in logical operators:
   - `~` (not)

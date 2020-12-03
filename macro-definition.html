@@ -19,12 +19,12 @@
   <div class="grid">
     <nav>
       <div>
-        <h2><a href="index.html">IVy notes</a></h2>
-        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <h2><a href="index.html">Ivy notes</a></h2>
+        <p>A personal expansion and reorganization of the Ivy project's documentation.</p>
         <br/>
         <br/>
-        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
-        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+        <li><a href="http://microsoft.github.io/ivy/">Ivy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">Ivy github</a></li>
       </div>
       <div>
         <h3>Navigation</h3>
@@ -68,7 +68,7 @@
 
 <pre><code class="plaintext lang-plaintext language-plaintext">axiom forall X. (rng(X) <-> exists Y. f(Y) = X)</code></pre>
 
-<p>This formula has an <a href="quantifier-alternation.html">alternation of quantifiers</a> that might result in <a href="verification-condition.html">verification conditions</a> that IVy can't <a href="logical-fragment.html">decide</a></p>
+<p>This formula has an <a href="quantifier-alternation.html">alternation of quantifiers</a> that might result in <a href="verification-condition.html">verification conditions</a> that Ivy can't <a href="logical-fragment.html">decide</a></p>
 
 <p>Suppose though, that we only need to know the truth value of <code>rng</code> for some specific arguments. We can instead write the definition like this:</p>
 
@@ -78,11 +78,11 @@
 
 <pre><code class="plaintext lang-plaintext language-plaintext">ensure rng(y)</code></pre>
 
-<p>IVy will instantiate the definition like this:</p>
+<p>Ivy will instantiate the definition like this:</p>
 
 <pre><code class="plaintext lang-plaintext language-plaintext">axiom rng(y) <-> exists Y. f(Y) = y</code></pre>
 
-<p>In fact, all instances of the macro will be alternation-free, since IVy guarantees to instantiate the macro using only <a href="ground-term.html">ground terms</a> for the constant arguments.  A macro can have both <a href="variable.html">variables</a> and constants as arguments. For example, consider this definition:</p>
+<p>In fact, all instances of the macro will be alternation-free, since Ivy guarantees to instantiate the macro using only <a href="ground-term.html">ground terms</a> for the constant arguments.  A macro can have both <a href="variable.html">variables</a> and constants as arguments. For example, consider this definition:</p>
 
 <pre><code class="plaintext lang-plaintext language-plaintext">definition g(x,Y) = x < Y & exists Z. Z < x</code></pre>
 

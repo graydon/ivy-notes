@@ -4,7 +4,7 @@ If `S` is a program [[statement]] and `R` is a some condition on the program sta
 
 The `wlp` function is in other words a "predicate transformer" that works backwards from the end of the program towards its beginning, transforming the predicate `R` (the [[verification condition]] that serves as precondition for the "rest of the program" after `S`) into a predicate `wlp(S,R)` that's a verification condition covering `S` as well.
 
-As an example, consider the following IVy code:
+As an example, consider the following Ivy code:
 
 ```
 type t
@@ -46,7 +46,7 @@ In fact, we can check the validity of this formula automatically.
 
 ## WLP calculus and assume/assert
 
-The wlp calculus provides us with rules to cover all of the basic programming constructs in the IVy language. For example, another way to look at the above example is to consider `requires` and `ensures` as program statements that have a semantics in terms of wlp. When verifying action `decr`, IVy treats the `requires` statement as an *assumption* and the `ensures` statement as a *guarantee*. This means the program statement we must verify is really:
+The wlp calculus provides us with rules to cover all of the basic programming constructs in the Ivy language. For example, another way to look at the above example is to consider `requires` and `ensures` as program statements that have a semantics in terms of wlp. When verifying action `decr`, Ivy treats the `requires` statement as an *assumption* and the `ensures` statement as a *guarantee*. This means the program statement we must verify is really:
 
 ```
 assume x > 0;

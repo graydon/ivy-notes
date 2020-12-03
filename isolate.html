@@ -19,12 +19,12 @@
   <div class="grid">
     <nav>
       <div>
-        <h2><a href="index.html">IVy notes</a></h2>
-        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <h2><a href="index.html">Ivy notes</a></h2>
+        <p>A personal expansion and reorganization of the Ivy project's documentation.</p>
         <br/>
         <br/>
-        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
-        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+        <li><a href="http://microsoft.github.io/ivy/">Ivy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">Ivy github</a></li>
       </div>
       <div>
         <h3>Navigation</h3>
@@ -184,7 +184,7 @@ object odds = {
 export evens.step
 export evens.put</code></pre>
 
-<p>Notice the implementation of <code>odds.put</code> has been eliminated, and what remains is just the assertion that the input value is odd (IVy verifies that the eliminated side effect of <code>odds.put</code> is in fact invisible to <code>evens</code>). The <a href="assertion.html">assertion</a> that inputs to <code>evens</code> are even has in effect become an <a href="assumption.html">assumption</a>. We can prove this isolate is safe by showing that <code>even.number</code> is <a href="invariant.html">invariantly</a> even, which means that <code>odds.put</code> is always called with an odd number.</p>
+<p>Notice the implementation of <code>odds.put</code> has been eliminated, and what remains is just the assertion that the input value is odd (Ivy verifies that the eliminated side effect of <code>odds.put</code> is in fact invisible to <code>evens</code>). The <a href="assertion.html">assertion</a> that inputs to <code>evens</code> are even has in effect become an <a href="assumption.html">assumption</a>. We can prove this isolate is safe by showing that <code>even.number</code> is <a href="invariant.html">invariantly</a> even, which means that <code>odds.put</code> is always called with an odd number.</p>
 
 <p>The other isolate, <code>odds</code>, looks like this:</p>
 

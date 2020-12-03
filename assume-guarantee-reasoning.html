@@ -19,12 +19,12 @@
   <div class="grid">
     <nav>
       <div>
-        <h2><a href="index.html">IVy notes</a></h2>
-        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <h2><a href="index.html">Ivy notes</a></h2>
+        <p>A personal expansion and reorganization of the Ivy project's documentation.</p>
         <br/>
         <br/>
-        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
-        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+        <li><a href="http://microsoft.github.io/ivy/">Ivy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">Ivy github</a></li>
       </div>
       <div>
         <h3>Navigation</h3>
@@ -67,7 +67,7 @@
 <li>Checking <strong>coverage</strong> of all assertions in all mixtures of abstraction and verification.</li>
 </ul>
 
-<p>IVy uses <a href="isolate.html">isolates</a> as its units of assume-guarantee reasoning, along with <a href="visibility-qualifiers.html">visibility qualifiers</a>.</p>
+<p>Ivy uses <a href="isolate.html">isolates</a> as its units of assume-guarantee reasoning, along with <a href="visibility-qualifiers.html">visibility qualifiers</a>.</p>
 
 <p>Specifically, when verifying some <a href="isolate.html">isolate</a> <code>X</code>:</p>
 
@@ -208,9 +208,9 @@ t.ivy: line 34: error: Call out to client.recv_res[implement5] may have visible 
 t.ivy: line 12: referenced here
 t.ivy: line 34: referenced here</code></pre>
 
-<p>This happens because IVy tracks which actions modify which state variables, in particular it notices that <code>client.recv_res</code> modifies <code>client.n_recv</code>.</p>
+<p>This happens because Ivy tracks which actions modify which state variables, in particular it notices that <code>client.recv_res</code> modifies <code>client.n_recv</code>.</p>
 
-<p>IVy then attempts to verify <code>server</code> in <a href="isolate.html">isolation</a>, and its first step is to check that actions <strong>outside</strong> server can be safely abstracted (erased). Erasing <code>client.recv_res</code> is only safe if the variables it alters are only used by other abstract (to-be-erased) actions.</p>
+<p>Ivy then attempts to verify <code>server</code> in <a href="isolate.html">isolation</a>, and its first step is to check that actions <strong>outside</strong> server can be safely abstracted (erased). Erasing <code>client.recv_res</code> is only safe if the variables it alters are only used by other abstract (to-be-erased) actions.</p>
 
 <p>Unfortunately <code>client.n_recv</code> is mentioned in the (still-visible, not-erased) precondition in the mixin <code>before client.recv_res</code>, and that precondition is a <a href="guarantee.html">guarantee</a> that <code>server</code> has to maintain. It cannot safely do so if <code>client.recv_res</code> is abstracted away, as its effect on <code>client.n_recv</code> will be unknown.</p>
 
@@ -264,7 +264,7 @@ t.ivy: line 10: error: ...in action client.recv_res
 t.ivy: line 35: error: ...when called from server.req[implement6]
 error: Some assertions are not checked</code></pre>
 
-<p>This is a coverage error: when verifying <code>server</code>, IVy will abstract-away (erase) the implementation of <code>recv_res</code>, which means an precondition that is only in the isolate's <code>implementation</code> will not be checked.</p>
+<p>This is a coverage error: when verifying <code>server</code>, Ivy will abstract-away (erase) the implementation of <code>recv_res</code>, which means an precondition that is only in the isolate's <code>implementation</code> will not be checked.</p>
 
 <p>The best we can do, then, is change the implementation assertion into a dynamic condition, which will at least still preserve the isolate's weaker invariant:</p>
 

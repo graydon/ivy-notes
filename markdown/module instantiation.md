@@ -2,7 +2,7 @@ Keyword: `instance` and/or `instantiate` (the keywords are synonyms)
 
 [[module|Modules]] can be instantiated into [[object|objects]], similar to the way template classes in programming languages can be instantiated.
 
-(Module instantiation should not be confused with the [[instantiation|many other concepts named "instantiation"]] in IVy).
+(Module instantiation should not be confused with the [[instantiation|many other concepts named "instantiation"]] in Ivy).
 
 Instantiating a [[module]] creates a separate copy of the [[declaration|declarations]] of the module with any supplied arguments substituted for the module's parameters.
 

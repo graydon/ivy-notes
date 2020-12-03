@@ -14,7 +14,7 @@ The command takes several other options:
 
 `classname=cname`
 
-This gives the name of the extracted C++ class. The default is the name of the main IVy file, without the `.ivy` extension. The names of the extracted header and implementation files are `cname.h` and `cname.cpp` respectively.
+This gives the name of the extracted C++ class. The default is the name of the main Ivy file, without the `.ivy` extension. The names of the extracted header and implementation files are `cname.h` and `cname.cpp` respectively.
 
 `build=boolean`
 

@@ -9,7 +9,7 @@ action connect_unique(a:node, b:node) = {
 }
 ```
     
-IVy uses the [call-by-value](https://en.wikipedia.org/wiki/Evaluation_strategy#Call_by_value) convention. That is, when we call `clear(a)` a local variable `x` is created during the execution of `clear` and assigned the value `a`. This means that, as in the [C programming language](https://en.wikipedia.org/wiki/C_(programming_language)), modifying the value of `x` in `clear` would not result in modifying the value of `a` in `connect_unique`.
+Ivy uses the [call-by-value](https://en.wikipedia.org/wiki/Evaluation_strategy#Call_by_value) convention. That is, when we call `clear(a)` a local variable `x` is created during the execution of `clear` and assigned the value `a`. This means that, as in the [C programming language](https://en.wikipedia.org/wiki/C_(programming_language)), modifying the value of `x` in `clear` would not result in modifying the value of `a` in `connect_unique`.
 
 The return values of an action can be obtained like this:
 

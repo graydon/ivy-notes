@@ -1,8 +1,8 @@
-IVy works with several different fragments of [[first-order logic]].
+Ivy works with several different fragments of [[first-order logic]].
 
 A fragment is just a restriction of the full set of possible [[term|terms]] -- some terms are excluded. The trick is in choosing the set to exclude.
 
-The most important fragment in IVy is called [[finite almost uninterpreted|FAU]]. By default, IVy checks that every [[verification condition]] is in FAU and rejects those that fall outside of it. Understanding FAU is fairly important to understanding how to [[recovering decidability|recover decidability]] in an IVy program, when the fragment checker rejects it.
+The most important fragment in Ivy is called [[finite almost uninterpreted|FAU]]. By default, Ivy checks that every [[verification condition]] is in FAU and rejects those that fall outside of it. Understanding FAU is fairly important to understanding how to [[recovering decidability|recover decidability]] in an Ivy program, when the fragment checker rejects it.
 
 The underlying solver Z3 supports a complete decision procedure, based on quantifier instantiation, for FAU.
 

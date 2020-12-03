@@ -19,12 +19,12 @@
   <div class="grid">
     <nav>
       <div>
-        <h2><a href="index.html">IVy notes</a></h2>
-        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <h2><a href="index.html">Ivy notes</a></h2>
+        <p>A personal expansion and reorganization of the Ivy project's documentation.</p>
         <br/>
         <br/>
-        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
-        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+        <li><a href="http://microsoft.github.io/ivy/">Ivy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">Ivy github</a></li>
       </div>
       <div>
         <h3>Navigation</h3>
@@ -58,13 +58,13 @@
 
 <p>Satisfiability in first-order logic is only semi-dedicable: procedures exist that can enumerate the space of possible satisfying assignments for a formula, but that space is both infinite and sufficiently rich that such procedures may fail to terminate with any answer.</p>
 
-<p>IVy reasons primarily over a <a href="logical-fragment.html">restricted fragment</a> of first-order logic called FAU. </p>
+<p>Ivy reasons primarily over a <a href="logical-fragment.html">restricted fragment</a> of first-order logic called FAU. </p>
 
-<p>Though IVy's <a href="expression.html">expressions</a> can denote any term in unrestricted first-order logic, some <a href="verification-condition.html">verification conditions</a> will be rejected if they lie outside FAU. The user must then <a href="recovering-decidability.html">recover decidability</a> of the VC.</p>
+<p>Though Ivy's <a href="expression.html">expressions</a> can denote any term in unrestricted first-order logic, some <a href="verification-condition.html">verification conditions</a> will be rejected if they lie outside FAU. The user must then <a href="recovering-decidability.html">recover decidability</a> of the VC.</p>
 
-<p>When running <code>ivy_check</code> in <code>complete=fo</code> mode, IVy will attempt to form and check <a href="verification-condition.html">verification conditions</a> in unrestricted first-order logic. This may cause checking to fail to terminate.</p>
+<p>When running <code>ivy_check</code> in <code>complete=fo</code> mode, Ivy will attempt to form and check <a href="verification-condition.html">verification conditions</a> in unrestricted first-order logic. This may cause checking to fail to terminate.</p>
 
-<p>First-order logic does not allow writing formulas that quantify over other formulas. Such quantification is only possible in <a href="https://en.wikipedia.org/wiki/Second-order_logic">second-order</a> and <a href="https://en.wikipedia.org/wiki/Second-order_logic">higher-order logic</a>. Instead, in first-order logic one may write and prove a <a href="schema.html">schema</a> in the surrounding metalanguage -- a language like IVy's language of declarations, proofs and tactics, <strong>outside</strong> the logic -- and explicitly instantiate the schema's premises with formulas.</p>
+<p>First-order logic does not allow writing formulas that quantify over other formulas. Such quantification is only possible in <a href="https://en.wikipedia.org/wiki/Second-order_logic">second-order</a> and <a href="https://en.wikipedia.org/wiki/Second-order_logic">higher-order logic</a>. Instead, in first-order logic one may write and prove a <a href="schema.html">schema</a> in the surrounding metalanguage -- a language like Ivy's language of declarations, proofs and tactics, <strong>outside</strong> the logic -- and explicitly instantiate the schema's premises with formulas.</p>
 
 <p>See also the <a href="https://en.wikipedia.org/wiki/First-order_logic">wikipedia page</a> on first-order logic.</p>
 </div>

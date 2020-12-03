@@ -19,12 +19,12 @@
   <div class="grid">
     <nav>
       <div>
-        <h2><a href="index.html">IVy notes</a></h2>
-        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <h2><a href="index.html">Ivy notes</a></h2>
+        <p>A personal expansion and reorganization of the Ivy project's documentation.</p>
         <br/>
         <br/>
-        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
-        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+        <li><a href="http://microsoft.github.io/ivy/">Ivy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">Ivy github</a></li>
       </div>
       <div>
         <h3>Navigation</h3>
@@ -54,7 +54,7 @@
     </nav>
     <article>
       <header>recursion</header>
-      <div id="content"><p>Recursive <a href="definition.html">definitions</a> are permitted in IVy by instantiating a definitional schema. As an example, consider the following <a href="axiom-schema.html">axiom schema</a>:</p>
+      <div id="content"><p>Recursive <a href="definition.html">definitions</a> are permitted in Ivy by instantiating a definitional schema. As an example, consider the following <a href="axiom-schema.html">axiom schema</a>:</p>
 
 <pre><code class="plaintext lang-plaintext language-plaintext">axiom [rec[u]] {
     type q
@@ -84,11 +84,11 @@ proof {
    apply rec[u]
 }</code></pre>
 
-<p>Notice that we wrote the <a href="definition.html">definition</a> in curly brackets. This causes IVy to treat it as an <a href="axiom-schema.html">axiom schema</a>, as opposed to a simple <a href="axiom.html">axiom</a>.</p>
+<p>Notice that we wrote the <a href="definition.html">definition</a> in curly brackets. This causes Ivy to treat it as an <a href="axiom-schema.html">axiom schema</a>, as opposed to a simple <a href="axiom.html">axiom</a>.</p>
 
 <p>We did this because the definition has a universally quantified variable <code>X</code> under arithmetic operators, which puts it outside the decidable fragment. Because this definition is a schema, when we want to use it, we'll have to apply it explicitly,</p>
 
-<p>In order to admit this definition, we applied the definition schema <code>rec[u]</code>. IVy infers the following substitution:</p>
+<p>In order to admit this definition, we applied the definition schema <code>rec[u]</code>. Ivy infers the following substitution:</p>
 
 <pre><code class="plaintext lang-plaintext language-plaintext">q=t, base(X) = 0, step(X,Y) = Y + X, fun(X) = sum(X)</code></pre>
 
@@ -105,7 +105,7 @@ definition
 proof
     apply rec[u]</code></pre>
 
-<p>In matching the recursion schema <code>rec[u]</code>, IVy will extend the function symbols in the premises of <code>rec[u]</code> with an extra parameter <code>N</code> so that schema becomes:</p>
+<p>In matching the recursion schema <code>rec[u]</code>, Ivy will extend the function symbols in the premises of <code>rec[u]</code> with an extra parameter <code>N</code> so that schema becomes:</p>
 
 <pre><code class="plaintext lang-plaintext language-plaintext">axiom [rec[u]] = {
     type q
@@ -120,12 +120,12 @@ proof
 
 <pre><code class="plaintext lang-plaintext language-plaintext">q=t, base(N,X)=0, step(N,X,Y)=Y/N+X, fun(N,X) = sum2(N,X)</code></pre>
 
-<p>This is somewhat as if the functions were "curried", in which case the free symbol <code>fun</code> would match the partially applied term <code>sumdiv N</code>. Since IVy's logic doesn't allow for partial application of functions, extended matching provides an alternative. Notice that, to match the recursion schema, a function definition must be recursive in its <em>last</em> parameter.</p>
+<p>This is somewhat as if the functions were "curried", in which case the free symbol <code>fun</code> would match the partially applied term <code>sumdiv N</code>. Since Ivy's logic doesn't allow for partial application of functions, extended matching provides an alternative. Notice that, to match the recursion schema, a function definition must be recursive in its <em>last</em> parameter.</p>
 
 <p>Induction<br />
 <mark class="highlight"></mark>)<mark class="highlight"></mark>)=</p>
 
-<p>The default tactic can't generally prove properties by induction. For that IVy needs manual help. To prove a property by induction, we define an invariant and prove it by instantiating an induction schema. Here is an example of such a schema, that works for the non-negative integers:</p>
+<p>The default tactic can't generally prove properties by induction. For that Ivy needs manual help. To prove a property by induction, we define an invariant and prove it by instantiating an induction schema. Here is an example of such a schema, that works for the non-negative integers:</p>
 
 <pre><code class="plaintext lang-plaintext language-plaintext">axiom [ind[u]] {
     relation p(X:u)

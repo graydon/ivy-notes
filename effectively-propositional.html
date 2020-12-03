@@ -19,12 +19,12 @@
   <div class="grid">
     <nav>
       <div>
-        <h2><a href="index.html">IVy notes</a></h2>
-        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <h2><a href="index.html">Ivy notes</a></h2>
+        <p>A personal expansion and reorganization of the Ivy project's documentation.</p>
         <br/>
         <br/>
-        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
-        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+        <li><a href="http://microsoft.github.io/ivy/">Ivy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">Ivy github</a></li>
       </div>
       <div>
         <h3>Navigation</h3>
@@ -96,7 +96,7 @@ exists X,Y. ~(r'(X,Y) -> X > Y)</code></pre>
 
 <p>We can see that the <a href="precondition.html">precondition</a> and the constraint defining the semantics of assignment both occur <a href="positive-and-negative-occurrences.html">positively</a>. These formulas are in EPR, and so the corresponding conjuncts of the negated VC also are.</p>
 
-<p>The <a href="postcondition.html">guarantee formula</a> occurs negatively as <code>exists X,Y. ~(r'(X,Y) -&gt; X &gt; Y)</code>. That is, when we see <code>~forall X. p(X)</code>, we convert it to the equivalent <code>exists X. ~p(X)</code> in prenex form. This formula is also in EPR. In fact, IVy will convert it to <code>~(r'(a,b) -&gt; a &gt; b)</code>, where <code>a</code> and <code>b</code> are fresh constant symbols.</p>
+<p>The <a href="postcondition.html">guarantee formula</a> occurs negatively as <code>exists X,Y. ~(r'(X,Y) -&gt; X &gt; Y)</code>. That is, when we see <code>~forall X. p(X)</code>, we convert it to the equivalent <code>exists X. ~p(X)</code> in prenex form. This formula is also in EPR. In fact, Ivy will convert it to <code>~(r'(a,b) -&gt; a &gt; b)</code>, where <code>a</code> and <code>b</code> are fresh constant symbols.</p>
 
 <p>In general, if we don’t use function symbols, and if all of our assumptions and guarantees are <code>forall</code> formulas (so-called "A"-formulas), then the negated VC will be in EPR.</p>
 </div>

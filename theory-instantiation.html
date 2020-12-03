@@ -19,12 +19,12 @@
   <div class="grid">
     <nav>
       <div>
-        <h2><a href="index.html">IVy notes</a></h2>
-        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <h2><a href="index.html">Ivy notes</a></h2>
+        <p>A personal expansion and reorganization of the Ivy project's documentation.</p>
         <br/>
         <br/>
-        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
-        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+        <li><a href="http://microsoft.github.io/ivy/">Ivy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">Ivy github</a></li>
       </div>
       <div>
         <h3>Navigation</h3>
@@ -60,9 +60,9 @@
 
 <p>(Not to be confused with the <a href="instantiation.html">many other meanings of the term "instantiation"</a>)</p>
 
-<p>The normal way of using IVy is to declare <a href="uninterpreted-type.html">uninterpreted types</a> and to give the necessary <a href="axiom.html">axioms</a> over those types to prove desired <a href="property.html">properties</a> of a system. However, it is also possible in IVy to associate <a href="type.html">types</a> with <a href="sort.html">sorts</a> that are interpreted in the underlying theorem prover by declaring <code>interpret &lt;ty&gt; -&gt; &lt;sort&gt;</code></p>
+<p>The normal way of using Ivy is to declare <a href="uninterpreted-type.html">uninterpreted types</a> and to give the necessary <a href="axiom.html">axioms</a> over those types to prove desired <a href="property.html">properties</a> of a system. However, it is also possible in Ivy to associate <a href="type.html">types</a> with <a href="sort.html">sorts</a> that are interpreted in the underlying theorem prover by declaring <code>interpret &lt;ty&gt; -&gt; &lt;sort&gt;</code></p>
 
-<p>Concrete sorts that are currently available for interpreting IVy types are:</p>
+<p>Concrete sorts that are currently available for interpreting Ivy types are:</p>
 
 <ul>
 <li><code>int</code>: the integers</li>
@@ -74,7 +74,7 @@
 
 <p>Arithmetic on <code>nat</code> is <strong>saturating</strong>. That is, any operation that would yield a neagtive number instead gives zero. </p>
 
-<p>An arbitrary function or relation symbol can be interpreted. This is useful for symbols of the theory that have no pre-defined overloaded symbol in IVy.</p>
+<p>An arbitrary function or relation symbol can be interpreted. This is useful for symbols of the theory that have no pre-defined overloaded symbol in Ivy.</p>
 
 <h2 id="examples">Examples:</h2>
 
@@ -84,7 +84,7 @@
 interpret idx -&gt; int
 </code></pre>
 
-<p>This says that IVy type <code>idx</code> should be interpreted using sort <code>int</code> of the theorem prover. This does not mean that <code>idx</code> is equated with the integers. If we also interpret type <code>num</code> with <code>int</code>, we still cannot compare values of type <code>idx</code> and type <code>num</code>. In effect, these two types are treated as distinct copies of the integers.</p>
+<p>This says that Ivy type <code>idx</code> should be interpreted using sort <code>int</code> of the theorem prover. This does not mean that <code>idx</code> is equated with the integers. If we also interpret type <code>num</code> with <code>int</code>, we still cannot compare values of type <code>idx</code> and type <code>num</code>. In effect, these two types are treated as distinct copies of the integers.</p>
 
 <p>When we declare <code>idx</code> as <code>int</code>, certain overloaded <a href="function.html">functions</a> and <a href="relation.html">relations</a> on <code>idx</code> are also automatically interpreted by the corresponding operators on integers, as are numerals of that type. So, for example, <code>+</code> is interpreted as addition and <code>&lt;</code> as "less than" in the theory of integers. Numerals are given their normal interpretations in the theory, so <code>0:idx = 1:idx</code> would be false.</p>
 

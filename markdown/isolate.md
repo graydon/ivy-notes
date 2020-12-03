@@ -129,7 +129,7 @@ export evens.step
 export evens.put
 ```
 
-Notice the implementation of `odds.put` has been eliminated, and what remains is just the assertion that the input value is odd (IVy verifies that the eliminated side effect of `odds.put` is in fact invisible to `evens`). The [[assertion]] that inputs to `evens` are even has in effect become an [[assumption]]. We can prove this isolate is safe by showing that `even.number` is [[invariant|invariantly]] even, which means that `odds.put` is always called with an odd number.
+Notice the implementation of `odds.put` has been eliminated, and what remains is just the assertion that the input value is odd (Ivy verifies that the eliminated side effect of `odds.put` is in fact invisible to `evens`). The [[assertion]] that inputs to `evens` are even has in effect become an [[assumption]]. We can prove this isolate is safe by showing that `even.number` is [[invariant|invariantly]] even, which means that `odds.put` is always called with an odd number.
 
 The other isolate, `odds`, looks like this:
 

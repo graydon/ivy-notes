@@ -1,10 +1,10 @@
 [[keywords|Keyword]]: `forall`
 
-The universal quantifier (written as `forall` in IVy, but more conventionally as `∀` in formal logic) asserts that "for all" elements of some [[sort]], the remaining quantified [[formula]] is true.
+The universal quantifier (written as `forall` in Ivy, but more conventionally as `∀` in formal logic) asserts that "for all" elements of some [[sort]], the remaining quantified [[formula]] is true.
 
 The universally-quantified [[logical variable]] follows the keyword and must be a [[lexical structure|lexical variable]] (i.e. must begin with an upper-case letter.)
 
-The variables bound by the quantifier are separated from the formula they quantify over by a period (`.`) though in IVy this can also be accomplished using parentheses (see example below).
+The variables bound by the quantifier are separated from the formula they quantify over by a period (`.`) though in Ivy this can also be accomplished using parentheses (see example below).
 
 Universal quantifiers may be eliminated from a formula by [[explicit quantifier instantiation]].
 

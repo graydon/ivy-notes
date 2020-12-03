@@ -19,7 +19,7 @@ theorem [trans] {
 }
 ```
 
-This theorem expresses the transitivity of equality. No explicit proof is required here, IVy's default tactic generates the following [[verification condition]]:
+This theorem expresses the transitivity of equality. No explicit proof is required here, Ivy's default tactic generates the following [[verification condition]]:
 
 ```
 X = Y & Y = Z -> X = Z

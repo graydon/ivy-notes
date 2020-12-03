@@ -19,12 +19,12 @@
   <div class="grid">
     <nav>
       <div>
-        <h2><a href="index.html">IVy notes</a></h2>
-        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <h2><a href="index.html">Ivy notes</a></h2>
+        <p>A personal expansion and reorganization of the Ivy project's documentation.</p>
         <br/>
         <br/>
-        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
-        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+        <li><a href="http://microsoft.github.io/ivy/">Ivy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">Ivy github</a></li>
       </div>
       <div>
         <h3>Navigation</h3>
@@ -79,9 +79,9 @@ proof {
     apply congruence
 }</code></pre>
 
-<p>The <code>proof</code> declaration tells IVy to apply the <a href="axiom-schema.html">axiom schema</a> <code>congruence</code> to prove the <a href="property.html">property</a> <code>prop_n</code>. </p>
+<p>The <code>proof</code> declaration tells Ivy to apply the <a href="axiom-schema.html">axiom schema</a> <code>congruence</code> to prove the <a href="property.html">property</a> <code>prop_n</code>. </p>
 
-<p>IVy tries to match the <a href="proof.html">proof</a> goal <code>prop_n</code> to the schema's conclusion by picking particular values for premises, that is, the types <code>d</code>,<code>r</code> and function <code>f</code>. It also chooses terms for the free variables <code>X</code>,<code>Y</code> occurring in the schema. In this case, it discovers the following assignment:</p>
+<p>Ivy tries to match the <a href="proof.html">proof</a> goal <code>prop_n</code> to the schema's conclusion by picking particular values for premises, that is, the types <code>d</code>,<code>r</code> and function <code>f</code>. It also chooses terms for the free variables <code>X</code>,<code>Y</code> occurring in the schema. In this case, it discovers the following assignment:</p>
 
 <pre><code class="plaintext lang-plaintext language-plaintext">d = t
 r = t
@@ -91,7 +91,7 @@ f(N) = N + 1</code></pre>
 
 <p>After plugging in this assignment, the conclusion of the rule exactly matches the property to be proved, so the property is admitted.</p>
 
-<p>In case IVy did not succeed in finding the above match, we could also have written the proof more explicitly, like this:</p>
+<p>In case Ivy did not succeed in finding the above match, we could also have written the proof more explicitly, like this:</p>
 
 <pre><code class="plaintext lang-plaintext language-plaintext">property [prop_n_2] Z = n -> Z + 1 = n + 1
 proof {
@@ -100,7 +100,7 @@ proof {
 
 <p>Each of the above equations acts as a constraint on the assignment. That is, it must convert <code>X</code> to <code>Z</code>, <code>Y</code> to <code>n</code> and <code>f(X)</code> to <code>X + 1</code>. Notice that we had to explicitly type <code>X</code> on the right-hand side of the last equation, since its type couldn't be inferred (and in fact it's not the same as the type of <code>X</code> on the left-hand side, which is <code>d</code>). </p>
 
-<p>It's also possible to write constraints that do not allow for any assignment. In this case, IVy complains that the provided match is inconsistent.</p>
+<p>It's also possible to write constraints that do not allow for any assignment. In this case, Ivy complains that the provided match is inconsistent.</p>
 </div>
       <hr />
       <h2 id="backlinks">Backlinks</h2>

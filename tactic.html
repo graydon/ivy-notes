@@ -19,12 +19,12 @@
   <div class="grid">
     <nav>
       <div>
-        <h2><a href="index.html">IVy notes</a></h2>
-        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <h2><a href="index.html">Ivy notes</a></h2>
+        <p>A personal expansion and reorganization of the Ivy project's documentation.</p>
         <br/>
         <br/>
-        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
-        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+        <li><a href="http://microsoft.github.io/ivy/">Ivy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">Ivy github</a></li>
       </div>
       <div>
         <h3>Navigation</h3>
@@ -56,9 +56,9 @@
       <header>tactic</header>
       <div id="content"><p>A tactic is a step that can be invoked by name during a <a href="proof.html">proof</a>.</p>
 
-<p>There is a default tactic called <code>tactic vcgen</code> that works by generating a <a href="verification-condition.html">verification condition</a> (VC) to be checked by Z3. This is a formula whose validity implies that the property is true in the current context. IVy checks that this formula is within the <a href="logical-fragment.html">logical fragment</a> FAU that Z3 can decide, then passes the formula to Z3. If Z3 finds that the formula is valid, the property is admitted.</p>
+<p>There is a default tactic called <code>tactic vcgen</code> that works by generating a <a href="verification-condition.html">verification condition</a> (VC) to be checked by Z3. This is a formula whose validity implies that the property is true in the current context. Ivy checks that this formula is within the <a href="logical-fragment.html">logical fragment</a> FAU that Z3 can decide, then passes the formula to Z3. If Z3 finds that the formula is valid, the property is admitted.</p>
 
-<p>If the default tactic generates a VC that is not within FAU, IVy will describe the problem and user intervention will be required, invoking other tactics to arrive at a goal state that <em>is</em> within FAU.</p>
+<p>If the default tactic generates a VC that is not within FAU, Ivy will describe the problem and user intervention will be required, invoking other tactics to arrive at a goal state that <em>is</em> within FAU.</p>
 
 <p>Possible tactics include:</p>
 

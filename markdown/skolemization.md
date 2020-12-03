@@ -4,7 +4,7 @@ As free (unbound) function symbols in first-order formulae are, for the sake of 
 
 See also [wikipedia's page](https://en.wikipedia.org/wiki/Skolem_normal_form)
 
-Skolemization is done automatically in many contexts in IVy, but is also available as a [[tactic]] called `tactic skolemize` which can be manually applied during a [[proof]]. This tactic Skolemizes all the **premises** (but not the conclusion) of a proof goal. This is typically done before [[explicit quantifier instantiation]] in order to [[recovering decidability|recover decidability]].
+Skolemization is done automatically in many contexts in Ivy, but is also available as a [[tactic]] called `tactic skolemize` which can be manually applied during a [[proof]]. This tactic Skolemizes all the **premises** (but not the conclusion) of a proof goal. This is typically done before [[explicit quantifier instantiation]] in order to [[recovering decidability|recover decidability]].
 
 ## Examples:
 

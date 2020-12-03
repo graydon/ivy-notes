@@ -19,12 +19,12 @@
   <div class="grid">
     <nav>
       <div>
-        <h2><a href="index.html">IVy notes</a></h2>
-        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <h2><a href="index.html">Ivy notes</a></h2>
+        <p>A personal expansion and reorganization of the Ivy project's documentation.</p>
         <br/>
         <br/>
-        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
-        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+        <li><a href="http://microsoft.github.io/ivy/">Ivy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">Ivy github</a></li>
       </div>
       <div>
         <h3>Navigation</h3>
@@ -60,7 +60,7 @@
 
 <p>The <code>wlp</code> function is in other words a "predicate transformer" that works backwards from the end of the program towards its beginning, transforming the predicate <code>R</code> (the <a href="verification-condition.html">verification condition</a> that serves as precondition for the "rest of the program" after <code>S</code>) into a predicate <code>wlp(S,R)</code> that's a verification condition covering <code>S</code> as well.</p>
 
-<p>As an example, consider the following IVy code:</p>
+<p>As an example, consider the following Ivy code:</p>
 
 <pre><code class="plaintext lang-plaintext language-plaintext">type t
 interpret t -> nat
@@ -93,7 +93,7 @@ export decr</code></pre>
 
 <h2 id="wlp-calculus-and-assumeassert">WLP calculus and assume/assert</h2>
 
-<p>The wlp calculus provides us with rules to cover all of the basic programming constructs in the IVy language. For example, another way to look at the above example is to consider <code>requires</code> and <code>ensures</code> as program statements that have a semantics in terms of wlp. When verifying action <code>decr</code>, IVy treats the <code>requires</code> statement as an <em>assumption</em> and the <code>ensures</code> statement as a <em>guarantee</em>. This means the program statement we must verify is really:</p>
+<p>The wlp calculus provides us with rules to cover all of the basic programming constructs in the Ivy language. For example, another way to look at the above example is to consider <code>requires</code> and <code>ensures</code> as program statements that have a semantics in terms of wlp. When verifying action <code>decr</code>, Ivy treats the <code>requires</code> statement as an <em>assumption</em> and the <code>ensures</code> statement as a <em>guarantee</em>. This means the program statement we must verify is really:</p>
 
 <pre><code class="plaintext lang-plaintext language-plaintext">assume x > 0;
 y := x - 1;

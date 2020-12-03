@@ -4,9 +4,9 @@ One of the [[primitive judgment|primitive judgments]].
 
 (Not to be confused with the [[instantiation|many other meanings of the term "instantiation"]])
 
-The normal way of using IVy is to declare [[uninterpreted type|uninterpreted types]] and to give the necessary [[axiom|axioms]] over those types to prove desired [[property|properties]] of a system. However, it is also possible in IVy to associate [[type|types]] with [[sort|sorts]] that are interpreted in the underlying theorem prover by declaring `interpret <ty> -> <sort>`
+The normal way of using Ivy is to declare [[uninterpreted type|uninterpreted types]] and to give the necessary [[axiom|axioms]] over those types to prove desired [[property|properties]] of a system. However, it is also possible in Ivy to associate [[type|types]] with [[sort|sorts]] that are interpreted in the underlying theorem prover by declaring `interpret <ty> -> <sort>`
 
-Concrete sorts that are currently available for interpreting IVy types are:
+Concrete sorts that are currently available for interpreting Ivy types are:
 
 - `int`: the integers
 - `nat`: the non-negative integers
@@ -16,7 +16,7 @@ Concrete sorts that are currently available for interpreting IVy types are:
 
 Arithmetic on `nat` is **saturating**. That is, any operation that would yield a neagtive number instead gives zero. 
 
-An arbitrary function or relation symbol can be interpreted. This is useful for symbols of the theory that have no pre-defined overloaded symbol in IVy.
+An arbitrary function or relation symbol can be interpreted. This is useful for symbols of the theory that have no pre-defined overloaded symbol in Ivy.
 
 ## Examples:
 
@@ -25,7 +25,7 @@ An arbitrary function or relation symbol can be interpreted. This is useful for 
     type idx
     interpret idx -> int
 
-This says that IVy type `idx` should be interpreted using sort `int` of the theorem prover. This does not mean that `idx` is equated with the integers. If we also interpret type `num` with `int`, we still cannot compare values of type `idx` and type `num`. In effect, these two types are treated as distinct copies of the integers.
+This says that Ivy type `idx` should be interpreted using sort `int` of the theorem prover. This does not mean that `idx` is equated with the integers. If we also interpret type `num` with `int`, we still cannot compare values of type `idx` and type `num`. In effect, these two types are treated as distinct copies of the integers.
 
 When we declare `idx` as `int`, certain overloaded [[function|functions]] and [[relation|relations]] on `idx` are also automatically interpreted by the corresponding operators on integers, as are numerals of that type. So, for example, `+` is interpreted as addition and `<` as "less than" in the theory of integers. Numerals are given their normal interpretations in the theory, so `0:idx = 1:idx` would be false.
 

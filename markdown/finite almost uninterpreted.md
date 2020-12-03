@@ -8,4 +8,4 @@ For example, the following formula is in FAU but not FEU:
 forall X. 0 <= X & X < m - 1 -> p(X)
 ```
 
-Arithmetic literals can be useful, for example, when reasoning about the contents of an array indexed by the integers. On the other hand, in IVy it is more typical to treat array indices as an uninterpreted totally ordered type.
+Arithmetic literals can be useful, for example, when reasoning about the contents of an array indexed by the integers. On the other hand, in Ivy it is more typical to treat array indices as an uninterpreted totally ordered type.

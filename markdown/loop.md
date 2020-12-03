@@ -2,10 +2,10 @@
 
 Loops are discouraged in Ivy. Often, the effect of a loop can be described using an assignment or an `if some` conditional. 
 
-For example, instead of something like this (note: IVy has no `for` loops at all):
+For example, instead of something like this (note: Ivy has no `for` loops at all):
 
 ```
-# Note: not legal IVy code
+# Note: not legal Ivy code
 for y in type {
     link(x,y) := false
 }

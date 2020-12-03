@@ -25,9 +25,9 @@ proof {
 }
 ```
 
-The `proof` declaration tells IVy to apply the [[axiom schema]] `congruence` to prove the [[property]] `prop_n`. 
+The `proof` declaration tells Ivy to apply the [[axiom schema]] `congruence` to prove the [[property]] `prop_n`. 
 
-IVy tries to match the [[proof]] goal `prop_n` to the schema's conclusion by picking particular values for premises, that is, the types `d`,`r` and function `f`. It also chooses terms for the free variables `X`,`Y` occurring in the schema. In this case, it discovers the following assignment:
+Ivy tries to match the [[proof]] goal `prop_n` to the schema's conclusion by picking particular values for premises, that is, the types `d`,`r` and function `f`. It also chooses terms for the free variables `X`,`Y` occurring in the schema. In this case, it discovers the following assignment:
 
 ```
 d = t
@@ -39,7 +39,7 @@ f(N) = N + 1
 
 After plugging in this assignment, the conclusion of the rule exactly matches the property to be proved, so the property is admitted.
 
-In case IVy did not succeed in finding the above match, we could also have written the proof more explicitly, like this:
+In case Ivy did not succeed in finding the above match, we could also have written the proof more explicitly, like this:
 
 ```
 property [prop_n_2] Z = n -> Z + 1 = n + 1
@@ -50,4 +50,4 @@ proof {
 
 Each of the above equations acts as a constraint on the assignment. That is, it must convert `X` to `Z`, `Y` to `n` and `f(X)` to `X + 1`. Notice that we had to explicitly type `X` on the right-hand side of the last equation, since its type couldn't be inferred (and in fact it's not the same as the type of `X` on the left-hand side, which is `d`). 
 
-It's also possible to write constraints that do not allow for any assignment. In this case, IVy complains that the provided match is inconsistent.
+It's also possible to write constraints that do not allow for any assignment. In this case, Ivy complains that the provided match is inconsistent.

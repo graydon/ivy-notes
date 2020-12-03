@@ -47,7 +47,7 @@ Notice that a fresh symbol `r’` was introduced. Technically, this symbol was i
 
 We can see that the [[precondition]] and the constraint defining the semantics of assignment both occur [[positive and negative occurrences|positively]]. These formulas are in EPR, and so the corresponding conjuncts of the negated VC also are.
 
-The [[postcondition|guarantee formula]] occurs negatively as `exists X,Y. ~(r'(X,Y) -> X > Y)`. That is, when we see `~forall X. p(X)`, we convert it to the equivalent `exists X. ~p(X)` in prenex form. This formula is also in EPR. In fact, IVy will convert it to `~(r'(a,b) -> a > b)`, where `a` and `b` are fresh constant symbols.
+The [[postcondition|guarantee formula]] occurs negatively as `exists X,Y. ~(r'(X,Y) -> X > Y)`. That is, when we see `~forall X. p(X)`, we convert it to the equivalent `exists X. ~p(X)` in prenex form. This formula is also in EPR. In fact, Ivy will convert it to `~(r'(a,b) -> a > b)`, where `a` and `b` are fresh constant symbols.
 
 In general, if we don’t use function symbols, and if all of our assumptions and guarantees are `forall` formulas (so-called "A"-formulas), then the negated VC will be in EPR.
 

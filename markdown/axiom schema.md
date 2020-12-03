@@ -16,7 +16,7 @@ axiom [congruence] {
 }
 ```
 
-The keyword `axiom` tells IVy that this schema should be taken as valid without proof. The braces indicate that it is a [[schema]] and not a [[primitive axiom]].
+The keyword `axiom` tells Ivy that this schema should be taken as valid without proof. The braces indicate that it is a [[schema]] and not a [[primitive axiom]].
 
 The same axiom schema can be written as
 

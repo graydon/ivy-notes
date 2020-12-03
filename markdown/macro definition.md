@@ -16,7 +16,7 @@ The corresponding axiom might be problematic, however. Writing it out with expli
 axiom forall X. (rng(X) <-> exists Y. f(Y) = X)
 ```
 
-This formula has an [[quantifier alternation|alternation of quantifiers]] that might result in [[verification condition|verification conditions]] that IVy can't [[logical fragment|decide]]
+This formula has an [[quantifier alternation|alternation of quantifiers]] that might result in [[verification condition|verification conditions]] that Ivy can't [[logical fragment|decide]]
 
 Suppose though, that we only need to know the truth value of `rng` for some specific arguments. We can instead write the definition like this:
 
@@ -30,13 +30,13 @@ Notice that the argument of `rng` is a constant `x`, not a place-holder `X`. Thi
 ensure rng(y)
 ```
 
-IVy will instantiate the definition like this:
+Ivy will instantiate the definition like this:
 
 ```
 axiom rng(y) <-> exists Y. f(Y) = y
 ```
 
-In fact, all instances of the macro will be alternation-free, since IVy guarantees to instantiate the macro using only [[ground term|ground terms]] for the constant arguments.  A macro can have both [[variable|variables]] and constants as arguments. For example, consider this definition:
+In fact, all instances of the macro will be alternation-free, since Ivy guarantees to instantiate the macro using only [[ground term|ground terms]] for the constant arguments.  A macro can have both [[variable|variables]] and constants as arguments. For example, consider this definition:
 
 ```
 definition g(x,Y) = x < Y & exists Z. Z < x

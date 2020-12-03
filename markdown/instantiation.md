@@ -1,4 +1,4 @@
-The word "instantiation" is used in IVy to refer to several different things:
+The word "instantiation" is used in Ivy to refer to several different things:
 
   - "schema instantiation" as a form of [[judgment application]] within a [[proof]]
   - [[explicit quantifier instantiation]] within a [[proof]]

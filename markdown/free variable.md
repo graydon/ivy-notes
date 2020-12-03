@@ -1,6 +1,6 @@
 A free variable is a [[logical variable]] that occurs outside of any [[quantifier]].
 
-Free variables in IVy are **implicitly** [[universal quantifier|universally quantified]].
+Free variables in Ivy are **implicitly** [[universal quantifier|universally quantified]].
 
 In the case of a [[declaration]], this is equivalent to writing the universal quantifiers in the declared formula explicitly.
 

@@ -1,10 +1,10 @@
 [[keywords|Keyword]]: `module`
 
-A module in IVy is a group of declarations that can be [[module instantiation|instantiated]].
+A module in Ivy is a group of declarations that can be [[module instantiation|instantiated]].
 
 In this way it is similar to a template class in an object-oriented programming language.
 
-Any IVy [[declaration]] can be contained in a module.
+Any Ivy [[declaration]] can be contained in a module.
 
 An instance of a module is called an [[object]], and there is special syntax for declaring a [[singleton object]] that is the sole instance of a module. A further special type of object is an [[isolate]], which is verified in isolation from other objects.
 

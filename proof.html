@@ -19,12 +19,12 @@
   <div class="grid">
     <nav>
       <div>
-        <h2><a href="index.html">IVy notes</a></h2>
-        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <h2><a href="index.html">Ivy notes</a></h2>
+        <p>A personal expansion and reorganization of the Ivy project's documentation.</p>
         <br/>
         <br/>
-        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
-        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+        <li><a href="http://microsoft.github.io/ivy/">Ivy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">Ivy github</a></li>
       </div>
       <div>
         <h3>Navigation</h3>
@@ -60,7 +60,7 @@
 
 <p>Multiple tactic invocations may optionally be separated by a semicolon (<code>;</code>) and the entire proof may be (and typically is) enclosed in curly braces (<code>{...}</code>)</p>
 
-<p>If a proof is not supplied for a judgment, IVy's default <a href="tactic.html">tactic</a> will attempt to prove validity automatically.</p>
+<p>If a proof is not supplied for a judgment, Ivy's default <a href="tactic.html">tactic</a> will attempt to prove validity automatically.</p>
 
 <h2 id="examples">Examples:</h2>
 
@@ -80,7 +80,7 @@ proof {
 
 <p>This proof follows the <a href="theorem.html">theorem</a> named <code>[symm]</code> and consists of two <code>apply</code> tactics. </p>
 
-<p>The first tactic applies the labeled <a href="axiom-schema.html">axiom schema</a> <code>introEq</code>  from IVy's <code>deduction</code> standard header, allowing IVy to unify the premises of that axiom schema with the proof goal.</p>
+<p>The first tactic applies the labeled <a href="axiom-schema.html">axiom schema</a> <code>introEq</code>  from Ivy's <code>deduction</code> standard header, allowing Ivy to unify the premises of that axiom schema with the proof goal.</p>
 
 <p>The second applies the <code>elimEq</code> axiom schema (also from the <code>deduction</code> header) and explicitly instantiates the premises <code>x</code> and <code>y</code> of that axiom schema with the goal variables <code>X</code> and <code>Y</code></p>
 

@@ -1,4 +1,4 @@
-An IVy **program** is just an `.ivy` source file.
+An Ivy **program** is just an `.ivy` source file.
 
 It corresponds to a single implicit top-level object, which can therefore be referred to as `this` from top-level declarations.
 

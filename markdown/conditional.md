@@ -1,6 +1,6 @@
 [[keywords|Keywords]]: `if`, `else`
 
-Conditionals in IVy are [[statement|statements]] that behave much as in any procedural programming language.
+Conditionals in Ivy are [[statement|statements]] that behave much as in any procedural programming language.
 
 Special [[nondeterminism|nondeterministic]] forms also exist:
   - [[nondeterministic conditional]]

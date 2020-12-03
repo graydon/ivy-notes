@@ -1,6 +1,6 @@
 [[command|Command]]: `ivy_check`
 
-This command checks the [[proof]] of an IVy [[program]]. This includes checking all the [[invariant|invariants]] and program [[assertion|assertions]] as well as the [[assume-guarantee reasoning|non-interference check]] which guarantees that the division of the proof into [[isolate|isolates]] is sound. If a particular isolate is specified with the `isolate` option, then only the guarantees of this isolate are checked.  To guarantee correctness of the program, it must be checked without the `isolate` option.
+This command checks the [[proof]] of an Ivy [[program]]. This includes checking all the [[invariant|invariants]] and program [[assertion|assertions]] as well as the [[assume-guarantee reasoning|non-interference check]] which guarantees that the division of the proof into [[isolate|isolates]] is sound. If a particular isolate is specified with the `isolate` option, then only the guarantees of this isolate are checked.  To guarantee correctness of the program, it must be checked without the `isolate` option.
 
 During checking, `ivy_check` prints a summary of the contents of each isolate being verified, including all [[assumption|assumptions]] and [[guarantee|guarantees]]. For each check of a guarantee, `PASS` is printed if the check passes and `FAIL` if it fails.
 

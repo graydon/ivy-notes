@@ -1,4 +1,4 @@
-IVy's lexical structure has the following categories of token:
+Ivy's lexical structure has the following categories of token:
 
   - **Keywords** listed on their [[keywords|own page]].
   - **Comments** which begin with `#` and extend to the end of the line.
@@ -8,5 +8,5 @@ IVy's lexical structure has the following categories of token:
   - **Labels** which are any letters, digits or underscores contained in square brackets. These typically denote logical formulas and are declared in-line with many [[logical judgment|logical judgments]]. For example: `[premise]`, `[f0]`, `[NO_WAY]`
   - **Native Quotations** which are any text between a matching pair of triple angle brackets (`<<<` and `>>>`)
 
-IVy is whitespace-insensitive, beyond the need to separate tokens.
+Ivy is whitespace-insensitive, beyond the need to separate tokens.
 

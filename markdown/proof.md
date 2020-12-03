@@ -4,7 +4,7 @@ A proof is a sequence of [[tactic]] invocations that either names or trails a [[
 
 Multiple tactic invocations may optionally be separated by a semicolon (`;`) and the entire proof may be (and typically is) enclosed in curly braces (`{...}`)
 
-If a proof is not supplied for a judgment, IVy's default [[tactic]] will attempt to prove validity automatically.
+If a proof is not supplied for a judgment, Ivy's default [[tactic]] will attempt to prove validity automatically.
 
 ## Examples:
 
@@ -26,7 +26,7 @@ proof {
 
 This proof follows the [[theorem]] named `[symm]` and consists of two `apply` tactics. 
 
-The first tactic applies the labeled [[axiom schema]] `introEq`  from IVy's `deduction` standard header, allowing IVy to unify the premises of that axiom schema with the proof goal.
+The first tactic applies the labeled [[axiom schema]] `introEq`  from Ivy's `deduction` standard header, allowing Ivy to unify the premises of that axiom schema with the proof goal.
 
 The second applies the `elimEq` axiom schema (also from the `deduction` header) and explicitly instantiates the premises `x` and `y` of that axiom schema with the goal variables `X` and `Y`
 

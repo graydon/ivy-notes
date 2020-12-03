@@ -19,12 +19,12 @@
   <div class="grid">
     <nav>
       <div>
-        <h2><a href="index.html">IVy notes</a></h2>
-        <p>A personal expansion and reorganization of the IVy project's documentation.</p>
+        <h2><a href="index.html">Ivy notes</a></h2>
+        <p>A personal expansion and reorganization of the Ivy project's documentation.</p>
         <br/>
         <br/>
-        <li><a href="http://microsoft.github.io/ivy/">IVy website</a></li>
-        <li><a href="https://github.com/kenmcmil/ivy">IVy github</a></li>
+        <li><a href="http://microsoft.github.io/ivy/">Ivy website</a></li>
+        <li><a href="https://github.com/kenmcmil/ivy">Ivy github</a></li>
       </div>
       <div>
         <h3>Navigation</h3>
@@ -56,7 +56,7 @@
       <header>code extraction</header>
       <div id="content"><p><a href="keywords.html">Keyword</a>: <code>extract</code></p>
 
-<p><strong>code extraction</strong> refers to translating IVy source to some other language. The standard code extraction <a href="command.html">command</a> is <a href="ivy-to-cpp-command.html">ivy_to_cpp</a></p>
+<p><strong>code extraction</strong> refers to translating Ivy source to some other language. The standard code extraction <a href="command.html">command</a> is <a href="ivy-to-cpp-command.html">ivy_to_cpp</a></p>
 
 <p>The <code>ivy_to_cpp</code> command can extract any specified <a href="isolate.html">isolate</a> but it is common to declare an <code>extract</code> that bundles together a set of isolates and, optionally, introduces one or more declaration parameters. The extracted code is then considered as an instance at a single (arbitrarily chosen) element of the parameter type.</p>
 
@@ -68,7 +68,7 @@
 
 <p>The extract is parameterized on a node <code>n</code>. It consists of the <code>leader</code> isolate for parameter <code>n</code>, the value of the <code>pid</code> map for <code>n</code>, as well as the node and id isolates (which are not parameterized, and which therefore cannot have state). </p>
 
-<p>When we extract code, the <a href="visibility-qualifiers.html">specification</a> sections of the <a href="isolate.html">isolates</a> are erased.  The specification <a href="state-variable.html">state variables</a> and code (including assertions) are not present in the extract. IVy verifies that this erasure is sound, in the sense that the erased code has no effects that are visible to the remaining code (including non termination). This means that the observable behavior of the program is not affected by erasure of the specifications.</p>
+<p>When we extract code, the <a href="visibility-qualifiers.html">specification</a> sections of the <a href="isolate.html">isolates</a> are erased.  The specification <a href="state-variable.html">state variables</a> and code (including assertions) are not present in the extract. Ivy verifies that this erasure is sound, in the sense that the erased code has no effects that are visible to the remaining code (including non termination). This means that the observable behavior of the program is not affected by erasure of the specifications.</p>
 </div>
       <hr />
       <h2 id="backlinks">Backlinks</h2>

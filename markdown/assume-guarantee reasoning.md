@@ -9,7 +9,7 @@ The key concepts in all these approaches are:
   - Checking **non-interference** between abstracted and verified portions of the system, to ensure soundness of the abstraction.
   - Checking **coverage** of all assertions in all mixtures of abstraction and verification.
 
-IVy uses [[isolate|isolates]] as its units of assume-guarantee reasoning, along with [[visibility qualifiers]].
+Ivy uses [[isolate|isolates]] as its units of assume-guarantee reasoning, along with [[visibility qualifiers]].
 
 Specifically, when verifying some [[isolate]] `X`:
 
@@ -147,9 +147,9 @@ t.ivy: line 12: referenced here
 t.ivy: line 34: referenced here
 ```
 
-This happens because IVy tracks which actions modify which state variables, in particular it notices that `client.recv_res` modifies `client.n_recv`.
+This happens because Ivy tracks which actions modify which state variables, in particular it notices that `client.recv_res` modifies `client.n_recv`.
 
-IVy then attempts to verify `server` in [[isolate|isolation]], and its first step is to check that actions **outside** server can be safely abstracted (erased). Erasing `client.recv_res` is only safe if the variables it alters are only used by other abstract (to-be-erased) actions.
+Ivy then attempts to verify `server` in [[isolate|isolation]], and its first step is to check that actions **outside** server can be safely abstracted (erased). Erasing `client.recv_res` is only safe if the variables it alters are only used by other abstract (to-be-erased) actions.
 
 Unfortunately `client.n_recv` is mentioned in the (still-visible, not-erased) precondition in the mixin `before client.recv_res`, and that precondition is a [[guarantee]] that `server` has to maintain. It cannot safely do so if `client.recv_res` is abstracted away, as its effect on `client.n_recv` will be unknown.
 
@@ -207,7 +207,7 @@ t.ivy: line 35: error: ...when called from server.req[implement6]
 error: Some assertions are not checked
 ```
 
-This is a coverage error: when verifying `server`, IVy will abstract-away (erase) the implementation of `recv_res`, which means an precondition that is only in the isolate's `implementation` will not be checked.
+This is a coverage error: when verifying `server`, Ivy will abstract-away (erase) the implementation of `recv_res`, which means an precondition that is only in the isolate's `implementation` will not be checked.
 
 The best we can do, then, is change the implementation assertion into a dynamic condition, which will at least still preserve the isolate's weaker invariant:
 

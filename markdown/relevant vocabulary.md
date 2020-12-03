@@ -34,7 +34,7 @@ following rules:
 
 Where `i` is the relevant argument position in `f` and `x = y` is considered equivalent to `y = x`.
 
-IVy constructs this graph for each negated VC. If the graph has a cycle, Ivy reports the sequence of terms that induced the cycle (and gives references to line numbers in the IVy program). This information can be used to determine the source of the problem and and [[recovering decidability|correct it]].
+Ivy constructs this graph for each negated VC. If the graph has a cycle, Ivy reports the sequence of terms that induced the cycle (and gives references to line numbers in the Ivy program). This information can be used to determine the source of the problem and and [[recovering decidability|correct it]].
 
 
 ## Examples:

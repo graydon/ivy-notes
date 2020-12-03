@@ -15,7 +15,7 @@
   - `call`: [[statement]] invoking an [[action]]
   - `class`: synonym for [[module]]
   - `concept`: related to "concept graphs", undocumented
-  - `conjecture`: obsolete keyword from earlier IVy versions
+  - `conjecture`: obsolete keyword from earlier Ivy versions
   - `constructor`: undocumented
   - `decreases`: ranking function of a [[loop]]
   - `defergoal`: [[tactic]] that defers a proof goal
@@ -25,8 +25,8 @@
   - `destructor`: [[declaration]] of a [[private destructor]]
   - `else`: negative branch of a [[conditional]] [[statement]]
   - `ensure`: [[postcondition]]
-  - `ensures`: obsolete keyword from earlier IVy versions
-  - `entry`: obsolete keyword from earlier IVy versions
+  - `ensures`: obsolete keyword from earlier Ivy versions
+  - `entry`: obsolete keyword from earlier Ivy versions
   - `eventually`: term in a [[temporal property]]
   - `execute`: synonym for `mixin` (declaring a [[mixin]])
   - `exists`: [[existential quantifier]] for an [[expression]]
@@ -47,7 +47,7 @@
   - `implementation`: marks declarations as "implementation" in [[isolate]] verification
   - `import`:  marks an action as [[import|imported]] from the [[environment]]
   - `in`: indicates chosen value in [[choice function]]
-  - `include`: incorporates another IVy source file's declarations into the current file
+  - `include`: incorporates another Ivy source file's declarations into the current file
   - `individual`: [[declaration]] of an [[individual]]
   - `init`: [[mixin]] declaration for an [[initializer]]
   - `instance`: [[declaration]] of an [[object]] that [[module instantiation|instantiates a module]], also a [[tactic]] that does [[explicit quantifier instantiation]] in a [[proof]]
@@ -59,38 +59,38 @@
   - `let`: binds a local symbol in a [[proof]]
   - `local`: binds a [[logical variable]] in an [[action]]
   - `macro`: [[declaration]] of a [[macro action]]
-  - `match`: obsolete keyword from earlier IVy versions
+  - `match`: obsolete keyword from earlier Ivy versions
   - `maximizing`: qualifier for [[nondeterministic choice]]
   - `method`: synonym for `action` (declaring an [[action]])
   - `minimizing`: qualifier for [[nondeterministic choice]]
   - `mixin`: [[declaration]] of a [[mixin]]
   - `mixord`: [[declaration]] of a "mixin order relation"; undocumented
-  - `modifies`: solete keyword from earlier IVy versions
+  - `modifies`: solete keyword from earlier Ivy versions
   - `module`: [[declaration]] of a [[module]]
   - `named`: introduces a [[named existential]]
-  - `null`: obsolete keyword from earlier IVy versions
+  - `null`: obsolete keyword from earlier Ivy versions
   - `object`: [[declaration]] of a [[singleton object]]
   - `of`: indicates [[type]] of [[variant]]
   - `old`: allows referring to an [[old value]] in an [[action]]
   - `parameter`: [[declaration]] of a [[parameter]]
   - `params`: part of "pattern based updates", undocumented
   - `private`: marks declarations as "private" in [[isolate]] verification
-  - `progress`: obsolete keyword from earlier IVy versions
+  - `progress`: obsolete keyword from earlier Ivy versions
   - `proof`: optionally provides a [[proof]] following a [[property]] or [[theorem]]
   - `property`: [[declaration|declares]] a [[property]]
   - `relation`: [[declaration|declares]] a [[relation]]
-  - `rely`: obsolete keyword from earlier IVy versions
+  - `rely`: obsolete keyword from earlier Ivy versions
   - `require`: [[precondition]]
-  - `requires`: obsolete keyword from earlier IVy versions
+  - `requires`: obsolete keyword from earlier Ivy versions
   - `returns`: qualifier of an [[action]] indicating its return type
   - `scenario`: part of "scenario mixins", undocumented
   - `schema`: [[declaration]] of an [[axiom schema]]
-  - `set`: obsolete keyword from earlier IVy versions
+  - `set`: obsolete keyword from earlier Ivy versions
   - `showgoals`: [[tactic]] that prints current proof goals
   - `some`: selects a value with [[nondeterministic choice]]
   - `specification`: marks declarations as "specification" in [[isolate]] verification
   - `spoil`: undocumented [[tactic]]
-  - `state`: obsolete keyword from earlier IVy versions
+  - `state`: obsolete keyword from earlier Ivy versions
   - `struct`: provides a [[struct]] definition for a [[type]]
   - `tactic`: invokes an extended [[tactic]] in a [[proof]]
   - `temporal`: [[declaration]] of a [[temporal property]]

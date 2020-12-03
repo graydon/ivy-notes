@@ -1,4 +1,4 @@
-There's a wealth of additional information to read in and around IVy:
+There's a wealth of additional information to read in and around Ivy:
 
 
 ## YouTube talks:

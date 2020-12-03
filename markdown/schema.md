@@ -33,4 +33,4 @@ In this case, it says that, given types `d` and `r` and a function `f` from `d` 
 Also, notice the declaration of function `f` contains a variable `X`. The scope of this
 variable is only the function declaration. It has no relation to the variable `X` in the conclusion.
 
-The keyword `axiom` tells IVy that this schema should be taken as valid without proof: it is an [[axiom schema]] rather than a [[theorem]].
+The keyword `axiom` tells Ivy that this schema should be taken as valid without proof: it is an [[axiom schema]] rather than a [[theorem]].

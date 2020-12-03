@@ -1,4 +1,4 @@
-Recursive [[definition|definitions]] are permitted in IVy by instantiating a definitional schema. As an example, consider the following [[axiom schema]]:
+Recursive [[definition|definitions]] are permitted in Ivy by instantiating a definitional schema. As an example, consider the following [[axiom schema]]:
 
 ```
 axiom [rec[u]] {
@@ -29,11 +29,11 @@ proof {
    apply rec[u]
 }
 ```
-Notice that we wrote the [[definition]] in curly brackets. This causes IVy to treat it as an [[axiom schema]], as opposed to a simple [[axiom]].
+Notice that we wrote the [[definition]] in curly brackets. This causes Ivy to treat it as an [[axiom schema]], as opposed to a simple [[axiom]].
 
 We did this because the definition has a universally quantified variable `X` under arithmetic operators, which puts it outside the decidable fragment. Because this definition is a schema, when we want to use it, we'll have to apply it explicitly,
 
-In order to admit this definition, we applied the definition schema `rec[u]`. IVy infers the following substitution:
+In order to admit this definition, we applied the definition schema `rec[u]`. Ivy infers the following substitution:
 
 ```
 q=t, base(X) = 0, step(X,Y) = Y + X, fun(X) = sum(X)
@@ -54,7 +54,7 @@ proof
     apply rec[u]
 ```
 
-In matching the recursion schema `rec[u]`, IVy will extend the function symbols in the premises of `rec[u]` with an extra parameter `N` so that schema becomes:
+In matching the recursion schema `rec[u]`, Ivy will extend the function symbols in the premises of `rec[u]` with an extra parameter `N` so that schema becomes:
 
 ```
 axiom [rec[u]] = {
@@ -72,12 +72,12 @@ The extended schema matches the definition, with the following assignment:
 q=t, base(N,X)=0, step(N,X,Y)=Y/N+X, fun(N,X) = sum2(N,X)
 ```
 
-This is somewhat as if the functions were "curried", in which case the free symbol `fun` would match the partially applied term `sumdiv N`. Since IVy's logic doesn't allow for partial application of functions, extended matching provides an alternative. Notice that, to match the recursion schema, a function definition must be recursive in its *last* parameter.
+This is somewhat as if the functions were "curried", in which case the free symbol `fun` would match the partially applied term `sumdiv N`. Since Ivy's logic doesn't allow for partial application of functions, extended matching provides an alternative. Notice that, to match the recursion schema, a function definition must be recursive in its *last* parameter.
 
 Induction
 =========
 
-The default tactic can't generally prove properties by induction. For that IVy needs manual help. To prove a property by induction, we define an invariant and prove it by instantiating an induction schema. Here is an example of such a schema, that works for the non-negative integers:
+The default tactic can't generally prove properties by induction. For that Ivy needs manual help. To prove a property by induction, we define an invariant and prove it by instantiating an induction schema. Here is an example of such a schema, that works for the non-negative integers:
 
 ```
 axiom [ind[u]] {

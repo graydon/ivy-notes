@@ -1,6 +1,6 @@
 A logical [[variable]] is a [[term]] introduced by a [[universal quantifier|universal]] or [[existential quantifier|existential]] quantifier.
 
-Logical variables in IVy are always written as [[lexical structure|lexical variables]], that is as tokens beginning with a capital letter (eg. `X`, `Foo`, `P123`).
+Logical variables in Ivy are always written as [[lexical structure|lexical variables]], that is as tokens beginning with a capital letter (eg. `X`, `Foo`, `P123`).
 
 A [[free variable|free logical variable]] (occurring outside of any quantifier) is implicitly universally quantified. Some forms of declarations and statements make use of this as an abbreviation.
 

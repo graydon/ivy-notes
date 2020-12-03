@@ -1,10 +1,10 @@
 [[keywords|Keyword]]: `exists`
 
-The existential quantifier (written as `exists` in IVy, but more conventionally as `∃` in formal logic) asserts that "there exists" some elemement of a given [[sort]] for which the remaining quantified [[formula]] is true.
+The existential quantifier (written as `exists` in Ivy, but more conventionally as `∃` in formal logic) asserts that "there exists" some elemement of a given [[sort]] for which the remaining quantified [[formula]] is true.
 
 The existentially-quantified [[logical variable]] follows the keyword and must be a [[lexical structure|lexical variable]] (i.e. must begin with an upper-case letter.)
 
-The variables bound by the quantifier are separated from the formula they quantify over by a period (`.`) though in IVy this can also be accomplished using parentheses (see example below).
+The variables bound by the quantifier are separated from the formula they quantify over by a period (`.`) though in Ivy this can also be accomplished using parentheses (see example below).
 
 Existential quantifiers may be eliminated from a formula by [[skolemization]] and/or [[explicit quantifier instantiation]].
 
