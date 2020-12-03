@@ -66,37 +66,37 @@
 
 <h2 id="example">Example:</h2>
 
-<pre><code class="plaintext lang-plaintext language-plaintext">    axiom [congruence] {
-        type d
-        type r
-        function f(X:d) : r
-        <span class="tag">--------------------------</span>
-        property X = Y -> f(X) = f(Y)
-    }
+<pre><code class="plaintext lang-plaintext language-plaintext">axiom [congruence] {
+    type d
+    type r
+    function f(X:d) : r
+    <span class="tag">--------------------------</span>
+    property X = Y -> f(X) = f(Y)
+}
 
-    property [prop_n] Z = n -> Z + 1 = n + 1
-    proof {
-        apply congruence
-    }</code></pre>
+property [prop_n] Z = n -> Z + 1 = n + 1
+proof {
+    apply congruence
+}</code></pre>
 
 <p>The <code>proof</code> declaration tells IVy to apply the <a href="axiom-schema.html">axiom schema</a> <code>congruence</code> to prove the <a href="property.html">property</a> <code>prop_n</code>. </p>
 
 <p>IVy tries to match the <a href="proof.html">proof</a> goal <code>prop_n</code> to the schema's conclusion by picking particular values for premises, that is, the types <code>d</code>,<code>r</code> and function <code>f</code>. It also chooses terms for the free variables <code>X</code>,<code>Y</code> occurring in the schema. In this case, it discovers the following assignment:</p>
 
-<pre><code class="plaintext lang-plaintext language-plaintext">    <span class="tag">-</span> d = t
-    <span class="tag">-</span> r = t
-    <span class="tag">-</span> X = Z
-    <span class="tag">-</span> Y = n
-    <span class="tag">-</span> f(N) = N + 1</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">d = t
+r = t
+X = Z
+Y = n
+f(N) = N + 1</code></pre>
 
 <p>After plugging in this assignment, the conclusion of the rule exactly matches the property to be proved, so the property is admitted.</p>
 
 <p>In case IVy did not succeed in finding the above match, we could also have written the proof more explicitly, like this:</p>
 
-<pre><code class="plaintext lang-plaintext language-plaintext">    property [prop_n_2] Z = n -> Z + 1 = n + 1
-    proof {
-        apply congruence with X=Z, Y=n, f(X) = X:t + 1
-    }</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">property [prop_n_2] Z = n -> Z + 1 = n + 1
+proof {
+    apply congruence with X=Z, Y=n, f(X) = X:t + 1
+}</code></pre>
 
 <p>Each of the above equations acts as a constraint on the assignment. That is, it must convert <code>X</code> to <code>Z</code>, <code>Y</code> to <code>n</code> and <code>f(X)</code> to <code>X + 1</code>. Notice that we had to explicitly type <code>X</code> on the right-hand side of the last equation, since its type couldn't be inferred (and in fact it's not the same as the type of <code>X</code> on the left-hand side, which is <code>d</code>). </p>
 

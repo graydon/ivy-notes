@@ -15,6 +15,8 @@ property [myprop] r(n,X) -> r(X,n)
 
 In this case, the verification condition is:
 
-    #-   (forall X,Y. r(X,Y) -> r(Y,X)) -> (r(n,X) -> r(X,n))
+```
+(forall X,Y. r(X,Y) -> r(Y,X)) -> (r(n,X) -> r(X,n))
+```
 
 That is, it states that [[axiom]] `symmetry_r` implies property `myprop`.  IVy checks that this formula is within the FAU [[logical fragment]] that Z3 can decide, then passes the formula to Z3. If Z3 finds that the formula is valid, the property is admitted.

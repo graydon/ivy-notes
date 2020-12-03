@@ -70,8 +70,7 @@
 
 <p>In this case, the verification condition is:</p>
 
-<pre><code>&lt;span class="tag"&gt;-&lt;/span&gt;   (forall X,Y. r(X,Y) -&gt; r(Y,X)) -&gt; (r(n,X) -&gt; r(X,n))
-</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">(forall X,Y. r(X,Y) -> r(Y,X)) -> (r(n,X) -> r(X,n))</code></pre>
 
 <p>That is, it states that <a href="axiom.html">axiom</a> <code>symmetry_r</code> implies property <code>myprop</code>.  IVy checks that this formula is within the FAU <a href="logical-fragment.html">logical fragment</a> that Z3 can decide, then passes the formula to Z3. If Z3 finds that the formula is valid, the property is admitted.</p>
 </div>

@@ -82,13 +82,13 @@ property [sk2] exists Z,W. s(a,Z) & s(b,W)</code></pre>
 
 <p>Notice we gave the two instances distinct names, <code>p1</code> and <code>p2</code>. After <a href="skolemization.html">Skolemization</a>, this is the proof goal we got:</p>
 
-<pre><code class="plaintext lang-plaintext language-plaintext"><span class="tag">-</span> theorem [prop1] {
-<span class="tag">-</span>     individual _Y : t
-<span class="tag">-</span>     individual _Y_a : t
-<span class="tag">-</span>     property [p1] s(a,_Y)
-<span class="tag">-</span>     property [p2] s(b,_Y_a)
-<span class="tag">-</span>     property exists W,Z. s(a,Z) & s(b,W)
-<span class="tag">-</span> }</code></pre>
+<pre><code class="plaintext lang-plaintext language-plaintext">theorem [prop1] {
+    individual _Y : t
+    individual _Y_a : t
+    property [p1] s(a,_Y)
+    property [p2] s(b,_Y_a)
+    property exists W,Z. s(a,Z) & s(b,W)
+}</code></pre>
 
 <p>The Skolem symbol in <code>p2</code> was automatically given a fresh name <code>_Y_a</code> so as not to clash with the symbol <code>_Y</code> used in <code>p1</code>. Now we could witness the conclusion with <code>W=_Y</code> and <code>Z=_Y_a</code>. This is fragile, though, because changes to the proof might result in a name different from <code>_Y_a</code>. A better approach is to use alpha renaming to the two quantifiers different variable names. For example:</p>
 

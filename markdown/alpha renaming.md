@@ -33,13 +33,13 @@ proof {
 Notice we gave the two instances distinct names, `p1` and `p2`. After [[skolemization|Skolemization]], this is the proof goal we got:
 
 ```
-#- theorem [prop1] {
-#-     individual _Y : t
-#-     individual _Y_a : t
-#-     property [p1] s(a,_Y)
-#-     property [p2] s(b,_Y_a)
-#-     property exists W,Z. s(a,Z) & s(b,W)
-#- }
+theorem [prop1] {
+    individual _Y : t
+    individual _Y_a : t
+    property [p1] s(a,_Y)
+    property [p2] s(b,_Y_a)
+    property exists W,Z. s(a,Z) & s(b,W)
+}
 ```
 
 The Skolem symbol in `p2` was automatically given a fresh name `_Y_a` so as not to clash with the symbol `_Y` used in `p1`. Now we could witness the conclusion with `W=_Y` and `Z=_Y_a`. This is fragile, though, because changes to the proof might result in a name different from `_Y_a`. A better approach is to use alpha renaming to the two quantifiers different variable names. For example:
