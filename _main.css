@@ -1,0 +1,89 @@
+/* Base */
+:root {
+  --transition-length: 150ms;
+  --text-color: 0, 0, 0;
+  --link-color: 60, 110, 237;
+  --bg-color: 255, 255, 255;
+  --accent-color: 100, 180, 255;
+}
+
+/* Cooler selection color */
+::selection, ::-moz-selection {
+  background: rgb(var(--text-color));
+  color: rgb(var(--bg-color));
+}
+
+/* HTML and body */
+html, body {
+  margin: 0px;
+  height: 100%;
+  font-family:  "IBM Plex Sans";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4;
+}
+body {
+  color: rgb(var(--text-color));
+  background-color: rgb(var(--bg-color))
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 20em 1fr;
+}
+
+nav {
+    grid-column: 1;
+    margin: 3em;
+}
+
+article {
+    grid-column: 2;
+    margin: 3em;
+}
+
+
+/* Link styling */
+a {
+  position: relative;
+  color: rgb(var(--text-color));
+  text-decoration-color: rgb(var(--text-color));
+  transition: text-decoration-color var(--transition-length);
+}
+a:hover {
+  text-decoration-color: rgba(var(--text-color), 0.0);
+}
+
+
+/* Headers */
+header {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+
+/* Code */
+pre {
+  background-color: rgba(130, 130, 130, 0.1);
+  padding: 20px;
+  border-left: 5px solid rgb(var(--accent-color));
+  border-radius: 0px 10px 10px 0px;
+  font-size: 14px;
+}
+pre code {
+  background: none !important;
+  font-size: 100%;
+}
+code {
+  padding: .2em .4em;
+  font-size: 90%;
+  font-family: 'IBM Plex Mono';
+  background: rgba(130, 130, 130, 0.1);
+  border-radius: 3px;
+}
+
+
+/* Styling of horizontal rules */
+hr {
+  border-color: rgba(var(--text-color), 0.1)
+}
